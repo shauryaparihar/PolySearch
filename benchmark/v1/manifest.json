@@ -1,0 +1,26 @@
+{
+  "benchmark_version": "v1",
+  "concepts_kept": 50,
+  "dropped": [],
+  "files_sha256": {
+    "concepts.json": "f813f621a37b826b8cd10083d7718e4ed8a2a65224e249011671e871625af655",
+    "qrels.csv": "9d76d4ca9c549cd7e06ffd3fa77b192a6697dffa890b979fafe3d0b00eaf4018",
+    "queries.csv": "7d2f2476145bd418d1b9009bf14748ea8558809eae62da5f5be8a2124853ee50"
+  },
+  "kind": "constructed (Wikipedia interlanguage links); not real user relevance judgements",
+  "qrels": 200,
+  "queries": 100,
+  "queries_whose_text_contains_a_target_title": 29,
+  "queries_whose_text_equals_a_target_title": 10,
+  "query_language_rotation": [
+    "en",
+    "es",
+    "fr"
+  ],
+  "query_types": [
+    "title",
+    "lead_sentence (parenthetical asides removed)"
+  ],
+  "seed_concepts": 50,
+  "source": "MediaWiki API on en/es/fr.wikipedia.org (https only, allow-listed hosts)"
+}

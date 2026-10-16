@@ -1,0 +1,53 @@
+{
+  "built_from": "active rows of the documents table",
+  "corpus_sha256": "6eddc47fdd973663a641bd5df45c06ce7d88bd9e42057f6a083cad840df9e53d",
+  "documents": 5735,
+  "legacy_raw_files": {
+    "wikipedia_en.json": {
+      "articles": 2000,
+      "sha256": "d2e354810e81227e3d4813a3db97293668f53bcea451e80838fa3e4ce5cfefa5"
+    },
+    "wikipedia_es.json": {
+      "articles": 2000,
+      "sha256": "b80c192053aeec4c3049370b8f72106d8e20a1f6987dd0cb9a7217593dac1747"
+    },
+    "wikipedia_fr.json": {
+      "articles": 2000,
+      "sha256": "0fddce176d1b7a075917d7af8d8e523f9fb6e7783b6e777ccf0798b5b1c0040c"
+    }
+  },
+  "legacy_reconciliation": {
+    "absent_by_reason": {
+      "empty_summary": 10,
+      "over_content_length_bound": 2
+    },
+    "absent_from_canonical_corpus": 12,
+    "absent_titles": [
+      "en:1956inradio",
+      "en:arsenalfc",
+      "en:quantummechanics",
+      "es:cantonesdeallier",
+      "es:cantonesdealtasaboya",
+      "es:deporteenestadosunidosporestados",
+      "fr:1928enmusiqueclassique",
+      "fr:1997ensuisse",
+      "fr:communesdelaprovincedelecco",
+      "fr:glossairedelathéoriedesgraphes",
+      "fr:listederacinesgrecqueslettres",
+      "fr:perciformesclassificationclassique"
+    ],
+    "added_beyond_legacy": 150,
+    "duplicate_rows_collapsed": 5,
+    "matching": "titles compared ignoring case and punctuation (legacy cleaning removed it)",
+    "present_in_canonical_corpus": 5580,
+    "processed_rows_train_plus_test": 5597,
+    "unique_language_title_pairs_ignoring_punctuation": 5592
+  },
+  "per_language": {
+    "en": 1901,
+    "es": 1953,
+    "fr": 1881
+  },
+  "with_source_revision": 150,
+  "without_source_revision": 5585
+}

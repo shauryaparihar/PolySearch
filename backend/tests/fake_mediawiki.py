@@ -48,15 +48,37 @@ class FakeMediaWiki:
                     "continue": "gapcontinue||",
                 }
             return httpx.Response(200, json=body)
-        pages = []
-        for title in q["titles"].split("|"):
-            if title not in wiki:
-                pages.append({"title": title, "missing": True})
+        normalized, redirects, pages, seen = [], [], [], set()
+        for requested in q["titles"].split("|"):
+            title = requested.replace("_", " ")
+            if title != requested:
+                normalized.append({"from": requested, "to": title})
+            final = title
+            target = wiki.get(title, {}).get("redirect_to")
+            if q.get("redirects") and target:
+                redirects.append({"from": title, "to": target})
+                final = target
+            if final in seen:
+                continue
+            seen.add(final)
+            if final not in wiki:
+                pages.append({"title": final, "missing": True})
+            elif q.get("prop") == "langlinks":
+                link = wiki[final].get("langlinks", {}).get(q.get("lllang"))
+                page = {"title": final}
+                if link:
+                    page["langlinks"] = [{"lang": q["lllang"], "title": link}]
+                pages.append(page)
             elif "extracts" in q.get("prop", ""):
-                pages.append({**self._info(language, title), "extract": wiki[title]["extract"]})
+                pages.append({**self._info(language, final), "extract": wiki[final]["extract"]})
             else:
-                pages.append(self._info(language, title))
-        return httpx.Response(200, json={"query": {"pages": pages}})
+                pages.append(self._info(language, final))
+        query: dict = {"pages": pages}
+        if normalized:
+            query["normalized"] = normalized
+        if redirects:
+            query["redirects"] = redirects
+        return httpx.Response(200, json={"query": query})
 
     def _info(self, language: str, title: str) -> dict:
         slug = title.replace(" ", "_")

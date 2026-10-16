@@ -1,0 +1,131 @@
+{
+ "body": {
+  "batchcomplete": true,
+  "query": {
+   "pages": [
+    {
+     "contentmodel": "wikitext",
+     "lastrevid": 175849655,
+     "length": 76246,
+     "ns": 0,
+     "pageid": 2562,
+     "pagelanguage": "es",
+     "pagelanguagedir": "ltr",
+     "pagelanguagehtmlcode": "es",
+     "title": "Sistema solar",
+     "touched": "2026-10-16T04:34:06Z"
+    },
+    {
+     "contentmodel": "wikitext",
+     "lastrevid": 175583978,
+     "length": 56724,
+     "ns": 0,
+     "pageid": 2918,
+     "pagelanguage": "es",
+     "pagelanguagedir": "ltr",
+     "pagelanguagehtmlcode": "es",
+     "title": "Vitamina",
+     "touched": "2026-10-14T19:58:45Z"
+    },
+    {
+     "contentmodel": "wikitext",
+     "lastrevid": 175840972,
+     "length": 118544,
+     "ns": 0,
+     "pageid": 5010,
+     "pagelanguage": "es",
+     "pagelanguagedir": "ltr",
+     "pagelanguagehtmlcode": "es",
+     "title": "William Shakespeare",
+     "touched": "2026-10-15T22:25:06Z"
+    },
+    {
+     "contentmodel": "wikitext",
+     "lastrevid": 175728533,
+     "length": 66593,
+     "ns": 0,
+     "pageid": 8221,
+     "pagelanguage": "es",
+     "pagelanguagedir": "ltr",
+     "pagelanguagehtmlcode": "es",
+     "title": "Tsunami",
+     "touched": "2026-10-15T14:48:04Z"
+    },
+    {
+     "contentmodel": "wikitext",
+     "lastrevid": 175803849,
+     "length": 159062,
+     "ns": 0,
+     "pageid": 10058,
+     "pagelanguage": "es",
+     "pagelanguagedir": "ltr",
+     "pagelanguagehtmlcode": "es",
+     "title": "Ácido desoxirribonucleico",
+     "touched": "2026-10-14T19:58:46Z"
+    },
+    {
+     "contentmodel": "wikitext",
+     "lastrevid": 175674286,
+     "length": 30181,
+     "ns": 0,
+     "pageid": 10698,
+     "pagelanguage": "es",
+     "pagelanguagedir": "ltr",
+     "pagelanguagehtmlcode": "es",
+     "title": "Telescopio",
+     "touched": "2026-10-14T19:58:46Z"
+    },
+    {
+     "contentmodel": "wikitext",
+     "lastrevid": 174136084,
+     "length": 67525,
+     "ns": 0,
+     "pageid": 26911,
+     "pagelanguage": "es",
+     "pagelanguagedir": "ltr",
+     "pagelanguagehtmlcode": "es",
+     "title": "Ópera",
+     "touched": "2026-10-14T19:58:48Z"
+    },
+    {
+     "contentmodel": "wikitext",
+     "lastrevid": 175841461,
+     "length": 51602,
+     "ns": 0,
+     "pageid": 38552,
+     "pagelanguage": "es",
+     "pagelanguagedir": "ltr",
+     "pagelanguagehtmlcode": "es",
+     "title": "Volcán",
+     "touched": "2026-10-15T22:21:11Z"
+    },
+    {
+     "contentmodel": "wikitext",
+     "lastrevid": 174693757,
+     "length": 42372,
+     "ns": 0,
+     "pageid": 39087,
+     "pagelanguage": "es",
+     "pagelanguagedir": "ltr",
+     "pagelanguagehtmlcode": "es",
+     "title": "Vacuna",
+     "touched": "2026-10-14T19:58:50Z"
+    },
+    {
+     "contentmodel": "wikitext",
+     "lastrevid": 175780315,
+     "length": 41228,
+     "ns": 0,
+     "pageid": 231718,
+     "pagelanguage": "es",
+     "pagelanguagedir": "ltr",
+     "pagelanguagehtmlcode": "es",
+     "title": "Terremoto",
+     "touched": "2026-10-15T04:34:10Z"
+    }
+   ]
+  }
+ },
+ "status": 200,
+ "url": "https://es.wikipedia.org/w/api.php?format=json&formatversion=2&maxlag=5&action=query&prop=info&titles=Sistema+solar%7CTelescopio%7CTerremoto%7CTsunami%7CVacuna%7CVitamina%7CVolc%C3%A1n%7CWilliam+Shakespeare%7C%C3%81cido+desoxirribonucleico%7C%C3%93pera&redirects=1"
+}

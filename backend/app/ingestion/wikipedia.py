@@ -26,6 +26,7 @@ from app.ingestion.text import bound_text, clean_text, content_sha256
 ALLOWED_HOSTS: dict[str, str] = {lang: f"{lang}.wikipedia.org" for lang in SUPPORTED_LANGUAGES}
 API_PATH = "/w/api.php"
 _CONTINUE_KEYS = {"gapcontinue", "continue"}
+MAX_CONTINUATIONS = 20
 _CONTROL_RE = re.compile(r"[\x00-\x1f\x7f]")
 
 
@@ -230,6 +231,71 @@ class WikipediaSource:
                 )
             )
         return records, missing
+
+    def fetch_langlinks(
+        self, language: str, titles: list[str], target_language: str
+    ) -> dict[str, str | None]:
+        """Map each existing page in ``language`` to its linked title in ``target_language``.
+
+        Keys are canonical (normalised/redirect-resolved) titles of the *source* pages; the
+        value is the interlanguage link title, or None if the page has no such link.
+        """
+        if target_language not in ALLOWED_HOSTS:
+            raise SourceError("unsupported_language", "Language is not supported")
+        titles = _validate_titles(titles, self.settings.titles_per_request * 2)
+        links: dict[str, str | None] = {}
+        token: dict[str, str] = {}
+        for _ in range(MAX_CONTINUATIONS):
+            body = self._request(
+                language,
+                {
+                    "action": "query",
+                    "prop": "langlinks",
+                    "titles": "|".join(titles),
+                    "lllang": target_language,
+                    "lllimit": "max",
+                    "redirects": 1,
+                    **token,
+                },
+            )
+            for page in body.get("query", {}).get("pages", []):
+                if page.get("missing") or page.get("invalid"):
+                    continue
+                found = page.get("langlinks") or []
+                title = page.get("title", "")
+                links[title] = found[0]["title"] if found else links.get(title)
+            cont = body.get("continue")
+            if not cont:
+                return links
+            token = {k: v for k, v in cont.items() if isinstance(v, str) and len(v) <= 512}
+        raise SourceError("continuation_limit", "Too many continuation steps")
+
+    def resolve_titles(self, language: str, titles: list[str]) -> dict[str, str | None]:
+        """Map requested titles to canonical titles (following normalisation and redirects).
+
+        Missing pages map to None. This is how an interlanguage link that points at a redirect
+        is tied to the page that actually holds the article.
+        """
+        titles = _validate_titles(titles, self.settings.titles_per_request * 2)
+        body = self._request(
+            language,
+            {"action": "query", "prop": "info", "titles": "|".join(titles), "redirects": 1},
+        )
+        query = body.get("query", {})
+        normalized = {n["from"]: n["to"] for n in query.get("normalized", [])}
+        redirects = {r["from"]: r["to"] for r in query.get("redirects", [])}
+        existing = {
+            p["title"] for p in query.get("pages", []) if not (p.get("missing") or p.get("invalid"))
+        }
+        resolved: dict[str, str | None] = {}
+        for requested in titles:
+            title = normalized.get(requested, requested)
+            for _ in range(5):  # bounded redirect chain
+                if title not in redirects:
+                    break
+                title = redirects[title]
+            resolved[requested] = title if title in existing else None
+        return resolved
 
     def fetch_page(self, external_id: str, language: str) -> RawRecord | None:
         records, _ = self.fetch_records(language, [external_id.replace("_", " ")])

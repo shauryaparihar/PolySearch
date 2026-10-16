@@ -1,0 +1,101 @@
+query_id,concept_id,query_language,query_type,query_text,text_equals_target_title,text_contains_target_title
+c000-en-lead_sentence,c000,en,lead_sentence,Present-day climate change includes both global warming—the ongoing increase in global average temperature—and its wider effects on Earth's climate system.,false,false
+c000-en-title,c000,en,title,Climate change,false,false
+c001-es-lead_sentence,c001,es,lead_sentence,La fotosíntesis o función clorofílica es un proceso bioquímico que consiste en la conversión de materia inorgánica a materia orgánica gracias a la energía que aporta la luz solar.,false,false
+c001-es-title,c001,es,title,Fotosíntesis,false,false
+c002-fr-lead_sentence,c002,fr,lead_sentence,Un vaccin est une préparation biologique administrée à un organisme vivant afin d'y stimuler son système immunitaire et d'y développer une immunité adaptative protectrice et durable contre l'agent,false,false
+c002-fr-title,c002,fr,title,Vaccin,false,false
+c003-en-lead_sentence,c003,en,lead_sentence,The Internet is the global system of interconnected computer networks that uses the Internet protocol suite to communicate between networks and devices.,false,true
+c003-en-title,c003,en,title,Internet,true,true
+c004-es-lead_sentence,c004,es,lead_sentence,Renacimiento es el nombre dado en el siglo XIX a un amplio movimiento cultural que se produjo en Europa Occidental durante los siglos XV y XVI.,false,false
+c004-es-title,c004,es,title,Renacimiento,false,false
+c005-fr-lead_sentence,c005,fr,lead_sentence,La révolution industrielle est le processus historique du XIXe siècle qui fait basculer une société à dominante agraire et artisanale vers une société commerciale et industrielle.,false,false
+c005-fr-title,c005,fr,title,Révolution industrielle,false,false
+c006-en-lead_sentence,c006,en,lead_sentence,"World War II, or the Second World War, was a global conflict between two coalitions: the Allies and the Axis powers.",false,false
+c006-en-title,c006,en,title,World War II,false,false
+c007-es-lead_sentence,c007,es,lead_sentence,La democracia es una forma de organización social y política presentada en el platonismo y aristotelismo que atribuye la titularidad del poder al conjunto de la ciudadanía.,false,false
+c007-es-title,c007,es,title,Democracia,false,false
+c008-fr-lead_sentence,c008,fr,lead_sentence,"En astrophysique, un trou noir est un objet céleste si compact que l'intensité de son champ gravitationnel empêche toute forme de matière ou de rayonnement de s'en échapper.",false,false
+c008-fr-title,c008,fr,title,Trou noir,false,false
+c009-en-lead_sentence,c009,en,lead_sentence,Deoxyribonucleic acid is a polymer composed of two polynucleotide chains that coil around each other to form a double helix.,false,false
+c009-en-title,c009,en,title,DNA,false,false
+c010-es-lead_sentence,c010,es,lead_sentence,La evolución biológica es el conjunto de cambios en caracteres fenotípicos y genéticos de poblaciones biológicas a través de generaciones.,false,false
+c010-es-title,c010,es,title,Evolución biológica,false,false
+c011-fr-lead_sentence,c011,fr,lead_sentence,"Le Système solaire, ou système solaire, est le système planétaire du Soleil, étoile autour de laquelle tourne la planète Terre.",false,false
+c011-fr-title,c011,fr,title,Système solaire,false,false
+c012-en-lead_sentence,c012,en,lead_sentence,"A volcano is a vent or fissure in the crust of a planetary-mass object that allows hot lava, volcanic ash, and gases to escape from a magma chamber below the surface.",false,true
+c012-en-title,c012,en,title,Volcano,false,true
+c013-es-lead_sentence,c013,es,lead_sentence,"Un terremoto, también llamado sismo o seísmo en España, temblor de tierra o movimiento telúrico, es la sacudida brusca y pasajera de la corteza terrestre.",false,false
+c013-es-title,c013,es,title,Terremoto,false,false
+c014-fr-lead_sentence,c014,fr,lead_sentence,"Un tsunami est une série d'ondes de très grandes période et longueur d'onde se propageant à travers un milieu aquatique, issues du brusque mouvement d'un grand volume d'eau, provoqué généralement par",false,true
+c014-fr-title,c014,fr,title,Tsunami,true,true
+c015-en-lead_sentence,c015,en,lead_sentence,Cancer is a group of diseases involving uncontrolled cell growth typically resulting in tumors with the potential to invade or spread to other parts of the body.,false,true
+c015-en-title,c015,en,title,Cancer,true,true
+c016-es-lead_sentence,c016,es,lead_sentence,"La diabetes mellitus es un conjunto de enfermedades metabólicas, cuya característica común principal es la presencia de concentraciones elevadas de glucosa en la sangre de manera persistente o",false,true
+c016-es-title,c016,es,title,Diabetes mellitus,false,true
+c017-fr-lead_sentence,c017,fr,lead_sentence,Un antibiotique est une substance naturelle ou synthétique qui tue les bactéries ou bloque leur croissance.,false,false
+c017-fr-title,c017,fr,title,Antibiotique,false,false
+c018-en-lead_sentence,c018,en,lead_sentence,"A printing press is a machine that applies pressure to transfer ink onto a surface made of paper, cloth, or a similar material.",false,false
+c018-en-title,c018,en,title,Printing press,false,false
+c019-es-lead_sentence,c019,es,lead_sentence,"Se denomina telescopio al instrumento óptico que permite observar objetos lejanos con mucho más detalle que a simple vista al captar radiación electromagnética, tal como la luz.",false,false
+c019-es-title,c019,es,title,Telescopio,false,false
+c020-fr-lead_sentence,c020,fr,lead_sentence,L’électricité est l'ensemble des phénomènes physiques associés à la présence et au mouvement de la matière qui possède une propriété de charge électrique.,false,false
+c020-fr-title,c020,fr,title,Électricité,false,false
+c021-en-lead_sentence,c021,en,lead_sentence,Nuclear power is the use of nuclear reactions to produce electricity.,false,false
+c021-en-title,c021,en,title,Nuclear power,false,false
+c022-es-lead_sentence,c022,es,lead_sentence,"La energía solar es una energía renovable, obtenida a partir del aprovechamiento de la radiación electromagnética procedente del Sol.",false,false
+c022-es-title,c022,es,title,Energía solar,false,false
+c023-fr-lead_sentence,c023,fr,lead_sentence,"L'énergie éolienne est l'énergie du vent, dont la force motrice est utilisée dans le déplacement de voiliers et autres véhicules ou transformée au moyen d'un dispositif aérogénérateur, comme une",false,false
+c023-fr-title,c023,fr,title,Énergie éolienne,false,false
+c024-en-lead_sentence,c024,en,lead_sentence,"Artificial intelligence is the capability of computational systems to perform tasks typically associated with human intelligence, such as learning, reasoning, problem-solving, perception, and",false,false
+c024-en-title,c024,en,title,Artificial intelligence,false,false
+c025-es-lead_sentence,c025,es,lead_sentence,"La criptografía se ha definido, tradicionalmente, como el ámbito de la criptología que se ocupa de las técnicas de cifrado o codificado destinadas a alterar las representaciones lingüísticas de",false,false
+c025-es-title,c025,es,title,Criptografía,false,false
+c026-fr-lead_sentence,c026,fr,lead_sentence,"Les Jeux olympiques, aussi appelés Jeux olympiques modernes, puisqu'ils prolongent la tradition des jeux olympiques de la Grèce antique, sont des événements sportifs internationaux majeurs,",false,false
+c026-fr-title,c026,fr,title,Jeux olympiques,false,false
+c027-en-lead_sentence,c027,en,lead_sentence,"Association football, commonly known as football or soccer, is a team sport played between two teams of 11 players who mostly use their feet to kick an inflated ball around a pitch.",false,true
+c027-en-title,c027,en,title,Association football,false,true
+c028-es-lead_sentence,c028,es,lead_sentence,"El baloncesto ""Basketball"" /ˈbæs.kət.bɔl/ o /ˈbæs.kət.bɑl/, también conocido como básquetbol, basquetbol o simplemente básquet, es un deporte de equipo, jugado entre dos equipos de cinco jugadores",false,true
+c028-es-title,c028,es,title,Baloncesto,false,false
+c029-fr-lead_sentence,c029,fr,lead_sentence,"Les échecs, ou le jeu d'échecs, sont un sport cérébral sous la forme d'un jeu de société opposant deux joueurs de part et d'autre d'un tablier appelé « échiquier » constitué par un quadrillage carré",false,false
+c029-fr-title,c029,fr,title,Échecs,false,false
+c030-en-lead_sentence,c030,en,lead_sentence,Opera is a form of Western theatre in which music is a fundamental component and dramatic roles are taken by singers.,false,true
+c030-en-title,c030,en,title,Opera,true,true
+c031-es-lead_sentence,c031,es,lead_sentence,"El jazz es un género musical estadounidense nacido a finales del siglo XIX en las comunidades afroamericanas de Nueva Orleans, Luisiana, que se expandió de manera mundial a lo largo del siglo XX.",false,true
+c031-es-title,c031,es,title,Jazz,true,true
+c032-fr-lead_sentence,c032,fr,lead_sentence,L'impressionnisme est un mouvement pictural apparu en France dans les années 1860 en opposition à l'art académique et visant à représenter le caractère éphémère de la lumière et ses effets sur les,false,false
+c032-fr-title,c032,fr,title,Impressionnisme,false,false
+c033-en-lead_sentence,c033,en,lead_sentence,Cubism is an early-20th-century avant-garde art movement which began in Paris.,false,false
+c033-en-title,c033,en,title,Cubism,false,false
+c034-es-lead_sentence,c034,es,lead_sentence,"William Shakespeare fue un dramaturgo, poeta y actor inglés.",false,true
+c034-es-title,c034,es,title,William Shakespeare,true,true
+c035-fr-lead_sentence,c035,fr,lead_sentence,"Léonard de Vinci, né le 14 avril 1452 du calendrier actuel — le 15 avril 1452, date de l'époque — à Vinci et mort le 2 mai 1519 à Amboise, est un peintre polymathe toscan de la Renaissance italienne,",false,false
+c035-fr-title,c035,fr,title,Léonard de Vinci,false,false
+c036-en-lead_sentence,c036,en,lead_sentence,"Sir Isaac Newton was an English polymath who was a mathematician, physicist, astronomer, alchemist, theologian, historian and inventor.",false,true
+c036-en-title,c036,en,title,Isaac Newton,true,true
+c037-es-lead_sentence,c037,es,lead_sentence,"Albert Einstein fue un físico alemán de origen judío, nacionalizado después suizo, austriaco y estadounidense, conocido principalmente por desarrollar la teoría de la relatividad.",false,true
+c037-es-title,c037,es,title,Albert Einstein,true,true
+c038-fr-lead_sentence,c038,fr,lead_sentence,"Marie Curie, née le 7 novembre 1867 à Varsovie et morte le 4 juillet 1934 à Passy, dans le sanatorium de Sancellemoz, est une physicienne et chimiste polonaise, naturalisée française par son mariage",false,true
+c038-fr-title,c038,fr,title,Marie Curie,true,true
+c039-en-lead_sentence,c039,en,lead_sentence,"The Amazon River in South America is the largest river in the world by discharge volume of water, and the second-longest or longest river system in the world, a title which is disputed with the Nile.",false,false
+c039-en-title,c039,en,title,Amazon River,false,false
+c040-es-lead_sentence,c040,es,lead_sentence,"El monte Everest o Éverest es la montaña más alta de la superficie del planeta Tierra, con una altitud de 8848,86 metros sobre el nivel del mar.",false,true
+c040-es-title,c040,es,title,Monte Everest,false,true
+c041-fr-lead_sentence,c041,fr,lead_sentence,Le Sahara est un vaste désert chaud situé dans la partie nord du continent africain.,false,true
+c041-fr-title,c041,fr,title,Sahara,true,true
+c042-en-lead_sentence,c042,en,lead_sentence,"The Great Barrier Reef is the world's largest coral reef system, composed of over 2,900 individual reefs and 900 islands stretching for over 2,300 kilometres over an area of approximately 344,400",false,false
+c042-en-title,c042,en,title,Great Barrier Reef,false,false
+c043-es-lead_sentence,c043,es,lead_sentence,"Un arrecife de coral, escollo coralino o arrecife coralino es una estructura subacuática hecha del carbonato de calcio secretado por corales.",false,false
+c043-es-title,c043,es,title,Arrecife de coral,false,false
+c044-fr-lead_sentence,c044,fr,lead_sentence,"Une forêt humide est une forêt recevant des précipitations abondantes, avec une pluviométrie entre 1 750 et 2 000 mm/an.",false,false
+c044-fr-title,c044,fr,title,Forêt humide,false,false
+c045-en-lead_sentence,c045,en,lead_sentence,Biodiversity is the variability of life on Earth.,false,false
+c045-en-title,c045,en,title,Biodiversity,false,false
+c046-es-lead_sentence,c046,es,lead_sentence,"En economía, la inflación es el aumento sostenido y generalizado de los precios de los bienes y servicios en un mercado durante un período de tiempo, expresado en una determinada unidad monetaria.",false,false
+c046-es-title,c046,es,title,Inflación,false,false
+c047-fr-lead_sentence,c047,fr,lead_sentence,"La mondialisation ou globalisation est un développement des échanges entre nations, dans une optique de libre échange, en minimisant les restrictions et les taxes aux frontières, des marchandises,",false,false
+c047-fr-title,c047,fr,title,Mondialisation,false,false
+c048-en-lead_sentence,c048,en,lead_sentence,Vitamins are organic molecules that are essential to an organism in small quantities for proper metabolic function.,false,false
+c048-en-title,c048,en,title,Vitamin,false,false
+c049-es-lead_sentence,c049,es,lead_sentence,"Un glaciar es una gruesa masa de hielo y nieve originada en la superficie terrestre por acumulación, compactación y recristalización de la nieve, mostrando evidencias de flujo en el pasado o en la",false,false
+c049-es-title,c049,es,title,Glaciar,false,false

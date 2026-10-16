@@ -1,0 +1,454 @@
+{
+ "body": {
+  "batchcomplete": true,
+  "limits": {
+   "langlinks": 500
+  },
+  "query": {
+   "pages": [
+    {
+     "langlinks": [
+      {
+       "lang": "fr",
+       "title": "Albert Einstein"
+      }
+     ],
+     "ns": 0,
+     "pageid": 736,
+     "title": "Albert Einstein"
+    },
+    {
+     "langlinks": [
+      {
+       "lang": "fr",
+       "title": "Intelligence artificielle"
+      }
+     ],
+     "ns": 0,
+     "pageid": 1164,
+     "title": "Artificial intelligence"
+    },
+    {
+     "langlinks": [
+      {
+       "lang": "fr",
+       "title": "Amazone (fleuve)"
+      }
+     ],
+     "ns": 0,
+     "pageid": 1701,
+     "title": "Amazon River"
+    },
+    {
+     "langlinks": [
+      {
+       "lang": "fr",
+       "title": "Antibiotique"
+      }
+     ],
+     "ns": 0,
+     "pageid": 1805,
+     "title": "Antibiotic"
+    },
+    {
+     "langlinks": [
+      {
+       "lang": "fr",
+       "title": "Basket-ball"
+      }
+     ],
+     "ns": 0,
+     "pageid": 3921,
+     "title": "Basketball"
+    },
+    {
+     "langlinks": [
+      {
+       "lang": "fr",
+       "title": "Trou noir"
+      }
+     ],
+     "ns": 0,
+     "pageid": 4650,
+     "title": "Black hole"
+    },
+    {
+     "langlinks": [
+      {
+       "lang": "fr",
+       "title": "Échecs"
+      }
+     ],
+     "ns": 0,
+     "pageid": 5134,
+     "title": "Chess"
+    },
+    {
+     "langlinks": [
+      {
+       "lang": "fr",
+       "title": "Acide désoxyribonucléique"
+      }
+     ],
+     "ns": 0,
+     "pageid": 7955,
+     "title": "DNA"
+    },
+    {
+     "langlinks": [
+      {
+       "lang": "fr",
+       "title": "Démocratie"
+      }
+     ],
+     "ns": 0,
+     "pageid": 7959,
+     "title": "Democracy"
+    },
+    {
+     "langlinks": [
+      {
+       "lang": "fr",
+       "title": "Évolution (biologie)"
+      }
+     ],
+     "ns": 0,
+     "pageid": 9236,
+     "title": "Evolution"
+    },
+    {
+     "langlinks": [
+      {
+       "lang": "fr",
+       "title": "Électricité"
+      }
+     ],
+     "ns": 0,
+     "pageid": 9550,
+     "title": "Electricity"
+    },
+    {
+     "langlinks": [
+      {
+       "lang": "fr",
+       "title": "Séisme"
+      }
+     ],
+     "ns": 0,
+     "pageid": 10106,
+     "title": "Earthquake"
+    },
+    {
+     "langlinks": [
+      {
+       "lang": "fr",
+       "title": "Football"
+      }
+     ],
+     "ns": 0,
+     "pageid": 10568,
+     "title": "Association football"
+    },
+    {
+     "langlinks": [
+      {
+       "lang": "fr",
+       "title": "Glacier"
+      }
+     ],
+     "ns": 0,
+     "pageid": 12463,
+     "title": "Glacier"
+    },
+    {
+     "langlinks": [
+      {
+       "lang": "fr",
+       "title": "Internet"
+      }
+     ],
+     "ns": 0,
+     "pageid": 14539,
+     "title": "Internet"
+    },
+    {
+     "langlinks": [
+      {
+       "lang": "fr",
+       "title": "Isaac Newton"
+      }
+     ],
+     "ns": 0,
+     "pageid": 14627,
+     "title": "Isaac Newton"
+    },
+    {
+     "langlinks": [
+      {
+       "lang": "fr",
+       "title": "Révolution industrielle"
+      }
+     ],
+     "ns": 0,
+     "pageid": 14914,
+     "title": "Industrial Revolution"
+    },
+    {
+     "langlinks": [
+      {
+       "lang": "fr",
+       "title": "Impressionnisme"
+      }
+     ],
+     "ns": 0,
+     "pageid": 15169,
+     "title": "Impressionism"
+    },
+    {
+     "langlinks": [
+      {
+       "lang": "fr",
+       "title": "Jazz"
+      }
+     ],
+     "ns": 0,
+     "pageid": 15613,
+     "title": "Jazz"
+    },
+    {
+     "langlinks": [
+      {
+       "lang": "fr",
+       "title": "Léonard de Vinci"
+      }
+     ],
+     "ns": 0,
+     "pageid": 18079,
+     "title": "Leonardo da Vinci"
+    },
+    {
+     "langlinks": [
+      {
+       "lang": "fr",
+       "title": "Marie Curie"
+      }
+     ],
+     "ns": 0,
+     "pageid": 20408,
+     "title": "Marie Curie"
+    },
+    {
+     "langlinks": [
+      {
+       "lang": "fr",
+       "title": "Énergie nucléaire"
+      }
+     ],
+     "ns": 0,
+     "pageid": 22153,
+     "title": "Nuclear power"
+    },
+    {
+     "langlinks": [
+      {
+       "lang": "fr",
+       "title": "Opéra"
+      }
+     ],
+     "ns": 0,
+     "pageid": 22348,
+     "title": "Opera"
+    },
+    {
+     "langlinks": [
+      {
+       "lang": "fr",
+       "title": "Jeux olympiques"
+      }
+     ],
+     "ns": 0,
+     "pageid": 22576,
+     "title": "Olympic Games"
+    },
+    {
+     "langlinks": [
+      {
+       "lang": "fr",
+       "title": "Presse typographique"
+      }
+     ],
+     "ns": 0,
+     "pageid": 23295,
+     "title": "Printing press"
+    },
+    {
+     "langlinks": [
+      {
+       "lang": "fr",
+       "title": "Photosynthèse"
+      }
+     ],
+     "ns": 0,
+     "pageid": 24544,
+     "title": "Photosynthesis"
+    },
+    {
+     "langlinks": [
+      {
+       "lang": "fr",
+       "title": "Renaissance"
+      }
+     ],
+     "ns": 0,
+     "pageid": 25532,
+     "title": "Renaissance"
+    },
+    {
+     "langlinks": [
+      {
+       "lang": "fr",
+       "title": "Cubisme"
+      }
+     ],
+     "ns": 0,
+     "pageid": 37803,
+     "title": "Cubism"
+    },
+    {
+     "langlinks": [
+      {
+       "lang": "fr",
+       "title": "Inflation"
+      }
+     ],
+     "ns": 0,
+     "pageid": 38286,
+     "title": "Inflation"
+    },
+    {
+     "langlinks": [
+      {
+       "lang": "fr",
+       "title": "Everest"
+      }
+     ],
+     "ns": 0,
+     "pageid": 42179,
+     "title": "Mount Everest"
+    },
+    {
+     "langlinks": [
+      {
+       "lang": "fr",
+       "title": "Biodiversité"
+      }
+     ],
+     "ns": 0,
+     "pageid": 45086,
+     "title": "Biodiversity"
+    },
+    {
+     "langlinks": [
+      {
+       "lang": "fr",
+       "title": "Mondialisation"
+      }
+     ],
+     "ns": 0,
+     "pageid": 46313,
+     "title": "Globalization"
+    },
+    {
+     "langlinks": [
+      {
+       "lang": "fr",
+       "title": "Forêt humide"
+      }
+     ],
+     "ns": 0,
+     "pageid": 50047,
+     "title": "Rainforest"
+    },
+    {
+     "langlinks": [
+      {
+       "lang": "fr",
+       "title": "Grande Barrière de corail"
+      }
+     ],
+     "ns": 0,
+     "pageid": 70983,
+     "title": "Great Barrier Reef"
+    },
+    {
+     "langlinks": [
+      {
+       "lang": "fr",
+       "title": "Récif corallien"
+      }
+     ],
+     "ns": 0,
+     "pageid": 87410,
+     "title": "Coral reef"
+    },
+    {
+     "langlinks": [
+      {
+       "lang": "fr",
+       "title": "Cancer"
+      }
+     ],
+     "ns": 0,
+     "pageid": 105219,
+     "title": "Cancer"
+    },
+    {
+     "langlinks": [
+      {
+       "lang": "fr",
+       "title": "Sahara"
+      }
+     ],
+     "ns": 0,
+     "pageid": 325363,
+     "title": "Sahara"
+    },
+    {
+     "langlinks": [
+      {
+       "lang": "fr",
+       "title": "Changement climatique"
+      }
+     ],
+     "ns": 0,
+     "pageid": 5042951,
+     "title": "Climate change"
+    },
+    {
+     "langlinks": [
+      {
+       "lang": "fr",
+       "title": "Cryptographie"
+      }
+     ],
+     "ns": 0,
+     "pageid": 18934432,
+     "title": "Cryptography"
+    },
+    {
+     "langlinks": [
+      {
+       "lang": "fr",
+       "title": "Diabète sucré"
+      }
+     ],
+     "ns": 0,
+     "pageid": 40017873,
+     "title": "Diabetes"
+    }
+   ]
+  }
+ },
+ "status": 200,
+ "url": "https://en.wikipedia.org/w/api.php?format=json&formatversion=2&maxlag=5&action=query&prop=langlinks&titles=Albert+Einstein%7CAmazon+River%7CAntibiotic%7CArtificial+intelligence%7CAssociation+football%7CBasketball%7CBiodiversity%7CBlack+hole%7CCancer%7CChess%7CClimate+change%7CCoral+reef%7CCryptography%7CCubism%7CDNA%7CDemocracy%7CDiabetes%7CEarthquake%7CElectricity%7CEvolution%7CGlacier%7CGlobalization%7CGreat+Barrier+Reef%7CImpressionism%7CIndustrial+Revolution%7CInflation%7CInternet%7CIsaac+Newton%7CJazz%7CLeonardo+da+Vinci%7CMarie+Curie%7CMount+Everest%7CNuclear+power%7COlympic+Games%7COpera%7CPhotosynthesis%7CPrinting+press%7CRainforest%7CRenaissance%7CSahara&lllang=fr&lllimit=max&redirects=1"
+}

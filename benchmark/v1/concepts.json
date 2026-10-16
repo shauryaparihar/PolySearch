@@ -1,0 +1,1202 @@
+[
+ {
+  "concept_id": "c000",
+  "documents": {
+   "en": {
+    "key": "en:Climate_change",
+    "source_revision": "1377826917",
+    "source_url": "https://en.wikipedia.org/wiki/Climate_change",
+    "title": "Climate change"
+   },
+   "es": {
+    "key": "es:Calentamiento_global",
+    "source_revision": "175753074",
+    "source_url": "https://es.wikipedia.org/wiki/Calentamiento_global",
+    "title": "Calentamiento global"
+   },
+   "fr": {
+    "key": "fr:Changement_climatique",
+    "source_revision": "240109025",
+    "source_url": "https://fr.wikipedia.org/wiki/Changement_climatique",
+    "title": "Changement climatique"
+   }
+  },
+  "seed_title": "Climate change"
+ },
+ {
+  "concept_id": "c001",
+  "documents": {
+   "en": {
+    "key": "en:Photosynthesis",
+    "source_revision": "1379238357",
+    "source_url": "https://en.wikipedia.org/wiki/Photosynthesis",
+    "title": "Photosynthesis"
+   },
+   "es": {
+    "key": "es:Fotosíntesis",
+    "source_revision": "175850602",
+    "source_url": "https://es.wikipedia.org/wiki/Fotos%C3%ADntesis",
+    "title": "Fotosíntesis"
+   },
+   "fr": {
+    "key": "fr:Photosynthèse",
+    "source_revision": "238282939",
+    "source_url": "https://fr.wikipedia.org/wiki/Photosynth%C3%A8se",
+    "title": "Photosynthèse"
+   }
+  },
+  "seed_title": "Photosynthesis"
+ },
+ {
+  "concept_id": "c002",
+  "documents": {
+   "en": {
+    "key": "en:Vaccine",
+    "source_revision": "1376748103",
+    "source_url": "https://en.wikipedia.org/wiki/Vaccine",
+    "title": "Vaccine"
+   },
+   "es": {
+    "key": "es:Vacuna",
+    "source_revision": "174693757",
+    "source_url": "https://es.wikipedia.org/wiki/Vacuna",
+    "title": "Vacuna"
+   },
+   "fr": {
+    "key": "fr:Vaccin",
+    "source_revision": "239937306",
+    "source_url": "https://fr.wikipedia.org/wiki/Vaccin",
+    "title": "Vaccin"
+   }
+  },
+  "seed_title": "Vaccine"
+ },
+ {
+  "concept_id": "c003",
+  "documents": {
+   "en": {
+    "key": "en:Internet",
+    "source_revision": "1379179209",
+    "source_url": "https://en.wikipedia.org/wiki/Internet",
+    "title": "Internet"
+   },
+   "es": {
+    "key": "es:Internet",
+    "source_revision": "175613576",
+    "source_url": "https://es.wikipedia.org/wiki/Internet",
+    "title": "Internet"
+   },
+   "fr": {
+    "key": "fr:Internet",
+    "source_revision": "240088296",
+    "source_url": "https://fr.wikipedia.org/wiki/Internet",
+    "title": "Internet"
+   }
+  },
+  "seed_title": "Internet"
+ },
+ {
+  "concept_id": "c004",
+  "documents": {
+   "en": {
+    "key": "en:Renaissance",
+    "source_revision": "1379286815",
+    "source_url": "https://en.wikipedia.org/wiki/Renaissance",
+    "title": "Renaissance"
+   },
+   "es": {
+    "key": "es:Renacimiento",
+    "source_revision": "175766092",
+    "source_url": "https://es.wikipedia.org/wiki/Renacimiento",
+    "title": "Renacimiento"
+   },
+   "fr": {
+    "key": "fr:Renaissance",
+    "source_revision": "239013691",
+    "source_url": "https://fr.wikipedia.org/wiki/Renaissance",
+    "title": "Renaissance"
+   }
+  },
+  "seed_title": "Renaissance"
+ },
+ {
+  "concept_id": "c005",
+  "documents": {
+   "en": {
+    "key": "en:Industrial_Revolution",
+    "source_revision": "1379294769",
+    "source_url": "https://en.wikipedia.org/wiki/Industrial_Revolution",
+    "title": "Industrial Revolution"
+   },
+   "es": {
+    "key": "es:Revolución_Industrial",
+    "source_revision": "175821969",
+    "source_url": "https://es.wikipedia.org/wiki/Revoluci%C3%B3n_Industrial",
+    "title": "Revolución Industrial"
+   },
+   "fr": {
+    "key": "fr:Révolution_industrielle",
+    "source_revision": "239893872",
+    "source_url": "https://fr.wikipedia.org/wiki/R%C3%A9volution_industrielle",
+    "title": "Révolution industrielle"
+   }
+  },
+  "seed_title": "Industrial Revolution"
+ },
+ {
+  "concept_id": "c006",
+  "documents": {
+   "en": {
+    "key": "en:World_War_II",
+    "source_revision": "1379691426",
+    "source_url": "https://en.wikipedia.org/wiki/World_War_II",
+    "title": "World War II"
+   },
+   "es": {
+    "key": "es:Segunda_Guerra_Mundial",
+    "source_revision": "175777546",
+    "source_url": "https://es.wikipedia.org/wiki/Segunda_Guerra_Mundial",
+    "title": "Segunda Guerra Mundial"
+   },
+   "fr": {
+    "key": "fr:Seconde_Guerre_mondiale",
+    "source_revision": "240347813",
+    "source_url": "https://fr.wikipedia.org/wiki/Seconde_Guerre_mondiale",
+    "title": "Seconde Guerre mondiale"
+   }
+  },
+  "seed_title": "World War II"
+ },
+ {
+  "concept_id": "c007",
+  "documents": {
+   "en": {
+    "key": "en:Democracy",
+    "source_revision": "1380234194",
+    "source_url": "https://en.wikipedia.org/wiki/Democracy",
+    "title": "Democracy"
+   },
+   "es": {
+    "key": "es:Democracia",
+    "source_revision": "175682239",
+    "source_url": "https://es.wikipedia.org/wiki/Democracia",
+    "title": "Democracia"
+   },
+   "fr": {
+    "key": "fr:Démocratie",
+    "source_revision": "240221980",
+    "source_url": "https://fr.wikipedia.org/wiki/D%C3%A9mocratie",
+    "title": "Démocratie"
+   }
+  },
+  "seed_title": "Democracy"
+ },
+ {
+  "concept_id": "c008",
+  "documents": {
+   "en": {
+    "key": "en:Black_hole",
+    "source_revision": "1379111441",
+    "source_url": "https://en.wikipedia.org/wiki/Black_hole",
+    "title": "Black hole"
+   },
+   "es": {
+    "key": "es:Agujero_negro",
+    "source_revision": "175815645",
+    "source_url": "https://es.wikipedia.org/wiki/Agujero_negro",
+    "title": "Agujero negro"
+   },
+   "fr": {
+    "key": "fr:Trou_noir",
+    "source_revision": "240208639",
+    "source_url": "https://fr.wikipedia.org/wiki/Trou_noir",
+    "title": "Trou noir"
+   }
+  },
+  "seed_title": "Black hole"
+ },
+ {
+  "concept_id": "c009",
+  "documents": {
+   "en": {
+    "key": "en:DNA",
+    "source_revision": "1379332306",
+    "source_url": "https://en.wikipedia.org/wiki/DNA",
+    "title": "DNA"
+   },
+   "es": {
+    "key": "es:Ácido_desoxirribonucleico",
+    "source_revision": "175803849",
+    "source_url": "https://es.wikipedia.org/wiki/%C3%81cido_desoxirribonucleico",
+    "title": "Ácido desoxirribonucleico"
+   },
+   "fr": {
+    "key": "fr:Acide_désoxyribonucléique",
+    "source_revision": "240177857",
+    "source_url": "https://fr.wikipedia.org/wiki/Acide_d%C3%A9soxyribonucl%C3%A9ique",
+    "title": "Acide désoxyribonucléique"
+   }
+  },
+  "seed_title": "DNA"
+ },
+ {
+  "concept_id": "c010",
+  "documents": {
+   "en": {
+    "key": "en:Evolution",
+    "source_revision": "1379899421",
+    "source_url": "https://en.wikipedia.org/wiki/Evolution",
+    "title": "Evolution"
+   },
+   "es": {
+    "key": "es:Evolución_biológica",
+    "source_revision": "174783636",
+    "source_url": "https://es.wikipedia.org/wiki/Evoluci%C3%B3n_biol%C3%B3gica",
+    "title": "Evolución biológica"
+   },
+   "fr": {
+    "key": "fr:Évolution_(biologie)",
+    "source_revision": "239790694",
+    "source_url": "https://fr.wikipedia.org/wiki/%C3%89volution_(biologie)",
+    "title": "Évolution (biologie)"
+   }
+  },
+  "seed_title": "Evolution"
+ },
+ {
+  "concept_id": "c011",
+  "documents": {
+   "en": {
+    "key": "en:Solar_System",
+    "source_revision": "1379807231",
+    "source_url": "https://en.wikipedia.org/wiki/Solar_System",
+    "title": "Solar System"
+   },
+   "es": {
+    "key": "es:Sistema_solar",
+    "source_revision": "175849655",
+    "source_url": "https://es.wikipedia.org/wiki/Sistema_solar",
+    "title": "Sistema solar"
+   },
+   "fr": {
+    "key": "fr:Système_solaire",
+    "source_revision": "240177026",
+    "source_url": "https://fr.wikipedia.org/wiki/Syst%C3%A8me_solaire",
+    "title": "Système solaire"
+   }
+  },
+  "seed_title": "Solar System"
+ },
+ {
+  "concept_id": "c012",
+  "documents": {
+   "en": {
+    "key": "en:Volcano",
+    "source_revision": "1380352685",
+    "source_url": "https://en.wikipedia.org/wiki/Volcano",
+    "title": "Volcano"
+   },
+   "es": {
+    "key": "es:Volcán",
+    "source_revision": "175841461",
+    "source_url": "https://es.wikipedia.org/wiki/Volc%C3%A1n",
+    "title": "Volcán"
+   },
+   "fr": {
+    "key": "fr:Volcan",
+    "source_revision": "240006238",
+    "source_url": "https://fr.wikipedia.org/wiki/Volcan",
+    "title": "Volcan"
+   }
+  },
+  "seed_title": "Volcano"
+ },
+ {
+  "concept_id": "c013",
+  "documents": {
+   "en": {
+    "key": "en:Earthquake",
+    "source_revision": "1379800890",
+    "source_url": "https://en.wikipedia.org/wiki/Earthquake",
+    "title": "Earthquake"
+   },
+   "es": {
+    "key": "es:Terremoto",
+    "source_revision": "175780315",
+    "source_url": "https://es.wikipedia.org/wiki/Terremoto",
+    "title": "Terremoto"
+   },
+   "fr": {
+    "key": "fr:Séisme",
+    "source_revision": "239503363",
+    "source_url": "https://fr.wikipedia.org/wiki/S%C3%A9isme",
+    "title": "Séisme"
+   }
+  },
+  "seed_title": "Earthquake"
+ },
+ {
+  "concept_id": "c014",
+  "documents": {
+   "en": {
+    "key": "en:Tsunami",
+    "source_revision": "1376798379",
+    "source_url": "https://en.wikipedia.org/wiki/Tsunami",
+    "title": "Tsunami"
+   },
+   "es": {
+    "key": "es:Tsunami",
+    "source_revision": "175728533",
+    "source_url": "https://es.wikipedia.org/wiki/Tsunami",
+    "title": "Tsunami"
+   },
+   "fr": {
+    "key": "fr:Tsunami",
+    "source_revision": "239893988",
+    "source_url": "https://fr.wikipedia.org/wiki/Tsunami",
+    "title": "Tsunami"
+   }
+  },
+  "seed_title": "Tsunami"
+ },
+ {
+  "concept_id": "c015",
+  "documents": {
+   "en": {
+    "key": "en:Cancer",
+    "source_revision": "1378798277",
+    "source_url": "https://en.wikipedia.org/wiki/Cancer",
+    "title": "Cancer"
+   },
+   "es": {
+    "key": "es:Cáncer",
+    "source_revision": "175789817",
+    "source_url": "https://es.wikipedia.org/wiki/C%C3%A1ncer",
+    "title": "Cáncer"
+   },
+   "fr": {
+    "key": "fr:Cancer",
+    "source_revision": "239731887",
+    "source_url": "https://fr.wikipedia.org/wiki/Cancer",
+    "title": "Cancer"
+   }
+  },
+  "seed_title": "Cancer"
+ },
+ {
+  "concept_id": "c016",
+  "documents": {
+   "en": {
+    "key": "en:Diabetes",
+    "source_revision": "1378703532",
+    "source_url": "https://en.wikipedia.org/wiki/Diabetes",
+    "title": "Diabetes"
+   },
+   "es": {
+    "key": "es:Diabetes_mellitus",
+    "source_revision": "175725351",
+    "source_url": "https://es.wikipedia.org/wiki/Diabetes_mellitus",
+    "title": "Diabetes mellitus"
+   },
+   "fr": {
+    "key": "fr:Diabète_sucré",
+    "source_revision": "239270899",
+    "source_url": "https://fr.wikipedia.org/wiki/Diab%C3%A8te_sucr%C3%A9",
+    "title": "Diabète sucré"
+   }
+  },
+  "seed_title": "Diabetes"
+ },
+ {
+  "concept_id": "c017",
+  "documents": {
+   "en": {
+    "key": "en:Antibiotic",
+    "source_revision": "1379880384",
+    "source_url": "https://en.wikipedia.org/wiki/Antibiotic",
+    "title": "Antibiotic"
+   },
+   "es": {
+    "key": "es:Antibiótico",
+    "source_revision": "175500857",
+    "source_url": "https://es.wikipedia.org/wiki/Antibi%C3%B3tico",
+    "title": "Antibiótico"
+   },
+   "fr": {
+    "key": "fr:Antibiotique",
+    "source_revision": "240325584",
+    "source_url": "https://fr.wikipedia.org/wiki/Antibiotique",
+    "title": "Antibiotique"
+   }
+  },
+  "seed_title": "Antibiotic"
+ },
+ {
+  "concept_id": "c018",
+  "documents": {
+   "en": {
+    "key": "en:Printing_press",
+    "source_revision": "1379445153",
+    "source_url": "https://en.wikipedia.org/wiki/Printing_press",
+    "title": "Printing press"
+   },
+   "es": {
+    "key": "es:Imprenta",
+    "source_revision": "175792048",
+    "source_url": "https://es.wikipedia.org/wiki/Imprenta",
+    "title": "Imprenta"
+   },
+   "fr": {
+    "key": "fr:Presse_typographique",
+    "source_revision": "240357878",
+    "source_url": "https://fr.wikipedia.org/wiki/Presse_typographique",
+    "title": "Presse typographique"
+   }
+  },
+  "seed_title": "Printing press"
+ },
+ {
+  "concept_id": "c019",
+  "documents": {
+   "en": {
+    "key": "en:Telescope",
+    "source_revision": "1370790151",
+    "source_url": "https://en.wikipedia.org/wiki/Telescope",
+    "title": "Telescope"
+   },
+   "es": {
+    "key": "es:Telescopio",
+    "source_revision": "175674286",
+    "source_url": "https://es.wikipedia.org/wiki/Telescopio",
+    "title": "Telescopio"
+   },
+   "fr": {
+    "key": "fr:Télescope",
+    "source_revision": "239166325",
+    "source_url": "https://fr.wikipedia.org/wiki/T%C3%A9lescope",
+    "title": "Télescope"
+   }
+  },
+  "seed_title": "Telescope"
+ },
+ {
+  "concept_id": "c020",
+  "documents": {
+   "en": {
+    "key": "en:Electricity",
+    "source_revision": "1379297547",
+    "source_url": "https://en.wikipedia.org/wiki/Electricity",
+    "title": "Electricity"
+   },
+   "es": {
+    "key": "es:Electricidad",
+    "source_revision": "175723488",
+    "source_url": "https://es.wikipedia.org/wiki/Electricidad",
+    "title": "Electricidad"
+   },
+   "fr": {
+    "key": "fr:Électricité",
+    "source_revision": "238426974",
+    "source_url": "https://fr.wikipedia.org/wiki/%C3%89lectricit%C3%A9",
+    "title": "Électricité"
+   }
+  },
+  "seed_title": "Electricity"
+ },
+ {
+  "concept_id": "c021",
+  "documents": {
+   "en": {
+    "key": "en:Nuclear_power",
+    "source_revision": "1377638624",
+    "source_url": "https://en.wikipedia.org/wiki/Nuclear_power",
+    "title": "Nuclear power"
+   },
+   "es": {
+    "key": "es:Energía_nuclear",
+    "source_revision": "175834087",
+    "source_url": "https://es.wikipedia.org/wiki/Energ%C3%ADa_nuclear",
+    "title": "Energía nuclear"
+   },
+   "fr": {
+    "key": "fr:Énergie_nucléaire",
+    "source_revision": "239906484",
+    "source_url": "https://fr.wikipedia.org/wiki/%C3%89nergie_nucl%C3%A9aire",
+    "title": "Énergie nucléaire"
+   }
+  },
+  "seed_title": "Nuclear power"
+ },
+ {
+  "concept_id": "c022",
+  "documents": {
+   "en": {
+    "key": "en:Solar_energy",
+    "source_revision": "1378294361",
+    "source_url": "https://en.wikipedia.org/wiki/Solar_energy",
+    "title": "Solar energy"
+   },
+   "es": {
+    "key": "es:Energía_solar",
+    "source_revision": "175695645",
+    "source_url": "https://es.wikipedia.org/wiki/Energ%C3%ADa_solar",
+    "title": "Energía solar"
+   },
+   "fr": {
+    "key": "fr:Énergie_solaire",
+    "source_revision": "237259280",
+    "source_url": "https://fr.wikipedia.org/wiki/%C3%89nergie_solaire",
+    "title": "Énergie solaire"
+   }
+  },
+  "seed_title": "Solar energy"
+ },
+ {
+  "concept_id": "c023",
+  "documents": {
+   "en": {
+    "key": "en:Wind_power",
+    "source_revision": "1377654224",
+    "source_url": "https://en.wikipedia.org/wiki/Wind_power",
+    "title": "Wind power"
+   },
+   "es": {
+    "key": "es:Energía_eólica",
+    "source_revision": "175814738",
+    "source_url": "https://es.wikipedia.org/wiki/Energ%C3%ADa_e%C3%B3lica",
+    "title": "Energía eólica"
+   },
+   "fr": {
+    "key": "fr:Énergie_éolienne",
+    "source_revision": "239396969",
+    "source_url": "https://fr.wikipedia.org/wiki/%C3%89nergie_%C3%A9olienne",
+    "title": "Énergie éolienne"
+   }
+  },
+  "seed_title": "Wind power"
+ },
+ {
+  "concept_id": "c024",
+  "documents": {
+   "en": {
+    "key": "en:Artificial_intelligence",
+    "source_revision": "1380434171",
+    "source_url": "https://en.wikipedia.org/wiki/Artificial_intelligence",
+    "title": "Artificial intelligence"
+   },
+   "es": {
+    "key": "es:Inteligencia_artificial",
+    "source_revision": "175850904",
+    "source_url": "https://es.wikipedia.org/wiki/Inteligencia_artificial",
+    "title": "Inteligencia artificial"
+   },
+   "fr": {
+    "key": "fr:Intelligence_artificielle",
+    "source_revision": "240411550",
+    "source_url": "https://fr.wikipedia.org/wiki/Intelligence_artificielle",
+    "title": "Intelligence artificielle"
+   }
+  },
+  "seed_title": "Artificial intelligence"
+ },
+ {
+  "concept_id": "c025",
+  "documents": {
+   "en": {
+    "key": "en:Cryptography",
+    "source_revision": "1380024803",
+    "source_url": "https://en.wikipedia.org/wiki/Cryptography",
+    "title": "Cryptography"
+   },
+   "es": {
+    "key": "es:Criptografía",
+    "source_revision": "175652647",
+    "source_url": "https://es.wikipedia.org/wiki/Criptograf%C3%ADa",
+    "title": "Criptografía"
+   },
+   "fr": {
+    "key": "fr:Cryptographie",
+    "source_revision": "238272433",
+    "source_url": "https://fr.wikipedia.org/wiki/Cryptographie",
+    "title": "Cryptographie"
+   }
+  },
+  "seed_title": "Cryptography"
+ },
+ {
+  "concept_id": "c026",
+  "documents": {
+   "en": {
+    "key": "en:Olympic_Games",
+    "source_revision": "1379072110",
+    "source_url": "https://en.wikipedia.org/wiki/Olympic_Games",
+    "title": "Olympic Games"
+   },
+   "es": {
+    "key": "es:Juegos_Olímpicos",
+    "source_revision": "175796835",
+    "source_url": "https://es.wikipedia.org/wiki/Juegos_Ol%C3%ADmpicos",
+    "title": "Juegos Olímpicos"
+   },
+   "fr": {
+    "key": "fr:Jeux_olympiques",
+    "source_revision": "240039593",
+    "source_url": "https://fr.wikipedia.org/wiki/Jeux_olympiques",
+    "title": "Jeux olympiques"
+   }
+  },
+  "seed_title": "Olympic Games"
+ },
+ {
+  "concept_id": "c027",
+  "documents": {
+   "en": {
+    "key": "en:Association_football",
+    "source_revision": "1378752039",
+    "source_url": "https://en.wikipedia.org/wiki/Association_football",
+    "title": "Association football"
+   },
+   "es": {
+    "key": "es:Fútbol",
+    "source_revision": "174661370",
+    "source_url": "https://es.wikipedia.org/wiki/F%C3%BAtbol",
+    "title": "Fútbol"
+   },
+   "fr": {
+    "key": "fr:Football",
+    "source_revision": "240302534",
+    "source_url": "https://fr.wikipedia.org/wiki/Football",
+    "title": "Football"
+   }
+  },
+  "seed_title": "Association football"
+ },
+ {
+  "concept_id": "c028",
+  "documents": {
+   "en": {
+    "key": "en:Basketball",
+    "source_revision": "1379108314",
+    "source_url": "https://en.wikipedia.org/wiki/Basketball",
+    "title": "Basketball"
+   },
+   "es": {
+    "key": "es:Baloncesto",
+    "source_revision": "175705592",
+    "source_url": "https://es.wikipedia.org/wiki/Baloncesto",
+    "title": "Baloncesto"
+   },
+   "fr": {
+    "key": "fr:Basket-ball",
+    "source_revision": "240359544",
+    "source_url": "https://fr.wikipedia.org/wiki/Basket-ball",
+    "title": "Basket-ball"
+   }
+  },
+  "seed_title": "Basketball"
+ },
+ {
+  "concept_id": "c029",
+  "documents": {
+   "en": {
+    "key": "en:Chess",
+    "source_revision": "1380500760",
+    "source_url": "https://en.wikipedia.org/wiki/Chess",
+    "title": "Chess"
+   },
+   "es": {
+    "key": "es:Ajedrez",
+    "source_revision": "175724719",
+    "source_url": "https://es.wikipedia.org/wiki/Ajedrez",
+    "title": "Ajedrez"
+   },
+   "fr": {
+    "key": "fr:Échecs",
+    "source_revision": "240187757",
+    "source_url": "https://fr.wikipedia.org/wiki/%C3%89checs",
+    "title": "Échecs"
+   }
+  },
+  "seed_title": "Chess"
+ },
+ {
+  "concept_id": "c030",
+  "documents": {
+   "en": {
+    "key": "en:Opera",
+    "source_revision": "1374395865",
+    "source_url": "https://en.wikipedia.org/wiki/Opera",
+    "title": "Opera"
+   },
+   "es": {
+    "key": "es:Ópera",
+    "source_revision": "174136084",
+    "source_url": "https://es.wikipedia.org/wiki/%C3%93pera",
+    "title": "Ópera"
+   },
+   "fr": {
+    "key": "fr:Opéra",
+    "source_revision": "240204260",
+    "source_url": "https://fr.wikipedia.org/wiki/Op%C3%A9ra",
+    "title": "Opéra"
+   }
+  },
+  "seed_title": "Opera"
+ },
+ {
+  "concept_id": "c031",
+  "documents": {
+   "en": {
+    "key": "en:Jazz",
+    "source_revision": "1380237943",
+    "source_url": "https://en.wikipedia.org/wiki/Jazz",
+    "title": "Jazz"
+   },
+   "es": {
+    "key": "es:Jazz",
+    "source_revision": "174876593",
+    "source_url": "https://es.wikipedia.org/wiki/Jazz",
+    "title": "Jazz"
+   },
+   "fr": {
+    "key": "fr:Jazz",
+    "source_revision": "240150471",
+    "source_url": "https://fr.wikipedia.org/wiki/Jazz",
+    "title": "Jazz"
+   }
+  },
+  "seed_title": "Jazz"
+ },
+ {
+  "concept_id": "c032",
+  "documents": {
+   "en": {
+    "key": "en:Impressionism",
+    "source_revision": "1378733562",
+    "source_url": "https://en.wikipedia.org/wiki/Impressionism",
+    "title": "Impressionism"
+   },
+   "es": {
+    "key": "es:Impresionismo",
+    "source_revision": "175728322",
+    "source_url": "https://es.wikipedia.org/wiki/Impresionismo",
+    "title": "Impresionismo"
+   },
+   "fr": {
+    "key": "fr:Impressionnisme",
+    "source_revision": "239941497",
+    "source_url": "https://fr.wikipedia.org/wiki/Impressionnisme",
+    "title": "Impressionnisme"
+   }
+  },
+  "seed_title": "Impressionism"
+ },
+ {
+  "concept_id": "c033",
+  "documents": {
+   "en": {
+    "key": "en:Cubism",
+    "source_revision": "1378438247",
+    "source_url": "https://en.wikipedia.org/wiki/Cubism",
+    "title": "Cubism"
+   },
+   "es": {
+    "key": "es:Cubismo",
+    "source_revision": "175837014",
+    "source_url": "https://es.wikipedia.org/wiki/Cubismo",
+    "title": "Cubismo"
+   },
+   "fr": {
+    "key": "fr:Cubisme",
+    "source_revision": "240147322",
+    "source_url": "https://fr.wikipedia.org/wiki/Cubisme",
+    "title": "Cubisme"
+   }
+  },
+  "seed_title": "Cubism"
+ },
+ {
+  "concept_id": "c034",
+  "documents": {
+   "en": {
+    "key": "en:William_Shakespeare",
+    "source_revision": "1379766519",
+    "source_url": "https://en.wikipedia.org/wiki/William_Shakespeare",
+    "title": "William Shakespeare"
+   },
+   "es": {
+    "key": "es:William_Shakespeare",
+    "source_revision": "175840972",
+    "source_url": "https://es.wikipedia.org/wiki/William_Shakespeare",
+    "title": "William Shakespeare"
+   },
+   "fr": {
+    "key": "fr:William_Shakespeare",
+    "source_revision": "240276390",
+    "source_url": "https://fr.wikipedia.org/wiki/William_Shakespeare",
+    "title": "William Shakespeare"
+   }
+  },
+  "seed_title": "William Shakespeare"
+ },
+ {
+  "concept_id": "c035",
+  "documents": {
+   "en": {
+    "key": "en:Leonardo_da_Vinci",
+    "source_revision": "1377616629",
+    "source_url": "https://en.wikipedia.org/wiki/Leonardo_da_Vinci",
+    "title": "Leonardo da Vinci"
+   },
+   "es": {
+    "key": "es:Leonardo_da_Vinci",
+    "source_revision": "175732422",
+    "source_url": "https://es.wikipedia.org/wiki/Leonardo_da_Vinci",
+    "title": "Leonardo da Vinci"
+   },
+   "fr": {
+    "key": "fr:Léonard_de_Vinci",
+    "source_revision": "240294650",
+    "source_url": "https://fr.wikipedia.org/wiki/L%C3%A9onard_de_Vinci",
+    "title": "Léonard de Vinci"
+   }
+  },
+  "seed_title": "Leonardo da Vinci"
+ },
+ {
+  "concept_id": "c036",
+  "documents": {
+   "en": {
+    "key": "en:Isaac_Newton",
+    "source_revision": "1379624142",
+    "source_url": "https://en.wikipedia.org/wiki/Isaac_Newton",
+    "title": "Isaac Newton"
+   },
+   "es": {
+    "key": "es:Isaac_Newton",
+    "source_revision": "175770980",
+    "source_url": "https://es.wikipedia.org/wiki/Isaac_Newton",
+    "title": "Isaac Newton"
+   },
+   "fr": {
+    "key": "fr:Isaac_Newton",
+    "source_revision": "240156351",
+    "source_url": "https://fr.wikipedia.org/wiki/Isaac_Newton",
+    "title": "Isaac Newton"
+   }
+  },
+  "seed_title": "Isaac Newton"
+ },
+ {
+  "concept_id": "c037",
+  "documents": {
+   "en": {
+    "key": "en:Albert_Einstein",
+    "source_revision": "1379354586",
+    "source_url": "https://en.wikipedia.org/wiki/Albert_Einstein",
+    "title": "Albert Einstein"
+   },
+   "es": {
+    "key": "es:Albert_Einstein",
+    "source_revision": "175682164",
+    "source_url": "https://es.wikipedia.org/wiki/Albert_Einstein",
+    "title": "Albert Einstein"
+   },
+   "fr": {
+    "key": "fr:Albert_Einstein",
+    "source_revision": "240020591",
+    "source_url": "https://fr.wikipedia.org/wiki/Albert_Einstein",
+    "title": "Albert Einstein"
+   }
+  },
+  "seed_title": "Albert Einstein"
+ },
+ {
+  "concept_id": "c038",
+  "documents": {
+   "en": {
+    "key": "en:Marie_Curie",
+    "source_revision": "1379969707",
+    "source_url": "https://en.wikipedia.org/wiki/Marie_Curie",
+    "title": "Marie Curie"
+   },
+   "es": {
+    "key": "es:Marie_Curie",
+    "source_revision": "175771036",
+    "source_url": "https://es.wikipedia.org/wiki/Marie_Curie",
+    "title": "Marie Curie"
+   },
+   "fr": {
+    "key": "fr:Marie_Curie",
+    "source_revision": "239714602",
+    "source_url": "https://fr.wikipedia.org/wiki/Marie_Curie",
+    "title": "Marie Curie"
+   }
+  },
+  "seed_title": "Marie Curie"
+ },
+ {
+  "concept_id": "c039",
+  "documents": {
+   "en": {
+    "key": "en:Amazon_River",
+    "source_revision": "1379247795",
+    "source_url": "https://en.wikipedia.org/wiki/Amazon_River",
+    "title": "Amazon River"
+   },
+   "es": {
+    "key": "es:Río_Amazonas",
+    "source_revision": "174469428",
+    "source_url": "https://es.wikipedia.org/wiki/R%C3%ADo_Amazonas",
+    "title": "Río Amazonas"
+   },
+   "fr": {
+    "key": "fr:Amazone_(fleuve)",
+    "source_revision": "239422735",
+    "source_url": "https://fr.wikipedia.org/wiki/Amazone_(fleuve)",
+    "title": "Amazone (fleuve)"
+   }
+  },
+  "seed_title": "Amazon River"
+ },
+ {
+  "concept_id": "c040",
+  "documents": {
+   "en": {
+    "key": "en:Mount_Everest",
+    "source_revision": "1376942985",
+    "source_url": "https://en.wikipedia.org/wiki/Mount_Everest",
+    "title": "Mount Everest"
+   },
+   "es": {
+    "key": "es:Monte_Everest",
+    "source_revision": "175743283",
+    "source_url": "https://es.wikipedia.org/wiki/Monte_Everest",
+    "title": "Monte Everest"
+   },
+   "fr": {
+    "key": "fr:Everest",
+    "source_revision": "239594010",
+    "source_url": "https://fr.wikipedia.org/wiki/Everest",
+    "title": "Everest"
+   }
+  },
+  "seed_title": "Mount Everest"
+ },
+ {
+  "concept_id": "c041",
+  "documents": {
+   "en": {
+    "key": "en:Sahara",
+    "source_revision": "1380508422",
+    "source_url": "https://en.wikipedia.org/wiki/Sahara",
+    "title": "Sahara"
+   },
+   "es": {
+    "key": "es:Sahara",
+    "source_revision": "175645694",
+    "source_url": "https://es.wikipedia.org/wiki/Sahara",
+    "title": "Sahara"
+   },
+   "fr": {
+    "key": "fr:Sahara",
+    "source_revision": "240366024",
+    "source_url": "https://fr.wikipedia.org/wiki/Sahara",
+    "title": "Sahara"
+   }
+  },
+  "seed_title": "Sahara"
+ },
+ {
+  "concept_id": "c042",
+  "documents": {
+   "en": {
+    "key": "en:Great_Barrier_Reef",
+    "source_revision": "1375964325",
+    "source_url": "https://en.wikipedia.org/wiki/Great_Barrier_Reef",
+    "title": "Great Barrier Reef"
+   },
+   "es": {
+    "key": "es:Gran_Barrera_de_Coral",
+    "source_revision": "173861488",
+    "source_url": "https://es.wikipedia.org/wiki/Gran_Barrera_de_Coral",
+    "title": "Gran Barrera de Coral"
+   },
+   "fr": {
+    "key": "fr:Grande_Barrière_de_corail",
+    "source_revision": "239130936",
+    "source_url": "https://fr.wikipedia.org/wiki/Grande_Barri%C3%A8re_de_corail",
+    "title": "Grande Barrière de corail"
+   }
+  },
+  "seed_title": "Great Barrier Reef"
+ },
+ {
+  "concept_id": "c043",
+  "documents": {
+   "en": {
+    "key": "en:Coral_reef",
+    "source_revision": "1380369380",
+    "source_url": "https://en.wikipedia.org/wiki/Coral_reef",
+    "title": "Coral reef"
+   },
+   "es": {
+    "key": "es:Arrecife_de_coral",
+    "source_revision": "174711145",
+    "source_url": "https://es.wikipedia.org/wiki/Arrecife_de_coral",
+    "title": "Arrecife de coral"
+   },
+   "fr": {
+    "key": "fr:Récif_corallien",
+    "source_revision": "239202694",
+    "source_url": "https://fr.wikipedia.org/wiki/R%C3%A9cif_corallien",
+    "title": "Récif corallien"
+   }
+  },
+  "seed_title": "Coral reef"
+ },
+ {
+  "concept_id": "c044",
+  "documents": {
+   "en": {
+    "key": "en:Rainforest",
+    "source_revision": "1371774008",
+    "source_url": "https://en.wikipedia.org/wiki/Rainforest",
+    "title": "Rainforest"
+   },
+   "es": {
+    "key": "es:Bosque_lluvioso",
+    "source_revision": "174951153",
+    "source_url": "https://es.wikipedia.org/wiki/Bosque_lluvioso",
+    "title": "Bosque lluvioso"
+   },
+   "fr": {
+    "key": "fr:Forêt_humide",
+    "source_revision": "227593260",
+    "source_url": "https://fr.wikipedia.org/wiki/For%C3%AAt_humide",
+    "title": "Forêt humide"
+   }
+  },
+  "seed_title": "Rainforest"
+ },
+ {
+  "concept_id": "c045",
+  "documents": {
+   "en": {
+    "key": "en:Biodiversity",
+    "source_revision": "1380274377",
+    "source_url": "https://en.wikipedia.org/wiki/Biodiversity",
+    "title": "Biodiversity"
+   },
+   "es": {
+    "key": "es:Biodiversidad",
+    "source_revision": "175379308",
+    "source_url": "https://es.wikipedia.org/wiki/Biodiversidad",
+    "title": "Biodiversidad"
+   },
+   "fr": {
+    "key": "fr:Biodiversité",
+    "source_revision": "240063331",
+    "source_url": "https://fr.wikipedia.org/wiki/Biodiversit%C3%A9",
+    "title": "Biodiversité"
+   }
+  },
+  "seed_title": "Biodiversity"
+ },
+ {
+  "concept_id": "c046",
+  "documents": {
+   "en": {
+    "key": "en:Inflation",
+    "source_revision": "1380085884",
+    "source_url": "https://en.wikipedia.org/wiki/Inflation",
+    "title": "Inflation"
+   },
+   "es": {
+    "key": "es:Inflación",
+    "source_revision": "175062903",
+    "source_url": "https://es.wikipedia.org/wiki/Inflaci%C3%B3n",
+    "title": "Inflación"
+   },
+   "fr": {
+    "key": "fr:Inflation",
+    "source_revision": "240341204",
+    "source_url": "https://fr.wikipedia.org/wiki/Inflation",
+    "title": "Inflation"
+   }
+  },
+  "seed_title": "Inflation"
+ },
+ {
+  "concept_id": "c047",
+  "documents": {
+   "en": {
+    "key": "en:Globalization",
+    "source_revision": "1379613223",
+    "source_url": "https://en.wikipedia.org/wiki/Globalization",
+    "title": "Globalization"
+   },
+   "es": {
+    "key": "es:Globalización",
+    "source_revision": "175672035",
+    "source_url": "https://es.wikipedia.org/wiki/Globalizaci%C3%B3n",
+    "title": "Globalización"
+   },
+   "fr": {
+    "key": "fr:Mondialisation",
+    "source_revision": "239876214",
+    "source_url": "https://fr.wikipedia.org/wiki/Mondialisation",
+    "title": "Mondialisation"
+   }
+  },
+  "seed_title": "Globalization"
+ },
+ {
+  "concept_id": "c048",
+  "documents": {
+   "en": {
+    "key": "en:Vitamin",
+    "source_revision": "1380448785",
+    "source_url": "https://en.wikipedia.org/wiki/Vitamin",
+    "title": "Vitamin"
+   },
+   "es": {
+    "key": "es:Vitamina",
+    "source_revision": "175583978",
+    "source_url": "https://es.wikipedia.org/wiki/Vitamina",
+    "title": "Vitamina"
+   },
+   "fr": {
+    "key": "fr:Vitamine",
+    "source_revision": "239171142",
+    "source_url": "https://fr.wikipedia.org/wiki/Vitamine",
+    "title": "Vitamine"
+   }
+  },
+  "seed_title": "Vitamin"
+ },
+ {
+  "concept_id": "c049",
+  "documents": {
+   "en": {
+    "key": "en:Glacier",
+    "source_revision": "1380217339",
+    "source_url": "https://en.wikipedia.org/wiki/Glacier",
+    "title": "Glacier"
+   },
+   "es": {
+    "key": "es:Glaciar",
+    "source_revision": "174690890",
+    "source_url": "https://es.wikipedia.org/wiki/Glaciar",
+    "title": "Glaciar"
+   },
+   "fr": {
+    "key": "fr:Glacier",
+    "source_revision": "240120986",
+    "source_url": "https://fr.wikipedia.org/wiki/Glacier",
+    "title": "Glacier"
+   }
+  },
+  "seed_title": "Glacier"
+ }
+]

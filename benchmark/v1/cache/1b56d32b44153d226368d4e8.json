@@ -1,0 +1,131 @@
+{
+ "body": {
+  "batchcomplete": true,
+  "query": {
+   "pages": [
+    {
+     "contentmodel": "wikitext",
+     "lastrevid": 1380217339,
+     "length": 90155,
+     "ns": 0,
+     "pageid": 12463,
+     "pagelanguage": "en",
+     "pagelanguagedir": "ltr",
+     "pagelanguagehtmlcode": "en",
+     "title": "Glacier",
+     "touched": "2026-10-15T21:51:46Z"
+    },
+    {
+     "contentmodel": "wikitext",
+     "lastrevid": 1380448785,
+     "length": 74339,
+     "ns": 0,
+     "pageid": 32512,
+     "pagelanguage": "en",
+     "pagelanguagedir": "ltr",
+     "pagelanguagehtmlcode": "en",
+     "title": "Vitamin",
+     "touched": "2026-10-16T00:44:37Z"
+    },
+    {
+     "contentmodel": "wikitext",
+     "lastrevid": 1380085884,
+     "length": 135503,
+     "ns": 0,
+     "pageid": 38286,
+     "pagelanguage": "en",
+     "pagelanguagedir": "ltr",
+     "pagelanguagehtmlcode": "en",
+     "title": "Inflation",
+     "touched": "2026-10-15T21:51:49Z"
+    },
+    {
+     "contentmodel": "wikitext",
+     "lastrevid": 1376942985,
+     "length": 255000,
+     "ns": 0,
+     "pageid": 42179,
+     "pagelanguage": "en",
+     "pagelanguagedir": "ltr",
+     "pagelanguagehtmlcode": "en",
+     "title": "Mount Everest",
+     "touched": "2026-10-15T21:51:49Z"
+    },
+    {
+     "contentmodel": "wikitext",
+     "lastrevid": 1380274377,
+     "length": 181517,
+     "ns": 0,
+     "pageid": 45086,
+     "pagelanguage": "en",
+     "pagelanguagedir": "ltr",
+     "pagelanguagehtmlcode": "en",
+     "title": "Biodiversity",
+     "touched": "2026-10-15T21:51:50Z"
+    },
+    {
+     "contentmodel": "wikitext",
+     "lastrevid": 1379613223,
+     "length": 180835,
+     "ns": 0,
+     "pageid": 46313,
+     "pagelanguage": "en",
+     "pagelanguagedir": "ltr",
+     "pagelanguagehtmlcode": "en",
+     "title": "Globalization",
+     "touched": "2026-10-15T21:51:50Z"
+    },
+    {
+     "contentmodel": "wikitext",
+     "lastrevid": 1371774008,
+     "length": 41694,
+     "ns": 0,
+     "pageid": 50047,
+     "pagelanguage": "en",
+     "pagelanguagedir": "ltr",
+     "pagelanguagehtmlcode": "en",
+     "title": "Rainforest",
+     "touched": "2026-10-15T21:51:50Z"
+    },
+    {
+     "contentmodel": "wikitext",
+     "lastrevid": 1375964325,
+     "length": 123987,
+     "ns": 0,
+     "pageid": 70983,
+     "pagelanguage": "en",
+     "pagelanguagedir": "ltr",
+     "pagelanguagehtmlcode": "en",
+     "title": "Great Barrier Reef",
+     "touched": "2026-10-15T21:51:53Z"
+    },
+    {
+     "contentmodel": "wikitext",
+     "lastrevid": 1380369380,
+     "length": 173305,
+     "ns": 0,
+     "pageid": 87410,
+     "pagelanguage": "en",
+     "pagelanguagedir": "ltr",
+     "pagelanguagehtmlcode": "en",
+     "title": "Coral reef",
+     "touched": "2026-10-15T21:51:54Z"
+    },
+    {
+     "contentmodel": "wikitext",
+     "lastrevid": 1380508422,
+     "length": 126190,
+     "ns": 0,
+     "pageid": 325363,
+     "pagelanguage": "en",
+     "pagelanguagedir": "ltr",
+     "pagelanguagehtmlcode": "en",
+     "title": "Sahara",
+     "touched": "2026-10-16T04:18:26Z"
+    }
+   ]
+  }
+ },
+ "status": 200,
+ "url": "https://en.wikipedia.org/w/api.php?format=json&formatversion=2&maxlag=5&action=query&prop=info&titles=Mount+Everest%7CSahara%7CGreat+Barrier+Reef%7CCoral+reef%7CRainforest%7CBiodiversity%7CInflation%7CGlobalization%7CVitamin%7CGlacier&redirects=1"
+}

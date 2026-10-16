@@ -1,0 +1,131 @@
+{
+ "body": {
+  "batchcomplete": true,
+  "query": {
+   "pages": [
+    {
+     "contentmodel": "wikitext",
+     "lastrevid": 1379807231,
+     "length": 239265,
+     "ns": 0,
+     "pageid": 26903,
+     "pagelanguage": "en",
+     "pagelanguagedir": "ltr",
+     "pagelanguagehtmlcode": "en",
+     "title": "Solar System",
+     "touched": "2026-10-16T05:14:43Z"
+    },
+    {
+     "contentmodel": "wikitext",
+     "lastrevid": 1378294361,
+     "length": 77524,
+     "ns": 0,
+     "pageid": 27743,
+     "pagelanguage": "en",
+     "pagelanguagedir": "ltr",
+     "pagelanguagehtmlcode": "en",
+     "title": "Solar energy",
+     "touched": "2026-10-15T21:51:48Z"
+    },
+    {
+     "contentmodel": "wikitext",
+     "lastrevid": 1376798379,
+     "length": 69315,
+     "ns": 0,
+     "pageid": 31161,
+     "pagelanguage": "en",
+     "pagelanguagedir": "ltr",
+     "pagelanguagehtmlcode": "en",
+     "title": "Tsunami",
+     "touched": "2026-10-15T21:51:48Z"
+    },
+    {
+     "contentmodel": "wikitext",
+     "lastrevid": 1380448785,
+     "length": 74339,
+     "ns": 0,
+     "pageid": 32512,
+     "pagelanguage": "en",
+     "pagelanguagedir": "ltr",
+     "pagelanguagehtmlcode": "en",
+     "title": "Vitamin",
+     "touched": "2026-10-16T00:44:37Z"
+    },
+    {
+     "contentmodel": "wikitext",
+     "lastrevid": 1380352685,
+     "length": 99636,
+     "ns": 0,
+     "pageid": 32571,
+     "pagelanguage": "en",
+     "pagelanguagedir": "ltr",
+     "pagelanguagehtmlcode": "en",
+     "title": "Volcano",
+     "touched": "2026-10-15T21:51:49Z"
+    },
+    {
+     "contentmodel": "wikitext",
+     "lastrevid": 1376748103,
+     "length": 142827,
+     "ns": 0,
+     "pageid": 32653,
+     "pagelanguage": "en",
+     "pagelanguagedir": "ltr",
+     "pagelanguagehtmlcode": "en",
+     "title": "Vaccine",
+     "touched": "2026-10-15T21:51:49Z"
+    },
+    {
+     "contentmodel": "wikitext",
+     "lastrevid": 1379766519,
+     "length": 127524,
+     "ns": 0,
+     "pageid": 32897,
+     "pagelanguage": "en",
+     "pagelanguagedir": "ltr",
+     "pagelanguagehtmlcode": "en",
+     "title": "William Shakespeare",
+     "touched": "2026-10-16T05:14:43Z"
+    },
+    {
+     "contentmodel": "wikitext",
+     "lastrevid": 1379691426,
+     "length": 251044,
+     "ns": 0,
+     "pageid": 32927,
+     "pagelanguage": "en",
+     "pagelanguagedir": "ltr",
+     "pagelanguagehtmlcode": "en",
+     "title": "World War II",
+     "touched": "2026-10-15T21:51:49Z"
+    },
+    {
+     "contentmodel": "wikitext",
+     "lastrevid": 1377654224,
+     "length": 114970,
+     "ns": 0,
+     "pageid": 277289,
+     "pagelanguage": "en",
+     "pagelanguagedir": "ltr",
+     "pagelanguagehtmlcode": "en",
+     "title": "Wind power",
+     "touched": "2026-10-15T21:52:23Z"
+    },
+    {
+     "contentmodel": "wikitext",
+     "lastrevid": 1370790151,
+     "length": 43538,
+     "ns": 0,
+     "pageid": 7070301,
+     "pagelanguage": "en",
+     "pagelanguagedir": "ltr",
+     "pagelanguagehtmlcode": "en",
+     "title": "Telescope",
+     "touched": "2026-10-15T21:56:36Z"
+    }
+   ]
+  }
+ },
+ "status": 200,
+ "url": "https://en.wikipedia.org/w/api.php?format=json&formatversion=2&maxlag=5&action=query&prop=info&titles=Solar+System%7CSolar+energy%7CTelescope%7CTsunami%7CVaccine%7CVitamin%7CVolcano%7CWilliam+Shakespeare%7CWind+power%7CWorld+War+II&redirects=1"
+}

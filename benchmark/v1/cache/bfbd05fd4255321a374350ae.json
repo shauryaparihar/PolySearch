@@ -1,0 +1,124 @@
+{
+ "body": {
+  "batchcomplete": true,
+  "limits": {
+   "langlinks": 500
+  },
+  "query": {
+   "pages": [
+    {
+     "langlinks": [
+      {
+       "lang": "fr",
+       "title": "Système solaire"
+      }
+     ],
+     "ns": 0,
+     "pageid": 26903,
+     "title": "Solar System"
+    },
+    {
+     "langlinks": [
+      {
+       "lang": "fr",
+       "title": "Énergie solaire"
+      }
+     ],
+     "ns": 0,
+     "pageid": 27743,
+     "title": "Solar energy"
+    },
+    {
+     "langlinks": [
+      {
+       "lang": "fr",
+       "title": "Tsunami"
+      }
+     ],
+     "ns": 0,
+     "pageid": 31161,
+     "title": "Tsunami"
+    },
+    {
+     "langlinks": [
+      {
+       "lang": "fr",
+       "title": "Vitamine"
+      }
+     ],
+     "ns": 0,
+     "pageid": 32512,
+     "title": "Vitamin"
+    },
+    {
+     "langlinks": [
+      {
+       "lang": "fr",
+       "title": "Volcan"
+      }
+     ],
+     "ns": 0,
+     "pageid": 32571,
+     "title": "Volcano"
+    },
+    {
+     "langlinks": [
+      {
+       "lang": "fr",
+       "title": "Vaccin"
+      }
+     ],
+     "ns": 0,
+     "pageid": 32653,
+     "title": "Vaccine"
+    },
+    {
+     "langlinks": [
+      {
+       "lang": "fr",
+       "title": "William Shakespeare"
+      }
+     ],
+     "ns": 0,
+     "pageid": 32897,
+     "title": "William Shakespeare"
+    },
+    {
+     "langlinks": [
+      {
+       "lang": "fr",
+       "title": "Seconde Guerre mondiale"
+      }
+     ],
+     "ns": 0,
+     "pageid": 32927,
+     "title": "World War II"
+    },
+    {
+     "langlinks": [
+      {
+       "lang": "fr",
+       "title": "Énergie éolienne"
+      }
+     ],
+     "ns": 0,
+     "pageid": 277289,
+     "title": "Wind power"
+    },
+    {
+     "langlinks": [
+      {
+       "lang": "fr",
+       "title": "Télescope"
+      }
+     ],
+     "ns": 0,
+     "pageid": 7070301,
+     "title": "Telescope"
+    }
+   ]
+  }
+ },
+ "status": 200,
+ "url": "https://en.wikipedia.org/w/api.php?format=json&formatversion=2&maxlag=5&action=query&prop=langlinks&titles=Solar+System%7CSolar+energy%7CTelescope%7CTsunami%7CVaccine%7CVitamin%7CVolcano%7CWilliam+Shakespeare%7CWind+power%7CWorld+War+II&lllang=fr&lllimit=max&redirects=1"
+}

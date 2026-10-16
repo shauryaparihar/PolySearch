@@ -1,0 +1,131 @@
+{
+ "body": {
+  "batchcomplete": true,
+  "query": {
+   "pages": [
+    {
+     "contentmodel": "wikitext",
+     "lastrevid": 239790694,
+     "length": 107085,
+     "ns": 0,
+     "pageid": 2985,
+     "pagelanguage": "fr",
+     "pagelanguagedir": "ltr",
+     "pagelanguagehtmlcode": "fr",
+     "title": "Évolution (biologie)",
+     "touched": "2026-10-15T19:24:08Z"
+    },
+    {
+     "contentmodel": "wikitext",
+     "lastrevid": 238426974,
+     "length": 80909,
+     "ns": 0,
+     "pageid": 3432,
+     "pagelanguage": "fr",
+     "pagelanguagedir": "ltr",
+     "pagelanguagehtmlcode": "fr",
+     "title": "Électricité",
+     "touched": "2026-10-15T19:24:08Z"
+    },
+    {
+     "contentmodel": "wikitext",
+     "lastrevid": 239171142,
+     "length": 42278,
+     "ns": 0,
+     "pageid": 5487,
+     "pagelanguage": "fr",
+     "pagelanguagedir": "ltr",
+     "pagelanguagehtmlcode": "fr",
+     "title": "Vitamine",
+     "touched": "2026-10-15T19:24:08Z"
+    },
+    {
+     "contentmodel": "wikitext",
+     "lastrevid": 240187757,
+     "length": 157705,
+     "ns": 0,
+     "pageid": 7183,
+     "pagelanguage": "fr",
+     "pagelanguagedir": "ltr",
+     "pagelanguagehtmlcode": "fr",
+     "title": "Échecs",
+     "touched": "2026-10-15T19:24:09Z"
+    },
+    {
+     "contentmodel": "wikitext",
+     "lastrevid": 239906484,
+     "length": 75310,
+     "ns": 0,
+     "pageid": 10553,
+     "pagelanguage": "fr",
+     "pagelanguagedir": "ltr",
+     "pagelanguagehtmlcode": "fr",
+     "title": "Énergie nucléaire",
+     "touched": "2026-10-15T19:24:10Z"
+    },
+    {
+     "contentmodel": "wikitext",
+     "lastrevid": 240006238,
+     "length": 84352,
+     "ns": 0,
+     "pageid": 15863,
+     "pagelanguage": "fr",
+     "pagelanguagedir": "ltr",
+     "pagelanguagehtmlcode": "fr",
+     "title": "Volcan",
+     "touched": "2026-10-15T19:24:11Z"
+    },
+    {
+     "contentmodel": "wikitext",
+     "lastrevid": 239937306,
+     "length": 61346,
+     "ns": 0,
+     "pageid": 58748,
+     "pagelanguage": "fr",
+     "pagelanguagedir": "ltr",
+     "pagelanguagehtmlcode": "fr",
+     "title": "Vaccin",
+     "touched": "2026-10-15T19:24:17Z"
+    },
+    {
+     "contentmodel": "wikitext",
+     "lastrevid": 240276390,
+     "length": 87815,
+     "ns": 0,
+     "pageid": 1690786,
+     "pagelanguage": "fr",
+     "pagelanguagedir": "ltr",
+     "pagelanguagehtmlcode": "fr",
+     "title": "William Shakespeare",
+     "touched": "2026-10-15T19:27:04Z"
+    },
+    {
+     "contentmodel": "wikitext",
+     "lastrevid": 239396969,
+     "length": 235587,
+     "ns": 0,
+     "pageid": 2760733,
+     "pagelanguage": "fr",
+     "pagelanguagedir": "ltr",
+     "pagelanguagehtmlcode": "fr",
+     "title": "Énergie éolienne",
+     "touched": "2026-10-15T19:27:44Z"
+    },
+    {
+     "contentmodel": "wikitext",
+     "lastrevid": 237259280,
+     "length": 89039,
+     "ns": 0,
+     "pageid": 2760787,
+     "pagelanguage": "fr",
+     "pagelanguagedir": "ltr",
+     "pagelanguagehtmlcode": "fr",
+     "title": "Énergie solaire",
+     "touched": "2026-10-15T19:27:44Z"
+    }
+   ]
+  }
+ },
+ "status": 200,
+ "url": "https://fr.wikipedia.org/w/api.php?format=json&formatversion=2&maxlag=5&action=query&prop=info&titles=Vaccin%7CVitamine%7CVolcan%7CWilliam+Shakespeare%7C%C3%89checs%7C%C3%89lectricit%C3%A9%7C%C3%89nergie+nucl%C3%A9aire%7C%C3%89nergie+solaire%7C%C3%89nergie+%C3%A9olienne%7C%C3%89volution+%28biologie%29&redirects=1"
+}
