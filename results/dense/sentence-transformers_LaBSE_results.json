@@ -1,0 +1,5021 @@
+{
+  "method": "dense_retrieval",
+  "model": "sentence-transformers/LaBSE",
+  "top_k": 10,
+  "total_queries": 500,
+  "mrr": 0.0,
+  "recall@10": 0.0,
+  "ndcg@10": 0.0,
+  "per_language_mrr": {
+    "en": 0.0,
+    "es": 0.0,
+    "fr": 0.0
+  },
+  "per_language_recall": {
+    "en": 0.0,
+    "es": 0.0,
+    "fr": 0.0
+  },
+  "results": [
+    {
+      "query_id": "q_summary_250",
+      "query": "Marko Gudurić (en serbio, Марко Гудурић, Priboj, 8 de marzo de 1995) es un baloncestista serbio que pertenece a la plantilla del Olimpia Milano de la Lega Basket Serie A",
+      "query_lang": "es",
+      "relevant_doc": "es_1152",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_title_369",
+      "query": "Bosón de Provenza",
+      "query_lang": "es",
+      "relevant_doc": "es_1585",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_title_56",
+      "query": "Murder of Lori Hacking",
+      "query_lang": "en",
+      "relevant_doc": "en_1685",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_title_301",
+      "query": "Actividad física",
+      "query_lang": "es",
+      "relevant_doc": "es_343",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_summary_284",
+      "query": "Óscar Manuel Crisóstomo Llanos (Ñiquén, 31 de marzo de 1981) es un asistente social y político chileno, militante del Partido Socialista de Chile (PS)",
+      "query_lang": "es",
+      "relevant_doc": "es_871",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_summary_248",
+      "query": "Jōwa (承和, ''Jōwa''?) fue una era japonesa (年号,, 'nengō'?) posterior a la Tenchō y anterior Kashō",
+      "query_lang": "es",
+      "relevant_doc": "es_1082",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_summary_149",
+      "query": "El Derecho indiano es el conjunto de normas jurídicas que rigieron en las Indias Occidentales durante el período de dominación de la Corona Española",
+      "query_lang": "es",
+      "relevant_doc": "es_241",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_title_86",
+      "query": "General Services Administration",
+      "query_lang": "en",
+      "relevant_doc": "en_288",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_title_279",
+      "query": "José Mármol (Buenos Aires)",
+      "query_lang": "es",
+      "relevant_doc": "es_1016",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_summary_336",
+      "query": "Dubai Sports is a 247 sports channel based in Dubai, United Arab Emirates",
+      "query_lang": "en",
+      "relevant_doc": "en_21",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_title_88",
+      "query": "St Mark's Church, Worsley",
+      "query_lang": "en",
+      "relevant_doc": "en_1522",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_title_265",
+      "query": "Dematerialización",
+      "query_lang": "es",
+      "relevant_doc": "es_1482",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_summary_270",
+      "query": "\"City of New Orleans\" is a country folk song written by Steve Goodman (and first recorded for Goodman's self-titled 1971 album), describing a train ride from Chicago to New Orleans on the Illinois Central Railroad's City of New Orleans in bittersweet and nostalgic terms",
+      "query_lang": "en",
+      "relevant_doc": "en_769",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_summary_311",
+      "query": "On appelle grandeur physique, ou simplement grandeur, toute propriété d'un phénomène physique, d'un corps ou d'une substance, qui peut être mesurée ou calculée, et dont les valeurs possibles s'expriment à l'aide d'un nombre (réel ou complexe) et d'une référence (comme une unité de mesure, une échelle de valeurs ou une échelle ordinale)",
+      "query_lang": "fr",
+      "relevant_doc": "fr_201",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_title_71",
+      "query": "Música clásica",
+      "query_lang": "es",
+      "relevant_doc": "es_205",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_title_178",
+      "query": "Cognitive psychology",
+      "query_lang": "en",
+      "relevant_doc": "en_64",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_summary_156",
+      "query": "American actor Tommy Lee Jones has appeared in numerous films and television series as well as in a few New York plays since his acting debut in 1970",
+      "query_lang": "en",
+      "relevant_doc": "en_1750",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_title_321",
+      "query": "Chrysoritis braueri",
+      "query_lang": "en",
+      "relevant_doc": "en_406",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_summary_67",
+      "query": "Les élections partielles québécoises du 5 décembre 2016 se déroulent dans quatre circonscriptions à la suite de la démission de trois députés et au décès d'une autre",
+      "query_lang": "fr",
+      "relevant_doc": "fr_686",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_title_341",
+      "query": "Green River",
+      "query_lang": "es",
+      "relevant_doc": "es_1678",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_title_328",
+      "query": "Chiralité (chimie)",
+      "query_lang": "fr",
+      "relevant_doc": "fr_418",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_summary_342",
+      "query": "Paul Dawson (born 1972) is an Australian writer of poetry and fiction and a scholar in the fields of narrative theory and the study of creative writing",
+      "query_lang": "en",
+      "relevant_doc": "en_1369",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_title_208",
+      "query": "Daisies (Katy Perry song)",
+      "query_lang": "en",
+      "relevant_doc": "en_815",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_title_118",
+      "query": "Acaridae",
+      "query_lang": "fr",
+      "relevant_doc": "fr_1028",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_summary_51",
+      "query": "This is a list of indoor arenas in Europe by capacity",
+      "query_lang": "en",
+      "relevant_doc": "en_1508",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_title_172",
+      "query": "Art",
+      "query_lang": "fr",
+      "relevant_doc": "fr_187",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_summary_210",
+      "query": "El Colegio Mayor Universitario Antonio de Nebrija es uno de los seis Colegios Mayores de fundación directa de la Universidad Complutense de Madrid (UCM)",
+      "query_lang": "es",
+      "relevant_doc": "es_189",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_summary_218",
+      "query": "El río Grande es un curso fluvial de la isla Grande de Tierra del Fuego, compartido entre el departamento Río Grande de la provincia argentina de Tierra del Fuego, Antártida e Islas del Atlántico Sur, y la comuna de Timaukel ubicada en la Provincia de Tierra del Fuego, en la Región de Magallanes y de la Antártica Chilena, en el sur de Chile, donde se encuentra su fuente",
+      "query_lang": "es",
+      "relevant_doc": "es_502",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_title_137",
+      "query": "Fenin-Vilars-Saules",
+      "query_lang": "fr",
+      "relevant_doc": "fr_564",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_summary_247",
+      "query": "Porto Rico est un État, indépendant, souverain, associé (Commonwealth) aux États-Unis, situé dans la mer des Caraïbes",
+      "query_lang": "fr",
+      "relevant_doc": "fr_20",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_title_351",
+      "query": "Estación de Alcoy",
+      "query_lang": "es",
+      "relevant_doc": "es_1021",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_summary_256",
+      "query": "Country Hall Liège (formerly Country Hall du Sart Tilman) is a multi-purpose arena in Liège, Belgium",
+      "query_lang": "en",
+      "relevant_doc": "en_1513",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_summary_21",
+      "query": "Sylvain Meunier, né le 10 mai 1949 à Lachine au Québec, est un romancier québécois",
+      "query_lang": "fr",
+      "relevant_doc": "fr_1413",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_summary_346",
+      "query": "La Santa y Apostólica Iglesia Catedral de Cádiz es la sede episcopal de la diócesis de Cádiz y Ceuta, en España",
+      "query_lang": "es",
+      "relevant_doc": "es_510",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_summary_296",
+      "query": "HM Prison Leeds is a Category B men's prison, located at Gloucester Terrace in the Armley area of Leeds in West Yorkshire, England, which opened in 1847",
+      "query_lang": "en",
+      "relevant_doc": "en_1396",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_title_261",
+      "query": "Villaviciosa",
+      "query_lang": "es",
+      "relevant_doc": "es_1687",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_title_58",
+      "query": "Centre de la gravure et de l'image imprimée",
+      "query_lang": "fr",
+      "relevant_doc": "fr_897",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_summary_44",
+      "query": "The following outline is provided as an overview of and topical guide to sports: Sport is a physical activity or game, often competitive and organized, that maintains or improves physical ability and skills",
+      "query_lang": "en",
+      "relevant_doc": "en_20",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_summary_86",
+      "query": "Blumea balsamifera o sambong, es una especie de planta medicinal perteneciente a la familia de las asteráceas",
+      "query_lang": "es",
+      "relevant_doc": "es_1772",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_summary_305",
+      "query": "La course à la direction de la Coalition avenir Québec est la première course à la direction à se tenir au sein de ce parti",
+      "query_lang": "fr",
+      "relevant_doc": "fr_1294",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_title_59",
+      "query": "Conyers Clifford",
+      "query_lang": "es",
+      "relevant_doc": "es_1332",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_title_354",
+      "query": "Mbama (Mbang)",
+      "query_lang": "fr",
+      "relevant_doc": "fr_508",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_summary_37",
+      "query": "The Pogues est un groupe de folk rock britannique, originaire de Londres, en Angleterre",
+      "query_lang": "fr",
+      "relevant_doc": "fr_1485",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_title_92",
+      "query": "Año Internacional de la Astronomía",
+      "query_lang": "es",
+      "relevant_doc": "es_378",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_summary_222",
+      "query": "También llamado Dematerialización o digitalización",
+      "query_lang": "es",
+      "relevant_doc": "es_1485",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_summary_157",
+      "query": "La química es la ciencia natural que estudia y analiza la composición, estructura y propiedades de la materia, ya sea en forma de elementos, especies, compuestos, mezclas u otras sustancias, así como los cambios que estas experimentan durante las reacciones y su relación con la energía química",
+      "query_lang": "es",
+      "relevant_doc": "es_95",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_summary_192",
+      "query": "Les normes de romanisation DIN sont un ensemble de standards de romanisation (translittération dautres systèmes décriture avec lalphabet latin) et de conventions dorthographe avec lalphabet latin adopté par le Deutsches Institut für Normung (Institut allemand de normalisation)",
+      "query_lang": "fr",
+      "relevant_doc": "fr_766",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_title_83",
+      "query": "Campeonato Peruano de Fútbol de 1949",
+      "query_lang": "es",
+      "relevant_doc": "es_1528",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_title_2",
+      "query": "Festival Internacional de Cine de Cannes de 1965",
+      "query_lang": "es",
+      "relevant_doc": "es_1076",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_title_165",
+      "query": "Condado de Peach",
+      "query_lang": "es",
+      "relevant_doc": "es_1750",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_title_136",
+      "query": "Psicología educativa",
+      "query_lang": "es",
+      "relevant_doc": "es_13",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_summary_301",
+      "query": "Le Guépard (Il Gattopardo) est l'unique roman de l'écrivain et aristocrate italien Giuseppe Tomasi di Lampedusa, paru en 1958 à titre posthume et récompensé par le prix Strega l'année suivante",
+      "query_lang": "fr",
+      "relevant_doc": "fr_1451",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_summary_194",
+      "query": "L'Art déco (abréviation de  art décoratif ) est un mouvement artistique de portée mondiale né progressivement dans les années 1910 et qui prend son plein épanouissement au cours des années 1920, avant de décliner lentement à partir des années 1930",
+      "query_lang": "fr",
+      "relevant_doc": "fr_189",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_summary_231",
+      "query": "Theoretical physics is a branch of physics that employs mathematical models and abstractions of physical objects and systems to rationalize, explain, and predict natural phenomena",
+      "query_lang": "en",
+      "relevant_doc": "en_200",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_summary_168",
+      "query": "La muralla de Ávila es una cerca militar románica que rodea el casco antiguo de la ciudad española de Ávila, capital de la provincia homónima, en la comunidad autónoma de Castilla y León",
+      "query_lang": "es",
+      "relevant_doc": "es_1267",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_title_70",
+      "query": "Salford RLFC",
+      "query_lang": "en",
+      "relevant_doc": "en_1515",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_title_102",
+      "query": "Inés Suárez",
+      "query_lang": "es",
+      "relevant_doc": "es_1598",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_summary_318",
+      "query": "Abies fraseri, commonly known as Fraser's fir, or Fraser fir, is an endangered species of fir native to the Appalachian Mountains of the southeastern United States",
+      "query_lang": "en",
+      "relevant_doc": "en_1459",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_summary_338",
+      "query": "Washington, también llamado estado de Washington para diferenciarlo de Washington D",
+      "query_lang": "es",
+      "relevant_doc": "es_1337",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_title_36",
+      "query": "The Pogues",
+      "query_lang": "fr",
+      "relevant_doc": "fr_1485",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_summary_310",
+      "query": "Pablo Herrero Ibarz (Madrid, España, 7 de septiembre de 1942-5 de diciembre de 2023) fue un músico y compositor español",
+      "query_lang": "es",
+      "relevant_doc": "es_1367",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_title_220",
+      "query": "The True Story of Tamara de Lempicka and The Art of Survival",
+      "query_lang": "en",
+      "relevant_doc": "en_699",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_title_66",
+      "query": "Élections partielles québécoises de décembre 2016",
+      "query_lang": "fr",
+      "relevant_doc": "fr_686",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_title_306",
+      "query": "Torch (rappeur allemand)",
+      "query_lang": "fr",
+      "relevant_doc": "fr_1086",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_summary_372",
+      "query": "El Homenaje al Agente Comercial es una obra escultórica en bronce de 1998, diseñada por el escultor español Francisco López Hernández y ubicada en la Estación de Atocha, en Madrid",
+      "query_lang": "es",
+      "relevant_doc": "es_1484",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_summary_247",
+      "query": "The Honour of Richmond (or Richmondshire) was a feudal barony in what is now mainly North Yorkshire, England",
+      "query_lang": "en",
+      "relevant_doc": "en_1698",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_title_141",
+      "query": "X Clan",
+      "query_lang": "en",
+      "relevant_doc": "en_1451",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_title_218",
+      "query": "Loaded: The Greatest Hits 19942023",
+      "query_lang": "en",
+      "relevant_doc": "en_702",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_summary_366",
+      "query": "Betti Alver (Jõgeva, Estonia, 23 de noviembre de 1906-Tartu, Estonia, 19 de junio de 1989) fue el seudónimo de Elisabet Alver llamada Elisabet Talvik a partir de 1937 y Elisabet Lepik a partir de 1956, una de las poetas más notables de Estonia",
+      "query_lang": "es",
+      "relevant_doc": "es_794",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_title_124",
+      "query": "Province d'Ilam",
+      "query_lang": "fr",
+      "relevant_doc": "fr_1369",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_summary_1",
+      "query": "Le M1 Garand est un fusil semi-automatique développé aux États-Unis entre 1918 et 1932 par la Springfield Armory, sous la direction de John Garand",
+      "query_lang": "fr",
+      "relevant_doc": "fr_392",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_title_31",
+      "query": "America's Town Meeting of the Air",
+      "query_lang": "en",
+      "relevant_doc": "en_387",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_summary_357",
+      "query": "Les Jeux olympiques ont accueilli 2 129 cavaliers, dont 1 751 hommes et 378 femmes, venant de 69 pays pour tenter de gagner l'une des 564 médailles",
+      "query_lang": "fr",
+      "relevant_doc": "fr_1484",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_summary_237",
+      "query": "Lily Brett (born Lilijahne Brajtsztajn 5 September 1946) is an Australian novelist, essayist and poet",
+      "query_lang": "en",
+      "relevant_doc": "en_1367",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_title_299",
+      "query": "The Town Hall (New York City)",
+      "query_lang": "en",
+      "relevant_doc": "en_391",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_summary_107",
+      "query": "The 2017 Super Rugby season was the 22nd season of Super Rugby, an annual rugby union competition organised by SANZAAR between teams from Argentina, Australia, Japan, New Zealand and South Africa",
+      "query_lang": "en",
+      "relevant_doc": "en_1194",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_summary_241",
+      "query": "Le Grand Sceau ou grand sceau de France est le sceau officiel de la République française",
+      "query_lang": "fr",
+      "relevant_doc": "fr_775",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_title_192",
+      "query": "Heliospheric current sheet",
+      "query_lang": "en",
+      "relevant_doc": "en_1241",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_summary_158",
+      "query": "Henry Arnold Beitzel (27 May 1897  6 November 1982) was an Australian rules footballer who played for the St Kilda Football Club and Fitzroy Football Club in the Victorian Football League (VFL)",
+      "query_lang": "en",
+      "relevant_doc": "en_1267",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_summary_6",
+      "query": "No confundir con la Asociación Estadounidense de Psiquiatría",
+      "query_lang": "es",
+      "relevant_doc": "es_14",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_title_332",
+      "query": "Championnat du Yémen de football 2007",
+      "query_lang": "fr",
+      "relevant_doc": "fr_831",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_summary_101",
+      "query": "\"Touchy Feely Fool\" is a song by American pop band AJR, appearing as the second track on their fifth studio album The Maybe Man",
+      "query_lang": "en",
+      "relevant_doc": "en_1413",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_summary_128",
+      "query": "The 2026 Dakar Rally was a rally raid event that took place from 3 to 17 January 2026 in Saudi Arabia",
+      "query_lang": "en",
+      "relevant_doc": "en_1597",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_summary_43",
+      "query": "Les Uropodidae Kramer , 1881 sont des Acariens Mesostigmata, c'est la principale famille Uropodina avec près de 600 espèces et 35 genres",
+      "query_lang": "fr",
+      "relevant_doc": "fr_840",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_title_96",
+      "query": "DAF Trucks",
+      "query_lang": "en",
+      "relevant_doc": "en_502",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_summary_239",
+      "query": "Elias Lönnrot (né le 9 avril 1802 à Sammatti et mort le 19 mars 1884 à Sammatti) est un médecin, explorateur, lexicographe, linguiste, écrivain, enseignant du folklore, pionnier de la botanique, journaliste, éditeur, scientifique, professeur de finnois et de littérature finlandaise",
+      "query_lang": "fr",
+      "relevant_doc": "fr_1508",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_title_205",
+      "query": "Odontopleuridae",
+      "query_lang": "es",
+      "relevant_doc": "es_1241",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_summary_179",
+      "query": "Le Geographica (en grec ancien Γεωγραφικά  Geōgraphiká), ou Géographie, est une encyclopédie géographique écrite en grec ancien par Strabon entre 20 av",
+      "query_lang": "fr",
+      "relevant_doc": "fr_134",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_title_10",
+      "query": "Hell on Wheels (TV series)",
+      "query_lang": "en",
+      "relevant_doc": "en_891",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_summary_228",
+      "query": "El AC Cobra es un automóvil deportivo anglo-estadounidense construido entre 1962 y 1966 por el fabricante AC Cars",
+      "query_lang": "es",
+      "relevant_doc": "es_1515",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_title_335",
+      "query": "Íñigo López de Mendoza (militar)",
+      "query_lang": "es",
+      "relevant_doc": "es_1597",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_title_353",
+      "query": "Yevhenii Petrovich",
+      "query_lang": "es",
+      "relevant_doc": "es_1795",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_summary_234",
+      "query": "Drag queen es una locución anglosajona, en español travesti o transformista, referida a la persona, generalmente hombre, que se viste y se caracteriza como alguien del sexo contrario representando a un personaje de rasgos exagerados, con una intención primordialmente histriónica que se inspira en las nociones tradicionales de la identidad de género y los roles de género",
+      "query_lang": "es",
+      "relevant_doc": "es_699",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_title_223",
+      "query": "Fundão",
+      "query_lang": "es",
+      "relevant_doc": "es_337",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_summary_131",
+      "query": "Cet article présente une liste de personnalités mortes au cours de l'année 2025",
+      "query_lang": "fr",
+      "relevant_doc": "fr_1154",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_summary_138",
+      "query": "Spiral Jetty is a work of land art constructed in April 1970 that is considered to be the most important work by American sculptor Robert Smithson",
+      "query_lang": "en",
+      "relevant_doc": "en_1238",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_summary_109",
+      "query": "Iranian literature, or Iranic literature, refers to the literary traditions of the Iranian languages, developed predominantly in Iran and other regions in the Middle East and the Caucasus, eastern Asia Minor, and parts of western Central Asia and northwestern South Asia",
+      "query_lang": "en",
+      "relevant_doc": "en_91",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_summary_83",
+      "query": "L'Amour et les Forêts est un film français réalisé par Valérie Donzelli, sorti en 2023",
+      "query_lang": "fr",
+      "relevant_doc": "fr_929",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_title_198",
+      "query": "Elk Grove Unified School District",
+      "query_lang": "en",
+      "relevant_doc": "en_1275",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_summary_174",
+      "query": "Avenida Saxer es una estación en la Ruta 101 de la línea Verde del Metro de Filadelfia",
+      "query_lang": "es",
+      "relevant_doc": "es_742",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_summary_113",
+      "query": "Kevin Falcon is a Canadian provincial politician who has been the leader of BC United since 2022 and was the Leader of the Opposition from 2022 to 2024",
+      "query_lang": "en",
+      "relevant_doc": "en_14",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_summary_260",
+      "query": "The public history of Gmail dates back to 2004",
+      "query_lang": "en",
+      "relevant_doc": "en_98",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_summary_49",
+      "query": "These products, even though Netflix lists them as Netflix Originals, are programs that have been aired in different countries, and Netflix has bought exclusive distribution rights to stream them in other various countries",
+      "query_lang": "en",
+      "relevant_doc": "en_563",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_summary_59",
+      "query": "Natural science or empirical science is a branch of science concerned with the description, understanding, and prediction of natural phenomena, based on empirical evidence from observation and experimentation",
+      "query_lang": "en",
+      "relevant_doc": "en_121",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_summary_55",
+      "query": "Józef Zachariasz Bem (en hongrois Bem József), né le 14 mars 1794 à Tarnów et mort le 10 décembre 1850 à Alep (Syrie), est un général polonais, un pacha de l'Empire ottoman, un héros national polonais et hongrois et une figure européenne du patriotisme",
+      "query_lang": "fr",
+      "relevant_doc": "fr_206",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_title_168",
+      "query": "Darosava",
+      "query_lang": "fr",
+      "relevant_doc": "fr_1059",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_title_14",
+      "query": "Galantamine",
+      "query_lang": "fr",
+      "relevant_doc": "fr_492",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_title_225",
+      "query": "Marc Tanguay",
+      "query_lang": "fr",
+      "relevant_doc": "fr_683",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_summary_220",
+      "query": "Les Pyrodictiaceae sont une famille d'archées de l'ordre des Desulfurococcales",
+      "query_lang": "fr",
+      "relevant_doc": "fr_330",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_title_39",
+      "query": "Monte Ulía",
+      "query_lang": "es",
+      "relevant_doc": "es_960",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_summary_302",
+      "query": "Se considera actividad física a cualquier movimiento corporal producido por los músculos que exija gasto de energía",
+      "query_lang": "es",
+      "relevant_doc": "es_343",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_title_23",
+      "query": "Queen of the Ring tournament",
+      "query_lang": "en",
+      "relevant_doc": "en_955",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_summary_334",
+      "query": "The Progress World Women's Championship is a women's world professional wrestling championship created and promoted by the British professional wrestling promotion Progress Wrestling",
+      "query_lang": "en",
+      "relevant_doc": "en_1528",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_summary_275",
+      "query": "Mapuche est un roman noir de Caryl Férey publié en 2012 aux éditions Gallimard et ayant obtenu le prix Landerneau polar 2012 ainsi que le prix Tenebris 2013",
+      "query_lang": "fr",
+      "relevant_doc": "fr_1020",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_title_169",
+      "query": "Puente de la Torre Eiffel",
+      "query_lang": "es",
+      "relevant_doc": "es_1857",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_summary_243",
+      "query": "The Democratic Party (also known for a time as the Democratic Alliance Party) is a political party in the Cook Islands",
+      "query_lang": "en",
+      "relevant_doc": "en_748",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_title_265",
+      "query": "Louis Outhier",
+      "query_lang": "en",
+      "relevant_doc": "en_1579",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_summary_121",
+      "query": "Daniel Mauri Ricardo (Fuengirola, España, 23 de marzo de 1994) es un futbolista español",
+      "query_lang": "es",
+      "relevant_doc": "es_1685",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_summary_283",
+      "query": "L'abbaye de Varnhem (suédois : Varnhems kloster) à Varnhem dans le Västergötland en Suède fut fondée en 1148 par les moines de l'Ordre cistercien de l'abbaye d'Alvastra en Östergötland",
+      "query_lang": "fr",
+      "relevant_doc": "fr_1267",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_title_114",
+      "query": "Drake Callender",
+      "query_lang": "es",
+      "relevant_doc": "es_1028",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_summary_83",
+      "query": "Athis-Val de Rouvre (French pronunciation: atis val də ʁuvʁ) is a commune in the department of Orne, northwestern France, the municipality was established on 1 January 2016 by merger of the former communes of Athis-de-l'Orne (the seat), Bréel, La Carneille, Notre-Dame-du-Rocher, Ronfeugerai, Ségrie-Fontaine, Taillebois and Les Tourailles",
+      "query_lang": "en",
+      "relevant_doc": "en_863",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_title_327",
+      "query": "Carroll Shelby",
+      "query_lang": "es",
+      "relevant_doc": "es_1522",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_summary_117",
+      "query": "Los primeros habitantes de la ciudad de Buenos Aires o bien primeros vecinos o primeros pobladores de Buenos Aires fueron aquellos vecinos fundadores que acompañaron al adelantado Pedro de Mendoza en la fundación de la primera Buenos Aires en el año 1536 hasta su abandono en 1541 y posteriormente a Juan de Garay en la segunda fundación de la misma en 1580, pero esta vez como ciudad, y quienes se avencindaron en ella o solo lo hicieron al principio, a los que se sumaron llegados de diversas partes del Imperio español que se radicarían en la incipiente urbe y dejarían una extensa descendencia",
+      "query_lang": "es",
+      "relevant_doc": "es_406",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_title_180",
+      "query": "Les Naufragés du Commonwealth",
+      "query_lang": "fr",
+      "relevant_doc": "fr_1184",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_title_86",
+      "query": "Parc national de Varangerhalvøya",
+      "query_lang": "fr",
+      "relevant_doc": "fr_1579",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_summary_113",
+      "query": "Libertad sin ira es un sencillo del grupo español Jarcha, publicado en 1976, comúnmente considerado como canción representativa de la transición española a la democracia",
+      "query_lang": "es",
+      "relevant_doc": "es_1363",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_summary_184",
+      "query": "Banja (en serbe cyrillique : Бања) est une localité de Serbie située dans la municipalité d'Aranđelovac, district de Šumadija",
+      "query_lang": "fr",
+      "relevant_doc": "fr_1056",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_summary_362",
+      "query": "Haiger station serves the town of Haiger in the Lahn-Dill-Kreis of the German state of Hesse",
+      "query_lang": "en",
+      "relevant_doc": "en_1724",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_title_277",
+      "query": "List of mountain peaks of Utah",
+      "query_lang": "en",
+      "relevant_doc": "en_1598",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_title_229",
+      "query": "Desdemona de Bonis",
+      "query_lang": "fr",
+      "relevant_doc": "fr_975",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_title_327",
+      "query": "Easter egg",
+      "query_lang": "en",
+      "relevant_doc": "en_540",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_title_76",
+      "query": "LondonSurrey Cycle Classic",
+      "query_lang": "en",
+      "relevant_doc": "en_1805",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_title_255",
+      "query": "Parietaria judaica",
+      "query_lang": "es",
+      "relevant_doc": "es_1764",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_summary_44",
+      "query": "Nano fue una telenovela argentina escrita por Enrique Torres, emitida durante el año 1994",
+      "query_lang": "es",
+      "relevant_doc": "es_1180",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_summary_212",
+      "query": "Thelyphonus celebensis est une espèce d'uropyges de la famille des Thelyphonidae",
+      "query_lang": "fr",
+      "relevant_doc": "fr_955",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_summary_146",
+      "query": "Angela Davis ˈændʒələˈdeɪvɪs, née le 26 janvier 1944 à Birmingham en Alabama, est une militante, professeure de philosophie et écrivaine américaine",
+      "query_lang": "fr",
+      "relevant_doc": "fr_484",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_title_67",
+      "query": "Villavega de Ojeda",
+      "query_lang": "es",
+      "relevant_doc": "es_269",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_summary_58",
+      "query": "La Intercomuna Chillán - Chillán Viejo, Conurbación Chillán o Gran Chillán, son los nombres que recibe una conurbación formada por las comunas de Chillán y Chillán Viejo en la Provincia de Diguillín en la Región de Ñuble de Chile",
+      "query_lang": "es",
+      "relevant_doc": "es_878",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_title_72",
+      "query": "Harriet Lee",
+      "query_lang": "fr",
+      "relevant_doc": "fr_1638",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_summary_332",
+      "query": "A general election was held in the Cook Islands on 17 November 2010 to elect 24 MPs to the Cook Islands Parliament",
+      "query_lang": "en",
+      "relevant_doc": "en_747",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_title_139",
+      "query": "Juan de Dios López de Victoria",
+      "query_lang": "en",
+      "relevant_doc": "en_742",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_summary_97",
+      "query": "Dotemu SAS (originalmente DotEmu SAS) es una compañía de videojuego francesa creada en 2007 por Xavier Liard y Romain Tisserand, con su sede en Francia",
+      "query_lang": "es",
+      "relevant_doc": "es_1044",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_summary_129",
+      "query": "Morna Anne Murray (Springhill, 20 de junio de 1945) es una cantante canadiense de country pop",
+      "query_lang": "es",
+      "relevant_doc": "es_748",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_title_132",
+      "query": "Hairspray (musical)",
+      "query_lang": "es",
+      "relevant_doc": "es_702",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_summary_315",
+      "query": "Bess Meredyth, née Helen Elizabeth MacGlashen, le 12 février 1890 à Buffalo (New York) aux États-Unis, est une actrice américaine du cinéma muet et des premiers films sonores",
+      "query_lang": "fr",
+      "relevant_doc": "fr_1162",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_summary_64",
+      "query": "Patagonia Radio es la primera radioemisora multimedia de la región de Los Lagos integrando Televisión por Cable, FM y plataformas digitales - OnLine, Aplicación Móvil y Redes Sociales - y una de las primeras emisoras de este tipo en Chile",
+      "query_lang": "es",
+      "relevant_doc": "es_484",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_title_217",
+      "query": "Río Grande (río de Tierra del Fuego)",
+      "query_lang": "es",
+      "relevant_doc": "es_502",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_summary_80",
+      "query": "Catch-22 es una miniserie de humor negro estadounidense, británica e italiana basada en el libro del mismo nombre escrito por Joseph Heller, transmitida por Hulu en los Estados Unidos, Channel 4 en el Reino Unido y Sky Italia en Italia",
+      "query_lang": "es",
+      "relevant_doc": "es_1129",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_title_210",
+      "query": "Rakuten Rewards",
+      "query_lang": "en",
+      "relevant_doc": "en_719",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_title_294",
+      "query": "Étoile sportive du Sahel (football)",
+      "query_lang": "fr",
+      "relevant_doc": "fr_1396",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_title_116",
+      "query": "Primeros habitantes de la ciudad de Buenos Aires",
+      "query_lang": "es",
+      "relevant_doc": "es_406",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_summary_9",
+      "query": "La Pyramide est un Hôtel Relais  Châteaux et restaurant récompensé de deux étoiles au Guide Michelin depuis 1992, situé à Vienne (Isère)",
+      "query_lang": "fr",
+      "relevant_doc": "fr_252",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_summary_352",
+      "query": "This is a partial list of Polish sportspeople",
+      "query_lang": "en",
+      "relevant_doc": "en_794",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_summary_11",
+      "query": "Le terme piment est un nom vernaculaire désignant le fruit de cinq espèces de plantes du genre Capsicum de la famille des Solanacées et de plusieurs autres taxons",
+      "query_lang": "fr",
+      "relevant_doc": "fr_891",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_title_183",
+      "query": "Banja (Aranđelovac)",
+      "query_lang": "fr",
+      "relevant_doc": "fr_1056",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_title_15",
+      "query": "Crítica de arte",
+      "query_lang": "es",
+      "relevant_doc": "es_166",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_title_183",
+      "query": "Ministerio del Medio Ambiente (Chile)",
+      "query_lang": "es",
+      "relevant_doc": "es_130",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_title_78",
+      "query": "Nashville Predators",
+      "query_lang": "en",
+      "relevant_doc": "en_252",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_summary_350",
+      "query": "El distrito de Rennes es un distrito (en francés arrondissement) de Francia, que se localiza en el departamento de Ille y Vilaine (en francés Ille-et-Vilaine), en la región de Bretaña",
+      "query_lang": "es",
+      "relevant_doc": "es_474",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_title_163",
+      "query": "Helmut Nordhaus",
+      "query_lang": "es",
+      "relevant_doc": "es_725",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_title_148",
+      "query": "Derecho indiano",
+      "query_lang": "es",
+      "relevant_doc": "es_241",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_summary_348",
+      "query": "\"Asquenaz\" (o Ashkenazאשכנז) es el nombre hebreo de Alemania",
+      "query_lang": "es",
+      "relevant_doc": "es_20",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_title_275",
+      "query": "Ulrich II, Count of Celje",
+      "query_lang": "en",
+      "relevant_doc": "en_1020",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_summary_65",
+      "query": "L'expression littérature berbère (ou littérature amazighe) comprend, dans son acception la plus large, toutes les manifestations littéraires, écrites ou orales, qui sont l'œuvre des Berbères non seulement dans leur langue autochtone  le berbère , mais aussi dans les langues qui s'y sont succédé au cours des siècles, et en particulier le punique, le latin",
+      "query_lang": "fr",
+      "relevant_doc": "fr_315",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_title_39",
+      "query": "Lists of the United States Congress",
+      "query_lang": "en",
+      "relevant_doc": "en_878",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_summary_30",
+      "query": "A cuisine is a style of cooking characterized by distinctive ingredients, techniques, and dishes, and usually associated with a specific culture or geographic region",
+      "query_lang": "en",
+      "relevant_doc": "en_1577",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_summary_73",
+      "query": "Harriet Lee est une écrivaine et romancière anglaise, née à Londres en 1757 et décédée près de Clifton, Bristol le 1er août 1851",
+      "query_lang": "fr",
+      "relevant_doc": "fr_1638",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_summary_136",
+      "query": "Godoy is a Spanish surname",
+      "query_lang": "en",
+      "relevant_doc": "en_295",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_title_54",
+      "query": "Nobel Prize in Physics",
+      "query_lang": "en",
+      "relevant_doc": "en_206",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_title_104",
+      "query": "René Bazin",
+      "query_lang": "fr",
+      "relevant_doc": "fr_1194",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_summary_290",
+      "query": "Ziddi is a 2013 Indian Kannada-language masala film written by M",
+      "query_lang": "en",
+      "relevant_doc": "en_343",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_title_174",
+      "query": "Politician",
+      "query_lang": "en",
+      "relevant_doc": "en_187",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_summary_202",
+      "query": "El Tratado de Värälä (llamado también en ocasiones Tratado de Wereloe) fue un acuerdo rubricado en Värälä, Finlandia, entre Rusia (representada por Otto Heinrich Igelström) y Suecia (representada por Gustaf Mauritz Armfelt)",
+      "query_lang": "es",
+      "relevant_doc": "es_1499",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_summary_363",
+      "query": "Ludovic Ajorque, né le 25 février 1994 à Saint-Joseph (La Réunion), est un footballeur français",
+      "query_lang": "fr",
+      "relevant_doc": "fr_1104",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_title_269",
+      "query": "Condado de Monroe (Georgia)",
+      "query_lang": "es",
+      "relevant_doc": "es_1748",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_summary_3",
+      "query": "Baker High School is an accredited public high school in Baker, Louisiana",
+      "query_lang": "en",
+      "relevant_doc": "en_1332",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_title_331",
+      "query": "2010 Cook Islands general election",
+      "query_lang": "en",
+      "relevant_doc": "en_747",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_title_318",
+      "query": "Cesária Évora",
+      "query_lang": "fr",
+      "relevant_doc": "fr_1528",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_summary_331",
+      "query": "La Petite Histoire de France est une série télévisée française créée par Jamel Debbouze, Laurent Tiphaine et Frank Cimière pour W9",
+      "query_lang": "fr",
+      "relevant_doc": "fr_21",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_title_170",
+      "query": "Liste des députés de Vaucluse",
+      "query_lang": "fr",
+      "relevant_doc": "fr_699",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_summary_376",
+      "query": "Calahonda es una localidad española perteneciente a la entidad local autónoma de Carchuna-Calahonda, en el municipio de Motril, provincia de Granada, comunidad autónoma de Andalucía",
+      "query_lang": "es",
+      "relevant_doc": "es_1238",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_summary_39",
+      "query": "Dan Jørgensen, né le 12 juin 1975 à Odense, est un homme politique danois membre du parti Social-démocratie",
+      "query_lang": "fr",
+      "relevant_doc": "fr_1522",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_title_248",
+      "query": "Coupe du monde de VTT",
+      "query_lang": "fr",
+      "relevant_doc": "fr_1687",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_title_48",
+      "query": "L'Âme des guerriers",
+      "query_lang": "fr",
+      "relevant_doc": "fr_563",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_title_58",
+      "query": "Natural science",
+      "query_lang": "en",
+      "relevant_doc": "en_121",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_title_23",
+      "query": "Música culta",
+      "query_lang": "es",
+      "relevant_doc": "es_206",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_summary_63",
+      "query": "Selina-Maria Edbauer (born 11 March 1998), known professionally as Salena, is an Austrian singer and songwriter",
+      "query_lang": "en",
+      "relevant_doc": "en_779",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_title_203",
+      "query": "Moncef Marzouki",
+      "query_lang": "fr",
+      "relevant_doc": "fr_1363",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_title_193",
+      "query": "Biología teórica",
+      "query_lang": "es",
+      "relevant_doc": "es_200",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_summary_129",
+      "query": "Tribolonotus annectens est une espèce de sauriens de la famille des Scincidae",
+      "query_lang": "fr",
+      "relevant_doc": "fr_1597",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_title_100",
+      "query": "Touchy Feely Fool",
+      "query_lang": "en",
+      "relevant_doc": "en_1413",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_title_168",
+      "query": "Angoulême International Comics Festival Prize for Best Album",
+      "query_lang": "en",
+      "relevant_doc": "en_1059",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_title_177",
+      "query": "Economía social",
+      "query_lang": "es",
+      "relevant_doc": "es_161",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_summary_188",
+      "query": "La langue officielle du Gabon est le français",
+      "query_lang": "fr",
+      "relevant_doc": "fr_510",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_title_333",
+      "query": "Progress Wrestling World Women's Championship",
+      "query_lang": "en",
+      "relevant_doc": "en_1528",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_title_162",
+      "query": "E.T., el extraterrestre",
+      "query_lang": "es",
+      "relevant_doc": "es_1430",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_title_268",
+      "query": "Syndicat mixte de Transport Essonne Centre",
+      "query_lang": "fr",
+      "relevant_doc": "fr_769",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_summary_199",
+      "query": "The Elk Grove Unified School District is a school district in southern Sacramento County, California, United States",
+      "query_lang": "en",
+      "relevant_doc": "en_1275",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_title_68",
+      "query": "L'Étoile de Pandore",
+      "query_lang": "fr",
+      "relevant_doc": "fr_1180",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_title_219",
+      "query": "Ira Levin",
+      "query_lang": "es",
+      "relevant_doc": "es_1369",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_title_77",
+      "query": "Catedral de Roskilde",
+      "query_lang": "es",
+      "relevant_doc": "es_804",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_title_209",
+      "query": "Strachówka (gmina)",
+      "query_lang": "fr",
+      "relevant_doc": "fr_1095",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_title_141",
+      "query": "Jeremía Recoba",
+      "query_lang": "fr",
+      "relevant_doc": "fr_1459",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_title_66",
+      "query": "Eddy Curry",
+      "query_lang": "en",
+      "relevant_doc": "en_1051",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_title_306",
+      "query": "Stephen Miller",
+      "query_lang": "en",
+      "relevant_doc": "en_1086",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_summary_67",
+      "query": "Eddy Anthony Curry Jr",
+      "query_lang": "en",
+      "relevant_doc": "en_1051",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_summary_209",
+      "query": "\"Daisies\" is a song by American singer Katy Perry",
+      "query_lang": "en",
+      "relevant_doc": "en_815",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_title_12",
+      "query": "Axylia putris",
+      "query_lang": "en",
+      "relevant_doc": "en_1638",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_title_44",
+      "query": "Air comprimé",
+      "query_lang": "fr",
+      "relevant_doc": "fr_856",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_summary_184",
+      "query": "El Ministerio del Medio Ambiente (también conocido por su acrónimo, MMA) es el ministerio de Estado de Chile que se encarga de colaborar con el presidente de la República en el diseño y aplicación de políticas, planes y programas en materia ambiental, así como en la protección y conservación de la diversidad biológica y de los recursos naturales renovables e hídricos, promoviendo el desarrollo sustentable, la integridad de la política ambiental y su regulación normativa",
+      "query_lang": "es",
+      "relevant_doc": "es_130",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_summary_359",
+      "query": "Cet article présente la deuxième saison de la série télévisée Papa Schultz (Hogan's Heroes)",
+      "query_lang": "fr",
+      "relevant_doc": "fr_401",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_summary_298",
+      "query": "Hope You're Happy, Lemon (クソ女に幸あれ, Kuso Onna ni Sachiare) is a Japanese manga series written and illustrated by Mizuki Kishikawa",
+      "query_lang": "en",
+      "relevant_doc": "en_520",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_title_40",
+      "query": "Institut national de l'information géographique et forestière",
+      "query_lang": "fr",
+      "relevant_doc": "fr_130",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_title_12",
+      "query": "Fuzhou",
+      "query_lang": "fr",
+      "relevant_doc": "fr_1691",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_title_184",
+      "query": "Sock and Awe",
+      "query_lang": "en",
+      "relevant_doc": "en_1751",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_summary_344",
+      "query": "Idol stjörnuleit (English: Idol Starsearch) is Iceland's version of the British reality series Pop Idol",
+      "query_lang": "en",
+      "relevant_doc": "en_269",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_title_359",
+      "query": "One Breath (2020 film)",
+      "query_lang": "en",
+      "relevant_doc": "en_729",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_summary_235",
+      "query": "Les petits royaumes de Norvège sont une série de chefferies, clans, et royaumes établis entre les Ier et Xe siècles avant l'unification de la Norvège",
+      "query_lang": "fr",
+      "relevant_doc": "fr_860",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_title_149",
+      "query": "Édouard Daladier",
+      "query_lang": "fr",
+      "relevant_doc": "fr_702",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_summary_12",
+      "query": "Las hervencias o fervencias de Ávila fueron una masacre supuestamente cometida en 1111 por orden de Alfonso I de Aragón contra un grupo de 60 rehenes que la ciudad castellana de Ávila le había entregado en garantía de paz durante el transcurso de la guerra que el rey mantenía con su mujer Urraca I de León",
+      "query_lang": "es",
+      "relevant_doc": "es_1264",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_title_323",
+      "query": "Tenochtitlan",
+      "query_lang": "en",
+      "relevant_doc": "en_1215",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_title_244",
+      "query": "Halite",
+      "query_lang": "fr",
+      "relevant_doc": "fr_1430",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_summary_257",
+      "query": "Le château de la Michelinière est situé sur la commune d'Azay-sur-Cher, dans le département d'Indre-et-Loire",
+      "query_lang": "fr",
+      "relevant_doc": "fr_1016",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_summary_317",
+      "query": "Wadowice est une gmina mixte du powiat de Wadowice, Petite-Pologne, dans le sud de Pologne",
+      "query_lang": "fr",
+      "relevant_doc": "fr_1724",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_title_365",
+      "query": "Betti Alver",
+      "query_lang": "es",
+      "relevant_doc": "es_794",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_title_205",
+      "query": "Bataille de Taierzhuang",
+      "query_lang": "fr",
+      "relevant_doc": "fr_269",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_summary_292",
+      "query": "The cinema of Romania is the art of motion-picture making within the nation of Romania or by Romanian filmmakers abroad",
+      "query_lang": "en",
+      "relevant_doc": "en_562",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_summary_294",
+      "query": "The Carnival of Brazil (Portuguese: Carnaval do Brasil, IPA: kaʁnaˈvaw) is an annual festival held the Friday afternoon before Ash Wednesday at noon, which marks the beginning of Lent, the forty-day period before Easter",
+      "query_lang": "en",
+      "relevant_doc": "en_1184",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_title_2",
+      "query": "Baker High School (Louisiana)",
+      "query_lang": "en",
+      "relevant_doc": "en_1332",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_title_6",
+      "query": "Touchy Feely",
+      "query_lang": "en",
+      "relevant_doc": "en_1411",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_summary_224",
+      "query": "Fundão es una ciudad portuguesa y también un municipio del distrito de Castelo Branco, de la región estadística del Centro (NUTS II) y de la comunidad intermunicipal de Beiras y Sierra de la Estrella (NUTS III)",
+      "query_lang": "es",
+      "relevant_doc": "es_337",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_title_244",
+      "query": "Surgery (politics)",
+      "query_lang": "en",
+      "relevant_doc": "en_34",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_summary_117",
+      "query": "James Brown, né le 22 mars 1920 à Desdemona (it), Texas et mort le 11 avril 1992 à Woodland Hills, est un acteur américain",
+      "query_lang": "fr",
+      "relevant_doc": "fr_1337",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_summary_218",
+      "query": "Le diocèse de Chascomús (en latin : Dioecesis Chascomusensis ; en espagnol : Diócesis de Chascomús) est un diocèse de l'Église catholique en Argentine, suffragant de l'archidiocèse de La Plata",
+      "query_lang": "fr",
+      "relevant_doc": "fr_1499",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_summary_353",
+      "query": "L'arabe libyen (Lībi ليبي) est un terme générique désignant les variétés sulaymites d'arabe dialectal, principalement parlées en Libye, en Égypte et dans le sud-est de l'Algérie et de la Tunisie",
+      "query_lang": "fr",
+      "relevant_doc": "fr_763",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_summary_178",
+      "query": "Economía social es un concepto polisémico que puede significar: Economics La expresión Economía social puede referirse a distintos conceptos dentro del ámbito de la ciencia económica y de las prácticas socioeconómicas",
+      "query_lang": "es",
+      "relevant_doc": "es_161",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_title_143",
+      "query": "Léopard",
+      "query_lang": "fr",
+      "relevant_doc": "fr_1584",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_summary_215",
+      "query": "Nodilittorina is a genus of small sea snails",
+      "query_lang": "en",
+      "relevant_doc": "en_276",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_title_54",
+      "query": "Józef Bem",
+      "query_lang": "fr",
+      "relevant_doc": "fr_206",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_title_171",
+      "query": "Scars  Stories",
+      "query_lang": "es",
+      "relevant_doc": "es_831",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_summary_285",
+      "query": "Le repêchage d'entrée dans la Ligue nationale de hockey 2023 est le 61e repêchage d'entrée de l'histoire de la Ligue nationale de hockey (LNH)",
+      "query_lang": "fr",
+      "relevant_doc": "fr_1038",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_summary_16",
+      "query": "La crítica de arte es el juicio de valor expresado sobre las obras de arte en el ámbito de la estética, pero también en lo que refiere a su relevancia en un contexto social y político determinados",
+      "query_lang": "es",
+      "relevant_doc": "es_166",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_summary_139",
+      "query": "Rupert Edward Lee \"Buddy\" Featherstonhaugh (París, 4 de octubre de 1909-Londres, 12 de julio de 1976) fue un saxofonista y clarinetista de jazz inglés",
+      "query_lang": "es",
+      "relevant_doc": "es_1751",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_summary_230",
+      "query": "Francia ha sido un país muy influyente en el desarrollo del cine como medio de entretenimiento a nivel mundial",
+      "query_lang": "es",
+      "relevant_doc": "es_40",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_title_189",
+      "query": "MPS Records",
+      "query_lang": "es",
+      "relevant_doc": "es_856",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_title_295",
+      "query": "Numidia",
+      "query_lang": "es",
+      "relevant_doc": "es_646",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_title_317",
+      "query": "Agrilus",
+      "query_lang": "es",
+      "relevant_doc": "es_1294",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_summary_328",
+      "query": "Easter eggs, also called Paschal eggs, are eggs that are decorated for the Christian festival of Easter, which celebrates the resurrection of Jesus",
+      "query_lang": "en",
+      "relevant_doc": "en_540",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_summary_314",
+      "query": "Diego Chávez (Parcona, Provincia de Ica, Perú, 7 de marzo de 1993) es un futbolista peruano",
+      "query_lang": "es",
+      "relevant_doc": "es_1104",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_summary_41",
+      "query": "L'Institut national de l'information géographique et forestière (IGN) est un établissement public à caractère administratif ayant pour mission d'assurer la production, l'entretien et la diffusion de l'information géographique de référence en France",
+      "query_lang": "fr",
+      "relevant_doc": "fr_130",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_summary_154",
+      "query": "Valérie Lemercier, née le 9 mars 1964 à Dieppe (Seine-Maritime), est une actrice, réalisatrice, scénariste, humoriste et chanteuse française",
+      "query_lang": "fr",
+      "relevant_doc": "fr_725",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_title_289",
+      "query": "Ziddi (2013 film)",
+      "query_lang": "en",
+      "relevant_doc": "en_343",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_title_273",
+      "query": "Quantum mechanics",
+      "query_lang": "en",
+      "relevant_doc": "en_201",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_summary_342",
+      "query": "Green River (Inglés Río Verde) fue una banda de grunge, originaria de Seattle, Estados Unidos, activa entre los años 1984 y 1987",
+      "query_lang": "es",
+      "relevant_doc": "es_1678",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_title_25",
+      "query": "Vic Sotto",
+      "query_lang": "en",
+      "relevant_doc": "en_241",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_title_309",
+      "query": "Lois Waisbrooker",
+      "query_lang": "en",
+      "relevant_doc": "en_995",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_title_251",
+      "query": "Motor-Booty Affair",
+      "query_lang": "es",
+      "relevant_doc": "es_860",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_title_302",
+      "query": "Ligue des nations féminine de l'UEFA 2025",
+      "query_lang": "fr",
+      "relevant_doc": "fr_378",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_title_106",
+      "query": "2017 Super Rugby season",
+      "query_lang": "en",
+      "relevant_doc": "en_1194",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_summary_55",
+      "query": "The Nobel Prize in Physics is an annual award given by the Royal Swedish Academy of Sciences for those who have made the most outstanding contributions to mankind in the field of physics",
+      "query_lang": "en",
+      "relevant_doc": "en_206",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_summary_335",
+      "query": "La galerie Gimpel  Müller est une galerie parisienne d'art contemporain située aujourdhui 12 rue Guénégaud, dans le quartier Saint-Germain-des-Prés, et spécialisée dans les abstractions géométriques et lyriques  art concret-art construit  et le cinétisme",
+      "query_lang": "fr",
+      "relevant_doc": "fr_459",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_summary_213",
+      "query": "Malina Weissman (born March 12, 2003) is an American actress and model, known for playing the roles of Violet Baudelaire in the Netflix series A Series of Unfortunate Events, young April O'Neil in Teenage Mutant Ninja Turtles and young Kara Zor-El in Supergirl",
+      "query_lang": "en",
+      "relevant_doc": "en_1095",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_summary_120",
+      "query": "Sterling is a home rule municipality and the county seat and most populous municipality of Logan County, Colorado, United States",
+      "query_lang": "en",
+      "relevant_doc": "en_1028",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_summary_82",
+      "query": "Mario's Tennis es un videojuego deportivo de 1995 desarrollado y publicado por Nintendo para Virtual Boy",
+      "query_lang": "es",
+      "relevant_doc": "es_391",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_title_339",
+      "query": "Nothing Safe: Best of the Box",
+      "query_lang": "es",
+      "relevant_doc": "es_466",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_title_72",
+      "query": "América Futebol Clube (RN)",
+      "query_lang": "en",
+      "relevant_doc": "en_612",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_summary_266",
+      "query": "La desmaterialización, digitalización, virtualización u oficina sin papel se refiere, en relación a una empresa, organización, institución cualquiera, al reemplazo de los soportes tradicionales de información (generalmente papel, fichas o microfilmes) por ficheros informáticos y ordenadores",
+      "query_lang": "es",
+      "relevant_doc": "es_1482",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_title_355",
+      "query": "Peter Allen (musician)",
+      "query_lang": "en",
+      "relevant_doc": "en_775",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_title_303",
+      "query": "Mejor Jugador Joven de la Euroliga",
+      "query_lang": "es",
+      "relevant_doc": "es_1154",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_summary_40",
+      "query": "Ulía (en euskera Ulia o Uliamendi) es un monte de San Sebastián que se extiende desde los barrios de Gros y Ulía hasta Pasajes",
+      "query_lang": "es",
+      "relevant_doc": "es_960",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_summary_70",
+      "query": "El municipio de Bureau (en inglés: Bureau Township) es un municipio ubicado en el condado de Bureau en el estado estadounidense de Illinois",
+      "query_lang": "es",
+      "relevant_doc": "es_805",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_summary_210",
+      "query": "La gmina Strachówka est un district administratif situé en milieu rural du powiat de Wołomin dans la voïvodie de Mazovie, dans le centre-est de la Pologne",
+      "query_lang": "fr",
+      "relevant_doc": "fr_1095",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_summary_308",
+      "query": "University of the West of England Boat Club is a rowing club on the Gloucester and Sharpness Canal, based at Wycliffe College boathouse, Junction Bridge, Saul, Gloucestershire, England",
+      "query_lang": "en",
+      "relevant_doc": "en_230",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_summary_354",
+      "query": "The following things have been named after Indira Gandhi, who was Prime Minister of India from 19661977 and from 1980 until her assassination in 1984",
+      "query_lang": "en",
+      "relevant_doc": "en_763",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_title_98",
+      "query": "Dombresson",
+      "query_lang": "fr",
+      "relevant_doc": "fr_565",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_summary_161",
+      "query": "Las Lagunas de Palos y Las Madres son un paraje natural formado por cuatro lagunas denominadas: Laguna Primera de Palos, La Jara, La Mujer y Las Madres",
+      "query_lang": "es",
+      "relevant_doc": "es_565",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_title_232",
+      "query": "Opération Nous nous en remettons à Dieu",
+      "query_lang": "fr",
+      "relevant_doc": "fr_1367",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_title_25",
+      "query": "Sennheiser",
+      "query_lang": "es",
+      "relevant_doc": "es_955",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_summary_216",
+      "query": "Raffaella Maria Roberta Pelloni (Bolonia, 18 de junio de 1943-Roma, 5 de julio de 2021), conocida por su nombre artístico Raffaella Carrà, fue una cantautora, compositora, bailarina, coreógrafa, presentadora de televisión y actriz italiana",
+      "query_lang": "es",
+      "relevant_doc": "es_1275",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_title_139",
+      "query": "Alejandro González Velázquez",
+      "query_lang": "fr",
+      "relevant_doc": "fr_742",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_summary_240",
+      "query": "En España, una Autoridad administrativa independiente (AAI) es un tipo de organismo del sector público institucional estatal que tiene atribuidas funciones de regulación o supervisión de carácter externo sobre sectores económicos o actividades determinadas",
+      "query_lang": "es",
+      "relevant_doc": "es_216",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_title_60",
+      "query": "LGBTQ literature",
+      "query_lang": "en",
+      "relevant_doc": "en_87",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_summary_99",
+      "query": "RAF Brampton fue una instalación terrestre de la Royal Air Force situada cerca de Huntingdon, en el condado de Cambridgeshire, en Inglaterra",
+      "query_lang": "es",
+      "relevant_doc": "es_1570",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_title_92",
+      "query": "Family (biology)",
+      "query_lang": "en",
+      "relevant_doc": "en_161",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_summary_356",
+      "query": "El tornado de Encarnación de 1926 fue un fuerte evento meteorológico ocurrido el día 20 de septiembre de 1926 en horas de la tarde, en la ciudad de Encarnación, departamento de Itapúa, en el sur del Paraguay",
+      "query_lang": "es",
+      "relevant_doc": "es_91",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_summary_286",
+      "query": "Fatso was a New Zealand online DVD and video game rental service that mailed DVDs, Blu-ray discs and video games to customers around New Zealand",
+      "query_lang": "en",
+      "relevant_doc": "en_1038",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_title_42",
+      "query": "Uropodidae",
+      "query_lang": "fr",
+      "relevant_doc": "fr_840",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_summary_280",
+      "query": "Ağrı (also, Aghry) is a village in the Ordubad District of Nakhchivan, Azerbaijan",
+      "query_lang": "en",
+      "relevant_doc": "en_1495",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_title_319",
+      "query": "Private Guns, Public Health",
+      "query_lang": "en",
+      "relevant_doc": "en_1154",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_summary_62",
+      "query": "El TOP10 es la categoría de mayor nivel del rugby italiano",
+      "query_lang": "es",
+      "relevant_doc": "es_1064",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_summary_346",
+      "query": "Jiya Jale: The Stories of Songs is a book by the author and television documentary producer Nasreen Munni Kabir, containing her conversations with Gulzar (an Indian filmmaker, lyricist, and poet) taking place from early 2017 to April 2018",
+      "query_lang": "en",
+      "relevant_doc": "en_1076",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_title_182",
+      "query": "Bud Shank discography",
+      "query_lang": "en",
+      "relevant_doc": "en_1478",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_title_16",
+      "query": "Vuelta a Chiriquí 2014",
+      "query_lang": "fr",
+      "relevant_doc": "fr_241",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_title_55",
+      "query": "Subsecretaría del Medio Ambiente de Chile",
+      "query_lang": "es",
+      "relevant_doc": "es_134",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_title_110",
+      "query": "Visual arts",
+      "query_lang": "en",
+      "relevant_doc": "en_40",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_title_65",
+      "query": "Municipio de San Lorenzo (Oaxaca)",
+      "query_lang": "es",
+      "relevant_doc": "es_1842",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_title_285",
+      "query": "Heiki Nabi",
+      "query_lang": "es",
+      "relevant_doc": "es_815",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_summary_170",
+      "query": "Puente Tour Eiffel o el Puente de la Torre Eiffel (en francés: Pont de la Tour Eiffel) también conocido como el \"puente de la calle Montcalm\" (Pont de la rue Montcalm), es un puente pequeño, pero vistoso en Gatineau, Quebec en Canadá",
+      "query_lang": "es",
+      "relevant_doc": "es_1857",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_title_355",
+      "query": "Tornado de Encarnación de 1926",
+      "query_lang": "es",
+      "relevant_doc": "es_91",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_title_351",
+      "query": "List of Polish sports players",
+      "query_lang": "en",
+      "relevant_doc": "en_794",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_title_361",
+      "query": "Haiger station",
+      "query_lang": "en",
+      "relevant_doc": "en_1724",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_title_261",
+      "query": "HIStory: Past, Present and Future, Book I",
+      "query_lang": "en",
+      "relevant_doc": "en_95",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_summary_345",
+      "query": "Pékin Express : La Route des glaces est la 21e édition (toutes saisons confondues) de Pékin Express, émission de télévision franco-belgo-luxembourgeoise de téléréalité, diffusée chaque semaine sur M6, à partir du 7 novembre 2025",
+      "query_lang": "fr",
+      "relevant_doc": "fr_1076",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_title_187",
+      "query": "Sociedad Española de Astronomía",
+      "query_lang": "es",
+      "relevant_doc": "es_379",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_title_203",
+      "query": "The Transformers (serie de televisión)",
+      "query_lang": "es",
+      "relevant_doc": "es_1705",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_title_132",
+      "query": "1928 en musique classique",
+      "query_lang": "fr",
+      "relevant_doc": "fr_397",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_title_137",
+      "query": "Spiral Jetty",
+      "query_lang": "en",
+      "relevant_doc": "en_1238",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_title_233",
+      "query": "Drag queen",
+      "query_lang": "es",
+      "relevant_doc": "es_699",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_title_0",
+      "query": "Provenza-Alpes-Costa Azul",
+      "query_lang": "es",
+      "relevant_doc": "es_1584",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_summary_156",
+      "query": "Les monts Yūbari (夕張山地, Yūbari-sanchi) sont une chaîne de montagnes de l'île de Hokkaidō au Japon",
+      "query_lang": "fr",
+      "relevant_doc": "fr_1411",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_summary_332",
+      "query": "Francisco Javier Chahuán Chahuán (Viña del Mar, 20 de mayo de 1971) es un abogado y político chileno de origen palestino",
+      "query_lang": "es",
+      "relevant_doc": "es_1724",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_summary_323",
+      "query": "Le riz à la valencienne (en espagnol : arroz a la valenciana, en valencien : arròs a la valenciana) est un nom qui désigne une multitude de plats à base de riz de différentes cuisines du monde, issus de la tradition rizicole de la communauté valencienne, dans l'est de l'Espagne",
+      "query_lang": "fr",
+      "relevant_doc": "fr_805",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_summary_278",
+      "query": "Chisináu (en rumano: Chișinău, pronunciado kiʃiˈnəu ()) es la capital y el municipio más grande de Moldavia",
+      "query_lang": "es",
+      "relevant_doc": "es_995",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_title_29",
+      "query": "Cuisine",
+      "query_lang": "en",
+      "relevant_doc": "en_1577",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_summary_165",
+      "query": "Baptiste Lecaplain (born 23 May 1985 in Mortain) is a French comedian and actor",
+      "query_lang": "en",
+      "relevant_doc": "en_315",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_title_248",
+      "query": "17th International Adana Golden Boll Film Festival",
+      "query_lang": "en",
+      "relevant_doc": "en_1430",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_title_307",
+      "query": "University of the West of England Boat Club",
+      "query_lang": "en",
+      "relevant_doc": "en_230",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_title_29",
+      "query": "ATP Challenger Tour 2022",
+      "query_lang": "es",
+      "relevant_doc": "es_121",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_title_63",
+      "query": "Patagonia Radio",
+      "query_lang": "es",
+      "relevant_doc": "es_484",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_title_154",
+      "query": "Fuerte de la Encarnación",
+      "query_lang": "es",
+      "relevant_doc": "es_87",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_title_128",
+      "query": "Tribolonotus annectens",
+      "query_lang": "fr",
+      "relevant_doc": "fr_1597",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_title_254",
+      "query": "Jean-Luc Moreau (universitaire)",
+      "query_lang": "fr",
+      "relevant_doc": "fr_1513",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_title_120",
+      "query": "Daniel Mauri",
+      "query_lang": "es",
+      "relevant_doc": "es_1685",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_summary_48",
+      "query": "Los Juegos Olímpicos de Sarajevo 1984, oficialmente conocidos como los XIV Juegos Olímpicos de Invierno, fueron un evento multideportivo internacional celebrado en Sarajevo, Bosnia-Herzegovina, Yugoslavia, entre el 8 y el 19 de febrero de 1984",
+      "query_lang": "es",
+      "relevant_doc": "es_492",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_summary_312",
+      "query": "Pragelato (en occitano Prajalats) es un municipio italiano, situado en la región del Piamonte",
+      "query_lang": "es",
+      "relevant_doc": "es_1698",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_summary_220",
+      "query": "Ira Marvin Levin, más conocido como Ira Levin (Nueva York, 27 de agosto de 1929 - 12 de noviembre de 2007) fue un escritor de suspense estadounidense, autor de novelas como La semilla del diablo, Los niños del Brasil o The Stepford Wives",
+      "query_lang": "es",
+      "relevant_doc": "es_1369",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_summary_65",
+      "query": "Sri Lanka is a tropical island situated close to the southern tip of India",
+      "query_lang": "en",
+      "relevant_doc": "en_1390",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_summary_192",
+      "query": "Vespertine en español: Vespertino es el cuarto álbum de estudio de la cantautora islandesa Björk, lanzado el 27 de agosto de 2001, a través de One Little Indian Records",
+      "query_lang": "es",
+      "relevant_doc": "es_520",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_summary_245",
+      "query": "La halite, couramment appelée sel gemme dans le langage minier, est un minéral solide composé de chlorure de sodium de formule brute NaCl",
+      "query_lang": "fr",
+      "relevant_doc": "fr_1430",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_summary_224",
+      "query": "Germanus est un ecclésiastique anglo-saxon mort vers 1013",
+      "query_lang": "fr",
+      "relevant_doc": "fr_791",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_title_254",
+      "query": "Roy Harte",
+      "query_lang": "en",
+      "relevant_doc": "en_1482",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_summary_59",
+      "query": "Le Centre de la Gravure et de l'Image imprimée de la Fédération Wallonie-Bruxelles est un musée consacré à la gravure et à l'estampe de la seconde moitié du XXe siècle jusqu'à nos jours, fondé en 1988 à La Louvière (Belgique)",
+      "query_lang": "fr",
+      "relevant_doc": "fr_897",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_summary_312",
+      "query": "The Regeneron International Science and Engineering Fair (ISEF) is an annual science fair held in the United States",
+      "query_lang": "en",
+      "relevant_doc": "en_870",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_title_160",
+      "query": "Lagunas de Palos y Las Madres",
+      "query_lang": "es",
+      "relevant_doc": "es_565",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_summary_221",
+      "query": "The True Story of Tamara de Lempicka  The Art of Survival is a documentary film directed, written, and produced by Julie Rubio",
+      "query_lang": "en",
+      "relevant_doc": "en_699",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_summary_235",
+      "query": "Kisna: The Warrior Poet is a 2005 Indian Hindi-language period romance film written, edited, produced and directed by Subhash Ghai and starring Vivek Oberoi (who plays the title role), Antonia Bernath, and Isha Sharvani",
+      "query_lang": "en",
+      "relevant_doc": "en_1082",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_summary_74",
+      "query": "Debido a su situación geográfica, en el centro de Europa y rodeada de pueblos diversos; y a la materialización tardía de su unidad, Alemania es conocida con diferentes nombres que varían dependiendo de las lenguas, inspirados por los pueblos que la han compuesto",
+      "query_lang": "es",
+      "relevant_doc": "es_1638",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_title_239",
+      "query": "Autoridad administrativa independiente (España)",
+      "query_lang": "es",
+      "relevant_doc": "es_216",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_summary_305",
+      "query": "History of The Byrds is a double album compilation by the American rock band the Byrds and was released on May 18, 1973 by CBS Records",
+      "query_lang": "en",
+      "relevant_doc": "en_1294",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_summary_45",
+      "query": "L'air comprimé est de l'air atmosphérique comprimé à une pression supérieure à celle de l'atmosphère à l'aide de compresseurs",
+      "query_lang": "fr",
+      "relevant_doc": "fr_856",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_title_287",
+      "query": "Peredélkino",
+      "query_lang": "es",
+      "relevant_doc": "es_563",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_title_308",
+      "query": "Philosophie des sciences",
+      "query_lang": "fr",
+      "relevant_doc": "fr_230",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_summary_249",
+      "query": "The International 17th Adana Golden Boll Film Festival was a film festival held in Adana, Turkey, which ran from September 20 to 26, 2010",
+      "query_lang": "en",
+      "relevant_doc": "en_1430",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_summary_152",
+      "query": "Le championnat de Suède Élite de hockey sur glace porte le nom de SHL pour Svenska Hockeyligan (en Suède) ou Swedish Hockey League (nom anglais et international)",
+      "query_lang": "fr",
+      "relevant_doc": "fr_1701",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_summary_93",
+      "query": "La guerre dindépendance turque (en turc : Kurtuluş Savaşı, litt",
+      "query_lang": "fr",
+      "relevant_doc": "fr_1807",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_summary_71",
+      "query": "Salford RLFC are a semi-professional rugby league club in Salford, England, who play home games at the CorpAcq Stadium in Barton upon Irwell",
+      "query_lang": "en",
+      "relevant_doc": "en_1515",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_title_94",
+      "query": "RecifeGuararapesGilberto Freyre International Airport",
+      "query_lang": "en",
+      "relevant_doc": "en_1180",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_summary_60",
+      "query": "Sir Conyers Clifford (c",
+      "query_lang": "es",
+      "relevant_doc": "es_1332",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_title_33",
+      "query": "Bracket (architecture)",
+      "query_lang": "en",
+      "relevant_doc": "en_960",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_title_359",
+      "query": "Andrus Kivirähk",
+      "query_lang": "es",
+      "relevant_doc": "es_791",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_title_259",
+      "query": "History of Gmail",
+      "query_lang": "en",
+      "relevant_doc": "en_98",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_title_204",
+      "query": "List of African Championships in Athletics medalists (women)",
+      "query_lang": "en",
+      "relevant_doc": "en_1071",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_summary_115",
+      "query": "Gilles Berthelot, mort à Cambrai en 1529, est conseiller, notaire et secrétaire du roi Louis XII puis président de la Chambre des comptes et trésorier de France",
+      "query_lang": "fr",
+      "relevant_doc": "fr_815",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_title_331",
+      "query": "Francisco Chahuán",
+      "query_lang": "es",
+      "relevant_doc": "es_1724",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_summary_252",
+      "query": "Motor-Booty Affair es un álbum conceptual de la banda de música funk Parliament, el séptimo de su discografía, publicado el 11 de noviembre de 1978 por Casablanca Records",
+      "query_lang": "es",
+      "relevant_doc": "es_860",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_summary_77",
+      "query": "The LondonSurrey Cycle Classic was a one-off, one-day bicycle race that served as one of three U",
+      "query_lang": "en",
+      "relevant_doc": "en_1805",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_title_84",
+      "query": "World Chess Championship 2024",
+      "query_lang": "en",
+      "relevant_doc": "en_929",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_summary_46",
+      "query": "Ixtlahuacán de los Membrillos (del náhuatl Ixtlahuatl \"lugar de llanuras\") es un pueblo del estado de Jalisco, México",
+      "query_lang": "es",
+      "relevant_doc": "es_1500",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_title_82",
+      "query": "Athis-Val de Rouvre",
+      "query_lang": "en",
+      "relevant_doc": "en_863",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_title_249",
+      "query": "Marko Gudurić",
+      "query_lang": "es",
+      "relevant_doc": "es_1152",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_summary_256",
+      "query": "Parietaria judaica es una especie de planta fanerógama de la familia de las urticáceas",
+      "query_lang": "es",
+      "relevant_doc": "es_1764",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_title_336",
+      "query": "1831",
+      "query_lang": "fr",
+      "relevant_doc": "fr_205",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_title_257",
+      "query": "Montañas Rubeho",
+      "query_lang": "es",
+      "relevant_doc": "es_1411",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_summary_27",
+      "query": "La Motte-Servolex (prononcer la mɔt sɛʁvɔle ou la mɔt sɛʁvɔlɛks) est une commune française située dans le département de la Savoie, en région Auvergne-Rhône-Alpes",
+      "query_lang": "fr",
+      "relevant_doc": "fr_121",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_summary_264",
+      "query": "FX on Hulu (denominado simplemente FX desde diciembre de 2021) es una sección dentro del servicio en la plataforma de streaming Hulu que ofrece programación de FX Networks, una filial del segmento Disney General Entertainment Content de The Walt Disney Company",
+      "query_lang": "es",
+      "relevant_doc": "es_1123",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_title_173",
+      "query": "Avenida Saxer (Metro de Filadelfia)",
+      "query_lang": "es",
+      "relevant_doc": "es_742",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_summary_350",
+      "query": "Liverpool Football Club is an English professional association football club based in Liverpool, Merseyside, who currently play in the Premier League",
+      "query_lang": "en",
+      "relevant_doc": "en_1126",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_title_33",
+      "query": "Línea 5B (Urbanos de Torrejón de Ardoz)",
+      "query_lang": "es",
+      "relevant_doc": "es_64",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_summary_5",
+      "query": "Liverpool Football Club is a professional football club based in Liverpool, England",
+      "query_lang": "en",
+      "relevant_doc": "en_1123",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_summary_310",
+      "query": "Lois Waisbrooker (21 February 1826  3 October 1909) was an American feminist author, editor, publisher, and campaigner of the later nineteenth and the early twentieth centuries",
+      "query_lang": "en",
+      "relevant_doc": "en_995",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_summary_186",
+      "query": "El Hospital José Ramón Vidal, conocido simplemente como Hospital Vidal, es uno de los siete hospitales de la ciudad de Corrientes, Argentina",
+      "query_lang": "es",
+      "relevant_doc": "es_975",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_title_104",
+      "query": "Gmina Mirsk",
+      "query_lang": "en",
+      "relevant_doc": "en_1129",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_summary_97",
+      "query": "DAF Trucks is a Dutch truck manufacturing company and a division of Paccar",
+      "query_lang": "en",
+      "relevant_doc": "en_502",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_summary_300",
+      "query": "Gåsmamman, es una serie de televisión sueca transmitida desde el 26 de noviembre del 2015 hasta ahora por medio de la cadena C More Series",
+      "query_lang": "es",
+      "relevant_doc": "es_763",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_summary_243",
+      "query": "Angel (ou Ángel) est un prénom masculin signifiant Ange ou Messager",
+      "query_lang": "fr",
+      "relevant_doc": "fr_1698",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_summary_314",
+      "query": "William Frederick Gibbons (born December 16, 1949) is an American rock musician who is the guitarist, primary songwriter and vocalist, and a founding member of ZZ Top",
+      "query_lang": "en",
+      "relevant_doc": "en_1162",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_title_158",
+      "query": "Palacio de Gobierno de Jalisco",
+      "query_lang": "es",
+      "relevant_doc": "es_642",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_summary_308",
+      "query": "Dunean es un lugar designado por el censo ubicado en el condado de Greenville, en el estado estadounidense de Carolina del Sur",
+      "query_lang": "es",
+      "relevant_doc": "es_1396",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_title_62",
+      "query": "Salena (singer)",
+      "query_lang": "en",
+      "relevant_doc": "en_779",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_title_281",
+      "query": "List of Sindhi people",
+      "query_lang": "en",
+      "relevant_doc": "en_385",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_title_263",
+      "query": "FX on Hulu",
+      "query_lang": "es",
+      "relevant_doc": "es_1123",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_summary_266",
+      "query": "Louis Outhier (French pronunciation: lwi utje) is a French chef best known for Restaurant L'Oasis, a restaurant he ran in La Napoule, a village near Cannes on the French Riviera, from 1954 to 1988",
+      "query_lang": "en",
+      "relevant_doc": "en_1579",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_title_165",
+      "query": "(2040) Chalonge",
+      "query_lang": "fr",
+      "relevant_doc": "fr_13",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_title_238",
+      "query": "William de Lancaster I",
+      "query_lang": "en",
+      "relevant_doc": "en_860",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_summary_68",
+      "query": "Villavega de Ojeda es una localidad y también una pedanía del municipio de Olmos de Ojeda en la provincia de Palencia, en la comunidad autónoma de Castilla y León, España",
+      "query_lang": "es",
+      "relevant_doc": "es_269",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_title_145",
+      "query": "Nightwind: An Erroll Garner Songbook",
+      "query_lang": "en",
+      "relevant_doc": "en_484",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_title_290",
+      "query": "Université de Fribourg",
+      "query_lang": "fr",
+      "relevant_doc": "fr_1789",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_title_298",
+      "query": "Denis Pederson",
+      "query_lang": "fr",
+      "relevant_doc": "fr_391",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_summary_263",
+      "query": "À l'intérieur est un drame d'horreur psychologique français réalisé par Alexandre Bustillo et Julien Maury, sorti en 2007",
+      "query_lang": "fr",
+      "relevant_doc": "fr_1390",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_summary_118",
+      "query": "DVD-by-mail is a business model in which customers order DVDs and similar discs containing films, television shows, video games, and other media to rent, which are then delivery to the customer by mail",
+      "query_lang": "en",
+      "relevant_doc": "en_1044",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_title_313",
+      "query": "Diego Chávez",
+      "query_lang": "es",
+      "relevant_doc": "es_1104",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_summary_33",
+      "query": "Americhernes levipalpus est une espèce de pseudoscorpions de la famille des Chernetidae",
+      "query_lang": "fr",
+      "relevant_doc": "fr_288",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_title_250",
+      "query": "3D-printed firearm",
+      "query_lang": "en",
+      "relevant_doc": "en_840",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_title_167",
+      "query": "Muralla de Ávila",
+      "query_lang": "es",
+      "relevant_doc": "es_1267",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_title_285",
+      "query": "Fatso (service)",
+      "query_lang": "en",
+      "relevant_doc": "en_1038",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_summary_57",
+      "query": "Jean II d'Aragon dit le Sans Foi ou le Grand (en catalan : Joan el Sense Fe ou el Grand, en castillan : Juan el Sien Fe ou el Grande), né le 29 juin 1398 à Medina del Campo et mort le 19 janvier 1479 à Barcelone, est roi de Navarre par mariage entre 1425 et 1441, puis par usurpation entre 1441 et 1479",
+      "query_lang": "fr",
+      "relevant_doc": "fr_87",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_summary_9",
+      "query": "The Sterling Warriors are the athletic teams that represent Sterling College, located in Sterling, Kansas, in intercollegiate sports as a member of the National Association of Intercollegiate Athletics (NAIA), primarily competing in the Kansas Collegiate Athletic Conference (KCAC) since the 195859 academic year; which they were a member on a previous stint from 190203 to December 1928 (of the 192829 school year)",
+      "query_lang": "en",
+      "relevant_doc": "en_1025",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_title_256",
+      "query": "Château de la Michelinière",
+      "query_lang": "fr",
+      "relevant_doc": "fr_1016",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_title_196",
+      "query": "Near-death experience",
+      "query_lang": "en",
+      "relevant_doc": "en_189",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_summary_339",
+      "query": "Acarien du fromage est un nom vernaculaire désignant en français diverses espèces d'acariens utilisées volontairement dans l'affinage de certains fromages ou qui infestent d'elles-mêmes les fromages et provoquent leur détérioration",
+      "query_lang": "fr",
+      "relevant_doc": "fr_1025",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_title_5",
+      "query": "Asociación Estadounidense de Psicología",
+      "query_lang": "es",
+      "relevant_doc": "es_14",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_summary_81",
+      "query": "Eurytides celadon, the Cuban kite swallowtail or celadon swallowtail, is a species of butterfly in the family Papilionidae",
+      "query_lang": "en",
+      "relevant_doc": "en_1570",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_summary_24",
+      "query": "La música culta, docta, o académica, es una denominación general para aquellas tradiciones musicales que implican consideraciones estructurales y teóricas avanzadas, así como el empleo de algún tipo de notación musical escrita",
+      "query_lang": "es",
+      "relevant_doc": "es_206",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_summary_166",
+      "query": "El condado de Peach (en inglés: Peach County), fundado en 1924 y el último del estado de Georgia en ser creado, es uno de 159 condados del estado estadounidense de Georgia",
+      "query_lang": "es",
+      "relevant_doc": "es_1750",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_summary_287",
+      "query": "Zine el-Abidine Ben Ali (arabe : زين العابدين بن علي), né le 3 septembre 1936 à Hammam Sousse (Tunisie) et mort le 19 septembre 2019 à Djeddah (Arabie saoudite), est un militaire et homme d'État tunisien",
+      "query_lang": "fr",
+      "relevant_doc": "fr_216",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_title_122",
+      "query": "Arieta Corrêa",
+      "query_lang": "fr",
+      "relevant_doc": "fr_1044",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_summary_140",
+      "query": "Alejandro González Velázquez est un architecte et un peintre espagnol, né à Madrid le 27 février 1719 et mort à Madrid le 21 janvier 1772",
+      "query_lang": "fr",
+      "relevant_doc": "fr_742",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_summary_239",
+      "query": "William de Lancaster I (d",
+      "query_lang": "en",
+      "relevant_doc": "en_860",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_title_225",
+      "query": "Revolución de los Chapulos",
+      "query_lang": "es",
+      "relevant_doc": "es_1095",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_summary_211",
+      "query": "Rakuten Rewards ( RAK-ə-tin), formerly known as Ebates, is a cash-back and shopping rewards company",
+      "query_lang": "en",
+      "relevant_doc": "en_719",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_summary_237",
+      "query": "Léconomie comportementale est un champ de la science économique qui étudie le comportement des êtres humains dans les situations économiques",
+      "query_lang": "fr",
+      "relevant_doc": "fr_166",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_summary_144",
+      "query": "Patrick Denard Douthit (born January 15, 1975), better known as 9th Wonder, is an American record producer, record executive, and DJ from Winston-Salem, North Carolina, who is also teaching faculty at North Carolina Central University and Duke University, where he collaborates with Professor Mark Anthony Neal",
+      "query_lang": "en",
+      "relevant_doc": "en_474",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_title_274",
+      "query": "Mapuche (roman)",
+      "query_lang": "fr",
+      "relevant_doc": "fr_1020",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_title_213",
+      "query": "USS Vermont (BB-20)",
+      "query_lang": "es",
+      "relevant_doc": "es_719",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_summary_227",
+      "query": "The Diary of Alicia Keys is the second studio album by American singer-songwriter Alicia Keys",
+      "query_lang": "en",
+      "relevant_doc": "en_791",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_title_280",
+      "query": "Coulanges-la-Vineuse",
+      "query_lang": "fr",
+      "relevant_doc": "fr_1685",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_title_88",
+      "query": "Parawithius nobilis",
+      "query_lang": "fr",
+      "relevant_doc": "fr_747",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_summary_125",
+      "query": "Un gabinete en la sombra o gobierno en la sombra en los sistemas Westminster de gobierno es un conjunto de integrantes del parlamento pertenecientes al partido de la oposición que, dirigidos por el líder de la oposición, conforman un gabinete alternativo al gobernante con el deber legalcita requerida de ser oposición",
+      "query_lang": "es",
+      "relevant_doc": "es_1725",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_summary_319",
+      "query": "Cesária Évora (prononciation : sɨˈzaɾiɐ",
+      "query_lang": "fr",
+      "relevant_doc": "fr_1528",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_summary_177",
+      "query": "Serial Peripheral Interface (SPI) is a de facto standard (with many variants) for synchronous serial communication, used primarily in embedded systems for short-distance wired communication between integrated circuits",
+      "query_lang": "en",
+      "relevant_doc": "en_565",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_title_326",
+      "query": "Amicale laïque de la Madeleine Évreux Basket",
+      "query_lang": "fr",
+      "relevant_doc": "fr_540",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_summary_176",
+      "query": "Curepipe es una ciudad residencial situada en Mauricio, que contaba con 83",
+      "query_lang": "es",
+      "relevant_doc": "es_387",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_title_135",
+      "query": "Godoy",
+      "query_lang": "en",
+      "relevant_doc": "en_295",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_summary_226",
+      "query": "La Revolución de los Chapulos o también llamada Guerra de los Chapulos fue un intento revolucionario fallido llevado a cabo en Ecuador entre noviembre y diciembre de 1884",
+      "query_lang": "es",
+      "relevant_doc": "es_1095",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_title_88",
+      "query": "Samba de roda",
+      "query_lang": "es",
+      "relevant_doc": "es_612",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_title_112",
+      "query": "Libertad sin ira",
+      "query_lang": "es",
+      "relevant_doc": "es_1363",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_title_360",
+      "query": "Mistral (train)",
+      "query_lang": "fr",
+      "relevant_doc": "fr_1130",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_summary_7",
+      "query": "Touchy Feely is a 2013 film directed by Lynn Shelton and stars Rosemarie DeWitt as a massage therapist who develops a phobia to touching skin",
+      "query_lang": "en",
+      "relevant_doc": "en_1411",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_summary_84",
+      "query": "El Campeonato Peruano de Fútbol de 1949, denominado como XXXIII Campeonato de Selección y Competencia, fue la edición número 33 de la Primera División del Perú y participaron ocho equipos de Lima y Callao",
+      "query_lang": "es",
+      "relevant_doc": "es_1528",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_title_155",
+      "query": "List of Tommy Lee Jones performances",
+      "query_lang": "en",
+      "relevant_doc": "en_1750",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_summary_105",
+      "query": "René Bazin (né à Angers le 26 décembre 1853 et mort à Paris le 20 juillet 1932) est un écrivain français, à la fois juriste et professeur de droit, romancier, journaliste, historien, essayiste et auteur de récits de voyages",
+      "query_lang": "fr",
+      "relevant_doc": "fr_1194",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_title_357",
+      "query": "Ray Brown (musician)",
+      "query_lang": "en",
+      "relevant_doc": "en_1484",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_title_288",
+      "query": "Sin pijama",
+      "query_lang": "fr",
+      "relevant_doc": "fr_343",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_summary_223",
+      "query": "Barbara Lee Niven (née Bucholz; born February 26, 1953) is an American actress, writer, and producer, best known for her performances in Hallmark and Lifetime movies, and for television roles in Pensacola: Wings of Gold, One Life to Live, Cedar Cove, and Chesapeake Shores",
+      "query_lang": "en",
+      "relevant_doc": "en_330",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_title_329",
+      "query": "Order of the Rising Sun",
+      "query_lang": "en",
+      "relevant_doc": "en_418",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_title_231",
+      "query": "Sistema de Tránsito de la Fuerte República",
+      "query_lang": "es",
+      "relevant_doc": "es_1579",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_summary_180",
+      "query": "Anthia es un género de coleópteros adéfagos de la familia Carabidae",
+      "query_lang": "es",
+      "relevant_doc": "es_1590",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_title_189",
+      "query": "Berettyóújfalu",
+      "query_lang": "fr",
+      "relevant_doc": "fr_1241",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_summary_93",
+      "query": "Coincidiendo con el 400 aniversario de las primeras observaciones astronómicas realizadas con telescopio por Galileo Galilei y la publicación por Johannes Kepler de la Astronomía nova, el año 2009 fue declarado Año Internacional de la Astronomía (AIA 2009)",
+      "query_lang": "es",
+      "relevant_doc": "es_378",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_title_361",
+      "query": "Carne desmenuzada",
+      "query_lang": "es",
+      "relevant_doc": "es_776",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_title_6",
+      "query": "Maison de Trastamare",
+      "query_lang": "fr",
+      "relevant_doc": "fr_91",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_title_20",
+      "query": "Sylvain Meunier",
+      "query_lang": "fr",
+      "relevant_doc": "fr_1413",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_summary_141",
+      "query": "La iglesia de Santi Michele e Gaetano, más a menudo llamada simplemente San Gaetano, es un lugar de culto católico en el centro histórico de Florencia, ubicado en la Piazza degli Antinori (en continuidad con via de' Tornabuoni) en el bloque entre via dei Corsi, vía dei Pescioni y vía degli Agli",
+      "query_lang": "es",
+      "relevant_doc": "es_508",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_summary_259",
+      "query": "Le 19 avril 2015, une embarcation transportant environ 900 migrants clandestins fait naufrage à environ 110 km des côtes libyennes",
+      "query_lang": "fr",
+      "relevant_doc": "fr_98",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_summary_325",
+      "query": "Le système Oehler (ou système allemand ) est un dispositif mécanique de clés, principalement adopté sur les clarinettes allemandes et autrichiennes au début du XXe siècle",
+      "query_lang": "fr",
+      "relevant_doc": "fr_466",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_title_38",
+      "query": "Dan Jørgensen",
+      "query_lang": "fr",
+      "relevant_doc": "fr_1522",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_title_195",
+      "query": "Powderville",
+      "query_lang": "es",
+      "relevant_doc": "es_1390",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_title_305",
+      "query": "Nicole Ramalalanirina",
+      "query_lang": "es",
+      "relevant_doc": "es_1184",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_title_310",
+      "query": "Grandeur physique",
+      "query_lang": "fr",
+      "relevant_doc": "fr_201",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_title_75",
+      "query": "Into the Dark",
+      "query_lang": "es",
+      "relevant_doc": "es_1130",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_summary_204",
+      "query": "Moncef Marzouki (en arabe : المنصف المرزوقي, al-Munṣif al-Marzūqī), né le 7 juillet 1945 à Grombalia, est un homme d'État tunisien",
+      "query_lang": "fr",
+      "relevant_doc": "fr_1363",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_summary_107",
+      "query": "Une romance italienne (en italien :  L'amore ritrovato ) est un film franco-italien réalisé par Carlo Mazzacurati et sorti en 2004",
+      "query_lang": "fr",
+      "relevant_doc": "fr_562",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_summary_267",
+      "query": "Cet article présente le guide des épisodes de la cinquième saison de la série télévisée Las Vegas",
+      "query_lang": "fr",
+      "relevant_doc": "fr_455",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_title_163",
+      "query": "Gore-Tex",
+      "query_lang": "en",
+      "relevant_doc": "en_1264",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_title_228",
+      "query": "Sun Bu'er",
+      "query_lang": "en",
+      "relevant_doc": "en_683",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_title_142",
+      "query": "The Loyal 47 Ronin",
+      "query_lang": "es",
+      "relevant_doc": "es_397",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_title_133",
+      "query": "Athlétisme aux Jeux olympiques d'été de 1932, résultats détaillés",
+      "query_lang": "fr",
+      "relevant_doc": "fr_1478",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_title_212",
+      "query": "Malina Weissman",
+      "query_lang": "en",
+      "relevant_doc": "en_1095",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_summary_175",
+      "query": "Les voitures type Y de la SNCF, dites UIC du nom de l'Union Internationale des Chemins de fer, constituent la première série de voitures voyageurs de la SNCF à appliquer les recommandations techniques émises par l'organisme",
+      "query_lang": "fr",
+      "relevant_doc": "fr_1129",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_summary_79",
+      "query": "The Nashville Predators (colloquially referred to as the Preds) are a professional ice hockey team based in Nashville, Tennessee",
+      "query_lang": "en",
+      "relevant_doc": "en_252",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_summary_148",
+      "query": "The Pine River, formerly known as the South Branch Manistee River, is a 53",
+      "query_lang": "en",
+      "relevant_doc": "en_642",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_summary_302",
+      "query": "Kenworth Truck Company is an American truck manufacturer",
+      "query_lang": "en",
+      "relevant_doc": "en_508",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_title_230",
+      "query": "Kaposvár",
+      "query_lang": "fr",
+      "relevant_doc": "fr_474",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_title_100",
+      "query": "Country (álbum)",
+      "query_lang": "es",
+      "relevant_doc": "es_747",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_summary_125",
+      "query": "Ilam est une des trente et une provinces d'Iran",
+      "query_lang": "fr",
+      "relevant_doc": "fr_1369",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_title_128",
+      "query": "Anne Murray",
+      "query_lang": "es",
+      "relevant_doc": "es_748",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_title_43",
+      "query": "Outline of sports",
+      "query_lang": "en",
+      "relevant_doc": "en_20",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_summary_103",
+      "query": "Liste des œuvres de Jean Sibelius",
+      "query_lang": "fr",
+      "relevant_doc": "fr_1515",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_title_133",
+      "query": "Patrick O'Loughran",
+      "query_lang": "en",
+      "relevant_doc": "en_856",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_summary_296",
+      "query": "Numidia (en tamazight: ⵏⵓⵎⵉⴷⵢⴰ) (202 - 46 a",
+      "query_lang": "es",
+      "relevant_doc": "es_646",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_summary_289",
+      "query": "Sin Pijama est une chanson de la chanteuse américaine Becky G et de la chanteuse dominicaine Natti Natasha",
+      "query_lang": "fr",
+      "relevant_doc": "fr_343",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_title_237",
+      "query": "Egipto (provincia romana)",
+      "query_lang": "es",
+      "relevant_doc": "es_647",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_title_311",
+      "query": "International Science and Engineering Fair",
+      "query_lang": "en",
+      "relevant_doc": "en_870",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_title_43",
+      "query": "Nano (telenovela)",
+      "query_lang": "es",
+      "relevant_doc": "es_1180",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_title_207",
+      "query": "Irene Huss - En man med litet ansikte",
+      "query_lang": "es",
+      "relevant_doc": "es_766",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_title_371",
+      "query": "Homenaje al Agente Comercial",
+      "query_lang": "es",
+      "relevant_doc": "es_1484",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_title_329",
+      "query": "Basilicata",
+      "query_lang": "es",
+      "relevant_doc": "es_276",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_summary_200",
+      "query": "Georges Bonnard, né le 31 octobre 1886 à Nyon et mort le 15 avril 1967 à Bugnaux-sur-Rolle, est un enseignant, linguiste, critique et historien vaudois",
+      "query_lang": "fr",
+      "relevant_doc": "fr_1833",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_title_240",
+      "query": "Grand sceau de France",
+      "query_lang": "fr",
+      "relevant_doc": "fr_775",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_summary_160",
+      "query": "L'Imaginarium du docteur Parnassus (The Imaginarium of Doctor Parnassus) est un film franco-canado-britannique réalisé par Terry Gilliam, sorti en 2009",
+      "query_lang": "fr",
+      "relevant_doc": "fr_1585",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_title_0",
+      "query": "David Musgrave",
+      "query_lang": "en",
+      "relevant_doc": "en_1363",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_title_57",
+      "query": "Conurbación Chillán",
+      "query_lang": "es",
+      "relevant_doc": "es_878",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_summary_360",
+      "query": "One Breath (Russian: Один вдох, romanized: Odin vdokh) is a 2020 Russian sports drama film directed by Elena Hazanova about the unhappy heroine, whose new hobby, full of adrenaline and dangers, helps her to take a fresh look at life and find herself in this world, the film stars Viktoriya Isakova to prepare for the role of a year engaged in freediving",
+      "query_lang": "en",
+      "relevant_doc": "en_729",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_title_17",
+      "query": "Universidad de Padua",
+      "query_lang": "es",
+      "relevant_doc": "es_600",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_summary_316",
+      "query": "Russell Irving Tamblyn (born December 30, 1934), also known as Rusty Tamblyn, is an American film and television actor and dancer",
+      "query_lang": "en",
+      "relevant_doc": "en_1437",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_summary_186",
+      "query": "Le championnat du monde féminin de hockey sur glace est une compétition internationale de hockey sur glace, organisé chaque année par la Fédération internationale de hockey sur glace (désignée par la suite par le sigle de son nom anglais : International Ice Hockey Federation soit IIHF)",
+      "query_lang": "fr",
+      "relevant_doc": "fr_1705",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_title_110",
+      "query": "Borís Kurakin",
+      "query_lang": "es",
+      "relevant_doc": "es_564",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_title_106",
+      "query": "Une romance italienne",
+      "query_lang": "fr",
+      "relevant_doc": "fr_562",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_summary_292",
+      "query": "Antoku Tennō (安徳天皇, Antoku Tennō?), (22 de diciembre de 1178 - 25 de abril de 1185), fue el 81º Emperador de Japón, según el orden tradicional de sucesión",
+      "query_lang": "es",
+      "relevant_doc": "es_1086",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_summary_164",
+      "query": "Helmut Nordhaus (Erfurt, 10 de octubre de 1922 - ibídem, 14 de octubre de 2014) fue un entrenador y futbolista alemán que jugó en la demarcación de centrocampista",
+      "query_lang": "es",
+      "relevant_doc": "es_725",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_summary_336",
+      "query": "Íñigo López de Mendoza (fl",
+      "query_lang": "es",
+      "relevant_doc": "es_1597",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_title_324",
+      "query": "Système Oehler",
+      "query_lang": "fr",
+      "relevant_doc": "fr_466",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_summary_140",
+      "query": "Juan de Dios López de Victoria (March 8, 1898  August 29, 1992) was an auxiliary bishop for the Roman Catholic Archdiocese of San Juan de Puerto Rico",
+      "query_lang": "en",
+      "relevant_doc": "en_742",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_title_172",
+      "query": "John Hannah (actor)",
+      "query_lang": "en",
+      "relevant_doc": "en_975",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_title_85",
+      "query": "Blumea balsamifera",
+      "query_lang": "es",
+      "relevant_doc": "es_1772",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_title_125",
+      "query": "MacArthur Fellows Program",
+      "query_lang": "en",
+      "relevant_doc": "en_776",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_title_375",
+      "query": "Calahonda",
+      "query_lang": "es",
+      "relevant_doc": "es_1238",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_title_322",
+      "query": "Riz à la valencienne",
+      "query_lang": "fr",
+      "relevant_doc": "fr_805",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_summary_177",
+      "query": "En mathématiques, l'intégration ou calcul intégral est l'une des deux branches du calcul infinitésimal, l'autre étant le calcul différentiel",
+      "query_lang": "fr",
+      "relevant_doc": "fr_64",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    },
+    {
+      "query_id": "q_summary_307",
+      "query": "Torch, de son vrai nom Frederik Hahn, né le 29 septembre 1971 à Heidelberg, est un rappeur allemand",
+      "query_lang": "fr",
+      "relevant_doc": "fr_1086",
+      "found": false,
+      "reciprocal_rank": 0.0,
+      "recall": 0.0,
+      "ndcg": 0.0
+    }
+  ]
+}
