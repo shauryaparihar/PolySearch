@@ -65,7 +65,8 @@ The README and PROJECT_SUMMARY tables labelled "expected results" were targets, 
 
 ## 5. What was preserved
 
-- `docs/legacy/Cross_lingual_project_paper.pdf`: the original paper, unchanged.
+- `docs/legacy/Cross_lingual_project_paper.pdf`: the original paper, unchanged (kept on the
+  author's disk and not published in the repository; its hash is recorded below).
 - `docs/legacy/sentence-transformers_LaBSE_results.json`: the original stored result,
   unchanged (also present in the first Git commit).
 - `docs/legacy/CHECKSUMS.sha256`: SHA-256 of both files (`shasum -a 256 -c CHECKSUMS.sha256`).

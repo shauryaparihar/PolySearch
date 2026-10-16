@@ -4,6 +4,9 @@ plan.md
 cross_lingual_retrieval_plan.md
 docs/interview_notes.md
 
+# Original paper: kept on disk only (it lists co-author contact details); see docs/legacy/README.md
+docs/legacy/Cross_lingual_project_paper.pdf
+
 # Python
 .venv/
 venv/
