@@ -1,0 +1,13 @@
+[tool.pytest.ini_options]
+testpaths = ["backend/tests"]
+pythonpath = ["backend", "."]
+addopts = "-q"
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+# Legacy research scripts are kept as-is until they are replaced phase by phase.
+extend-exclude = ["src", "web_app", "colab_encoding", ".venv", "frontend"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B"]

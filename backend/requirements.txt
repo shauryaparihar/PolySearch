@@ -1,0 +1,7 @@
+# Backend runtime dependencies for the search engine (Phase 0 skeleton).
+# Later phases add SQLAlchemy/Alembic/psycopg, httpx, faiss, sentence-transformers.
+fastapi>=0.115,<1
+uvicorn>=0.30,<1
+pydantic>=2.7,<3
+pydantic-settings>=2.3,<3
+pandas>=2.0

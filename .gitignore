@@ -1,0 +1,43 @@
+# Private tooling and planning (never committed)
+.claude/
+plan.md
+cross_lingual_retrieval_plan.md
+docs/interview_notes.md
+
+# Python
+.venv/
+venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# Frontend
+node_modules/
+frontend/dist/
+
+# Secrets and local runtime state
+.env
+.env.*
+!.env.example
+*.db
+*.sqlite3
+*.log
+
+# Datasets, model downloads, and generated index artifacts (not approved for version control)
+data/raw/
+data/processed/
+data/embeddings/
+colab_encoding/*.csv
+models/
+artifacts/
+staging/
+*.pkl
+*.faiss
+
+# OS metadata and stray files
+.DS_Store
+65.0.0
+results/{*}/

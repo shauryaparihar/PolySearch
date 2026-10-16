@@ -13,6 +13,10 @@ import seaborn as sns
 from pathlib import Path
 import argparse
 import numpy as np
+import sys
+
+sys.path.insert(0, str(Path(__file__).resolve().parents[1] / 'backend'))
+from app.evidence import superiority_conclusion  # noqa: E402
 
 
 class RetrievalEvaluator:
@@ -202,23 +206,14 @@ class RetrievalEvaluator:
         report.append(comparison_df.to_string(index=False, float_format='%.4f'))
         report.append("")
         
-        # Best performing method
-        best_method = comparison_df.iloc[0]
+        # Findings: only state a comparison the data can support
         report.append("\n" + "="*70)
         report.append("KEY FINDINGS")
         report.append("="*70)
-        report.append(f"\n✓ Best performing method: {best_method['Method']}")
-        report.append(f"  - MRR: {best_method['MRR']:.4f}")
-        report.append(f"  - Recall@10: {best_method['Recall@10']:.4f}")
-        if 'nDCG@10' in best_method:
-            report.append(f"  - nDCG@10: {best_method['nDCG@10']:.4f}")
-        
-        # Improvement over baseline
-        if len(comparison_df) > 1:
-            baseline_mrr = comparison_df.iloc[-1]['MRR']
-            best_mrr = best_method['MRR']
-            improvement = ((best_mrr - baseline_mrr) / baseline_mrr) * 100
-            report.append(f"\n✓ Improvement over baseline: {improvement:.1f}%")
+        statement, notes = superiority_conclusion(results)
+        report.append(statement or "\nNo comparison can be drawn from these results.")
+        for note in notes:
+            report.append(f"  - {note}")
         
         # Per-language insights
         report.append("\n" + "="*70)
@@ -231,15 +226,6 @@ class RetrievalEvaluator:
                 for lang, mrr in sorted(data['per_language_mrr'].items()):
                     report.append(f"  {lang.upper()}: {mrr:.4f}")
         
-        report.append("\n" + "="*70)
-        report.append("CONCLUSION")
-        report.append("="*70)
-        report.append("\nThe dense retrieval approach using multilingual embeddings")
-        report.append("significantly outperforms traditional baseline methods for")
-        report.append("cross-lingual document retrieval. The system successfully")
-        report.append("retrieves relevant documents across English, Spanish, and French")
-        report.append("without requiring explicit translation, demonstrating the")
-        report.append("effectiveness of semantic similarity in multilingual contexts.")
         report.append("\n" + "="*70 + "\n")
         
         # Save report
