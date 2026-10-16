@@ -1,23 +1,19 @@
 """Search artifacts, retrieval modes and fusion.
 
-macOS OpenMP guard. ``faiss`` and ``torch`` each bundle their own OpenMP runtime. On macOS,
-once FAISS has run in a process, the next transformer call segfaults (measured here: 0 of 6
-runs survived with default threads, 8 of 8 with ``OMP_NUM_THREADS=1``). Two things are
-therefore fixed in this file, before either library is imported:
+macOS OpenMP guard (see ``app/search/openmp.py`` for the full explanation). The wheels of
+torch, faiss and scikit-learn each bundle their own OpenMP runtime; two runtimes in one process
+crash the transformer after FAISS has run. This file, which runs before any of them is imported:
 
-* ``torch`` is imported first;
-* on macOS, OpenMP is limited to one thread (``setdefault``: an explicit environment value
-  still wins, at the caller's risk). Linux, where Docker deployment runs, is unaffected.
+* decides the runtime policy: with a single shared runtime (``scripts/macos_unify_openmp.py``)
+  nothing is restricted; with split runtimes OpenMP is limited to one thread as a fallback;
+* imports ``torch`` first, so its runtime is the one that initialises first.
 
-The cost is single-threaded encoding on macOS; query encoding is one short text, so it is
-small. The latency report records ``torch_threads`` so the number is never ambiguous.
+Linux, where Docker deployment runs, shares the system ``libgomp`` and is unaffected.
 """
 
-import os
-import sys
+from app.search import openmp
 
-if sys.platform == "darwin":
-    os.environ.setdefault("OMP_NUM_THREADS", "1")
+OPENMP_POLICY = openmp.apply_runtime_policy()
 
 try:
     import torch  # noqa: E402,F401  (must precede any faiss import)
