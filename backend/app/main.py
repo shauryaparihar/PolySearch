@@ -13,7 +13,7 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from sqlalchemy.orm import Session, sessionmaker
 
-from app.api import routes, service
+from app.api import routes, service, suggest
 from app.api.cache import QueryCache
 from app.api.errors import install_error_handlers
 from app.api.guard import InferenceGuard
@@ -48,6 +48,9 @@ def create_app(
             settings.inference_max_concurrency, settings.inference_wait_timeout_seconds
         ),
         search_limiter=SlidingWindowLimiter(settings.search_rate_limit_per_minute),
+        suggest_limiter=SlidingWindowLimiter(settings.suggest_rate_limit_per_minute),
+        write_limiter=SlidingWindowLimiter(settings.write_rate_limit_per_minute),
+        admin_limiter=SlidingWindowLimiter(settings.admin_rate_limit_per_minute),
         cursor_secret=secret,
     )
 
@@ -67,6 +70,10 @@ def create_app(
                     session.commit()
             except Exception:  # database not reachable yet: /readyz reports it, search retries
                 log_event("index_registration_failed", level=40, error_code="DATABASE_UNAVAILABLE")
+            try:
+                suggest.get_suggester(state)  # build the autocomplete trie for this bundle
+            except Exception:  # retried lazily on the first suggestion request
+                log_event("suggester_build_failed", level=40, error_code="DATABASE_UNAVAILABLE")
         yield
 
     app = FastAPI(title="PolySearch", version="0.1.0", lifespan=lifespan)

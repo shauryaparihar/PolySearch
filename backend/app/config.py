@@ -50,6 +50,14 @@ class Settings(BaseSettings):
     # Raw query text is stored for analytics only when this is explicitly enabled.
     analytics_store_query_text: bool = False
 
+    # ---- product signals (Phase 5)
+    admin_api_key: str | None = None  # unset = admin endpoints do not exist (404)
+    suggest_rate_limit_per_minute: int = Field(default=120, ge=1, le=10_000)
+    write_rate_limit_per_minute: int = Field(default=60, ge=1, le=10_000)  # clicks, feedback
+    admin_rate_limit_per_minute: int = Field(default=10, ge=1, le=1000)  # incl. failed key attempts
+    popular_query_min_count: int = Field(default=5, ge=2, le=1000)
+    max_suggestions: int = Field(default=10, ge=1, le=20)
+
     @field_validator("cors_allowed_origins")
     @classmethod
     def _no_wildcard_origins(cls, origins: list[str]) -> list[str]:

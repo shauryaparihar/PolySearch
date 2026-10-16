@@ -36,6 +36,14 @@ def _check_encoder(state: AppState) -> bool:
     return state.bundle._encoder is not None  # noqa: SLF001 (loaded at startup)
 
 
+def _check_suggester(state: AppState) -> bool:
+    """The autocomplete trie exists for the bundle being served (built lazily if needed)."""
+    from app.api.suggest import get_suggester
+
+    suggester = get_suggester(state)
+    return suggester is not None and suggester.index_version == state.bundle.version
+
+
 def _check_mappings(state: AppState) -> bool:
     """Every indexed document key must resolve to an active database document."""
     indexed = state.bundle.document_keys()
@@ -57,6 +65,7 @@ CHECKS = {
     "active_index": _check_index_row,
     "artifacts": _check_artifacts,
     "encoder": _check_encoder,
+    "suggester": _check_suggester,
     "document_mappings": _check_mappings,
 }
 

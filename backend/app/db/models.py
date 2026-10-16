@@ -10,6 +10,7 @@ from sqlalchemy import (
     CheckConstraint,
     DateTime,
     ForeignKey,
+    ForeignKeyConstraint,
     Index,
     Integer,
     Numeric,
@@ -190,3 +191,55 @@ class SearchResult(Base):
     dense_score: Mapped[float | None] = mapped_column(Numeric(12, 8))
     lexical_rank: Mapped[int | None] = mapped_column(Integer)
     lexical_score: Mapped[float | None] = mapped_column(Numeric(12, 8))
+    # Set when the result was actually returned to a client (an impression).
+    shown_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True))
+
+
+FEEDBACK_LABELS = ("relevant", "not_relevant")
+
+
+def _result_fk() -> ForeignKeyConstraint:
+    return ForeignKeyConstraint(
+        ["search_run_id", "document_id"],
+        ["search_results.search_run_id", "search_results.document_id"],
+        ondelete="CASCADE",
+    )
+
+
+class ClickEvent(Base):
+    """A click on a result of a specific search. The composite foreign key means the database
+    itself rejects clicks on documents that search never returned."""
+
+    __tablename__ = "click_events"
+    __table_args__ = (
+        _result_fk(),
+        UniqueConstraint("search_run_id", "idempotency_key", name="uq_click_events_run_key"),
+        Index("ix_click_events_run_doc", "search_run_id", "document_id"),
+    )
+
+    id: Mapped[uuid.UUID] = mapped_column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
+    search_run_id: Mapped[uuid.UUID] = mapped_column(UUID(as_uuid=True))
+    document_id: Mapped[uuid.UUID] = mapped_column(UUID(as_uuid=True))
+    rank: Mapped[int] = mapped_column(Integer)  # rank at click time, read from the stored pool
+    idempotency_key: Mapped[str | None] = mapped_column(String(64))
+    created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), server_default=func.now())
+
+
+class RelevanceFeedback(Base):
+    __tablename__ = "relevance_feedback"
+    __table_args__ = (
+        _result_fk(),
+        UniqueConstraint("search_run_id", "document_id", name="uq_relevance_feedback_run_doc"),
+        CheckConstraint(
+            "label IN ('relevant', 'not_relevant')", name="ck_relevance_feedback_label"
+        ),
+    )
+
+    id: Mapped[uuid.UUID] = mapped_column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
+    search_run_id: Mapped[uuid.UUID] = mapped_column(UUID(as_uuid=True))
+    document_id: Mapped[uuid.UUID] = mapped_column(UUID(as_uuid=True))
+    label: Mapped[str] = mapped_column(String(16))
+    created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), server_default=func.now())
+    updated_at: Mapped[datetime] = mapped_column(
+        DateTime(timezone=True), server_default=func.now(), onupdate=func.now()
+    )

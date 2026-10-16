@@ -18,7 +18,7 @@ def test_ready_when_everything_matches(client):
     status, body = _ready(client)
     assert status == 200 and body["ready"] is True
     assert set(body["checks"]) == {
-        "database", "active_index", "artifacts", "encoder", "document_mappings",
+        "database", "active_index", "artifacts", "encoder", "suggester", "document_mappings",
     }  # fmt: skip
     assert all(body["checks"].values())
 

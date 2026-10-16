@@ -11,7 +11,7 @@ import time
 import uuid
 from datetime import UTC, datetime, timedelta
 
-from sqlalchemy import delete, select, tuple_
+from sqlalchemy import delete, select, tuple_, update
 from sqlalchemy.orm import Session
 
 from app.api.cache import cache_key, canonical_query, query_sha256
@@ -227,11 +227,13 @@ def run_search(state: AppState, req: SearchRequest, request_id: str) -> SearchRe
         )
         session.add(run)
         session.flush()
+        shown_at = datetime.now(UTC)
         session.add_all(
             SearchResult(
                 search_run_id=run.id,
                 document_id=by_key[h.key][0].id,
                 rank=rank,
+                shown_at=shown_at if rank <= req.page_size else None,  # first page = impressions
                 score=h.score,
                 dense_rank=h.dense_rank,
                 dense_score=h.dense_score,
@@ -312,6 +314,17 @@ def get_page(state: AppState, search_id: str, cursor: str | None, limit: int) ->
         ]
         attribution = load_attribution(session, {i.source for i in items} or set(run.sources))
         total = run.result_pool_size
+        if items:  # these results are being returned now: record the impressions
+            session.execute(
+                update(SearchResult)
+                .where(
+                    SearchResult.search_run_id == run.id,
+                    SearchResult.rank.in_([i.rank for i in items]),
+                    SearchResult.shown_at.is_(None),
+                )
+                .values(shown_at=datetime.now(UTC))
+            )
+            session.commit()
     last = items[-1].rank if items else start - 1
     next_cursor = encode_cursor(state.cursor_secret, search_id, last + 1) if last < total else None
     return ResultPage(

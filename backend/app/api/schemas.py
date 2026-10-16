@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import re
 import unicodedata
+import uuid
 from typing import Literal
 
 from pydantic import BaseModel, ConfigDict, Field, field_validator
@@ -87,3 +88,40 @@ class DocumentResponse(BaseModel):
     source_url: str
     source_revision: str | None
     attribution: SourceAttribution
+
+
+# ----------------------------------------------------------------- Phase 5 schemas
+class ClickRequest(BaseModel):
+    model_config = ConfigDict(extra="forbid")
+
+    document_id: uuid.UUID
+    # Optional client-generated id so a retried browser event is not counted twice.
+    idempotency_key: str | None = Field(default=None, pattern=r"^[A-Za-z0-9_\-]{8,64}$")
+
+
+class ClickResponse(BaseModel):
+    click_id: str
+    rank: int
+    duplicate: bool
+
+
+class FeedbackRequest(BaseModel):
+    model_config = ConfigDict(extra="forbid")
+
+    label: Literal["relevant", "not_relevant"]
+
+
+class FeedbackResponse(BaseModel):
+    document_id: str
+    label: Literal["relevant", "not_relevant"]
+    updated_at: str
+
+
+class SuggestionItem(BaseModel):
+    text: str
+    languages: list[Language]
+
+
+class SuggestionResponse(BaseModel):
+    prefix: str
+    suggestions: list[SuggestionItem]
