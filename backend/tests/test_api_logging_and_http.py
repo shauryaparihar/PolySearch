@@ -147,3 +147,36 @@ def test_registering_a_new_version_retires_the_previous_one(
         s.commit()
         s.refresh(old)
         assert (old.status, new.status) == ("retired", "active")
+
+
+@pytest.mark.parametrize(
+    ("method", "path"),
+    [
+        ("POST", "/api/v1/search"),
+        ("POST", "/api/v1/searches/abc/clicks"),
+        ("PUT", "/api/v1/searches/abc/feedback/def"),  # browsers preflight PUT before sending it
+        ("GET", "/api/v1/suggestions"),
+    ],
+)
+def test_browser_preflight_is_allowed_for_every_method_the_ui_uses(make_client, method, path):
+    client = make_client(cors_allowed_origins=["https://app.example.com"])
+    r = client.options(
+        path,
+        headers={
+            "origin": "https://app.example.com",
+            "access-control-request-method": method,
+            "access-control-request-headers": "content-type",
+        },
+    )
+    assert r.status_code == 200
+    assert r.headers["access-control-allow-origin"] == "https://app.example.com"
+    assert method in r.headers["access-control-allow-methods"]
+
+
+def test_methods_the_ui_never_uses_are_not_allowed_by_cors(make_client):
+    client = make_client(cors_allowed_origins=["https://app.example.com"])
+    r = client.options(
+        "/api/v1/search",
+        headers={"origin": "https://app.example.com", "access-control-request-method": "DELETE"},
+    )
+    assert r.status_code == 400  # preflight refused

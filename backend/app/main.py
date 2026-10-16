@@ -102,7 +102,7 @@ def create_app(
     app.add_middleware(  # added last = outermost, so even 413/429 responses carry CORS headers
         CORSMiddleware,
         allow_origins=settings.cors_allowed_origins,
-        allow_methods=["GET", "POST"],
+        allow_methods=["GET", "POST", "PUT"],  # PUT: relevance feedback
         allow_headers=["Content-Type", "X-Request-ID"],
         expose_headers=["X-Request-ID", "Retry-After"],
     )
