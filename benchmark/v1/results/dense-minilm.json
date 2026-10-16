@@ -1,0 +1,1891 @@
+{
+  "benchmark": {
+    "qrels": 200,
+    "qrels_sha256": "9d76d4ca9c549cd7e06ffd3fa77b192a6697dffa890b979fafe3d0b00eaf4018",
+    "queries": 100,
+    "queries_sha256": "7d2f2476145bd418d1b9009bf14748ea8558809eae62da5f5be8a2124853ee50",
+    "version": "v1"
+  },
+  "by_title_overlap": {
+    "no_title_overlap": {
+      "mrr": 0.922535,
+      "ndcg@10": 0.916103,
+      "queries": 71,
+      "recall@10": 0.929577
+    },
+    "query_contains_target_title": {
+      "mrr": 0.982759,
+      "ndcg@10": 0.989428,
+      "queries": 29,
+      "recall@10": 1.0
+    }
+  },
+  "corpus": {
+    "documents": 5735,
+    "per_language": {
+      "en": 1901,
+      "es": 1953,
+      "fr": 1881
+    },
+    "sha256": "6eddc47fdd973663a641bd5df45c06ce7d88bd9e42057f6a083cad840df9e53d"
+  },
+  "failure_count": 0,
+  "k": 10,
+  "limitations": [
+    "Constructed benchmark: concepts were chosen by hand and aligned through Wikipedia interlanguage links; it is not a set of real user relevance judgements.",
+    "Queries come from the same article text the corpus is built from (title or lead sentence), so named entities and cognates can inflate lexical overlap.",
+    "Only linked pages count as relevant; other genuinely relevant documents are scored as misses.",
+    "Small query set: differences between methods of a few points are not statistically meaningful.",
+    "Primary run excludes same-language documents, so it measures cross-language retrieval only."
+  ],
+  "method": "dense-minilm",
+  "mrr": 0.94,
+  "ndcg@10": 0.937367,
+  "per_query": [
+    {
+      "ndcg@10": 1.0,
+      "query_id": "c000-en-lead_sentence",
+      "recall@10": 1.0,
+      "reciprocal_rank": 1.0,
+      "top_10": [
+        "fr:Changement_climatique",
+        "es:Calentamiento_global",
+        "es:Problemas_ambientales_en_Afganistán",
+        "fr:Évolution_(biologie)",
+        "es:Inflación",
+        "fr:Inflation",
+        "es:Evolución_biológica",
+        "es:Reacción_química",
+        "es:Globalización",
+        "es:Biodiversidad"
+      ]
+    },
+    {
+      "ndcg@10": 1.0,
+      "query_id": "c000-en-title",
+      "recall@10": 1.0,
+      "reciprocal_rank": 1.0,
+      "top_10": [
+        "fr:Changement_climatique",
+        "es:Calentamiento_global",
+        "fr:Grenelle_de_l'environnement",
+        "es:Programa_de_las_Naciones_Unidas_para_el_Medio_Ambiente",
+        "es:Reacción_química",
+        "es:Problemas_ambientales_en_Afganistán",
+        "es:Glaciar",
+        "fr:Stormy_Weather_(chanson)",
+        "fr:Santé-environnement",
+        "es:Bosque_lluvioso"
+      ]
+    },
+    {
+      "ndcg@10": 1.0,
+      "query_id": "c001-es-lead_sentence",
+      "recall@10": 1.0,
+      "reciprocal_rank": 1.0,
+      "top_10": [
+        "fr:Photosynthèse",
+        "en:Photosynthesis",
+        "fr:Énergie_solaire",
+        "fr:Biochimie",
+        "fr:Chimie_organique",
+        "en:Sunlight",
+        "fr:Chimie_physique",
+        "en:Organic_chemistry",
+        "en:Solar_energy",
+        "fr:Énergie_nucléaire"
+      ]
+    },
+    {
+      "ndcg@10": 1.0,
+      "query_id": "c001-es-title",
+      "recall@10": 1.0,
+      "reciprocal_rank": 1.0,
+      "top_10": [
+        "fr:Photosynthèse",
+        "en:Photosynthesis",
+        "en:Image",
+        "en:3DISCO",
+        "fr:1951_en_photographie",
+        "fr:Rivastigmine",
+        "en:Sunlight",
+        "en:Atmospheric_optics",
+        "en:Picokijada",
+        "en:Crepuscular_rays"
+      ]
+    },
+    {
+      "ndcg@10": 1.0,
+      "query_id": "c002-fr-lead_sentence",
+      "recall@10": 1.0,
+      "reciprocal_rank": 1.0,
+      "top_10": [
+        "en:Vaccine",
+        "es:Vacuna",
+        "en:Antibiotic",
+        "es:Protección_civil",
+        "es:Antibiótico",
+        "es:Arma",
+        "es:Biología_celular",
+        "es:Fusil_automático",
+        "en:Gun_control",
+        "en:Regenerative_medicine"
+      ]
+    },
+    {
+      "ndcg@10": 1.0,
+      "query_id": "c002-fr-title",
+      "recall@10": 1.0,
+      "reciprocal_rank": 1.0,
+      "top_10": [
+        "en:Vaccine",
+        "es:Vacuna",
+        "es:OTs-38_Stechkin",
+        "es:Medicina",
+        "es:Gran_peste_de_Londres",
+        "en:Individual_Neutral_Athletes_at_the_2026_Winter_Olympics",
+        "en:Antibiotic",
+        "es:Antibiótico",
+        "en:2005_Women's_Hockey_Champions_Challenge",
+        "es:Campeonato_Mundial_de_Hockey_sobre_Hielo_Masculino_de_2022"
+      ]
+    },
+    {
+      "ndcg@10": 1.0,
+      "query_id": "c003-en-lead_sentence",
+      "recall@10": 1.0,
+      "reciprocal_rank": 1.0,
+      "top_10": [
+        "es:Internet",
+        "fr:Internet",
+        "fr:Réseau_de_tri",
+        "es:Tecnología_educativa",
+        "es:Tecnología_informática",
+        "es:Túnel_ICMP",
+        "fr:Institut_de_technologie",
+        "fr:Nouvelles_technologies",
+        "fr:Technologie_de_l'information",
+        "fr:Intelligence_artificielle"
+      ]
+    },
+    {
+      "ndcg@10": 1.0,
+      "query_id": "c003-en-title",
+      "recall@10": 1.0,
+      "reciprocal_rank": 1.0,
+      "top_10": [
+        "es:Internet",
+        "fr:Internet",
+        "es:Tecnología_informática",
+        "es:Tecnología_educativa",
+        "fr:Réseau_de_tri",
+        "fr:Technologie_de_l'information",
+        "fr:Institut_de_technologie",
+        "fr:Nouvelles_technologies",
+        "es:Tecnología",
+        "fr:Technologie_portable"
+      ]
+    },
+    {
+      "ndcg@10": 1.0,
+      "query_id": "c004-es-lead_sentence",
+      "recall@10": 1.0,
+      "reciprocal_rank": 1.0,
+      "top_10": [
+        "fr:Renaissance",
+        "en:Renaissance",
+        "fr:Lumières_(philosophie)",
+        "fr:Révolution_industrielle",
+        "en:Industrial_Revolution",
+        "en:Middle_Pleistocene",
+        "fr:Hip-hop_allemand",
+        "en:13th_century_in_Denmark",
+        "en:Timeline_of_prehistoric_Britain",
+        "en:Antique_firearms"
+      ]
+    },
+    {
+      "ndcg@10": 0.831555,
+      "query_id": "c004-es-title",
+      "recall@10": 1.0,
+      "reciprocal_rank": 1.0,
+      "top_10": [
+        "en:Renaissance",
+        "en:Regenerative_medicine",
+        "en:The_Return_(2024_film)",
+        "en:Jinakalamali",
+        "en:Brunhes–Matuyama_reversal",
+        "fr:Renaissance",
+        "fr:Résilience_(psychologie)",
+        "fr:Représentations_de_saint_Expédit",
+        "fr:Resurrección_María_de_Azkue",
+        "fr:Art_déco"
+      ]
+    },
+    {
+      "ndcg@10": 1.0,
+      "query_id": "c005-fr-lead_sentence",
+      "recall@10": 1.0,
+      "reciprocal_rank": 1.0,
+      "top_10": [
+        "en:Industrial_Revolution",
+        "es:Revolución_Industrial",
+        "es:Renacimiento",
+        "es:Economía_centralizada",
+        "es:Globalización",
+        "en:Renaissance",
+        "es:Promoción_industrial_en_Argentina",
+        "es:Promoción_Industrial_en_la_Provincia_de_San_Luis",
+        "es:Economía_agrícola",
+        "en:Globalization"
+      ]
+    },
+    {
+      "ndcg@10": 1.0,
+      "query_id": "c005-fr-title",
+      "recall@10": 1.0,
+      "reciprocal_rank": 1.0,
+      "top_10": [
+        "es:Revolución_Industrial",
+        "en:Industrial_Revolution",
+        "es:Promoción_Industrial_en_la_Provincia_de_San_Luis",
+        "es:Globalización",
+        "es:Economía_centralizada",
+        "es:Renacimiento",
+        "en:Globalization",
+        "es:Ministerio_de_Ciencia,_Tecnología_e_Innovación_(Argentina)",
+        "es:Promoción_industrial_en_Argentina",
+        "es:Factores_de_producción"
+      ]
+    },
+    {
+      "ndcg@10": 1.0,
+      "query_id": "c006-en-lead_sentence",
+      "recall@10": 1.0,
+      "reciprocal_rank": 1.0,
+      "top_10": [
+        "fr:Seconde_Guerre_mondiale",
+        "es:Segunda_Guerra_Mundial",
+        "fr:Seconde_guerre_sino-japonaise",
+        "es:Globalización",
+        "fr:Seconde_bataille_de_Wawer",
+        "es:Ocupación_aliada_de_Alemania",
+        "fr:Guerres_de_Silésie",
+        "fr:Mondialisation",
+        "es:Star_Wars:_Empire_at_War",
+        "fr:Liste_de_batailles_du_XIXe_siècle"
+      ]
+    },
+    {
+      "ndcg@10": 1.0,
+      "query_id": "c006-en-title",
+      "recall@10": 1.0,
+      "reciprocal_rank": 1.0,
+      "top_10": [
+        "fr:Seconde_Guerre_mondiale",
+        "es:Segunda_Guerra_Mundial",
+        "es:Ocupación_aliada_de_Alemania",
+        "fr:Seconde_guerre_sino-japonaise",
+        "fr:Liste_de_batailles_du_XIXe_siècle",
+        "fr:Guerres_de_Silésie",
+        "es:Guerra_de_Reforma",
+        "es:Batalla_de_las_Navas_de_Tolosa",
+        "es:Star_Wars:_Empire_at_War",
+        "es:Anatoli_Brandis"
+      ]
+    },
+    {
+      "ndcg@10": 1.0,
+      "query_id": "c007-es-lead_sentence",
+      "recall@10": 1.0,
+      "reciprocal_rank": 1.0,
+      "top_10": [
+        "en:Democracy",
+        "fr:Démocratie",
+        "fr:Politique",
+        "en:Politics",
+        "en:Mandate_(politics)",
+        "fr:Science_politique",
+        "en:Workplace_politics",
+        "en:Politician",
+        "fr:Économie_politique",
+        "fr:Cinquième_République_(France)"
+      ]
+    },
+    {
+      "ndcg@10": 1.0,
+      "query_id": "c007-es-title",
+      "recall@10": 1.0,
+      "reciprocal_rank": 1.0,
+      "top_10": [
+        "fr:Démocratie",
+        "en:Democracy",
+        "fr:Cinquième_République_(France)",
+        "fr:Rassemblement_constitutionnel_démocratique",
+        "en:Mandate_(politics)",
+        "fr:Politique",
+        "en:Democratic_Party_(Cook_Islands)",
+        "fr:Républicains_français_sous_le_Second_Empire",
+        "fr:Élections_législatives_françaises_de_1928",
+        "fr:Élection_partielle"
+      ]
+    },
+    {
+      "ndcg@10": 1.0,
+      "query_id": "c008-fr-lead_sentence",
+      "recall@10": 1.0,
+      "reciprocal_rank": 1.0,
+      "top_10": [
+        "es:Agujero_negro",
+        "en:Black_hole",
+        "en:Void_(astronomy)",
+        "en:Astronomy",
+        "es:Astronomía",
+        "es:Astronomía_extragaláctica",
+        "es:Astronomía_galáctica",
+        "en:Blackwater_river",
+        "en:Barred_spiral_galaxy",
+        "en:Spiral_galaxy"
+      ]
+    },
+    {
+      "ndcg@10": 0.919721,
+      "query_id": "c008-fr-title",
+      "recall@10": 1.0,
+      "reciprocal_rank": 1.0,
+      "top_10": [
+        "es:Agujero_negro",
+        "en:Black_Mountains_(North_Carolina)",
+        "en:Black_hole",
+        "en:The_Black_Keys",
+        "en:Black_Watch",
+        "es:Seven_Devils_(canción_de_Florence_and_the_Machine)",
+        "es:Formicivora_melanogaster",
+        "en:Blackwater_river",
+        "es:Los_misterios_de_la_jungla_negra",
+        "en:Black_River_(Southwest_Michigan)"
+      ]
+    },
+    {
+      "ndcg@10": 0.919721,
+      "query_id": "c009-en-lead_sentence",
+      "recall@10": 1.0,
+      "reciprocal_rank": 1.0,
+      "top_10": [
+        "fr:Acide_désoxyribonucléique",
+        "fr:Diéthylzinc",
+        "es:Ácido_desoxirribonucleico",
+        "fr:Thermoprotei",
+        "fr:Biologie_moléculaire",
+        "es:Química_orgánica",
+        "es:Odontopleuridae",
+        "fr:Pyrodictiaceae",
+        "es:Química_inorgánica",
+        "fr:Acidilobales"
+      ]
+    },
+    {
+      "ndcg@10": 1.0,
+      "query_id": "c009-en-title",
+      "recall@10": 1.0,
+      "reciprocal_rank": 1.0,
+      "top_10": [
+        "fr:Acide_désoxyribonucléique",
+        "es:Ácido_desoxirribonucleico",
+        "fr:Biologie_moléculaire",
+        "es:Biología_molecular",
+        "fr:Accouplement_(biologie)",
+        "es:Biología",
+        "fr:Acanthopterygii_(classification_phylogénétique)",
+        "es:Cáncer",
+        "fr:Famille_(biologie)",
+        "es:Evolución_biológica"
+      ]
+    },
+    {
+      "ndcg@10": 1.0,
+      "query_id": "c010-es-lead_sentence",
+      "recall@10": 1.0,
+      "reciprocal_rank": 1.0,
+      "top_10": [
+        "fr:Évolution_(biologie)",
+        "en:Evolution",
+        "fr:Psychologie_évolutionniste",
+        "fr:Famille_(biologie)",
+        "fr:Biochimie",
+        "fr:Biologie",
+        "fr:Genre_(biologie)",
+        "fr:Biodiversité",
+        "fr:Biologie_moléculaire",
+        "en:Molecular_biology"
+      ]
+    },
+    {
+      "ndcg@10": 1.0,
+      "query_id": "c010-es-title",
+      "recall@10": 1.0,
+      "reciprocal_rank": 1.0,
+      "top_10": [
+        "fr:Évolution_(biologie)",
+        "en:Evolution",
+        "fr:Psychologie_évolutionniste",
+        "fr:Accouplement_(biologie)",
+        "fr:Biologie",
+        "fr:Biologie_moléculaire",
+        "fr:Acanthopterygii_(classification_phylogénétique)",
+        "fr:Biochimie",
+        "fr:Famille_(biologie)",
+        "fr:Classe_(biologie)"
+      ]
+    },
+    {
+      "ndcg@10": 1.0,
+      "query_id": "c011-fr-lead_sentence",
+      "recall@10": 1.0,
+      "reciprocal_rank": 1.0,
+      "top_10": [
+        "en:Solar_System",
+        "es:Sistema_solar",
+        "es:Energía_solar",
+        "en:Solar_energy",
+        "en:Sun_Ray",
+        "es:Astronomía",
+        "es:Telescopio",
+        "es:Satélite_artificial",
+        "en:Astronomy",
+        "en:Sun_gun"
+      ]
+    },
+    {
+      "ndcg@10": 0.693426,
+      "query_id": "c011-fr-title",
+      "recall@10": 1.0,
+      "reciprocal_rank": 0.5,
+      "top_10": [
+        "es:Energía_solar",
+        "es:Sistema_solar",
+        "en:Solar_System",
+        "en:Solar_energy",
+        "en:Sun_Ray",
+        "en:Solar_eclipse_of_February_17,_2026",
+        "en:Sunlight",
+        "es:Telescopio",
+        "en:Crepuscular_rays",
+        "en:Sun_gun"
+      ]
+    },
+    {
+      "ndcg@10": 1.0,
+      "query_id": "c012-en-lead_sentence",
+      "recall@10": 1.0,
+      "reciprocal_rank": 1.0,
+      "top_10": [
+        "es:Volcán",
+        "fr:Volcan",
+        "fr:Batholite",
+        "es:Hraunfossar",
+        "fr:Roche_felsique",
+        "fr:Séisme",
+        "fr:Mont_Iō_(Iō-jima)",
+        "fr:Trachyte",
+        "fr:(1452)_Hunnia",
+        "fr:Mafique"
+      ]
+    },
+    {
+      "ndcg@10": 1.0,
+      "query_id": "c012-en-title",
+      "recall@10": 1.0,
+      "reciprocal_rank": 1.0,
+      "top_10": [
+        "fr:Volcan",
+        "es:Volcán",
+        "fr:Roche_felsique",
+        "fr:Everest",
+        "fr:Mont_Iō_(Iō-jima)",
+        "fr:Batholite",
+        "fr:Craton_du_Kaapvaal",
+        "es:Hraunfossar",
+        "fr:Massif_de_Parú-Euaja",
+        "fr:Séisme"
+      ]
+    },
+    {
+      "ndcg@10": 1.0,
+      "query_id": "c013-es-lead_sentence",
+      "recall@10": 1.0,
+      "reciprocal_rank": 1.0,
+      "top_10": [
+        "en:Earthquake",
+        "fr:Séisme",
+        "en:Tsunami",
+        "fr:Tsunami",
+        "fr:Colonne_Vendôme",
+        "en:Valley_of_Mexico",
+        "fr:Pic_du_Canigou",
+        "en:Volcano",
+        "fr:Batholite",
+        "fr:Pyrénées-Orientales"
+      ]
+    },
+    {
+      "ndcg@10": 1.0,
+      "query_id": "c013-es-title",
+      "recall@10": 1.0,
+      "reciprocal_rank": 1.0,
+      "top_10": [
+        "fr:Séisme",
+        "en:Earthquake",
+        "en:Tsunami",
+        "fr:Tsunami",
+        "fr:Volcan",
+        "en:Volcano",
+        "en:İskenderun",
+        "fr:Roche_felsique",
+        "fr:Craton_du_Kaapvaal",
+        "fr:Batholite"
+      ]
+    },
+    {
+      "ndcg@10": 1.0,
+      "query_id": "c014-fr-lead_sentence",
+      "recall@10": 1.0,
+      "reciprocal_rank": 1.0,
+      "top_10": [
+        "en:Tsunami",
+        "es:Tsunami",
+        "en:Earthquake",
+        "en:Blackwater_river",
+        "es:Terremoto",
+        "en:Palvico",
+        "es:Barranco_(geografía)",
+        "en:Rainbow",
+        "es:Río_Grande_(río_de_Tierra_del_Fuego)",
+        "es:Biología_marina"
+      ]
+    },
+    {
+      "ndcg@10": 1.0,
+      "query_id": "c014-fr-title",
+      "recall@10": 1.0,
+      "reciprocal_rank": 1.0,
+      "top_10": [
+        "en:Tsunami",
+        "es:Tsunami",
+        "en:Earthquake",
+        "es:Terremoto",
+        "es:Costa_Smeralda",
+        "es:Costa_Smeralda_(barco)",
+        "en:Heavy_Is_the_Ocean",
+        "es:Barranco_(geografía)",
+        "es:Bahía_Agradable",
+        "es:Terremoto_de_Basilicata_de_1857"
+      ]
+    },
+    {
+      "ndcg@10": 1.0,
+      "query_id": "c015-en-lead_sentence",
+      "recall@10": 1.0,
+      "reciprocal_rank": 1.0,
+      "top_10": [
+        "fr:Cancer",
+        "es:Cáncer",
+        "es:Biología_celular",
+        "fr:Cellule_(biologie)",
+        "fr:Rôle_de_l'alimentation_dans_la_prévention_des_cancers",
+        "es:Medicina_forense",
+        "fr:Médecine_légale",
+        "fr:Vaccin",
+        "es:Física_nuclear",
+        "es:Medicina_de_emergencia"
+      ]
+    },
+    {
+      "ndcg@10": 1.0,
+      "query_id": "c015-en-title",
+      "recall@10": 1.0,
+      "reciprocal_rank": 1.0,
+      "top_10": [
+        "es:Cáncer",
+        "fr:Cancer",
+        "fr:Médecine_légale",
+        "es:Medicina_forense",
+        "es:Medicina",
+        "fr:Rôle_de_l'alimentation_dans_la_prévention_des_cancers",
+        "fr:Médecine",
+        "es:Medicina_china_tradicional",
+        "es:Medicina_de_emergencia",
+        "fr:Médecin"
+      ]
+    },
+    {
+      "ndcg@10": 1.0,
+      "query_id": "c016-es-lead_sentence",
+      "recall@10": 1.0,
+      "reciprocal_rank": 1.0,
+      "top_10": [
+        "en:Diabetes",
+        "fr:Diabète_sucré",
+        "fr:Glycérol",
+        "fr:Alimentation_complémentaire",
+        "fr:Électricité",
+        "en:Electricity",
+        "fr:Choléra",
+        "fr:Kéfir",
+        "fr:Électrophorèse",
+        "fr:Bactérie_lactique"
+      ]
+    },
+    {
+      "ndcg@10": 1.0,
+      "query_id": "c016-es-title",
+      "recall@10": 1.0,
+      "reciprocal_rank": 1.0,
+      "top_10": [
+        "en:Diabetes",
+        "fr:Diabète_sucré",
+        "fr:Glycérol",
+        "en:Lay's",
+        "en:Jack_Fisher",
+        "fr:Kéfir",
+        "fr:DS_3_II",
+        "fr:Médecine_traditionnelle",
+        "en:General_Services_Administration",
+        "fr:Matt_Roy_(hockey_sur_glace)"
+      ]
+    },
+    {
+      "ndcg@10": 1.0,
+      "query_id": "c017-fr-lead_sentence",
+      "recall@10": 1.0,
+      "reciprocal_rank": 1.0,
+      "top_10": [
+        "en:Antibiotic",
+        "es:Antibiótico",
+        "es:Biología_sintética",
+        "en:Molecular_biology",
+        "es:Medicina",
+        "en:Bioorganic_chemistry",
+        "es:Biología_molecular",
+        "es:Vacuna",
+        "en:Vaccine",
+        "es:Biología"
+      ]
+    },
+    {
+      "ndcg@10": 1.0,
+      "query_id": "c017-fr-title",
+      "recall@10": 1.0,
+      "reciprocal_rank": 1.0,
+      "top_10": [
+        "en:Antibiotic",
+        "es:Antibiótico",
+        "es:Medicina",
+        "en:Best_Medicine",
+        "es:Medicina_alternativa",
+        "es:Proteus_mirabilis",
+        "es:Medicina_de_emergencia",
+        "es:Doctor_en_Medicina",
+        "es:Química_medicinal",
+        "es:Facultad_de_medicina"
+      ]
+    },
+    {
+      "ndcg@10": 1.0,
+      "query_id": "c018-en-lead_sentence",
+      "recall@10": 1.0,
+      "reciprocal_rank": 1.0,
+      "top_10": [
+        "fr:Presse_typographique",
+        "es:Imprenta",
+        "fr:Capteur",
+        "es:Oficina_sin_papel",
+        "es:Ciencia_de_materiales",
+        "es:Centrifugadora",
+        "fr:Cinéma_expérimental",
+        "fr:Air_comprimé",
+        "es:Dematerialización",
+        "fr:Littérature"
+      ]
+    },
+    {
+      "ndcg@10": 1.0,
+      "query_id": "c018-en-title",
+      "recall@10": 1.0,
+      "reciprocal_rank": 1.0,
+      "top_10": [
+        "es:Imprenta",
+        "fr:Presse_typographique",
+        "fr:Centre_de_la_gravure_et_de_l'image_imprimée",
+        "fr:Presse_à_New_York",
+        "es:Oficina_sin_papel",
+        "fr:Loi_de_la_presse_sous_le_Second_Empire_et_la_Troisième_République",
+        "es:Dematerialización",
+        "fr:Capteur",
+        "fr:Le_Rapt_d'Europe_(Titien)",
+        "fr:Т̈"
+      ]
+    },
+    {
+      "ndcg@10": 1.0,
+      "query_id": "c019-es-lead_sentence",
+      "recall@10": 1.0,
+      "reciprocal_rank": 1.0,
+      "top_10": [
+        "fr:Télescope",
+        "en:Telescope",
+        "fr:Astronome",
+        "fr:Astronomie_d'observation",
+        "fr:Astronomie",
+        "en:Sun_gun",
+        "en:Atmospheric_optics",
+        "en:Astronomy",
+        "en:Video_astronomy",
+        "fr:Mesure_des_distances_en_astronomie"
+      ]
+    },
+    {
+      "ndcg@10": 1.0,
+      "query_id": "c019-es-title",
+      "recall@10": 1.0,
+      "reciprocal_rank": 1.0,
+      "top_10": [
+        "en:Telescope",
+        "fr:Télescope",
+        "fr:Astronome",
+        "fr:Astronomie_d'observation",
+        "en:Sun_gun",
+        "en:Video_astronomy",
+        "en:Atmospheric_optics",
+        "fr:Astronomie",
+        "en:Rampside_Leading_Light",
+        "fr:Association_internationale_Dark_Sky"
+      ]
+    },
+    {
+      "ndcg@10": 1.0,
+      "query_id": "c020-fr-lead_sentence",
+      "recall@10": 1.0,
+      "reciprocal_rank": 1.0,
+      "top_10": [
+        "en:Electricity",
+        "es:Electricidad",
+        "es:Energía_eólica",
+        "es:Motor",
+        "es:Física",
+        "es:Energía_solar",
+        "es:Energía_nuclear",
+        "en:Solar_energy",
+        "es:Magnitud_física",
+        "en:Shock_and_Awe:_The_Story_of_Electricity"
+      ]
+    },
+    {
+      "ndcg@10": 1.0,
+      "query_id": "c020-fr-title",
+      "recall@10": 1.0,
+      "reciprocal_rank": 1.0,
+      "top_10": [
+        "es:Electricidad",
+        "en:Electricity",
+        "es:Energía_eólica",
+        "es:Power_Grid",
+        "en:Shock_and_Awe:_The_Story_of_Electricity",
+        "es:Energía_solar",
+        "en:Solar_energy",
+        "es:Pluz_Energía_Perú",
+        "es:Apagón_del_Líbano_de_2021",
+        "es:Motor"
+      ]
+    },
+    {
+      "ndcg@10": 1.0,
+      "query_id": "c021-en-lead_sentence",
+      "recall@10": 1.0,
+      "reciprocal_rank": 1.0,
+      "top_10": [
+        "es:Energía_nuclear",
+        "fr:Énergie_nucléaire",
+        "es:Física_nuclear",
+        "fr:Physique_nucléaire",
+        "es:Energía_nuclear_en_Francia",
+        "es:Energía_solar",
+        "fr:Énergie_(économie)",
+        "es:Fotosíntesis",
+        "es:Enriquecimiento_de_uranio",
+        "es:Energía_eólica"
+      ]
+    },
+    {
+      "ndcg@10": 1.0,
+      "query_id": "c021-en-title",
+      "recall@10": 1.0,
+      "reciprocal_rank": 1.0,
+      "top_10": [
+        "fr:Énergie_nucléaire",
+        "es:Energía_nuclear",
+        "es:Física_nuclear",
+        "fr:Physique_nucléaire",
+        "es:Energía_nuclear_en_Francia",
+        "es:Enriquecimiento_de_uranio",
+        "es:Separación_isotópica",
+        "es:Central_nuclear_de_Brennilis",
+        "es:Centrifugadora_de_gas",
+        "es:Centrifugadora_Zippe"
+      ]
+    },
+    {
+      "ndcg@10": 1.0,
+      "query_id": "c022-es-lead_sentence",
+      "recall@10": 1.0,
+      "reciprocal_rank": 1.0,
+      "top_10": [
+        "en:Solar_energy",
+        "fr:Énergie_solaire",
+        "en:Sunlight",
+        "fr:Énergie_(économie)",
+        "en:Nuclear_power",
+        "fr:Énergie_éolienne",
+        "fr:Électricité",
+        "fr:Système_solaire",
+        "en:Electricity",
+        "en:Wind_power"
+      ]
+    },
+    {
+      "ndcg@10": 1.0,
+      "query_id": "c022-es-title",
+      "recall@10": 1.0,
+      "reciprocal_rank": 1.0,
+      "top_10": [
+        "en:Solar_energy",
+        "fr:Énergie_solaire",
+        "fr:Système_solaire",
+        "en:Solar_System",
+        "en:Sunlight",
+        "fr:Éclipse_solaire",
+        "en:Sun_Ray",
+        "fr:Liste_d'objets_du_Système_solaire",
+        "en:Nuclear_power",
+        "fr:Éclipse_solaire_du_11_août_1999"
+      ]
+    },
+    {
+      "ndcg@10": 1.0,
+      "query_id": "c023-fr-lead_sentence",
+      "recall@10": 1.0,
+      "reciprocal_rank": 1.0,
+      "top_10": [
+        "es:Energía_eólica",
+        "en:Wind_power",
+        "es:Aerostato",
+        "es:Aeroponía",
+        "es:Motor",
+        "es:Globo_de_aire_caliente",
+        "es:Electricidad",
+        "en:Solar_energy",
+        "es:Actividad_física",
+        "es:Recarga_accionada_por_gas"
+      ]
+    },
+    {
+      "ndcg@10": 0.0,
+      "query_id": "c023-fr-title",
+      "recall@10": 0.0,
+      "reciprocal_rank": 0.0,
+      "top_10": [
+        "es:ARA_Bahía_Agradable_(A-23)",
+        "en:Anabranch",
+        "en:Mikoyan-Gurevich_MiG-105",
+        "es:Barranco_(geografía)",
+        "es:Brachinus_crepitans",
+        "es:Ara_glaucogularis",
+        "en:Spiral_Jetty",
+        "es:Temperature_and_Winds_for_InSight",
+        "en:Oreilles_d'âne",
+        "en:Axylia_putris"
+      ]
+    },
+    {
+      "ndcg@10": 1.0,
+      "query_id": "c024-en-lead_sentence",
+      "recall@10": 1.0,
+      "reciprocal_rank": 1.0,
+      "top_10": [
+        "fr:Intelligence_artificielle",
+        "es:Inteligencia_artificial",
+        "es:Aprendizaje_automático_en_videojuegos",
+        "es:Tecnología_informática",
+        "fr:Mathématiques_appliquées",
+        "fr:Optimisation_(mathématiques)",
+        "es:Matemática_aplicada",
+        "fr:Fonction_(mathématiques)",
+        "es:Tecnología",
+        "es:Biología_teórica"
+      ]
+    },
+    {
+      "ndcg@10": 1.0,
+      "query_id": "c024-en-title",
+      "recall@10": 1.0,
+      "reciprocal_rank": 1.0,
+      "top_10": [
+        "fr:Intelligence_artificielle",
+        "es:Inteligencia_artificial",
+        "es:Aprendizaje_automático_en_videojuegos",
+        "es:Tecnología_informática",
+        "fr:Optimisation_(mathématiques)",
+        "fr:Mathématiques_appliquées",
+        "es:Matemática_aplicada",
+        "fr:Fonction_(mathématiques)",
+        "fr:Ingénierie_sociale_(sécurité_de_l'information)",
+        "es:Tecnología"
+      ]
+    },
+    {
+      "ndcg@10": 1.0,
+      "query_id": "c025-es-lead_sentence",
+      "recall@10": 1.0,
+      "reciprocal_rank": 1.0,
+      "top_10": [
+        "fr:Cryptographie",
+        "en:Cryptography",
+        "en:History_of_bitcoin",
+        "fr:Sceau",
+        "fr:Romanisation_DIN",
+        "fr:Nomenclature_anatomique",
+        "en:Bracket_ring",
+        "fr:Académie_de_la_langue_basque",
+        "fr:Superstition",
+        "fr:Logique_mathématique"
+      ]
+    },
+    {
+      "ndcg@10": 0.0,
+      "query_id": "c025-es-title",
+      "recall@10": 0.0,
+      "reciprocal_rank": 0.0,
+      "top_10": [
+        "en:3DISCO",
+        "fr:Sceau",
+        "en:Épinal_print",
+        "en:Bracket",
+        "fr:Tri_pair-impair",
+        "en:Harlequin_print",
+        "fr:Presse_typographique",
+        "fr:Ligne_âpre",
+        "fr:Articulation_coxale",
+        "fr:Géographie_(Ptolémée)"
+      ]
+    },
+    {
+      "ndcg@10": 1.0,
+      "query_id": "c026-fr-lead_sentence",
+      "recall@10": 1.0,
+      "reciprocal_rank": 1.0,
+      "top_10": [
+        "en:Olympic_Games",
+        "es:Juegos_Olímpicos",
+        "en:Olympic_sports",
+        "es:Deportes_olímpicos",
+        "es:Austria_en_los_Juegos_Olímpicos",
+        "es:Campeonato_Mundial_de_Europe",
+        "es:Juegos_Olímpicos_de_Moscú_1980",
+        "en:Italy_at_the_2026_Winter_Olympics",
+        "es:Juegos_Olímpicos_de_Sarajevo_1984",
+        "en:2000_Summer_Olympics"
+      ]
+    },
+    {
+      "ndcg@10": 0.919721,
+      "query_id": "c026-fr-title",
+      "recall@10": 1.0,
+      "reciprocal_rank": 1.0,
+      "top_10": [
+        "es:Juegos_Olímpicos",
+        "en:Olympic_sports",
+        "en:Olympic_Games",
+        "en:Athletics_at_the_1995_Summer_Universiade",
+        "es:Juegos_Olímpicos_de_Moscú_1980",
+        "es:Juegos_Olímpicos_de_Los_Ángeles_1984",
+        "es:Juegos_Olímpicos_de_Sarajevo_1984",
+        "en:United_States_at_the_2026_Winter_Olympics",
+        "en:Italy_at_the_2026_Winter_Olympics",
+        "en:Japan_at_the_2026_Winter_Olympics"
+      ]
+    },
+    {
+      "ndcg@10": 1.0,
+      "query_id": "c027-en-lead_sentence",
+      "recall@10": 1.0,
+      "reciprocal_rank": 1.0,
+      "top_10": [
+        "fr:Football",
+        "es:Fútbol",
+        "fr:Championnat_d'Angleterre_de_football",
+        "es:Golf",
+        "es:Rugby_en_Argentina",
+        "es:Deporte",
+        "fr:Coupe_du_monde_de_football_des_moins_de_20_ans_2015",
+        "es:Selección_de_fútbol_sub-19_de_Francia",
+        "fr:Équipe_du_Canada_de_soccer",
+        "fr:Coupe_du_monde_de_football_des_moins_de_20_ans"
+      ]
+    },
+    {
+      "ndcg@10": 0.693426,
+      "query_id": "c027-en-title",
+      "recall@10": 1.0,
+      "reciprocal_rank": 0.5,
+      "top_10": [
+        "fr:Championnat_d'Angleterre_de_football",
+        "es:Fútbol",
+        "fr:Football",
+        "fr:Championnat_nord-américain_des_nations",
+        "es:Minnesota_United_Football_Club",
+        "es:Rugby_en_Argentina",
+        "fr:Coupe_du_monde_de_football_des_moins_de_20_ans",
+        "es:Deportes_Quindío",
+        "fr:Coupe_du_monde_de_football_des_moins_de_20_ans_2015",
+        "es:Los_tres_grandes_del_fútbol_peruano"
+      ]
+    },
+    {
+      "ndcg@10": 1.0,
+      "query_id": "c028-es-lead_sentence",
+      "recall@10": 1.0,
+      "reciprocal_rank": 1.0,
+      "top_10": [
+        "fr:Basket-ball",
+        "en:Basketball",
+        "fr:Coupe_du_monde_masculine_de_basket-ball",
+        "fr:EuroCoupe_de_basket-ball_2007-2008",
+        "en:Sport",
+        "fr:Sport_professionnel",
+        "fr:Équipe_d'Algérie_masculine_de_basket-ball",
+        "fr:Championnat_d'Algérie_de_basket-ball",
+        "fr:Championnat_d'Europe_masculin_de_basket-ball",
+        "fr:EuroChallenge"
+      ]
+    },
+    {
+      "ndcg@10": 0.0,
+      "query_id": "c028-es-title",
+      "recall@10": 0.0,
+      "reciprocal_rank": 0.0,
+      "top_10": [
+        "en:Tamang_Panahon",
+        "en:Abies_balsamea",
+        "fr:J_Balvin",
+        "fr:Vingt_Mille_Lieues_sur_la_Terre",
+        "en:Paneurhythmy",
+        "en:For_Tinkerbell",
+        "en:Mikoyan-Gurevich_MiG-105",
+        "fr:Bagratides",
+        "fr:Sarsuela",
+        "fr:Chapeau_claque_(film)"
+      ]
+    },
+    {
+      "ndcg@10": 1.0,
+      "query_id": "c029-fr-lead_sentence",
+      "recall@10": 1.0,
+      "reciprocal_rank": 1.0,
+      "top_10": [
+        "en:Chess",
+        "es:Ajedrez",
+        "es:Auto_battler",
+        "en:World_Chess_Championship_2023",
+        "en:World_Chess_Championship_2024",
+        "es:Videojuego_de_deportes",
+        "en:World_Chess_Championship_2021",
+        "en:FIDE_World_Fischer_Random_Chess_Championship_2022",
+        "en:Illithid",
+        "es:Golf"
+      ]
+    },
+    {
+      "ndcg@10": 0.0,
+      "query_id": "c029-fr-title",
+      "recall@10": 0.0,
+      "reciprocal_rank": 0.0,
+      "top_10": [
+        "en:Votre_bel_aujourd'hui",
+        "en:Le_Sommeil_du_monstre",
+        "es:ARA_Bahía_Agradable_(A-23)",
+        "es:Mangala_Sutta",
+        "en:Jinakalamali",
+        "es:Kalyāṇamittatā",
+        "en:Tamang_Panahon",
+        "en:Scalped_(comics)",
+        "en:Hope_You're_Happy,_Lemon",
+        "en:Lettres_des_Jeux_olympiques"
+      ]
+    },
+    {
+      "ndcg@10": 1.0,
+      "query_id": "c030-en-lead_sentence",
+      "recall@10": 1.0,
+      "reciprocal_rank": 1.0,
+      "top_10": [
+        "fr:Opéra",
+        "es:Ópera",
+        "es:Música_clásica",
+        "fr:Musique_classique",
+        "es:Música",
+        "es:Música_culta",
+        "es:Música_sacra",
+        "es:Música_del_Barroco",
+        "fr:Musique_de_film",
+        "fr:Musique_baroque"
+      ]
+    },
+    {
+      "ndcg@10": 1.0,
+      "query_id": "c030-en-title",
+      "recall@10": 1.0,
+      "reciprocal_rank": 1.0,
+      "top_10": [
+        "fr:Opéra",
+        "es:Ópera",
+        "es:Música_del_Barroco",
+        "es:Música",
+        "es:El_caballero_de_la_rosa",
+        "fr:Opéra_municipal_de_Marseille",
+        "es:Música_culta",
+        "es:Historia_de_una_noche_(película_de_1963)",
+        "es:Historia_de_una_noche_(película_de_1941)",
+        "fr:Musique_baroque"
+      ]
+    },
+    {
+      "ndcg@10": 1.0,
+      "query_id": "c031-es-lead_sentence",
+      "recall@10": 1.0,
+      "reciprocal_rank": 1.0,
+      "top_10": [
+        "en:Jazz",
+        "fr:Jazz",
+        "en:Pacific_Jazz_Records",
+        "en:The_Jazz_Messengers",
+        "fr:Clarinette_ancienne",
+        "fr:Charleston_(danse)",
+        "fr:Musique_soul",
+        "en:Live_at_the_Loosdrecht_Jazz_Festival",
+        "fr:Musique_country",
+        "en:Music_of_the_American_Civil_War"
+      ]
+    },
+    {
+      "ndcg@10": 1.0,
+      "query_id": "c031-es-title",
+      "recall@10": 1.0,
+      "reciprocal_rank": 1.0,
+      "top_10": [
+        "fr:Jazz",
+        "en:Jazz",
+        "en:Pacific_Jazz_Records",
+        "en:The_Jazz_Messengers",
+        "en:Live_at_the_Loosdrecht_Jazz_Festival",
+        "fr:Clarinette_ancienne",
+        "fr:Diga_Diga_Doo",
+        "en:Music_of_the_American_Civil_War",
+        "fr:Musique_soul",
+        "en:The_Music"
+      ]
+    },
+    {
+      "ndcg@10": 1.0,
+      "query_id": "c032-fr-lead_sentence",
+      "recall@10": 1.0,
+      "reciprocal_rank": 1.0,
+      "top_10": [
+        "en:Impressionism",
+        "es:Impresionismo",
+        "es:Arte_por_el_arte",
+        "es:Arte_medieval",
+        "es:Crítica_de_arte",
+        "es:Indianismo_arcádico",
+        "es:Arte_contemporáneo",
+        "es:Renacimiento",
+        "es:Cubismo",
+        "en:The_arts"
+      ]
+    },
+    {
+      "ndcg@10": 0.919721,
+      "query_id": "c032-fr-title",
+      "recall@10": 1.0,
+      "reciprocal_rank": 1.0,
+      "top_10": [
+        "en:Impressionism",
+        "es:Arte_por_el_arte",
+        "es:Impresionismo",
+        "en:The_Mansion_of_Happiness",
+        "en:The_Intouchables",
+        "es:Indianismo_arcádico",
+        "es:Literatura_fantástica",
+        "es:Crítica_de_arte",
+        "en:Experience",
+        "en:L'Avenir_de_l'intelligence"
+      ]
+    },
+    {
+      "ndcg@10": 1.0,
+      "query_id": "c033-en-lead_sentence",
+      "recall@10": 1.0,
+      "reciprocal_rank": 1.0,
+      "top_10": [
+        "fr:Cubisme",
+        "es:Cubismo",
+        "fr:Art_déco",
+        "fr:Impressionnisme",
+        "es:Impresionismo",
+        "es:Arte_paleolítico",
+        "fr:Galerie_Gimpel_&_Müller",
+        "es:Renacimiento",
+        "es:Weißenhofsiedlung",
+        "fr:Musique_baroque"
+      ]
+    },
+    {
+      "ndcg@10": 1.0,
+      "query_id": "c033-en-title",
+      "recall@10": 1.0,
+      "reciprocal_rank": 1.0,
+      "top_10": [
+        "fr:Cubisme",
+        "es:Cubismo",
+        "es:Aderus",
+        "fr:Léopard",
+        "es:Monserrat_(Buenos_Aires)",
+        "es:Daniel_Burnham",
+        "es:Marie-Louise_Bauchot",
+        "es:Carpintería_de_ribera_en_la_región_de_Aysén",
+        "es:Platymiscium_diadelphum",
+        "es:Ara_glaucogularis"
+      ]
+    },
+    {
+      "ndcg@10": 1.0,
+      "query_id": "c034-es-lead_sentence",
+      "recall@10": 1.0,
+      "reciprocal_rank": 1.0,
+      "top_10": [
+        "en:William_Shakespeare",
+        "fr:William_Shakespeare",
+        "fr:Littérature_anglaise",
+        "en:William_de_Lancaster_I",
+        "fr:Littérature",
+        "en:Literature",
+        "en:The_Canterbury_Tales_(film)",
+        "en:Cambridge_(book)",
+        "en:A_Poet_(film)",
+        "en:1826_in_literature"
+      ]
+    },
+    {
+      "ndcg@10": 1.0,
+      "query_id": "c034-es-title",
+      "recall@10": 1.0,
+      "reciprocal_rank": 1.0,
+      "top_10": [
+        "en:William_Shakespeare",
+        "fr:William_Shakespeare",
+        "en:William_de_Lancaster_I",
+        "en:Cambridge_(book)",
+        "fr:L'Étoile_de_Pandore_:_Judas_démasqué",
+        "fr:Littérature",
+        "fr:Demain,_dès_l'aube…",
+        "en:The_Canterbury_Tales_(film)",
+        "fr:Roman_(littérature)",
+        "en:Pierre_de_La_Montagne"
+      ]
+    },
+    {
+      "ndcg@10": 1.0,
+      "query_id": "c035-fr-lead_sentence",
+      "recall@10": 1.0,
+      "reciprocal_rank": 1.0,
+      "top_10": [
+        "es:Leonardo_da_Vinci",
+        "en:Leonardo_da_Vinci",
+        "es:Abraham_de_Fabert",
+        "en:Poet_laureate",
+        "en:William-Adolphe_Bouguereau",
+        "es:Antonio_de_Padua",
+        "es:William_Shakespeare",
+        "es:Arte_medieval",
+        "es:Peyo",
+        "es:Juan_Ruiz_de_Luna"
+      ]
+    },
+    {
+      "ndcg@10": 1.0,
+      "query_id": "c035-fr-title",
+      "recall@10": 1.0,
+      "reciprocal_rank": 1.0,
+      "top_10": [
+        "en:Leonardo_da_Vinci",
+        "es:Leonardo_da_Vinci",
+        "en:William-Adolphe_Bouguereau",
+        "es:El_caballero_de_la_rosa",
+        "es:William_Sinclair_de_Roslin_(normando)",
+        "es:Roberto_de_Vitré",
+        "en:William_de_Lancaster_I",
+        "es:Abraham_de_Fabert",
+        "es:Virgen_de_los_Milagros",
+        "en:Pierre_de_La_Montagne"
+      ]
+    },
+    {
+      "ndcg@10": 1.0,
+      "query_id": "c036-en-lead_sentence",
+      "recall@10": 1.0,
+      "reciprocal_rank": 1.0,
+      "top_10": [
+        "es:Isaac_Newton",
+        "fr:Isaac_Newton",
+        "es:Albert_Einstein",
+        "es:Giuseppe_Giovanni_Antonio_Meneghini",
+        "es:Steve_McQueen_(director)",
+        "fr:Albert_Einstein",
+        "es:Miguel_Espinoza_Verdejo",
+        "es:Física",
+        "es:Leonardo_da_Vinci",
+        "es:James_Mirrlees"
+      ]
+    },
+    {
+      "ndcg@10": 1.0,
+      "query_id": "c036-en-title",
+      "recall@10": 1.0,
+      "reciprocal_rank": 1.0,
+      "top_10": [
+        "es:Isaac_Newton",
+        "fr:Isaac_Newton",
+        "es:Steve_McQueen_(director)",
+        "fr:Laurent_Bernard_Berlèse",
+        "fr:Jim_Carrey",
+        "es:Abraham_de_Fabert",
+        "es:Georges_Berger",
+        "es:Néstor_Martín-Fernández_de_la_Torre",
+        "es:Albert_Einstein",
+        "es:Cubismo"
+      ]
+    },
+    {
+      "ndcg@10": 1.0,
+      "query_id": "c037-es-lead_sentence",
+      "recall@10": 1.0,
+      "reciprocal_rank": 1.0,
+      "top_10": [
+        "fr:Albert_Einstein",
+        "en:Albert_Einstein",
+        "fr:Elsa_Einstein",
+        "fr:Isaac_Newton",
+        "en:Wolfgang_Amadeus_Mozart",
+        "fr:Christian_Heinrich_Friedrich_Peters",
+        "fr:Bruno_Parma",
+        "en:Black_hole",
+        "fr:Trou_de_ver",
+        "fr:Astronome"
+      ]
+    },
+    {
+      "ndcg@10": 1.0,
+      "query_id": "c037-es-title",
+      "recall@10": 1.0,
+      "reciprocal_rank": 1.0,
+      "top_10": [
+        "en:Albert_Einstein",
+        "fr:Albert_Einstein",
+        "fr:Elsa_Einstein",
+        "fr:Isaac_Newton",
+        "en:Little_Albert_experiment",
+        "en:Wolfgang_Amadeus_Mozart",
+        "en:Isaac_Newton",
+        "fr:Saturne_(Rubens)",
+        "fr:Christian_Heinrich_Friedrich_Peters",
+        "en:Black_hole"
+      ]
+    },
+    {
+      "ndcg@10": 1.0,
+      "query_id": "c038-fr-lead_sentence",
+      "recall@10": 1.0,
+      "reciprocal_rank": 1.0,
+      "top_10": [
+        "es:Marie_Curie",
+        "en:Marie_Curie",
+        "es:Clifford_Curzon",
+        "es:Margarita_de_Provenza",
+        "es:Sofía_Federica_de_Mecklemburgo-Schwerin",
+        "es:Peyo",
+        "es:Guillermina_Carolina_de_Dinamarca",
+        "es:Achille_Valenciennes",
+        "es:Beatriz_de_Provenza",
+        "es:Marie-Louise_Bauchot"
+      ]
+    },
+    {
+      "ndcg@10": 1.0,
+      "query_id": "c038-fr-title",
+      "recall@10": 1.0,
+      "reciprocal_rank": 1.0,
+      "top_10": [
+        "es:Marie_Curie",
+        "en:Marie_Curie",
+        "en:Celina_Midelfart",
+        "en:Barbara_Niven",
+        "en:Cerys_Matthews",
+        "en:Reneé_Rapp",
+        "es:Virgen_de_los_Milagros",
+        "en:Lucy_of_Bolingbroke",
+        "en:Lois_Waisbrooker",
+        "en:Nina_Vasan"
+      ]
+    },
+    {
+      "ndcg@10": 1.0,
+      "query_id": "c039-en-lead_sentence",
+      "recall@10": 1.0,
+      "reciprocal_rank": 1.0,
+      "top_10": [
+        "es:Río_Amazonas",
+        "fr:Amazone_(fleuve)",
+        "fr:Río_Negro_(Uruguay)",
+        "fr:Río_Viecura",
+        "es:Río_Bureya",
+        "fr:Projet_de_canal_du_Nicaragua",
+        "es:Ab-i_Istada",
+        "fr:Forêt_humide",
+        "es:Bosna",
+        "es:Río_Grande_(río_de_Tierra_del_Fuego)"
+      ]
+    },
+    {
+      "ndcg@10": 1.0,
+      "query_id": "c039-en-title",
+      "recall@10": 1.0,
+      "reciprocal_rank": 1.0,
+      "top_10": [
+        "fr:Amazone_(fleuve)",
+        "es:Río_Amazonas",
+        "fr:Río_Viecura",
+        "fr:Río_Negro_(Uruguay)",
+        "es:Ab-i_Istada",
+        "es:Río_Bureya",
+        "es:Canal_lateral_al_Loira",
+        "es:Green_River",
+        "fr:Projet_de_canal_du_Nicaragua",
+        "fr:Massif_de_Parú-Euaja"
+      ]
+    },
+    {
+      "ndcg@10": 1.0,
+      "query_id": "c040-es-lead_sentence",
+      "recall@10": 1.0,
+      "reciprocal_rank": 1.0,
+      "top_10": [
+        "en:Mount_Everest",
+        "fr:Everest",
+        "fr:Massif_de_Parú-Euaja",
+        "en:List_of_mountain_peaks_of_Utah",
+        "fr:Pic_du_Canigou",
+        "en:Jayne's_Hill",
+        "fr:Mont_Teshio",
+        "en:Mount_Rogers",
+        "fr:Liste_des_principaux_astéroïdes_de_la_ceinture_principale_classés_par_masse",
+        "fr:Le_Cap_d'Agde"
+      ]
+    },
+    {
+      "ndcg@10": 1.0,
+      "query_id": "c040-es-title",
+      "recall@10": 1.0,
+      "reciprocal_rank": 1.0,
+      "top_10": [
+        "fr:Everest",
+        "en:Mount_Everest",
+        "fr:Massif_de_Parú-Euaja",
+        "fr:Volcan",
+        "en:List_of_mountain_peaks_of_Utah",
+        "en:Volcano",
+        "fr:Mont_Iō_(Iō-jima)",
+        "fr:Pic_du_Canigou",
+        "en:Glacier",
+        "fr:La_Pyramide_(restaurant)"
+      ]
+    },
+    {
+      "ndcg@10": 1.0,
+      "query_id": "c041-fr-lead_sentence",
+      "recall@10": 1.0,
+      "reciprocal_rank": 1.0,
+      "top_10": [
+        "en:Sahara",
+        "es:Sahara",
+        "es:África_(provincia_romana)",
+        "es:Historia_de_Argelia",
+        "es:Numidia",
+        "es:Montañas_Rubeho",
+        "en:Cape_(geography)",
+        "es:Copa_Africana_de_Naciones_2004",
+        "en:Africa_(Pharoah_Sanders_album)",
+        "en:Central_Equatoria"
+      ]
+    },
+    {
+      "ndcg@10": 1.0,
+      "query_id": "c041-fr-title",
+      "recall@10": 1.0,
+      "reciprocal_rank": 1.0,
+      "top_10": [
+        "en:Sahara",
+        "es:Sahara",
+        "es:África_(provincia_romana)",
+        "es:Numidia",
+        "es:Historia_de_Argelia",
+        "es:Montañas_Rubeho",
+        "en:Cape_(geography)",
+        "en:Central_Equatoria",
+        "en:Africa_(Pharoah_Sanders_album)",
+        "es:Copa_Africana_de_Naciones_2004"
+      ]
+    },
+    {
+      "ndcg@10": 0.919721,
+      "query_id": "c042-en-lead_sentence",
+      "recall@10": 1.0,
+      "reciprocal_rank": 1.0,
+      "top_10": [
+        "fr:Grande_Barrière_de_corail",
+        "fr:Récif_corallien",
+        "es:Gran_Barrera_de_Coral",
+        "es:Arrecife_de_coral",
+        "fr:Megalochelys",
+        "es:Islas_Borrachas",
+        "fr:Testudo_atlas",
+        "fr:Centrarchiformes",
+        "es:Reserva_de_la_biosfera_del_Valle_de_Laciana",
+        "es:Costa_Smeralda_(barco)"
+      ]
+    },
+    {
+      "ndcg@10": 0.919721,
+      "query_id": "c042-en-title",
+      "recall@10": 1.0,
+      "reciprocal_rank": 1.0,
+      "top_10": [
+        "fr:Grande_Barrière_de_corail",
+        "fr:Récif_corallien",
+        "es:Gran_Barrera_de_Coral",
+        "es:Arrecife_de_coral",
+        "es:Reserva_de_la_biosfera_del_Valle_de_Laciana",
+        "fr:Baie_de_Somme",
+        "fr:Centrarchiformes",
+        "es:Costa_Smeralda_(barco)",
+        "es:Islas_Borrachas",
+        "es:Geografía_de_Tokelau"
+      ]
+    },
+    {
+      "ndcg@10": 1.0,
+      "query_id": "c043-es-lead_sentence",
+      "recall@10": 1.0,
+      "reciprocal_rank": 1.0,
+      "top_10": [
+        "en:Coral_reef",
+        "fr:Récif_corallien",
+        "en:Great_Barrier_Reef",
+        "fr:Grande_Barrière_de_corail",
+        "en:Marine_biology",
+        "fr:Centrarchiformes",
+        "fr:Caldisphaera",
+        "fr:Corydoras",
+        "fr:Histoire_de_Porto_Rico",
+        "fr:Meiolania"
+      ]
+    },
+    {
+      "ndcg@10": 1.0,
+      "query_id": "c043-es-title",
+      "recall@10": 1.0,
+      "reciprocal_rank": 1.0,
+      "top_10": [
+        "fr:Récif_corallien",
+        "en:Coral_reef",
+        "fr:Affaire_du_Coral",
+        "fr:Grande_Barrière_de_corail",
+        "en:Great_Barrier_Reef",
+        "fr:Centrarchiformes",
+        "fr:Meiolania",
+        "fr:Keys_(Floride)",
+        "en:Pinzón–Solís_voyage",
+        "fr:Megalochelys"
+      ]
+    },
+    {
+      "ndcg@10": 1.0,
+      "query_id": "c044-fr-lead_sentence",
+      "recall@10": 1.0,
+      "reciprocal_rank": 1.0,
+      "top_10": [
+        "es:Bosque_lluvioso",
+        "en:Rainforest",
+        "es:Río_Amazonas",
+        "en:Appalachian_temperate_rainforest",
+        "en:Blackwater_river",
+        "en:Palvico",
+        "en:Amazon_River",
+        "es:Bosques_xéricos_de_las_montañas_centrales_de_Afganistán",
+        "es:Clusiaceae",
+        "en:Southern_Appalachian_spruce–fir_forest"
+      ]
+    },
+    {
+      "ndcg@10": 0.0,
+      "query_id": "c044-fr-title",
+      "recall@10": 0.0,
+      "reciprocal_rank": 0.0,
+      "top_10": [
+        "es:Globo_de_aire_caliente",
+        "en:Scalped_(TV_pilot)",
+        "es:Aerostato",
+        "en:One_Breath_(2020_film)",
+        "en:Happy_When_It_Rains",
+        "es:Dirty_South_(DJ)",
+        "es:Aeroponía",
+        "en:Great_Smoky_Mountains",
+        "es:Free_(canción_de_Florence_and_the_Machine)",
+        "en:Mudpit_(TV_series)"
+      ]
+    },
+    {
+      "ndcg@10": 1.0,
+      "query_id": "c045-en-lead_sentence",
+      "recall@10": 1.0,
+      "reciprocal_rank": 1.0,
+      "top_10": [
+        "es:Biodiversidad",
+        "fr:Biodiversité",
+        "es:Evolución_biológica",
+        "es:Biología_evolutiva",
+        "fr:Évolution_(biologie)",
+        "es:Biología",
+        "fr:Biologie",
+        "es:Psicología_del_desarrollo",
+        "fr:Règne_(biologie)",
+        "es:Biología_marina"
+      ]
+    },
+    {
+      "ndcg@10": 1.0,
+      "query_id": "c045-en-title",
+      "recall@10": 1.0,
+      "reciprocal_rank": 1.0,
+      "top_10": [
+        "es:Biodiversidad",
+        "fr:Biodiversité",
+        "es:Flora_de_Asturias",
+        "es:Bosque_lluvioso",
+        "es:Characidae_incertae_sedis",
+        "es:Reserva_de_la_biosfera_del_Valle_de_Laciana",
+        "es:Evolución_biológica",
+        "es:Especie_en_peligro_crítico_de_extinción",
+        "fr:Règne_(biologie)",
+        "es:Historia_natural"
+      ]
+    },
+    {
+      "ndcg@10": 1.0,
+      "query_id": "c046-es-lead_sentence",
+      "recall@10": 1.0,
+      "reciprocal_rank": 1.0,
+      "top_10": [
+        "en:Inflation",
+        "fr:Inflation",
+        "fr:Taux_de_change_anticipé",
+        "en:Distribution_(economics)",
+        "fr:Économie_circulaire",
+        "fr:Secteur_économique",
+        "fr:Énergie_(économie)",
+        "fr:Économie_politique",
+        "en:Neoclassical_economics",
+        "fr:Régulation_(économie)"
+      ]
+    },
+    {
+      "ndcg@10": 1.0,
+      "query_id": "c046-es-title",
+      "recall@10": 1.0,
+      "reciprocal_rank": 1.0,
+      "top_10": [
+        "en:Inflation",
+        "fr:Inflation",
+        "fr:Taux_de_change_anticipé",
+        "en:Panic_of_1893",
+        "en:Distribution_(economics)",
+        "en:Recession_of_1920–1921",
+        "en:Home_economics",
+        "fr:Changement_climatique",
+        "fr:Économie_circulaire",
+        "fr:Déclinaison_(astronomie)"
+      ]
+    },
+    {
+      "ndcg@10": 1.0,
+      "query_id": "c047-fr-lead_sentence",
+      "recall@10": 1.0,
+      "reciprocal_rank": 1.0,
+      "top_10": [
+        "en:Globalization",
+        "es:Globalización",
+        "es:Economía_centralizada",
+        "es:Tecnología_ambiental",
+        "es:Producto_interno_bruto",
+        "es:Economía",
+        "en:Internet",
+        "es:Tarifas_de_congestión_de_Londres",
+        "es:Factores_de_producción",
+        "es:Relaciones_Albania-Chile"
+      ]
+    },
+    {
+      "ndcg@10": 1.0,
+      "query_id": "c047-fr-title",
+      "recall@10": 1.0,
+      "reciprocal_rank": 1.0,
+      "top_10": [
+        "es:Globalización",
+        "en:Globalization",
+        "es:Segunda_Guerra_Mundial",
+        "es:World_Community_Grid",
+        "es:Ministerio_de_Ciencia,_Tecnología_e_Innovación_(Argentina)",
+        "es:Programa_de_las_Naciones_Unidas_para_el_Medio_Ambiente",
+        "es:Música_del_mundo",
+        "en:Better_This_World",
+        "es:Calentamiento_global",
+        "es:Geografía_humana"
+      ]
+    },
+    {
+      "ndcg@10": 1.0,
+      "query_id": "c048-en-lead_sentence",
+      "recall@10": 1.0,
+      "reciprocal_rank": 1.0,
+      "top_10": [
+        "fr:Vitamine",
+        "es:Vitamina",
+        "fr:Complément_alimentaire",
+        "es:Fotosíntesis",
+        "es:Química_medicinal",
+        "fr:Chimie_organique",
+        "es:Biología_molecular",
+        "fr:Biochimie",
+        "fr:Alimentation_complémentaire",
+        "es:Ácido_desoxirribonucleico"
+      ]
+    },
+    {
+      "ndcg@10": 1.0,
+      "query_id": "c048-en-title",
+      "recall@10": 1.0,
+      "reciprocal_rank": 1.0,
+      "top_10": [
+        "es:Vitamina",
+        "fr:Vitamine",
+        "fr:Complément_alimentaire",
+        "es:Medicina_deportiva",
+        "fr:Yvette_Bonny",
+        "fr:Médecine",
+        "fr:Résilience_(psychologie)",
+        "fr:Nourriture_pour_chat",
+        "es:Mangala_Sutta",
+        "fr:Bourse_supérieure_du_muscle_biceps_fémoral"
+      ]
+    },
+    {
+      "ndcg@10": 1.0,
+      "query_id": "c049-es-lead_sentence",
+      "recall@10": 1.0,
+      "reciprocal_rank": 1.0,
+      "top_10": [
+        "fr:Glacier",
+        "en:Glacier",
+        "fr:Championnat_du_monde_de_hockey_sur_glace",
+        "fr:Championnat_de_Suisse_de_hockey_sur_glace_D2",
+        "en:Volcano",
+        "fr:Volcan",
+        "fr:Fermentation_lactique",
+        "fr:Équipe_de_France_de_hockey_sur_glace",
+        "fr:Changement_climatique",
+        "fr:Championnat_du_monde_féminin_de_hockey_sur_glace"
+      ]
+    },
+    {
+      "ndcg@10": 1.0,
+      "query_id": "c049-es-title",
+      "recall@10": 1.0,
+      "reciprocal_rank": 1.0,
+      "top_10": [
+        "en:Glacier",
+        "fr:Glacier",
+        "fr:Volcan",
+        "en:Volcano",
+        "fr:Everest",
+        "en:Alps_Campaign_(1792–1796)",
+        "fr:Géorgie_aux_Jeux_olympiques",
+        "fr:Massif_de_Parú-Euaja",
+        "fr:Craton_du_Kaapvaal",
+        "fr:Championnat_du_monde_de_hockey_sur_glace"
+      ]
+    }
+  ],
+  "per_query_language": {
+    "en": {
+      "mrr": 0.985294,
+      "ndcg@10": 0.9839,
+      "queries": 34,
+      "recall@10": 1.0
+    },
+    "es": {
+      "mrr": 0.941176,
+      "ndcg@10": 0.936222,
+      "queries": 34,
+      "recall@10": 0.941176
+    },
+    "fr": {
+      "mrr": 0.890625,
+      "ndcg@10": 0.889143,
+      "queries": 32,
+      "recall@10": 0.90625
+    }
+  },
+  "per_target_language": {
+    "en": {
+      "mrr": 0.712121,
+      "queries": 66,
+      "recall@10": 0.924242
+    },
+    "es": {
+      "mrr": 0.641414,
+      "queries": 66,
+      "recall@10": 0.954545
+    },
+    "fr": {
+      "mrr": 0.742647,
+      "queries": 68,
+      "recall@10": 0.970588
+    }
+  },
+  "recall@10": 0.95,
+  "retriever_config": {
+    "encoder": "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2",
+    "index": "exact IP",
+    "revision": "e8f8c211226b894fcb81acc59f3b34ba3efd5f42"
+  },
+  "same_language_results_excluded": true,
+  "total_queries": 100
+}

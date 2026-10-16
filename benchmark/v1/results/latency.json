@@ -1,0 +1,82 @@
+{
+  "corpus_documents": 5735,
+  "environment": {
+    "cpu_count": 10,
+    "device": "cpu",
+    "faiss": "1.15.1",
+    "machine": "arm64",
+    "numpy": "2.4.6",
+    "python": "3.11.17",
+    "ram_gb": 16.0,
+    "sentence_transformers": "5.7.0",
+    "system": "Darwin 24.6.0",
+    "torch": "2.14.1",
+    "torch_threads": 1
+  },
+  "index_version": "idx-d8a15c721f36",
+  "latency": {
+    "dense": {
+      "encode": {
+        "median_ms": 8.907,
+        "p95_ms": 11.184
+      },
+      "faiss": {
+        "median_ms": 0.148,
+        "p95_ms": 0.162
+      },
+      "fusion": {
+        "median_ms": 0.013,
+        "p95_ms": 0.014
+      },
+      "total": {
+        "median_ms": 9.06,
+        "p95_ms": 11.347
+      }
+    },
+    "hybrid": {
+      "encode": {
+        "median_ms": 8.228,
+        "p95_ms": 10.304
+      },
+      "faiss": {
+        "median_ms": 0.154,
+        "p95_ms": 0.17
+      },
+      "fusion": {
+        "median_ms": 0.053,
+        "p95_ms": 0.059
+      },
+      "lexical": {
+        "median_ms": 17.106,
+        "p95_ms": 19.55
+      },
+      "total": {
+        "median_ms": 25.559,
+        "p95_ms": 29.514
+      }
+    },
+    "lexical": {
+      "fusion": {
+        "median_ms": 0.017,
+        "p95_ms": 0.02
+      },
+      "lexical": {
+        "median_ms": 16.796,
+        "p95_ms": 19.062
+      },
+      "total": {
+        "median_ms": 16.815,
+        "p95_ms": 19.082
+      }
+    }
+  },
+  "not_measured": [
+    "HTTP/API overhead",
+    "database",
+    "cache hits",
+    "concurrent load"
+  ],
+  "queries_measured_per_mode": 100,
+  "warmup_queries_per_mode": 20,
+  "what": "per-stage search latency, single process, sequential queries, k=10, pool=50"
+}

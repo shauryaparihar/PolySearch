@@ -6,13 +6,18 @@ Corpus: 5735 documents {'en': 1901, 'es': 1953, 'fr': 1881} (sha256 `6eddc47fdd9
 | Method | MRR@10 | Recall@10 | nDCG@10 | Failures |
 |---|---|---|---|---|
 | lexical-tfidf-char | 0.7484 | 0.8100 | 0.7238 | 0 |
+| dense-minilm | 0.9400 | 0.9500 | 0.9374 | 0 |
+| hybrid-rrf | 0.9100 | 0.9650 | 0.8981 | 0 |
 
 lexical-tfidf-char by title overlap: no_title_overlap: n=71 MRR@10=0.7210, query_contains_target_title: n=29 MRR@10=0.8153
 
+dense-minilm by title overlap: no_title_overlap: n=71 MRR@10=0.9225, query_contains_target_title: n=29 MRR@10=0.9828
+
+hybrid-rrf by title overlap: no_title_overlap: n=71 MRR@10=0.9049, query_contains_target_title: n=29 MRR@10=0.9224
+
 ## Conclusion
 
-No comparison can be drawn from these results.
-- 1 valid method(s); at least 2 comparable methods are needed to compare retrieval quality.
+On this benchmark dense-minilm has the highest MRR@10 (0.9400) versus hybrid-rrf (0.9100). This is not a claim about real-user relevance.
 
 ## Limitations
 

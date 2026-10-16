@@ -10,3 +10,9 @@ httpx>=0.27,<1
 pandas>=2.0
 scikit-learn>=1.4,<2
 numpy>=1.26
+# Search stack (Phase 3). Tests use a fake encoder; the real model is only needed to build/serve.
+torch>=2.2
+sentence-transformers>=3,<6
+faiss-cpu>=1.8
+scipy>=1.11
+huggingface_hub>=0.23
