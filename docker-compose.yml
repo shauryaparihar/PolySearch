@@ -1,0 +1,22 @@
+# Local PostgreSQL for development and tests. Phase 8 extends this file with the API and frontend.
+# Credentials below are throwaway local-development values, not secrets.
+services:
+  postgres:
+    image: postgres:16
+    environment:
+      POSTGRES_USER: polysearch
+      POSTGRES_PASSWORD: polysearch_dev
+      POSTGRES_DB: polysearch_dev
+    ports:
+      - "127.0.0.1:5433:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+      - ./backend/docker/init-test-db.sql:/docker-entrypoint-initdb.d/init-test-db.sql:ro
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U polysearch -d polysearch_dev"]
+      interval: 3s
+      timeout: 3s
+      retries: 20
+
+volumes:
+  pgdata:
