@@ -1,14 +1,20 @@
-# Local PostgreSQL for development and tests. Phase 8 extends this file with the API and frontend.
-# Credentials below are throwaway local-development values, not secrets.
+# One Compose environment for PolySearch: PostgreSQL, the API and the web UI.
+#
+#   docker compose up -d postgres                  # database only (what the test suite needs)
+#   docker compose up -d --build                   # the whole stack (see docs/containers.md)
+#
+# Every value below is a throwaway LOCAL-DEVELOPMENT default (ports are bound to 127.0.0.1).
+# Override them with a gitignored .env file; for any real deployment set strong secrets and
+# ENVIRONMENT=production, which makes the API refuse weak or placeholder settings.
 services:
   postgres:
     image: postgres:16
     environment:
       POSTGRES_USER: polysearch
-      POSTGRES_PASSWORD: polysearch_dev
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-polysearch_dev}
       POSTGRES_DB: polysearch_dev
     ports:
-      - "127.0.0.1:5433:5432"
+      - "127.0.0.1:${POSTGRES_HOST_PORT:-5433}:5432"
     volumes:
       - pgdata:/var/lib/postgresql/data
       - ./backend/docker/init-test-db.sql:/docker-entrypoint-initdb.d/init-test-db.sql:ro
@@ -18,5 +24,58 @@ services:
       timeout: 3s
       retries: 20
 
+  # One-shot: bring the schema to the newest Alembic revision, then exit.
+  migrate:
+    build:
+      context: .
+      dockerfile: backend/Dockerfile
+    image: polysearch-api:local
+    command: ["alembic", "upgrade", "head"]
+    environment:
+      DATABASE_URL: postgresql+psycopg://polysearch:${POSTGRES_PASSWORD:-polysearch_dev}@postgres:5432/polysearch_dev
+    depends_on:
+      postgres:
+        condition: service_healthy
+    restart: "no"
+
+  api:
+    build:
+      context: .
+      dockerfile: backend/Dockerfile
+    image: polysearch-api:local
+    environment:
+      ENVIRONMENT: ${ENVIRONMENT:-development}
+      DATABASE_URL: postgresql+psycopg://polysearch:${POSTGRES_PASSWORD:-polysearch_dev}@postgres:5432/polysearch_dev
+      CORS_ALLOWED_ORIGINS: '["http://localhost:${FRONTEND_HOST_PORT:-8080}","http://127.0.0.1:${FRONTEND_HOST_PORT:-8080}"]'
+      CURSOR_SECRET: ${CURSOR_SECRET:-local-stack-cursor-secret-not-for-production}
+      ADMIN_API_KEY: ${ADMIN_API_KEY:-local-stack-admin-key-not-for-production-use}
+      SEARCH_RATE_LIMIT_PER_MINUTE: ${SEARCH_RATE_LIMIT_PER_MINUTE:-30}
+      # Empty = serve the version PostgreSQL marks active (needed only for the very first start).
+      ACTIVE_INDEX_PATH: ${ACTIVE_INDEX_PATH:-}
+      ANALYTICS_STORE_QUERY_TEXT: "false"
+    ports:
+      - "127.0.0.1:${API_HOST_PORT:-8000}:8000"
+    volumes:
+      - artifacts:/app/artifacts
+      - hf_cache:/home/app/.cache/huggingface
+    depends_on:
+      migrate:
+        condition: service_completed_successfully
+    restart: unless-stopped
+
+  frontend:
+    build:
+      context: ./frontend
+      args:
+        VITE_API_URL: http://localhost:${API_HOST_PORT:-8000}
+    image: polysearch-web:local
+    ports:
+      - "127.0.0.1:${FRONTEND_HOST_PORT:-8080}:8080"
+    depends_on:
+      - api
+    restart: unless-stopped
+
 volumes:
-  pgdata:
+  pgdata:        # PostgreSQL data
+  artifacts:     # index versions (/app/artifacts/index/idx-*)
+  hf_cache:      # downloaded model files, so a restart does not download them again

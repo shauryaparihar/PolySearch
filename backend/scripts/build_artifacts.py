@@ -3,6 +3,10 @@
     python backend/scripts/build_artifacts.py \
         --corpus artifacts/corpus_v1/corpus.jsonl --out artifacts/index
 
+    # first index of a fresh environment: export the active documents from DATABASE_URL, then build
+    python backend/scripts/build_artifacts.py --from-database --corpus /app/artifacts/corpus.jsonl \
+        --out /app/artifacts/index
+
 Downloads the pinned encoder on first use (about 470 MB). Never runs inside the API.
 """
 
@@ -31,7 +35,22 @@ def main() -> int:
     parser.add_argument("--out", type=Path, default=ROOT / "artifacts/index")
     parser.add_argument("--encoder", default=DEFAULT_ENCODER)
     parser.add_argument("--revision", default=PINNED_REVISION)
+    parser.add_argument(
+        "--from-database",
+        action="store_true",
+        help="first write the active documents of DATABASE_URL to --corpus (an index must be "
+        "built from the database it will serve)",
+    )
     args = parser.parse_args()
+
+    if args.from_database:
+        from app.config import get_settings
+        from app.db.base import make_engine, make_session_factory
+        from app.evaluation.corpus import export_corpus
+
+        with make_session_factory(make_engine(get_settings().database_url))() as session:
+            exported = export_corpus(session, args.corpus)
+        print(f"exported {exported['documents']} active documents to {args.corpus}")
 
     corpus = load_corpus(args.corpus)
     print(f"corpus: {len(corpus.docs)} docs {corpus.language_counts()} sha256={corpus.sha256[:12]}")
@@ -43,6 +62,7 @@ def main() -> int:
 
     bundle = SearchBundle.load(path, encoder=encoder)  # reload from disk = full validation
     print(f"reloaded and validated: {len(bundle.document_keys())} documents")
+    print(f"first start: set ACTIVE_INDEX_PATH to {path}")
     return 0
 
 

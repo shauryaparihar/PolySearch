@@ -1,0 +1,265 @@
+{
+  "description": "Bounded engineering check of the Docker Compose stack on one developer machine. Not a capacity certification.",
+  "date": "2026-10-16",
+  "conditions": {
+    "host": "Apple M4 (10 CPU cores), 16 GiB RAM, macOS (Darwin 24.6)",
+    "docker": "Docker Desktop 29.8.2, Linux VM with 10 CPUs and about 8.3 GB memory",
+    "stack": "docker compose: postgres:16, one uvicorn worker (1 process), nginx static frontend; images built from this repository",
+    "api_settings": "defaults except SEARCH_RATE_LIMIT_PER_MINUTE=10000 for the load runs and the default 30 for the rate-limit run; inference_max_concurrency=2; result_pool_size=100; cache 512 entries / 600 s",
+    "model": "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2 @ e8f8c211226b, CPU, torch 2.14.1+cpu, 10 torch threads",
+    "index": "idx-b10ebf967ff3: 5,585 documents (en 1851, es 1903, fr 1831), default mode dense, exact FAISS per language",
+    "client": "backend/scripts/load_check.py on the same machine over localhost (client and server compete for the same CPUs)",
+    "queries": "built-in non-sensitive seed queries (common topics in en/es/fr); distinct (query, mode, target languages) combinations per request set",
+    "process_state": "API container restarted before each run so the in-memory cache started empty"
+  },
+  "runs": {
+    "concurrency_1": {
+      "phases": {
+        "uncached": {
+          "requests": 40,
+          "concurrency": 1,
+          "elapsed_seconds": 1.806,
+          "throughput_rps": 22.15,
+          "status_counts": {
+            "200": 40
+          },
+          "transport_errors": {},
+          "server_error_count": 0,
+          "client_error_count": 0,
+          "median_ms": 42.558,
+          "p95_ms": 63.907,
+          "max_ms": 82.977,
+          "cache_hits": 0,
+          "cache_misses": 40,
+          "rate_limited": 0,
+          "retry_after_seconds_max": null
+        },
+        "warm_cache": {
+          "requests": 40,
+          "concurrency": 1,
+          "elapsed_seconds": 0.486,
+          "throughput_rps": 82.3,
+          "status_counts": {
+            "200": 40
+          },
+          "transport_errors": {},
+          "server_error_count": 0,
+          "client_error_count": 0,
+          "median_ms": 10.172,
+          "p95_ms": 18.052,
+          "max_ms": 18.358,
+          "cache_hits": 40,
+          "cache_misses": 0,
+          "rate_limited": 0,
+          "retry_after_seconds_max": null
+        }
+      },
+      "server_before": {
+        "readyz_status": 200,
+        "index_version": "idx-b10ebf967ff3",
+        "document_count": null
+      },
+      "server_after": {
+        "readyz_status": 200,
+        "index_version": "idx-b10ebf967ff3",
+        "document_count": null
+      },
+      "context": {
+        "tool": "backend/scripts/load_check.py",
+        "base_url": "http://127.0.0.1:8000",
+        "mode": "load",
+        "started_at": "2026-10-16T14:13:14+00:00",
+        "duration_seconds": 2.37,
+        "client_machine": "Darwin arm64, Python 3.11.17",
+        "latency_definition": "client-side wall time per request, queueing behind concurrency included; nearest-rank percentiles",
+        "limits": {
+          "max_concurrency": 50,
+          "max_requests": 2000
+        }
+      },
+      "healthy": true
+    },
+    "concurrency_20": {
+      "phases": {
+        "uncached": {
+          "requests": 100,
+          "concurrency": 20,
+          "elapsed_seconds": 3.096,
+          "throughput_rps": 32.3,
+          "status_counts": {
+            "200": 100
+          },
+          "transport_errors": {},
+          "server_error_count": 0,
+          "client_error_count": 0,
+          "median_ms": 571.024,
+          "p95_ms": 753.858,
+          "max_ms": 1002.84,
+          "cache_hits": 0,
+          "cache_misses": 100,
+          "rate_limited": 0,
+          "retry_after_seconds_max": null
+        },
+        "warm_cache": {
+          "requests": 100,
+          "concurrency": 20,
+          "elapsed_seconds": 1.814,
+          "throughput_rps": 55.13,
+          "status_counts": {
+            "200": 100
+          },
+          "transport_errors": {},
+          "server_error_count": 0,
+          "client_error_count": 0,
+          "median_ms": 303.079,
+          "p95_ms": 675.368,
+          "max_ms": 870.042,
+          "cache_hits": 100,
+          "cache_misses": 0,
+          "rate_limited": 0,
+          "retry_after_seconds_max": null
+        }
+      },
+      "server_before": {
+        "readyz_status": 200,
+        "index_version": "idx-b10ebf967ff3",
+        "document_count": null
+      },
+      "server_after": {
+        "readyz_status": 200,
+        "index_version": "idx-b10ebf967ff3",
+        "document_count": null
+      },
+      "context": {
+        "tool": "backend/scripts/load_check.py",
+        "base_url": "http://127.0.0.1:8000",
+        "mode": "load",
+        "started_at": "2026-10-16T14:13:24+00:00",
+        "duration_seconds": 4.985,
+        "client_machine": "Darwin arm64, Python 3.11.17",
+        "latency_definition": "client-side wall time per request, queueing behind concurrency included; nearest-rank percentiles",
+        "limits": {
+          "max_concurrency": 50,
+          "max_requests": 2000
+        }
+      },
+      "healthy": true
+    },
+    "concurrency_50": {
+      "phases": {
+        "uncached": {
+          "requests": 100,
+          "concurrency": 50,
+          "elapsed_seconds": 3.49,
+          "throughput_rps": 28.65,
+          "status_counts": {
+            "200": 100
+          },
+          "transport_errors": {},
+          "server_error_count": 0,
+          "client_error_count": 0,
+          "median_ms": 1517.685,
+          "p95_ms": 2016.595,
+          "max_ms": 2834.258,
+          "cache_hits": 0,
+          "cache_misses": 100,
+          "rate_limited": 0,
+          "retry_after_seconds_max": null
+        },
+        "warm_cache": {
+          "requests": 100,
+          "concurrency": 50,
+          "elapsed_seconds": 1.997,
+          "throughput_rps": 50.07,
+          "status_counts": {
+            "200": 100
+          },
+          "transport_errors": {},
+          "server_error_count": 0,
+          "client_error_count": 0,
+          "median_ms": 849.134,
+          "p95_ms": 1478.582,
+          "max_ms": 1904.766,
+          "cache_hits": 100,
+          "cache_misses": 0,
+          "rate_limited": 0,
+          "retry_after_seconds_max": null
+        }
+      },
+      "server_before": {
+        "readyz_status": 200,
+        "index_version": "idx-b10ebf967ff3",
+        "document_count": null
+      },
+      "server_after": {
+        "readyz_status": 200,
+        "index_version": "idx-b10ebf967ff3",
+        "document_count": null
+      },
+      "context": {
+        "tool": "backend/scripts/load_check.py",
+        "base_url": "http://127.0.0.1:8000",
+        "mode": "load",
+        "started_at": "2026-10-16T14:13:37+00:00",
+        "duration_seconds": 5.559,
+        "client_machine": "Darwin arm64, Python 3.11.17",
+        "latency_definition": "client-side wall time per request, queueing behind concurrency included; nearest-rank percentiles",
+        "limits": {
+          "max_concurrency": 50,
+          "max_requests": 2000
+        }
+      },
+      "healthy": true
+    },
+    "rate_limit_default": {
+      "phases": {
+        "rate_limit": {
+          "requests": 60,
+          "concurrency": 10,
+          "elapsed_seconds": 1.059,
+          "throughput_rps": 56.65,
+          "status_counts": {
+            "200": 30,
+            "429": 30
+          },
+          "transport_errors": {},
+          "server_error_count": 0,
+          "client_error_count": 0,
+          "median_ms": 36.298,
+          "p95_ms": 389.957,
+          "max_ms": 481.637,
+          "cache_hits": 0,
+          "cache_misses": 30,
+          "rate_limited": 30,
+          "retry_after_seconds_max": 60,
+          "observed_429": true,
+          "bounded": true
+        }
+      },
+      "server_before": {
+        "readyz_status": 200,
+        "index_version": "idx-b10ebf967ff3",
+        "document_count": null
+      },
+      "server_after": {
+        "readyz_status": 200,
+        "index_version": "idx-b10ebf967ff3",
+        "document_count": null
+      },
+      "context": {
+        "tool": "backend/scripts/load_check.py",
+        "base_url": "http://127.0.0.1:8000",
+        "mode": "rate-limit",
+        "started_at": "2026-10-16T14:12:53+00:00",
+        "duration_seconds": 1.132,
+        "client_machine": "Darwin arm64, Python 3.11.17",
+        "latency_definition": "client-side wall time per request, queueing behind concurrency included; nearest-rank percentiles",
+        "limits": {
+          "max_concurrency": 50,
+          "max_requests": 2000
+        }
+      },
+      "healthy": true
+    }
+  }
+}

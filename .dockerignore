@@ -1,0 +1,24 @@
+# Keep the backend build context small and free of data, secrets and local state.
+.git
+.github
+.claude
+.venv
+venv
+.env
+.env.*
+!.env.example
+**/__pycache__
+**/*.pyc
+.pytest_cache
+.ruff_cache
+data
+artifacts
+models
+results
+notebooks
+colab_encoding
+src
+web_app
+docs
+frontend
+backend/tests

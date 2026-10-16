@@ -11,6 +11,7 @@ from typing import Any
 from fastapi import FastAPI, Request
 from fastapi.exceptions import RequestValidationError
 from fastapi.responses import JSONResponse
+from sqlalchemy.exc import SQLAlchemyError
 from starlette.exceptions import HTTPException as StarletteHTTPException
 
 from app.api.logging_config import log_event
@@ -99,6 +100,25 @@ def install_error_handlers(app: FastAPI) -> None:
         code = codes.get(exc.status_code, "HTTP_ERROR")
         return error_response(
             exc.status_code, code, "Request could not be served.", request_id_of(request)
+        )
+
+    @app.exception_handler(SQLAlchemyError)
+    async def _database(request: Request, exc: SQLAlchemyError):
+        """Connection loss, timeouts and pool exhaustion are expected failure modes: a retryable
+        503. Handling them here (instead of letting them escape) also keeps the server from
+        printing a traceback whose message contains the SQL statement and its parameters."""
+        log_event(
+            "database_error",
+            level=40,
+            request_id=request_id_of(request),
+            error_code=type(exc).__name__,
+        )
+        return error_response(
+            503,
+            "DATABASE_UNAVAILABLE",
+            "The service is temporarily unavailable. Please try again shortly.",
+            request_id_of(request),
+            headers={"Retry-After": "5"},
         )
 
     @app.exception_handler(Exception)

@@ -15,3 +15,9 @@ npm run build                     # type-check + production build
 
 It never contains, sends or links to anything admin-related: no admin key, no `/admin/`
 endpoints. Titles and snippets are rendered through React's text interpolation only.
+
+## Docker
+
+`frontend/Dockerfile` builds the static site and serves it with unprivileged nginx on port 8080.
+`docker compose up -d --build` (repository root) builds it with `VITE_API_URL` pointing at the
+local API; see `docs/containers.md`.

@@ -4,15 +4,24 @@ from __future__ import annotations
 
 from functools import lru_cache
 from pathlib import Path
+from typing import Literal
 
-from pydantic import Field, field_validator
+from pydantic import Field, field_validator, model_validator
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
 SUPPORTED_LANGUAGES = ("en", "es", "fr")
+PLACEHOLDER = "CHANGE_ME"  # the marker used by .env.example
+MIN_SECRET_CHARS = 32
+LOCAL_DEV_DB_PASSWORD = "polysearch_dev"  # the throwaway password in docker-compose.yml
 
 
 class Settings(BaseSettings):
-    model_config = SettingsConfigDict(env_file=".env", extra="ignore")
+    # hide_input_in_errors: a validation error must never echo secret values into logs.
+    model_config = SettingsConfigDict(env_file=".env", extra="ignore", hide_input_in_errors=True)
+
+    # "production" turns on the strict checks in ``_validate_deployment`` below.
+    environment: Literal["development", "production"] = "development"
+
 
     # Throwaway local-development credentials matching docker-compose.yml.
     database_url: str = (
@@ -73,6 +82,15 @@ class Settings(BaseSettings):
     job_shutdown_timeout_seconds: float = Field(default=30.0, ge=0, le=600)
     index_batch_size: int = Field(default=64, ge=1, le=512)
 
+    @field_validator(
+        "active_index_path", "artifact_root", "benchmark_dir", "cursor_secret", "admin_api_key",
+        mode="before",
+    )
+    @classmethod
+    def _empty_means_unset(cls, value):
+        """Compose/Docker pass unset variables as empty strings; treat those as "not set"."""
+        return None if isinstance(value, str) and not value.strip() else value
+
     @field_validator("cors_allowed_origins")
     @classmethod
     def _no_wildcard_origins(cls, origins: list[str]) -> list[str]:
@@ -81,6 +99,35 @@ class Settings(BaseSettings):
         ):
             raise ValueError("CORS origins must be exact http(s) origins, never '*'")
         return origins
+
+    @model_validator(mode="after")
+    def _validate_deployment(self) -> Settings:
+        """Fail at startup, with messages that name the setting but never print its value."""
+        problems: list[str] = []
+        secrets = {
+            "CURSOR_SECRET": self.cursor_secret,
+            "ADMIN_API_KEY": self.admin_api_key,
+            "DATABASE_URL": self.database_url,
+        }
+        for name, value in secrets.items():  # an untouched .env.example must not start up
+            if value and PLACEHOLDER in value:
+                problems.append(f"{name} still contains the {PLACEHOLDER} placeholder")
+        if self.environment == "production":
+            for name, value in (("CURSOR_SECRET", self.cursor_secret),
+                                ("ADMIN_API_KEY", self.admin_api_key)):  # fmt: skip
+                if name == "ADMIN_API_KEY" and value is None:
+                    continue  # unset keeps the admin API switched off, which is safe
+                if not value or len(value) < MIN_SECRET_CHARS:
+                    problems.append(f"{name} must be set to at least {MIN_SECRET_CHARS} characters")
+            if LOCAL_DEV_DB_PASSWORD in self.database_url:
+                problems.append("DATABASE_URL uses the local-development password")
+            if any("localhost" in o or "127.0.0.1" in o for o in self.cors_allowed_origins):
+                problems.append("CORS_ALLOWED_ORIGINS must name the deployed frontend")
+            if not (self.active_index_path or self.artifact_root):
+                problems.append("ACTIVE_INDEX_PATH or ARTIFACT_ROOT must point at index artifacts")
+        if problems:
+            raise ValueError("invalid configuration: " + "; ".join(problems))
+        return self
 
 
 @lru_cache

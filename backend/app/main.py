@@ -5,12 +5,15 @@ Run with:  uvicorn app.main:create_app --factory   (from the backend/ directory)
 
 from __future__ import annotations
 
+import re
 import secrets
 from collections.abc import AsyncIterator
 from contextlib import asynccontextmanager
+from pathlib import Path
 
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
+from sqlalchemy import select
 from sqlalchemy.orm import Session, sessionmaker
 
 from app.api import routes, service, suggest
@@ -23,10 +26,52 @@ from app.api.ratelimit import SlidingWindowLimiter
 from app.api.state import AppState
 from app.config import Settings, get_settings
 from app.db.base import make_engine, make_session_factory
+from app.db.models import IndexVersion
 from app.jobs.manager import recover_stale_jobs
 from app.jobs.worker import JobWorker
 from app.search.artifacts import ArtifactError
 from app.search.bundle import SearchBundle
+
+VERSION_NAME = re.compile(r"idx-[0-9a-f]{12}")
+
+
+def _database_active_index(settings: Settings, factory) -> Path | None:
+    """Directory of the version the database marks active, if its files are still on disk.
+
+    A reindex activates a new version in the database; the environment variable keeps naming
+    the version the deployment started with. Restarting must not silently undo the activation.
+    """
+    configured = Path(settings.active_index_path) if settings.active_index_path else None
+    root = Path(settings.artifact_root) if settings.artifact_root else (
+        configured.parent if configured else None
+    )
+    if root is None:
+        return None
+    try:
+        with factory() as session:
+            version = session.scalar(
+                select(IndexVersion.version).where(IndexVersion.status == "active")
+            )
+    except Exception:  # database not reachable yet: fall back to the configured path
+        return None
+    if not version or not VERSION_NAME.fullmatch(version):  # never build a path from odd text
+        return None
+    candidate = root / version
+    return candidate if (candidate / "manifest.json").is_file() else None
+
+
+def _load_startup_bundle(settings: Settings, factory) -> SearchBundle | None:
+    candidates = [_database_active_index(settings, factory), settings.active_index_path]
+    tried: list[Path] = []
+    for path in candidates:
+        if path is None or Path(path) in tried:
+            continue
+        tried.append(Path(path))
+        try:
+            return SearchBundle.load(path)
+        except (ArtifactError, OSError):
+            log_event("index_load_failed", level=40, error_code="ARTIFACTS_INVALID")
+    return None
 
 
 def create_app(
@@ -63,11 +108,8 @@ def create_app(
 
     @asynccontextmanager
     async def lifespan(app: FastAPI) -> AsyncIterator[None]:
-        if state.bundle is None and settings.active_index_path:
-            try:
-                state.bundle = SearchBundle.load(settings.active_index_path)
-            except (ArtifactError, OSError):
-                log_event("index_load_failed", level=40, error_code="ARTIFACTS_INVALID")
+        if state.bundle is None:
+            state.bundle = _load_startup_bundle(settings, state.session_factory)
         if state.bundle is not None:
             try:
                 with state.session_factory() as session:

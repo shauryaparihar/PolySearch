@@ -90,6 +90,12 @@ def run_readiness(state: AppState) -> dict:
     cached = state.readiness.get("result")
     now = state.clock()
     if cached and now - state.readiness["at"] < state.settings.readiness_cache_seconds:
+        # The expensive checks may be cached, but losing the database must show up immediately.
+        try:
+            _check_database(state)
+        except Exception:
+            state.readiness.clear()
+            return {"ready": False, "checks": {**cached["checks"], "database": False}}
         return cached
     results: dict[str, bool] = {}
     for name, check in CHECKS.items():
