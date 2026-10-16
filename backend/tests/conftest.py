@@ -64,8 +64,9 @@ def session_factory(migrated_engine: Engine):
     with migrated_engine.begin() as conn:
         conn.execute(
             text(
-                "TRUNCATE search_results, search_runs, index_versions, documents, "
-                "ingestion_jobs, content_sources RESTART IDENTITY CASCADE"
+                "TRUNCATE click_events, relevance_feedback, search_results, search_runs, "
+                "index_jobs, index_versions, documents, ingestion_jobs, content_sources "
+                "RESTART IDENTITY CASCADE"
             )
         )
     return make_session_factory(migrated_engine)
@@ -123,8 +124,15 @@ def make_client(session_factory, api_bundle):
     seed_documents(session_factory)
     opened = []
 
-    def factory(bundle=api_bundle, **settings):
-        app = create_app(test_settings(**settings), bundle=bundle, session_factory=session_factory)
+    def factory(bundle=api_bundle, synchronous_jobs=True, source_factory=None, **settings):
+        settings.setdefault("artifact_root", api_bundle.path.parent)
+        app = create_app(
+            test_settings(**settings),
+            bundle=bundle,
+            session_factory=session_factory,
+            synchronous_jobs=synchronous_jobs,
+            source_factory=source_factory,
+        )
         client = TestClient(app)
         client.__enter__()  # runs lifespan: registers the active index version
         opened.append(client)

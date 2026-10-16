@@ -81,6 +81,13 @@ class IngestionJob(Base):
             name="ck_ingestion_jobs_status",
         ),
         CheckConstraint("mode IN ('seed', 'incremental')", name="ck_ingestion_jobs_mode"),
+        # At most one queued/running ingestion job (the single worker runs one job at a time).
+        Index(
+            "uq_ingestion_jobs_one_active",
+            text("(true)"),
+            unique=True,
+            postgresql_where=text("status IN ('queued', 'running')"),
+        ),
     )
 
     id: Mapped[uuid.UUID] = mapped_column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
@@ -243,3 +250,35 @@ class RelevanceFeedback(Base):
     updated_at: Mapped[datetime] = mapped_column(
         DateTime(timezone=True), server_default=func.now(), onupdate=func.now()
     )
+
+
+class IndexJob(Base):
+    """A rebuild: export corpus -> encode -> validate -> atomically activate."""
+
+    __tablename__ = "index_jobs"
+    __table_args__ = (
+        CheckConstraint(
+            "status IN ('queued', 'running', 'completed', 'partial', 'failed')",
+            name="ck_index_jobs_status",
+        ),
+        Index(
+            "uq_index_jobs_one_active",
+            text("(true)"),
+            unique=True,
+            postgresql_where=text("status IN ('queued', 'running')"),
+        ),
+    )
+
+    id: Mapped[uuid.UUID] = mapped_column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
+    status: Mapped[str] = mapped_column(String(16), default="queued")
+    step: Mapped[str] = mapped_column(String(24), default="queued")
+    corpus_sha256: Mapped[str | None] = mapped_column(String(64))
+    documents_total: Mapped[int] = mapped_column(Integer, default=0)
+    documents_encoded: Mapped[int] = mapped_column(Integer, default=0)
+    staged_version: Mapped[str | None] = mapped_column(String(64))
+    index_version_id: Mapped[uuid.UUID | None] = mapped_column(ForeignKey("index_versions.id"))
+    error_code: Mapped[str | None] = mapped_column(String(64))
+    error_message: Mapped[str | None] = mapped_column(String(500))
+    created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), server_default=func.now())
+    started_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True))
+    finished_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True))

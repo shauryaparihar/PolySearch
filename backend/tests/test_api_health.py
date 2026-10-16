@@ -18,8 +18,14 @@ def test_ready_when_everything_matches(client):
     status, body = _ready(client)
     assert status == 200 and body["ready"] is True
     assert set(body["checks"]) == {
-        "database", "active_index", "artifacts", "encoder", "suggester", "document_mappings",
-    }  # fmt: skip
+        "database",
+        "schema",
+        "active_index",
+        "artifacts",
+        "encoder",
+        "suggester",
+        "document_mappings",
+    }
     assert all(body["checks"].values())
 
 
@@ -103,3 +109,21 @@ def test_readiness_result_is_cached_for_the_configured_time(make_client, session
         s.execute(delete(IndexVersion))
         s.commit()
     assert _ready(client)[0] == 200  # still the cached answer
+
+
+def test_not_ready_when_the_database_schema_is_behind_the_code(client, session_factory):
+    from sqlalchemy import text
+
+    with session_factory() as s:
+        head = s.scalar(text("select version_num from alembic_version"))
+        s.execute(text("update alembic_version set version_num = '0001'"))
+        s.commit()
+    try:
+        status, body = _ready(client)
+        assert status == 503 and body["checks"]["schema"] is False
+        assert body["checks"]["database"] is True  # the database itself is reachable
+    finally:
+        with session_factory() as s:
+            s.execute(text("update alembic_version set version_num = :v"), {"v": head})
+            s.commit()
+    assert _ready(client)[1]["checks"]["schema"] is True

@@ -8,7 +8,7 @@ from fastapi import APIRouter, Query, Request, Response
 from fastapi.responses import JSONResponse
 from sqlalchemy import func, select
 
-from app.api import analytics, service, signals, suggest
+from app.api import analytics, jobs_api, service, signals, suggest
 from app.api.admin import require_admin
 from app.api.errors import ApiError, request_id_of
 from app.api.logging_config import log_event
@@ -20,6 +20,9 @@ from app.api.schemas import (
     DocumentResponse,
     FeedbackRequest,
     FeedbackResponse,
+    IndexJobRequest,
+    IngestionJobRequest,
+    JobResponse,
     Language,
     ResultPage,
     SearchRequest,
@@ -141,6 +144,36 @@ def admin_analytics(request: Request, days: int = Query(default=7, ge=1, le=90))
             state.settings.analytics_store_query_text,
             state.settings.popular_query_min_count,
         )
+
+
+@v1.post("/admin/ingestion-jobs", response_model=JobResponse, status_code=202)
+def create_ingestion_job(
+    body: IngestionJobRequest, request: Request, response: Response
+) -> JobResponse:
+    require_admin(request)
+    job = jobs_api.start_ingestion_job(_state(request), body)
+    response.headers["Location"] = f"/api/v1/admin/ingestion-jobs/{job.job_id}"
+    return job
+
+
+@v1.get("/admin/ingestion-jobs/{job_id}", response_model=JobResponse)
+def get_ingestion_job(job_id: str, request: Request) -> JobResponse:
+    require_admin(request)
+    return jobs_api.get_job(_state(request), "ingestion", job_id)
+
+
+@v1.post("/admin/index-jobs", response_model=JobResponse, status_code=202)
+def create_index_job(body: IndexJobRequest, request: Request, response: Response) -> JobResponse:
+    require_admin(request)
+    job = jobs_api.start_index_job(_state(request))
+    response.headers["Location"] = f"/api/v1/admin/index-jobs/{job.job_id}"
+    return job
+
+
+@v1.get("/admin/index-jobs/{job_id}", response_model=JobResponse)
+def get_index_job(job_id: str, request: Request) -> JobResponse:
+    require_admin(request)
+    return jobs_api.get_job(_state(request), "index", job_id)
 
 
 @v1.get("/stats")

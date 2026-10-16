@@ -34,6 +34,7 @@ def docs() -> list[CorpusDoc]:
                 CorpusDoc(f"{language}:{title.replace(' ', '_')}", language, title,
                           summary_of(title, language))
             )  # fmt: skip
+    out.sort(key=lambda d: d.key)  # same order as the corpus export, so versions compare equal
     return out
 
 

@@ -114,3 +114,17 @@ def test_a_slow_encoder_cannot_pile_up_unbounded_work(make_client, api_bundle):
     assert codes.count(200) >= 1 and 503 in codes  # extra requests are shed, not queued
     busy = next(r for r in results if r.status_code == 503)
     assert busy.json()["error"]["code"] == "BUSY" and busy.headers["retry-after"] == "1"
+
+
+def test_blocked_and_record_do_not_double_count():
+    now = [0.0]
+    limiter = SlidingWindowLimiter(limit=2, window_seconds=60, clock=lambda: now[0])
+    assert limiter.blocked("a") == (False, 0) and limiter.blocked("a") == (
+        False,
+        0,
+    )  # peeking is free
+    limiter.record("a")
+    limiter.record("a")
+    assert limiter.blocked("a") == (True, 60)
+    now[0] = 61
+    assert limiter.blocked("a") == (False, 0)

@@ -8,6 +8,10 @@ row. The (slightly expensive) result is cached for ``readiness_cache_seconds``.
 
 from __future__ import annotations
 
+from pathlib import Path
+
+from alembic.config import Config
+from alembic.script import ScriptDirectory
 from sqlalchemy import func, select, text
 
 from app.api.state import AppState
@@ -19,6 +23,17 @@ def _check_database(state: AppState) -> bool:
     with state.session_factory() as session:
         session.execute(text("select 1"))
     return True
+
+
+ALEMBIC_INI = Path(__file__).resolve().parents[2] / "alembic.ini"
+
+
+def _check_schema(state: AppState) -> bool:
+    """The database is at the newest migration this code expects (no half-upgraded schema)."""
+    head = ScriptDirectory.from_config(Config(str(ALEMBIC_INI))).get_current_head()
+    with state.session_factory() as session:
+        current = session.scalar(text("select version_num from alembic_version"))
+    return current == head
 
 
 def _check_index_row(state: AppState) -> bool:
@@ -62,6 +77,7 @@ def _check_mappings(state: AppState) -> bool:
 
 CHECKS = {
     "database": _check_database,
+    "schema": _check_schema,
     "active_index": _check_index_row,
     "artifacts": _check_artifacts,
     "encoder": _check_encoder,
@@ -77,7 +93,7 @@ def run_readiness(state: AppState) -> dict:
         return cached
     results: dict[str, bool] = {}
     for name, check in CHECKS.items():
-        if state.bundle is None and name != "database":
+        if state.bundle is None and name not in ("database", "schema"):
             results[name] = False
             continue
         try:

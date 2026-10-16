@@ -25,23 +25,42 @@ class SlidingWindowLimiter:
         self._hits: OrderedDict[str, deque[float]] = OrderedDict()
         self._lock = threading.Lock()
 
+    def _window(self, key: str) -> deque[float]:
+        """The recent hits for ``key`` with expired ones removed (caller holds the lock)."""
+        now = self.clock()
+        hits = self._hits.get(key)
+        if hits is None:
+            hits = self._hits[key] = deque()
+            while len(self._hits) > self.max_keys:
+                self._hits.popitem(last=False)  # forget the least recently added client
+        else:
+            self._hits.move_to_end(key)
+        while hits and now - hits[0] >= self.window:
+            hits.popleft()
+        return hits
+
+    def _retry_after(self, hits: deque[float]) -> int:
+        return max(1, math.ceil(self.window - (self.clock() - hits[0])))
+
     def check(self, key: str) -> tuple[bool, int]:
         """Record a request. Returns ``(allowed, retry_after_seconds)``."""
-        now = self.clock()
         with self._lock:
-            hits = self._hits.get(key)
-            if hits is None:
-                hits = self._hits[key] = deque()
-                while len(self._hits) > self.max_keys:
-                    self._hits.popitem(last=False)  # forget the least recently added client
-            else:
-                self._hits.move_to_end(key)
-            while hits and now - hits[0] >= self.window:
-                hits.popleft()
+            hits = self._window(key)
             if len(hits) >= self.limit:
-                return False, max(1, math.ceil(self.window - (now - hits[0])))
-            hits.append(now)
+                return False, self._retry_after(hits)
+            hits.append(self.clock())
             return True, 0
+
+    def blocked(self, key: str) -> tuple[bool, int]:
+        """Is ``key`` at its limit? Does not record anything (used to lock out failures)."""
+        with self._lock:
+            hits = self._window(key)
+            return (True, self._retry_after(hits)) if len(hits) >= self.limit else (False, 0)
+
+    def record(self, key: str) -> None:
+        """Count one event for ``key`` without checking the limit."""
+        with self._lock:
+            self._window(key).append(self.clock())
 
 
 def client_id(peer: str | None, forwarded_for: str | None, trusted_proxies: list[str]) -> str:

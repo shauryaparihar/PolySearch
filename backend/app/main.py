@@ -23,6 +23,8 @@ from app.api.ratelimit import SlidingWindowLimiter
 from app.api.state import AppState
 from app.config import Settings, get_settings
 from app.db.base import make_engine, make_session_factory
+from app.jobs.manager import recover_stale_jobs
+from app.jobs.worker import JobWorker
 from app.search.artifacts import ArtifactError
 from app.search.bundle import SearchBundle
 
@@ -32,6 +34,8 @@ def create_app(
     *,
     bundle: SearchBundle | None = None,
     session_factory: sessionmaker[Session] | None = None,
+    synchronous_jobs: bool = False,
+    source_factory=None,
 ) -> FastAPI:
     """Build the app. ``bundle``/``session_factory`` can be injected (tests); otherwise they
     are created from settings during startup."""
@@ -51,8 +55,11 @@ def create_app(
         suggest_limiter=SlidingWindowLimiter(settings.suggest_rate_limit_per_minute),
         write_limiter=SlidingWindowLimiter(settings.write_rate_limit_per_minute),
         admin_limiter=SlidingWindowLimiter(settings.admin_rate_limit_per_minute),
+        admin_failure_limiter=SlidingWindowLimiter(settings.admin_failed_attempts_per_minute),
         cursor_secret=secret,
+        source_factory=source_factory,
     )
+    state.worker = JobWorker(state, synchronous=synchronous_jobs)
 
     @asynccontextmanager
     async def lifespan(app: FastAPI) -> AsyncIterator[None]:
@@ -74,7 +81,17 @@ def create_app(
                 suggest.get_suggester(state)  # build the autocomplete trie for this bundle
             except Exception:  # retried lazily on the first suggestion request
                 log_event("suggester_build_failed", level=40, error_code="DATABASE_UNAVAILABLE")
-        yield
+        try:
+            recovered = recover_stale_jobs(state.session_factory)
+            if recovered:
+                log_event("stale_jobs_recovered", level=30, error_code="RESTART_INTERRUPTED")
+        except Exception:  # database unavailable: nothing to recover yet
+            log_event("stale_job_recovery_failed", level=40, error_code="DATABASE_UNAVAILABLE")
+        state.worker.start()
+        try:
+            yield
+        finally:
+            state.worker.stop(settings.job_shutdown_timeout_seconds)
 
     app = FastAPI(title="PolySearch", version="0.1.0", lifespan=lifespan)
     app.state.polysearch = state

@@ -3,11 +3,13 @@
 from __future__ import annotations
 
 import json
+import uuid
 from collections.abc import Iterable
 from datetime import UTC, datetime
 from pathlib import Path
 
 from sqlalchemy import select
+from sqlalchemy.exc import IntegrityError
 from sqlalchemy.orm import Session, sessionmaker
 
 from app.config import SUPPORTED_LANGUAGES, get_settings
@@ -103,28 +105,45 @@ def upsert_document(session: Session, source_id: int, rec: NormalizedRecord) -> 
 
 # -------------------------------------------------------------------- job state
 class JobRun:
-    """Owns one IngestionJob row and its counters/failure list."""
+    """Owns one IngestionJob row and its counters/failure list.
+
+    Pass ``job_id`` to run a job row that already exists (created queued by the API); otherwise
+    a new row is created (the command-line path).
+    """
 
     def __init__(
-        self, factory: sessionmaker[Session], source_id: int, mode: str, language: str | None
+        self,
+        factory: sessionmaker[Session],
+        source_id: int,
+        mode: str,
+        language: str | None,
+        job_id: uuid.UUID | None = None,
     ):
         self.factory = factory
-        with factory() as s:
-            job = IngestionJob(
-                source_id=source_id,
-                mode=mode,
-                language=language,
-                status="queued",
-                fetched_count=0,
-                created_count=0,
-                updated_count=0,
-                unchanged_count=0,
-                failed_count=0,
-                failed_items=[],
-            )
-            s.add(job)
-            s.commit()
-            self.job_id = job.id
+        if job_id is None:
+            try:
+                with factory() as s:
+                    job = IngestionJob(
+                        source_id=source_id,
+                        mode=mode,
+                        language=language,
+                        status="queued",
+                        fetched_count=0,
+                        created_count=0,
+                        updated_count=0,
+                        unchanged_count=0,
+                        failed_count=0,
+                        failed_items=[],
+                    )
+                    s.add(job)
+                    s.commit()
+                    self.job_id = job.id
+            except IntegrityError:
+                raise SourceError(
+                    "job_conflict", "Another ingestion job is already queued or running"
+                ) from None
+        else:
+            self.job_id = job_id
         self.source_id = source_id
         self.counts = {"fetched": 0, "created": 0, "updated": 0, "unchanged": 0, "failed": 0}
         self.failed_items: list[dict[str, str]] = []
@@ -243,7 +262,11 @@ def _bounded(max_pages: int | None) -> int:
 
 
 def sync_titles(
-    factory: sessionmaker[Session], source: WikipediaSource, language: str, titles: list[str]
+    factory: sessionmaker[Session],
+    source: WikipediaSource,
+    language: str,
+    titles: list[str],
+    job_id: uuid.UUID | None = None,
 ) -> str:
     """Seed: fetch specific titles (bounded). Missing titles are recorded as failures."""
     _check_language(language)
@@ -251,7 +274,7 @@ def sync_titles(
     with factory() as s:
         source_id = ensure_source(s, source).id
         s.commit()
-    run = JobRun(factory, source_id, "seed", language)
+    run = JobRun(factory, source_id, "seed", language, job_id)
     try:
         step = source.settings.titles_per_request * 2
         for i in range(0, len(titles), step):
@@ -270,6 +293,7 @@ def sync_enumerate(
     language: str,
     max_pages: int | None = None,
     resume_from: dict | None = None,
+    job_id: uuid.UUID | None = None,
 ) -> str:
     """Seed: walk the wiki's page list with API continuation, at most ``max_pages`` pages."""
     _check_language(language)
@@ -277,7 +301,7 @@ def sync_enumerate(
     with factory() as s:
         source_id = ensure_source(s, source).id
         s.commit()
-    run = JobRun(factory, source_id, "seed", language)
+    run = JobRun(factory, source_id, "seed", language, job_id)
     token = resume_from
     seen = 0
     empty_streak = 0
@@ -304,6 +328,7 @@ def sync_incremental(
     source: WikipediaSource,
     language: str,
     max_pages: int | None = None,
+    job_id: uuid.UUID | None = None,
 ) -> str:
     """Incremental: re-check the oldest-fetched stored documents against live revisions."""
     _check_language(language)
@@ -324,7 +349,7 @@ def sync_incremental(
             )
         ]
         s.commit()
-    run = JobRun(factory, source_id, "incremental", language)
+    run = JobRun(factory, source_id, "incremental", language, job_id)
     try:
         step = source.settings.titles_per_request * 2
         for i in range(0, len(titles), step):

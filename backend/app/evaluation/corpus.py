@@ -66,7 +66,8 @@ def export_corpus(session: Session, path: Path) -> dict:
             }
         )
     rows.sort(key=lambda r: r["key"])
-    data = ("\n".join(_line(r) for r in rows) + "\n").encode("utf-8")
+    text = "".join(_line(r) + "\n" for r in rows)  # an empty corpus is an empty file
+    data = text.encode("utf-8")
     path.parent.mkdir(parents=True, exist_ok=True)
     path.write_bytes(data)
     counts: dict[str, int] = {}
@@ -85,6 +86,8 @@ def load_corpus(path: Path) -> Corpus:
     data = Path(path).read_bytes()
     docs = []
     for line in data.decode("utf-8").splitlines():
+        if not line.strip():
+            continue
         row = json.loads(line)
         docs.append(CorpusDoc(row["key"], row["language"], row["title"], row["summary"]))
     keys = [d.key for d in docs]

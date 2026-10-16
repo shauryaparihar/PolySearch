@@ -54,9 +54,24 @@ class Settings(BaseSettings):
     admin_api_key: str | None = None  # unset = admin endpoints do not exist (404)
     suggest_rate_limit_per_minute: int = Field(default=120, ge=1, le=10_000)
     write_rate_limit_per_minute: int = Field(default=60, ge=1, le=10_000)  # clicks, feedback
-    admin_rate_limit_per_minute: int = Field(default=10, ge=1, le=1000)  # incl. failed key attempts
+    admin_failed_attempts_per_minute: int = Field(default=10, ge=1, le=1000)  # wrong keys only
+    admin_rate_limit_per_minute: int = Field(default=120, ge=1, le=10_000)  # authenticated calls
     popular_query_min_count: int = Field(default=5, ge=2, le=1000)
     max_suggestions: int = Field(default=10, ge=1, le=20)
+
+    # ---- background sync and re-indexing (Phase 6)
+    encoder_name: str = "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2"
+    encoder_revision: str = (
+        "e8f8c211226b894fcb81acc59f3b34ba3efd5f42"  # used only if nothing is loaded
+    )
+    artifact_root: Path | None = (
+        None  # where index versions live; default: parent of the active index
+    )
+    benchmark_dir: Path | None = None  # benchmark gate for new indexes; None = gate skipped
+    reindex_max_mrr_drop: float = Field(default=0.05, ge=0, le=1)
+    reindex_smoke_documents: int = Field(default=10, ge=1, le=100)
+    job_shutdown_timeout_seconds: float = Field(default=30.0, ge=0, le=600)
+    index_batch_size: int = Field(default=64, ge=1, le=512)
 
     @field_validator("cors_allowed_origins")
     @classmethod

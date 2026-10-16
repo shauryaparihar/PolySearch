@@ -83,7 +83,7 @@ def test_failed_attempts_are_rate_limited_and_the_key_never_appears_in_output(ma
     handler = Capture()
     logging.getLogger(LOGGER_NAME).addHandler(handler)
     try:
-        client = make_client(admin_api_key=KEY, admin_rate_limit_per_minute=3)
+        client = make_client(admin_api_key=KEY, admin_failed_attempts_per_minute=3)
         codes = [
             client.get("/api/v1/admin/analytics", headers={"x-admin-key": "bad"}).status_code
             for _ in range(3)
@@ -289,3 +289,35 @@ def test_top_query_text_needs_the_flag_a_minimum_count_and_no_sensitive_text(mak
     _search(client, query="rare one off query")
     top = _report(client)["top_queries"]["text"]
     assert top == [{"query": "popular climate query", "count": 3}]
+
+
+def test_authenticated_polling_is_not_throttled_like_failed_attempts(make_client):
+    client = make_client(admin_api_key=KEY)  # default: 10 failures/min, 120 authenticated calls/min
+    codes = [client.get("/api/v1/admin/analytics", headers=HEAD).status_code for _ in range(60)]
+    assert set(codes) == {200}
+
+
+def test_wrong_keys_lock_a_client_out_even_for_the_right_key(make_client):
+    client = make_client(admin_api_key=KEY, admin_failed_attempts_per_minute=2)
+    assert [
+        client.get("/api/v1/admin/analytics", headers={"x-admin-key": "x"}).status_code
+        for _ in range(2)
+    ] == [401, 401]
+    locked = client.get("/api/v1/admin/analytics", headers=HEAD)
+    assert locked.status_code == 429 and int(locked.headers["retry-after"]) >= 1
+
+
+def test_authenticated_calls_have_their_own_limit_that_failures_do_not_consume(make_client):
+    client = make_client(
+        admin_api_key=KEY, admin_rate_limit_per_minute=3, admin_failed_attempts_per_minute=50
+    )
+    for _ in range(5):
+        assert (
+            client.get("/api/v1/admin/analytics", headers={"x-admin-key": "x"}).status_code == 401
+        )
+    assert [client.get("/api/v1/admin/analytics", headers=HEAD).status_code for _ in range(4)] == [
+        200,
+        200,
+        200,
+        429,
+    ]

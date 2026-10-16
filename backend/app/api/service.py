@@ -143,24 +143,29 @@ def default_mode(bundle) -> str:
 
 
 def _require_ready(state: AppState):
-    if state.bundle is None:
+    """Return a consistent ``(bundle, index_version_id)`` snapshot or raise 503."""
+    bundle, version_id = state.snapshot()
+    if bundle is None:
         raise ApiError(503, "INDEX_UNAVAILABLE", "No search index is currently available.")
-    if state.index_version_id is None:
+    if version_id is None:
         with state.session_factory() as session:
             try:
-                state.index_version_id = register_index_version(session, state.bundle).id
+                version_id = register_index_version(session, bundle).id
                 session.commit()
             except Exception:
                 session.rollback()
                 raise ApiError(
                     503, "INDEX_UNAVAILABLE", "No search index is currently available."
                 ) from None
-    return state.bundle
+        with state.lock:
+            if state.bundle is bundle:  # only record it if the bundle was not swapped meanwhile
+                state.index_version_id = version_id
+    return bundle, version_id
 
 
 def run_search(state: AppState, req: SearchRequest, request_id: str) -> SearchResponse:
     started = time.perf_counter()
-    bundle = _require_ready(state)
+    bundle, version_id = _require_ready(state)
     settings = state.settings
     mode = req.mode or default_mode(bundle)
     pool_size = settings.result_pool_size
@@ -216,7 +221,7 @@ def run_search(state: AppState, req: SearchRequest, request_id: str) -> SearchRe
             target_languages=sorted(req.target_languages),
             sources=sorted(req.sources),
             requested_mode=mode,
-            index_version_id=state.index_version_id,
+            index_version_id=version_id,
             result_pool_size=len(kept),
             encoding_ms=timings.get("encode_ms"),
             lexical_ms=timings.get("lexical_ms"),

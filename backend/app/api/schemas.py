@@ -5,9 +5,9 @@ from __future__ import annotations
 import re
 import unicodedata
 import uuid
-from typing import Literal
+from typing import Annotated, Literal
 
-from pydantic import BaseModel, ConfigDict, Field, field_validator
+from pydantic import BaseModel, ConfigDict, Field, field_validator, model_validator
 
 Language = Literal["en", "es", "fr"]
 Mode = Literal["dense", "lexical", "hybrid"]
@@ -125,3 +125,60 @@ class SuggestionItem(BaseModel):
 class SuggestionResponse(BaseModel):
     prefix: str
     suggestions: list[SuggestionItem]
+
+
+# ----------------------------------------------------------------- Phase 6 schemas
+class IngestionJobRequest(BaseModel):
+    model_config = ConfigDict(extra="forbid")
+
+    language: Language
+    mode: Literal["seed", "incremental"]
+    titles: list[Annotated[str, Field(min_length=1, max_length=255)]] | None = Field(
+        default=None, min_length=1, max_length=50
+    )
+    max_pages: int | None = Field(default=None, ge=1, le=1000)
+    resume: bool = False
+
+    @field_validator("titles")
+    @classmethod
+    def _titles(cls, titles: list[str] | None) -> list[str] | None:
+        if titles is None:
+            return None
+        cleaned = [t.strip() for t in titles]
+        if any(not t or "|" in t or any(ord(c) < 32 for c in t) for t in cleaned):
+            raise ValueError("invalid page title")
+        return cleaned
+
+    @model_validator(mode="after")
+    def _combination(self):
+        if self.mode == "incremental" and (self.titles or self.resume):
+            raise ValueError("titles and resume apply to seed jobs only")
+        return self
+
+
+class IndexJobRequest(BaseModel):
+    """Rebuilding takes no parameters: it indexes exactly the active documents in the database."""
+
+    model_config = ConfigDict(extra="forbid")
+
+
+class JobResponse(BaseModel):
+    job_id: str
+    kind: Literal["ingestion", "index"]
+    status: Literal["queued", "running", "completed", "partial", "failed"]
+    created_at: str
+    started_at: str | None
+    finished_at: str | None
+    error_code: str | None
+    error_message: str | None
+    # ingestion jobs
+    language: str | None = None
+    mode: str | None = None
+    counters: dict[str, int] | None = None
+    failed_items: list[dict[str, str]] | None = None
+    # index jobs
+    step: str | None = None
+    documents_total: int | None = None
+    documents_encoded: int | None = None
+    staged_version: str | None = None
+    index_version: str | None = None

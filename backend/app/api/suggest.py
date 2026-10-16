@@ -32,8 +32,8 @@ def popular_queries(session, min_count: int) -> list[tuple[str, int]]:
     return [(text, n) for text, n in rows if text and not looks_sensitive(text)]
 
 
-def build_suggester(state: AppState) -> Suggester:
-    bundle = state.bundle
+def build_suggester(state: AppState, bundle=None) -> Suggester:
+    bundle = bundle or state.bundle
     indexed = bundle.document_keys()
     tries = {lang: PrefixTrie() for lang in SUPPORTED_LANGUAGES}
     combined = PrefixTrie()
@@ -59,13 +59,20 @@ def build_suggester(state: AppState) -> Suggester:
 
 def get_suggester(state: AppState) -> Suggester | None:
     """The suggester for the *current* bundle, rebuilt if the bundle changed."""
-    if state.bundle is None:
+    bundle, _ = state.snapshot()
+    if bundle is None:
         return None
     current = state.suggester
-    if current is not None and current.index_version == state.bundle.version:
+    if current is not None and current.index_version == bundle.version:
         return current
     with _build_lock:
         current = state.suggester
-        if current is None or current.index_version != state.bundle.version:
-            state.suggester = build_suggester(state)
-        return state.suggester
+        if current is None or current.index_version != bundle.version:
+            built = build_suggester(state, bundle)
+            with state.lock:
+                if (
+                    state.bundle is bundle
+                ):  # do not install a trie for a bundle swapped out meanwhile
+                    state.suggester = built
+            return built
+        return current
