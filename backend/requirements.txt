@@ -16,3 +16,4 @@ sentence-transformers>=3,<6
 faiss-cpu>=1.8
 scipy>=1.11
 huggingface_hub>=0.23
+cachetools>=5,<8

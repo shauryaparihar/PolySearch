@@ -12,6 +12,7 @@ from sqlalchemy import (
     ForeignKey,
     Index,
     Integer,
+    Numeric,
     String,
     Text,
     UniqueConstraint,
@@ -99,3 +100,93 @@ class IngestionJob(Base):
     created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), server_default=func.now())
     started_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True))
     finished_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True))
+
+
+INDEX_STATUSES = ("building", "validated", "active", "failed", "retired")
+SEARCH_MODES = ("dense", "lexical", "hybrid")
+
+
+class IndexVersion(Base):
+    __tablename__ = "index_versions"
+    __table_args__ = (
+        CheckConstraint(
+            "status IN ('building', 'validated', 'active', 'failed', 'retired')",
+            name="ck_index_versions_status",
+        ),
+        # At most one active index version, enforced by the database itself.
+        Index(
+            "uq_index_versions_one_active",
+            "status",
+            unique=True,
+            postgresql_where=text("status = 'active'"),
+        ),
+    )
+
+    id: Mapped[uuid.UUID] = mapped_column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
+    version: Mapped[str] = mapped_column(String(64), unique=True)
+    encoder_name: Mapped[str] = mapped_column(String(255))
+    encoder_revision: Mapped[str] = mapped_column(String(64))
+    corpus_sha256: Mapped[str] = mapped_column(String(64))
+    manifest_sha256: Mapped[str] = mapped_column(String(64))
+    file_hashes: Mapped[dict] = mapped_column(JSONB)
+    document_count: Mapped[int] = mapped_column(Integer)
+    per_language_counts: Mapped[dict] = mapped_column(JSONB)
+    vector_dimension: Mapped[int] = mapped_column(Integer)
+    default_mode: Mapped[str | None] = mapped_column(String(16))
+    benchmark_version: Mapped[str | None] = mapped_column(String(32))
+    metrics: Mapped[dict | None] = mapped_column(JSONB)
+    status: Mapped[str] = mapped_column(String(16), default="building")
+    created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), server_default=func.now())
+    activated_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True))
+
+
+class SearchRun(Base):
+    __tablename__ = "search_runs"
+    __table_args__ = (
+        CheckConstraint("status IN ('ok', 'error')", name="ck_search_runs_status"),
+        CheckConstraint(
+            "requested_mode IN ('dense', 'lexical', 'hybrid')", name="ck_search_runs_mode"
+        ),
+        Index("ix_search_runs_query_sha256", "query_sha256"),
+        Index("ix_search_runs_created_at", "created_at"),
+    )
+
+    id: Mapped[uuid.UUID] = mapped_column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
+    query_sha256: Mapped[str] = mapped_column(String(64))
+    # Only filled when ANALYTICS_STORE_QUERY_TEXT=true (normalised, at most 500 characters).
+    analytics_query_text: Mapped[str | None] = mapped_column(String(500))
+    query_language: Mapped[str] = mapped_column(String(2))
+    target_languages: Mapped[list] = mapped_column(JSONB)
+    sources: Mapped[list] = mapped_column(JSONB)
+    requested_mode: Mapped[str] = mapped_column(String(16))
+    index_version_id: Mapped[uuid.UUID] = mapped_column(ForeignKey("index_versions.id"))
+    result_pool_size: Mapped[int] = mapped_column(Integer, default=0)
+    total_ms: Mapped[float] = mapped_column(Numeric(10, 3), default=0)
+    encoding_ms: Mapped[float | None] = mapped_column(Numeric(10, 3))
+    lexical_ms: Mapped[float | None] = mapped_column(Numeric(10, 3))
+    dense_ms: Mapped[float | None] = mapped_column(Numeric(10, 3))
+    fusion_ms: Mapped[float | None] = mapped_column(Numeric(10, 3))
+    database_ms: Mapped[float | None] = mapped_column(Numeric(10, 3))
+    cache_hit: Mapped[bool] = mapped_column(Boolean, default=False)
+    status: Mapped[str] = mapped_column(String(16), default="ok")
+    error_code: Mapped[str | None] = mapped_column(String(64))
+    created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), server_default=func.now())
+
+
+class SearchResult(Base):
+    __tablename__ = "search_results"
+    __table_args__ = (
+        UniqueConstraint("search_run_id", "rank", name="uq_search_results_run_rank"),
+        CheckConstraint("rank >= 1", name="ck_search_results_rank_positive"),
+    )
+
+    search_run_id: Mapped[uuid.UUID] = mapped_column(
+        ForeignKey("search_runs.id", ondelete="CASCADE"), primary_key=True
+    )
+    document_id: Mapped[uuid.UUID] = mapped_column(ForeignKey("documents.id"), primary_key=True)
+    rank: Mapped[int] = mapped_column(Integer)
+    score: Mapped[float] = mapped_column(Numeric(12, 8))
+    dense_rank: Mapped[int | None] = mapped_column(Integer)
+    dense_score: Mapped[float | None] = mapped_column(Numeric(12, 8))
+    lexical_rank: Mapped[int | None] = mapped_column(Integer)
+    lexical_score: Mapped[float | None] = mapped_column(Numeric(12, 8))

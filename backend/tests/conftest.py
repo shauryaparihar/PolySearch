@@ -63,7 +63,10 @@ def alembic_config() -> Config:
 def session_factory(migrated_engine: Engine):
     with migrated_engine.begin() as conn:
         conn.execute(
-            text("TRUNCATE documents, ingestion_jobs, content_sources RESTART IDENTITY CASCADE")
+            text(
+                "TRUNCATE search_results, search_runs, index_versions, documents, "
+                "ingestion_jobs, content_sources RESTART IDENTITY CASCADE"
+            )
         )
     return make_session_factory(migrated_engine)
 
@@ -94,3 +97,44 @@ def source(fake_wiki) -> WikipediaSource:
         sleep=lambda _s: None,
         jitter=lambda: 0.0,
     )
+
+
+@pytest.fixture
+def encoder():
+    from fake_encoder import FakeEncoder
+
+    return FakeEncoder()
+
+
+@pytest.fixture
+def api_bundle(tmp_path, encoder):
+    from api_support import build_bundle
+
+    return build_bundle(tmp_path, encoder)
+
+
+@pytest.fixture
+def make_client(session_factory, api_bundle):
+    """Factory: ``make_client(**settings)`` -> TestClient on an app wired to bundle + test DB."""
+    from api_support import seed_documents, test_settings
+    from app.main import create_app
+    from fastapi.testclient import TestClient
+
+    seed_documents(session_factory)
+    opened = []
+
+    def factory(bundle=api_bundle, **settings):
+        app = create_app(test_settings(**settings), bundle=bundle, session_factory=session_factory)
+        client = TestClient(app)
+        client.__enter__()  # runs lifespan: registers the active index version
+        opened.append(client)
+        return client
+
+    yield factory
+    for client in opened:
+        client.__exit__(None, None, None)
+
+
+@pytest.fixture
+def client(make_client):
+    return make_client()

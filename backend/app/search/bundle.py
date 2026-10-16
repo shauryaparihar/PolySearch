@@ -130,6 +130,22 @@ class SearchBundle:
                 raise ArtifactError("supplied encoder is not the one the artifacts were built with")
         return cls(path, manifest, indexes, mappings, lexical, encoder)
 
+    def verify(self) -> None:
+        """Re-check files against the manifest and in-memory counts (used by readiness)."""
+        for name, expected in self.manifest["files"].items():
+            file = self.path / name
+            if not file.is_file():
+                raise ArtifactError(f"missing artifact file {name}")
+            if file_sha256(file) != expected:
+                raise ArtifactError(f"checksum mismatch for {name}")
+        for language, index in self._indexes.items():
+            if not (
+                index.ntotal
+                == len(self._mappings[language])
+                == self.manifest["partitions"][language]["documents"]
+            ):
+                raise ArtifactError(f"{language} document count mismatch")
+
     @property
     def encoder(self) -> Encoder:
         if self._encoder is None:
