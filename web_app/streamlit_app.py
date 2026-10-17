@@ -103,11 +103,6 @@ def main():
     # Sidebar
     st.sidebar.title("⚙️ Settings")
     
-    # st.sidebar.markdown("---")
-    # st.sidebar.markdown("### Project Information")
-    # st.sidebar.info("""
-    # """)
-    
     st.sidebar.markdown("---")
     st.sidebar.markdown("### Model Configuration")
     
