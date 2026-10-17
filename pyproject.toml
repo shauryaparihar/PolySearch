@@ -14,3 +14,8 @@ extend-exclude = [
 
 [tool.ruff.lint]
 select = ["E", "F", "I", "B"]
+
+[tool.ruff.lint.isort]
+# backend/scripts is imported by tests via pythonpath; keep it grouped like "app", not as
+# first-party just because a repository-level scripts/ folder exists.
+known-third-party = ["scripts"]
