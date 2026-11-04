@@ -105,6 +105,26 @@ def claim_support(claim_text: str, cited_texts: Iterable[str]) -> float:
     return sum(w in haystack for w in words) / len(words)
 
 
+_NUMBER = re.compile(r"\d[\d.,]*\d|\d")
+_NAME = re.compile(r"(?<=[\s(\"'])[^\W\d_]*[A-ZÁÉÍÓÚÑÀÂÇÈÊËÎÏÔÙÛÜ][^\W\d_]+")
+
+
+def strict_claim_supported(claim_text: str, cited_texts: Iterable[str]) -> bool:
+    """Every number and every capitalised word after the first in the claim must occur in the
+    cited passages. Stricter than ``claim_support``: a swapped date or name fails. Still a text
+    check, not entailment: a claim can reuse the right words and say something false."""
+    haystack = fold(" ".join(cited_texts))
+    needed = [fold(x) for x in _NUMBER.findall(claim_text)]
+    needed += [fold(x) for x in _NAME.findall(claim_text)]
+    return all(item in haystack for item in needed)
+
+
+def strict_supported_claim_rate(claims: Sequence[tuple[str, Sequence[str]]]) -> float | None:
+    if not claims:
+        return None
+    return sum(strict_claim_supported(t, texts) for t, texts in claims) / len(claims)
+
+
 def supported_claim_rate(
     claims: Sequence[tuple[str, Sequence[str]]], threshold: float = SUPPORT_THRESHOLD
 ) -> float | None:

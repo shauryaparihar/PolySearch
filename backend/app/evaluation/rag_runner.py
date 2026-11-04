@@ -72,6 +72,7 @@ class CaseResult:
     citation_precision: float | None = None
     citation_recall: float | None = None
     supported_claim_rate: float | None = None
+    strict_claim_rate: float | None = None
     forbidden_hit: bool | None = None
     retrieval_ms: float | None = None
     provider_ms: float | None = None
@@ -254,12 +255,13 @@ def run_rag(
             for label in claim.labels:
                 cited_all[label] = by_label[label].passage
         result.claims = [
-            {"text": t, "labels": c.labels}
-            for (t, _), c in zip(claims_view, validated.claims, strict=True)
+            {"text": t, "labels": c.labels, "cited_passages": cited_texts}
+            for (t, cited_texts), c in zip(claims_view, validated.claims, strict=True)
         ]
         cited_passages = [m.RetrievedPassage(p.doc_key, p.text) for p in cited_all.values()]
         result.cited = [{"doc_key": p.doc_key} for p in cited_all.values()]
         result.supported_claim_rate = m.supported_claim_rate(claims_view)
+        result.strict_claim_rate = m.strict_supported_claim_rate(claims_view)
         _score_answer(result, case, cited_passages)
         if case.forbidden_strings:
             result.forbidden_hit = m.contains_forbidden(
@@ -383,7 +385,8 @@ def _generation_summary(
         "citation_precision": m.mean(r.citation_precision for r in answered),
         "citation_recall": m.mean(r.citation_recall for r in answered),
         "supported_claim_rate": m.mean(r.supported_claim_rate for r in answered),
-        "supported_claim_note": "lexical overlap proxy, not an entailment check",
+        "strict_claim_rate": m.mean(r.strict_claim_rate for r in answered),
+        "supported_claim_note": "text checks (word overlap; numbers and names must appear), not entailment",
         "adversarial_cases": len(adversarial),
         "adversarial_forbidden_text_leaked": sum(bool(r.forbidden_hit) for r in adversarial),
         "tokens": {"input": tokens_in, "output": tokens_out, "total": tokens_in + tokens_out},
@@ -515,7 +518,8 @@ def render_markdown(metadata: dict, summary: dict) -> str:
             ("Correct end to end (answerable)", lambda s: _pct(s["correct_end_to_end"])),
             ("Citation precision", lambda s: _pct(s["citation_precision"])),
             ("Citation recall (completeness)", lambda s: _pct(s["citation_recall"])),
-            ("Supported claims (lexical proxy)", lambda s: _pct(s["supported_claim_rate"])),
+            ("Supported claims (word overlap)", lambda s: _pct(s["supported_claim_rate"])),
+            ("Claims whose numbers and names appear in the cited text", lambda s: _pct(s["strict_claim_rate"])),
             ("Fallback rate", lambda s: _pct(s["fallback_rate"])),
             ("Invalid-output rate", lambda s: _pct(s["invalid_output_rate"])),
             ("Adversarial leaks", lambda s: f"{s['adversarial_forbidden_text_leaked']} of {s['adversarial_cases']}"),
@@ -559,4 +563,33 @@ def write_reports(
         writer.writeheader()
         for r in results:
             writer.writerow(asdict(r))
-    return [out_dir / n for n in ("summary.json", "cases.json", "summary.md", "cases.csv")]
+    (out_dir / "review.md").write_text(render_review_sheet(results), encoding="utf-8")
+    names = ("summary.json", "cases.json", "summary.md", "cases.csv", "review.md")
+    return [out_dir / n for n in names]
+
+
+def render_review_sheet(results: list[CaseResult], limit: int = 40) -> str:
+    """One block per answered case: each claim and the passages it cites, so a person can judge
+    support without opening JSON. Judgements go in cases.csv."""
+    lines = [
+        "# Human review sheet",
+        "",
+        "For each claim: does the cited text actually say it? Write `yes`, `partly` or `no` in the "
+        "`human_grounded` column of cases.csv, and `yes`/`no` in `human_correct` for the answer.",
+        "",
+    ]
+    shown = 0
+    for r in results:
+        if r.status != "answered" or not r.claims or r.config == "no_retrieval":
+            continue
+        shown += 1
+        if shown > limit:
+            break
+        lines += [f"## {r.case_id} ({r.config})", ""]
+        for i, claim in enumerate(r.claims, start=1):
+            lines.append(f"**Claim {i}:** {claim['text']}")
+            lines += [f"> {text}" for text in claim.get("cited_passages", [])]
+            lines.append("")
+    if shown == 0:
+        lines.append("No answered cases in this run.")
+    return "\n".join(lines) + "\n"

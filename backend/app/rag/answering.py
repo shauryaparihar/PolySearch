@@ -37,7 +37,7 @@ from app.rag.context import REPAIR_SUFFIX, SYSTEM_PROMPT, EvidenceContext, build
 from app.rag.guards import GenerationBusy
 from app.rag.llm import LLMError, LLMRequest, LLMTimeout, LLMUsage
 from app.rag.passage_store import PassageArtifactError
-from app.rag.passages import estimate_tokens
+from app.rag.passages import estimate_request_tokens
 from app.rag.retrieval import Evidence, RetrievalConfig, retrieve_evidence
 from app.rag.types import (
     CONTEXT_BUILDER_VERSION,
@@ -95,7 +95,9 @@ def _generate(
     repairs_left = settings.rag_max_repair_attempts
     while True:
         worst_case = (
-            estimate_tokens(SYSTEM_PROMPT) + estimate_tokens(user) + settings.llm_max_output_tokens
+            estimate_request_tokens(SYSTEM_PROMPT)
+            + estimate_request_tokens(user)
+            + settings.llm_max_output_tokens
         )
         reservation = budget.reserve(
             state.session_factory,

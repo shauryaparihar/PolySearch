@@ -199,7 +199,13 @@ def test_report_labels_mock_vs_live_and_leaves_human_columns_blank(tmp_path):
     assert "MOCK" in render_markdown(mock, summary).splitlines()[2]
     assert "LIVE" in render_markdown(live, summary).splitlines()[2]
     paths = write_reports(tmp_path, mock, summary, rows)
-    assert {p.name for p in paths} == {"summary.json", "cases.json", "summary.md", "cases.csv"}
+    assert {p.name for p in paths} == {
+        "summary.json",
+        "cases.json",
+        "summary.md",
+        "cases.csv",
+        "review.md",
+    }
     with (tmp_path / "cases.csv").open(encoding="utf-8") as handle:
         first = next(csv.DictReader(handle))
     assert first["human_correct"] == "" and first["judge_score"] == ""
@@ -224,3 +230,29 @@ def test_cli_refuses_live_run_without_approval(monkeypatch, capsys):
     code = cli.main(["--index-dir", "x", "--corpus", str(corpus), "--llm", "live"])
     out = capsys.readouterr().out
     assert code == 3 and "NOT RUN" in out and "sk-test" not in out
+
+
+def test_strict_claim_check_catches_a_swapped_number_or_name():
+    cited = ["The company was founded in 1998 by Maria Lopez in Madrid."]
+    assert m.strict_claim_supported("It was founded in 1998 by Maria Lopez.", cited)
+    assert not m.strict_claim_supported("It was founded in 1999 by Maria Lopez.", cited)
+    assert not m.strict_claim_supported("It was founded in 1998 by Carlos Ruiz.", cited)
+    assert m.strict_claim_supported("it was founded long ago.", cited)  # nothing to check
+
+
+def test_review_sheet_shows_claims_with_their_cited_text():
+    from app.evaluation.rag_runner import render_review_sheet
+
+    row = CaseResult("direct-01", "direct", "dense_rag", "answered")
+    row.claims = [{"text": "A claim.", "labels": ["P1"], "cited_passages": ["The source text."]}]
+    sheet = render_review_sheet([row])
+    assert "direct-01" in sheet and "A claim." in sheet and "> The source text." in sheet
+    assert "No answered cases" in render_review_sheet([])
+
+
+def test_budget_reservation_estimate_is_more_cautious_than_chunk_sizing():
+    from app.rag.passages import estimate_request_tokens, estimate_tokens
+
+    text = "x" * 1000
+    assert estimate_request_tokens(text) == 400 > estimate_tokens(text) == 334
+    assert estimate_request_tokens("") == 0

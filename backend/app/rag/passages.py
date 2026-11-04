@@ -63,6 +63,17 @@ class Passage:
     content_sha256: str
 
 
+# Used only to reserve budget before a provider call. Wikipedia text in es/fr and non-Latin
+# scripts tokenises worse than English, so reserve more per character than chunking assumes.
+# Real usage replaces the reservation after the call.
+BUDGET_CHARS_PER_TOKEN = 2.5
+
+
+def estimate_request_tokens(text: str) -> int:
+    """Over-estimate for budget reservation: ceil(characters / 2.5)."""
+    return -(-len(text) * 2 // 5) if text else 0
+
+
 def estimate_tokens(text: str) -> int:
     """Conservative deterministic estimate (no tokenizer needed): ceil(characters / 3)."""
     return -(-len(text) // CHARS_PER_TOKEN) if text else 0
