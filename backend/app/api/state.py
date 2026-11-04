@@ -51,6 +51,8 @@ class AppState:
     passage_error: str | None = None
     llm: Any = None  # app.rag.llm.LLMClient, or None when answers are not configured
     answer_limiter: Any = None  # SlidingWindowLimiter for POST /answers
+    generation_guard: Any = None  # app.rag.guards.GenerationGuard
+    answer_cache: Any = None  # QueryCache of validated answers
 
     def snapshot(self) -> tuple[SearchBundle | None, uuid.UUID | None]:
         """The served bundle and its database version id, read together.

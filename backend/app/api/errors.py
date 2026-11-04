@@ -27,6 +27,8 @@ FIELD_CODES = {
     "question": ("QUESTION_INVALID", "question must contain between 3 and 500 characters."),
     "languages": ("FILTER_INVALID", "languages must be 1-3 distinct values of en, es, fr."),
     "retrieval_mode": ("MODE_INVALID", "retrieval_mode must be dense, lexical or hybrid."),
+    "rating": ("FEEDBACK_INVALID", "rating must be helpful or not_helpful."),
+    "reason": ("FEEDBACK_INVALID", "reason must be one of the documented codes."),
     "mode": ("MODE_INVALID", "mode must be dense, lexical or hybrid."),
     "page_size": ("PAGE_SIZE_INVALID", "page_size must be between 5 and 20."),
     "limit": ("PAGE_SIZE_INVALID", "limit must be between 5 and 20."),

@@ -185,3 +185,16 @@ class FeedbackBody(BaseModel):
 
     rating: Literal["helpful", "not_helpful"]
     reason: Literal["inaccurate", "missing_citation", "unclear", "other"] | None = None
+
+    @model_validator(mode="after")
+    def _reason_only_with_a_complaint(self) -> FeedbackBody:
+        if self.rating == "helpful" and self.reason is not None:
+            raise ValueError("a reason can only accompany a not_helpful rating")
+        return self
+
+
+class AnswerFeedbackResponse(BaseModel):
+    run_id: str
+    rating: Literal["helpful", "not_helpful"]
+    reason: str | None
+    updated_at: str

@@ -65,7 +65,8 @@ def session_factory(migrated_engine: Engine):
         conn.execute(
             text(
                 "TRUNCATE click_events, relevance_feedback, search_results, search_runs, "
-                "index_jobs, index_versions, documents, ingestion_jobs, content_sources "
+                "index_jobs, index_versions, documents, ingestion_jobs, content_sources, "
+                "llm_usage_days "
                 "RESTART IDENTITY CASCADE"
             )
         )
@@ -149,3 +150,49 @@ def make_client(session_factory, api_bundle):
 @pytest.fixture
 def client(make_client):
     return make_client()
+
+
+@pytest.fixture
+def log_records():
+    """The application logger does not propagate, so attach a handler to it directly."""
+    import logging
+
+    from app.api.logging_config import LOGGER_NAME
+
+    records: list[logging.LogRecord] = []
+
+    class Collect(logging.Handler):
+        def emit(self, record: logging.LogRecord) -> None:
+            records.append(record)
+
+    logger = logging.getLogger(LOGGER_NAME)
+    handler = Collect(logging.INFO)
+    logger.addHandler(handler)
+    yield records
+    logger.removeHandler(handler)
+
+
+@pytest.fixture
+def make_answer_client(make_client, api_bundle):
+    """Client with passages on disk and in PostgreSQL, and the given model attached."""
+    from answer_support import PROVIDER
+    from api_support import docs
+    from app.evaluation.corpus import Corpus
+    from app.rag import lifecycle
+    from app.rag.passage_store import build_passage_artifact
+    from app.rag.passages import DEFAULT_CONFIG
+    from fake_encoder import FakeEncoder
+
+    def build(llm=None, *, passages: bool = True, **overrides):
+        if passages:
+            build_passage_artifact(
+                Corpus(docs(), "d" * 64), FakeEncoder(), api_bundle.version,
+                api_bundle.manifest["corpus"]["sha256"], api_bundle.path.parent, DEFAULT_CONFIG,
+            )  # fmt: skip
+        client = make_client(llm_client=llm, **{**PROVIDER, **overrides})
+        if passages:
+            state = client.app.state.polysearch
+            assert lifecycle.sync_to_database(state.session_factory, state.passages)
+        return client
+
+    return build

@@ -3,97 +3,15 @@
 from __future__ import annotations
 
 import json
-import logging
 
 import pytest
-from api_support import SEARCH, docs
-from app.api.logging_config import LOGGER_NAME
-from app.db.models import Document, DocumentPassage, GenerationCitation, GenerationRun
-from app.evaluation.corpus import Corpus
-from app.rag import lifecycle
+from answer_support import ASK, QUESTION, answer_json, ask, count, flatten, runs
+from api_support import SEARCH
+from app.db.models import Document, DocumentPassage, GenerationCitation
 from app.rag.fake import VALID_ANSWER, FakeLLMClient
 from app.rag.llm import LLMProviderError, LLMRateLimited, LLMTimeout
-from app.rag.passage_store import build_passage_artifact
-from app.rag.passages import DEFAULT_CONFIG
 from app.rag.types import PROMPT_VERSION
-from fake_encoder import FakeEncoder
-from sqlalchemy import func, select
-
-PROVIDER = dict(
-    rag_enabled=True,
-    llm_base_url="https://provider.invalid/v1",
-    llm_api_key="sk-test-secret-value",
-    llm_model="m",
-    rag_min_evidence_score=-1.0,  # fake-encoder scores mean nothing; thresholds are tested apart
-)
-QUESTION = "What is a volcano?"
-ASK = {"question": QUESTION, "languages": ["en", "es", "fr"]}
-
-
-def answer_json(*claims: tuple[str, list[str]], answer: str = "A cited answer.") -> str:
-    return json.dumps(
-        {
-            "answer": answer,
-            "claims": [{"text": t, "citation_ids": ids} for t, ids in claims],
-            "abstained": False,
-            "abstention_reason": None,
-        }
-    )
-
-
-@pytest.fixture
-def log_records():
-    """The application logger does not propagate, so attach a handler to it directly."""
-    records: list[logging.LogRecord] = []
-
-    class Collect(logging.Handler):
-        def emit(self, record: logging.LogRecord) -> None:
-            records.append(record)
-
-    logger = logging.getLogger(LOGGER_NAME)
-    handler = Collect(logging.INFO)
-    logger.addHandler(handler)
-    yield records
-    logger.removeHandler(handler)
-
-
-def flatten(records) -> str:
-    return " ".join(
-        r.getMessage() + json.dumps(getattr(r, "fields", {}), default=str) for r in records
-    )
-
-
-@pytest.fixture
-def make_answer_client(make_client, api_bundle):
-    """Client with passages on disk and in PostgreSQL, and the given model attached."""
-
-    def build(llm=None, *, passages: bool = True, **overrides):
-        if passages:
-            build_passage_artifact(
-                Corpus(docs(), "d" * 64), FakeEncoder(), api_bundle.version,
-                api_bundle.manifest["corpus"]["sha256"], api_bundle.path.parent, DEFAULT_CONFIG,
-            )  # fmt: skip
-        client = make_client(llm_client=llm, **{**PROVIDER, **overrides})
-        if passages:
-            state = client.app.state.polysearch
-            assert lifecycle.sync_to_database(state.session_factory, state.passages)
-        return client
-
-    return build
-
-
-def ask(client, **body):
-    return client.post("/api/v1/answers", json={**ASK, **body})
-
-
-def runs(factory) -> list[GenerationRun]:
-    with factory() as session:
-        return list(session.scalars(select(GenerationRun).order_by(GenerationRun.created_at)))
-
-
-def count(factory, model) -> int:
-    with factory() as session:
-        return session.scalar(select(func.count()).select_from(model))
+from sqlalchemy import select
 
 
 # ----------------------------------------------------------------- the successful path
@@ -117,7 +35,7 @@ def test_a_valid_cited_answer_is_returned_with_server_resolved_citations(
         document = session.get(Document, citation["document_id"])
     assert citation["excerpt"] == passage.text
     assert citation["title"] == document.title and citation["source_url"] == document.source_url
-    assert body["search_results"] and body["cache_status"] == "bypass"
+    assert body["search_results"] and body["cache_status"] == "miss"
     assert body["versions"]["prompt_version"] == PROMPT_VERSION
     assert body["versions"]["passage_artifact_version"] == body["versions"]["index_version"]
     assert body["token_usage"] == {"input_tokens": 120, "output_tokens": 40, "total_tokens": 160}

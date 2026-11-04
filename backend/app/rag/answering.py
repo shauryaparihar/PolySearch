@@ -31,9 +31,13 @@ from app.api.logging_config import log_event
 from app.api.schemas import ResultItem, SearchRequest
 from app.api.state import AppState
 from app.db.models import Document, DocumentPassage, GenerationCitation, GenerationRun
+from app.rag import budget
+from app.rag.answer_cache import CachedAnswer, answer_cache_key
 from app.rag.context import REPAIR_SUFFIX, SYSTEM_PROMPT, EvidenceContext, build_context
-from app.rag.llm import LLMError, LLMRequest, LLMUsage
+from app.rag.guards import GenerationBusy
+from app.rag.llm import LLMError, LLMRequest, LLMTimeout, LLMUsage
 from app.rag.passage_store import PassageArtifactError
+from app.rag.passages import estimate_tokens
 from app.rag.retrieval import Evidence, RetrievalConfig, retrieve_evidence
 from app.rag.types import (
     CONTEXT_BUILDER_VERSION,
@@ -90,6 +94,14 @@ def _generate(
     user = context.user_message
     repairs_left = settings.rag_max_repair_attempts
     while True:
+        worst_case = (
+            estimate_tokens(SYSTEM_PROMPT) + estimate_tokens(user) + settings.llm_max_output_tokens
+        )
+        reservation = budget.reserve(
+            state.session_factory, worst_case, settings.rag_daily_token_budget
+        )
+        if reservation is None:
+            raise _Fallback(FallbackReason.BUDGET_EXHAUSTED)
         started = time.perf_counter()
         try:
             response = llm.generate(
@@ -100,10 +112,23 @@ def _generate(
                     timeout_seconds=min(settings.llm_timeout_seconds, max(deadline - started, 0.1)),
                 )
             )
-        except LLMError as exc:
+        except LLMTimeout as exc:  # the provider may still have billed it: keep the reservation
             timings["provider_ms"] += (time.perf_counter() - started) * 1000
+            budget.settle(state.session_factory, reservation, None)
             raise _Fallback(exc.reason) from None
+        except LLMError as exc:  # rejected or failed before any tokens were produced
+            timings["provider_ms"] += (time.perf_counter() - started) * 1000
+            budget.release(state.session_factory, reservation)
+            raise _Fallback(exc.reason) from None
+        except BaseException:
+            budget.release(state.session_factory, reservation)
+            raise
         timings["provider_ms"] += (time.perf_counter() - started) * 1000
+        budget.settle(
+            state.session_factory,
+            reservation,
+            response.usage.total_tokens if response.usage else None,
+        )
         usages.append(response.usage)
         checked = time.perf_counter()
         try:
@@ -165,6 +190,18 @@ def _resolve_citations(
     return out
 
 
+def _from_cache(
+    state: AppState, context: EvidenceContext, cached: CachedAnswer, timings: dict
+) -> tuple[ValidatedAnswer, dict[str, Citation]]:
+    """A cached validated answer, with its citations re-resolved from the database."""
+    if cached.validated.abstained:
+        return cached.validated, {}
+    checked = time.perf_counter()
+    citations = _resolve_citations(state, context, cached.validated)
+    timings["validation_ms"] += (time.perf_counter() - checked) * 1000
+    return cached.validated, citations
+
+
 def _search_results(
     state: AppState, req: AnswerRequest, mode: str | None, request_id: str
 ) -> list[ResultItem]:
@@ -204,6 +241,7 @@ def answer_question(state: AppState, req: AnswerRequest, request_id: str) -> Ans
     citations: dict[str, Citation] = {}
     evidence: Evidence | None = None
     context: EvidenceContext | None = None
+    cache_status = CacheStatus.BYPASS
     try:
         if not settings.rag_enabled:
             raise _Fallback(FallbackReason.RAG_DISABLED)
@@ -232,17 +270,44 @@ def answer_question(state: AppState, req: AnswerRequest, request_id: str) -> Ans
         if not context.items or best is None or best < settings.rag_min_evidence_score:
             status, abstention = RunStatus.ABSTAINED, AbstentionReason.INSUFFICIENT_EVIDENCE
         else:
-            validated = _generate(state, context, timings, usages)
+            key = answer_cache_key(
+                question=req.question, languages=req.languages, mode=mode,
+                index_version=bundle.version, passage_artifact_version=store.index_version,
+                context=context, provider=getattr(state.llm, "provider", ""),
+                model=getattr(state.llm, "model", ""),
+                max_output_tokens=settings.llm_max_output_tokens, json_mode=settings.llm_json_mode,
+            )  # fmt: skip
+            cached = state.answer_cache.get(key) if state.answer_cache else None
+            if cached is not None:
+                try:
+                    validated, citations = _from_cache(state, context, cached, timings)
+                    cache_status = CacheStatus.HIT
+                except _Fallback:
+                    cached = None  # stored sources changed: ignore the entry and ask again
+            if cached is None:
+                try:
+                    with state.generation_guard.slot():
+                        validated = _generate(state, context, timings, usages)
+                except GenerationBusy:
+                    raise _Fallback(FallbackReason.BUSY) from None
+                if not validated.abstained:
+                    checked = time.perf_counter()
+                    citations = _resolve_citations(state, context, validated)
+                    timings["validation_ms"] += (time.perf_counter() - checked) * 1000
+                cache_status = CacheStatus.MISS
+                if state.answer_cache is not None:
+                    state.answer_cache.set(
+                        key,
+                        CachedAnswer("abstained" if validated.abstained else "answered", validated),
+                    )
             if validated.abstained:
                 status, abstention = RunStatus.ABSTAINED, AbstentionReason.MODEL_ABSTAINED
             else:
-                checked = time.perf_counter()
-                citations = _resolve_citations(state, context, validated)
-                timings["validation_ms"] += (time.perf_counter() - checked) * 1000
                 status = RunStatus.ANSWERED
     except _Fallback as exc:
         status, fallback, error_code = RunStatus.FALLBACK, exc.reason, exc.error_code
         validated, citations = None, {}
+        cache_status = CacheStatus.BYPASS  # fallbacks and errors are never cached
 
     usage = _sum_usage(usages)
     results: list[ResultItem] | None = None
@@ -287,7 +352,7 @@ def answer_question(state: AppState, req: AnswerRequest, request_id: str) -> Ans
                 output_tokens=usage.output_tokens if usage else None,
                 total_tokens=usage.total_tokens if usage else None,
                 estimated_cost=_estimated_cost(settings, usage),
-                cache_status=CacheStatus.BYPASS.value,
+                cache_status=cache_status.value,
                 error_code=error_code,
                 completed_at=datetime.now(UTC),
             )
@@ -328,7 +393,7 @@ def answer_question(state: AppState, req: AnswerRequest, request_id: str) -> Ans
         input_tokens=usage.input_tokens if usage else None,
         output_tokens=usage.output_tokens if usage else None,
         total_tokens=usage.total_tokens if usage else None,
-        cache_status=CacheStatus.BYPASS.value,
+        cache_status=cache_status.value,
     )  # fmt: skip
     return AnswerResponse(
         run_id=str(run_id),
@@ -363,5 +428,5 @@ def answer_question(state: AppState, req: AnswerRequest, request_id: str) -> Ans
             if usage
             else None
         ),
-        cache_status=CacheStatus.BYPASS,
+        cache_status=cache_status,
     )

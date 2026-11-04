@@ -10,7 +10,12 @@ from sqlalchemy import func, select
 
 from app.api import analytics, jobs_api, service, signals, suggest
 from app.api.admin import require_admin
-from app.api.answer_schemas import AnswerRequest, AnswerResponse
+from app.api.answer_schemas import (
+    AnswerFeedbackResponse,
+    AnswerRequest,
+    AnswerResponse,
+    FeedbackBody,
+)
 from app.api.errors import ApiError, request_id_of
 from app.api.logging_config import log_event
 from app.api.ratelimit import client_id
@@ -35,6 +40,8 @@ from app.api.state import AppState
 from app.config import SUPPORTED_LANGUAGES
 from app.db.models import ContentSource, Document
 from app.rag import answering
+from app.rag import stats as rag_stats
+from app.rag.feedback import record_feedback
 from app.rag.readiness import run_rag_readiness
 
 v1 = APIRouter(prefix="/api/v1")
@@ -83,6 +90,12 @@ def answer(body: AnswerRequest, request: Request) -> AnswerResponse:
     abstains or falls back to ordinary search results, with a stable reason code."""
     _enforce_rate_limit(request, "answer")
     return answering.answer_question(_state(request), body, request_id_of(request))
+
+
+@v1.put("/answers/{run_id}/feedback", response_model=AnswerFeedbackResponse)
+def answer_feedback(run_id: str, body: FeedbackBody, request: Request) -> AnswerFeedbackResponse:
+    _enforce_rate_limit(request, "write")
+    return record_feedback(_state(request), run_id, body)
 
 
 @v1.get("/searches/{search_id}/results", response_model=ResultPage)
@@ -149,13 +162,17 @@ def admin_analytics(request: Request, days: int = Query(default=7, ge=1, le=90))
     require_admin(request)
     state = _state(request)
     with state.session_factory() as session:
-        return analytics.build_report(
+        report = analytics.build_report(
             session,
             days,
             state.metrics["rate_limited"],
             state.settings.analytics_store_query_text,
             state.settings.popular_query_min_count,
         )
+        report["answers"] = rag_stats.build_answer_report(
+            session, days, state.settings, state.session_factory
+        )
+        return report
 
 
 @v1.post("/admin/ingestion-jobs", response_model=JobResponse, status_code=202)

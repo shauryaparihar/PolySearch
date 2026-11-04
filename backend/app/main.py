@@ -30,6 +30,7 @@ from app.db.models import IndexVersion
 from app.jobs.manager import recover_stale_jobs
 from app.jobs.worker import JobWorker
 from app.rag import lifecycle
+from app.rag.guards import GenerationGuard
 from app.rag.openai_client import build_llm_client
 from app.search.artifacts import ArtifactError
 from app.search.bundle import SearchBundle
@@ -108,6 +109,10 @@ def create_app(
         source_factory=source_factory,
         llm=llm_client if llm_client is not None else build_llm_client(settings),
         answer_limiter=SlidingWindowLimiter(settings.answer_rate_limit_per_minute),
+        generation_guard=GenerationGuard(
+            settings.generation_max_concurrency, settings.inference_wait_timeout_seconds
+        ),
+        answer_cache=QueryCache(settings.cache_max_entries, settings.rag_cache_ttl_seconds),
     )
     state.worker = JobWorker(state, synchronous=synchronous_jobs)
 
