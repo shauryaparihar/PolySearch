@@ -17,6 +17,12 @@ ALLOWED_FIELDS = {
     "encode_ms", "lexical_ms", "faiss_ms", "fusion_ms", "db_ms", "total_ms",
     "cache_hit", "result_count", "languages", "sources", "mode", "index_version",
     "error_code", "query_sha256", "dropped_documents", "limit", "retry_after",
+    # optional answers (RAG): identifiers, versions, counts and timings only, never text
+    "run_id", "question_sha256", "passage_artifact_version", "prompt_version",
+    "context_builder_version", "provider", "model", "rag_status", "abstention_reason",
+    "fallback_reason", "candidate_count", "passage_count", "claim_count", "citation_count",
+    "retrieval_ms", "provider_ms", "validation_ms", "input_tokens", "output_tokens",
+    "total_tokens", "cache_status",
 }  # fmt: skip
 
 

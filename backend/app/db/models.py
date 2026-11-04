@@ -3,11 +3,13 @@
 from __future__ import annotations
 
 import uuid
-from datetime import datetime
+from datetime import date, datetime
 
 from sqlalchemy import (
+    BigInteger,
     Boolean,
     CheckConstraint,
+    Date,
     DateTime,
     ForeignKey,
     ForeignKeyConstraint,
@@ -282,3 +284,177 @@ class IndexJob(Base):
     created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), server_default=func.now())
     started_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True))
     finished_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True))
+
+
+# ------------------------------------------------------------ optional answers (RAG)
+GENERATION_STATUSES = ("answered", "abstained", "fallback")
+CACHE_STATUSES = ("hit", "miss", "bypass")
+FEEDBACK_RATINGS = ("helpful", "not_helpful")
+FEEDBACK_REASONS = ("inaccurate", "missing_citation", "unclear", "other")
+
+
+class DocumentPassage(Base):
+    """A deterministic slice of one document's stored summary, tied to an index version."""
+
+    __tablename__ = "document_passages"
+    __table_args__ = (
+        UniqueConstraint(
+            "index_version_id",
+            "document_id",
+            "ordinal",
+            name="uq_document_passages_version_doc_ord",
+        ),
+        CheckConstraint(LANGUAGE_CHECK, name="ck_document_passages_language"),
+        CheckConstraint("ordinal >= 0", name="ck_document_passages_ordinal"),
+        CheckConstraint("char_length(content_sha256) = 64", name="ck_document_passages_sha256_len"),
+        Index("ix_document_passages_version_doc", "index_version_id", "document_id"),
+        Index("ix_document_passages_content_sha256", "content_sha256"),
+    )
+
+    id: Mapped[uuid.UUID] = mapped_column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
+    index_version_id: Mapped[uuid.UUID] = mapped_column(
+        ForeignKey("index_versions.id", ondelete="CASCADE")
+    )
+    document_id: Mapped[uuid.UUID] = mapped_column(ForeignKey("documents.id"))
+    ordinal: Mapped[int] = mapped_column(Integer)
+    text: Mapped[str] = mapped_column(Text)
+    language: Mapped[str] = mapped_column(String(2))
+    char_start: Mapped[int | None] = mapped_column(Integer)
+    char_end: Mapped[int | None] = mapped_column(Integer)
+    estimated_tokens: Mapped[int] = mapped_column(Integer)
+    content_sha256: Mapped[str] = mapped_column(String(64))
+    created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), server_default=func.now())
+
+
+class GenerationRun(Base):
+    """One answer request. Holds hashes, versions, counts and timings; no raw question, prompt,
+    passage text or answer unless ``RAG_STORE_QUESTION_TEXT`` is switched on for debugging."""
+
+    __tablename__ = "generation_runs"
+    __table_args__ = (
+        CheckConstraint(
+            "status IN ('answered', 'abstained', 'fallback')", name="ck_generation_runs_status"
+        ),
+        CheckConstraint(
+            "cache_status IN ('hit', 'miss', 'bypass')", name="ck_generation_runs_cache_status"
+        ),
+        CheckConstraint(
+            "retrieval_mode IS NULL OR retrieval_mode IN ('dense', 'lexical', 'hybrid')",
+            name="ck_generation_runs_mode",
+        ),
+        # abstention and fallback are different outcomes and the flags must agree with status
+        CheckConstraint(
+            "abstained = (status = 'abstained') AND fallback_used = (status = 'fallback')",
+            name="ck_generation_runs_flags_match_status",
+        ),
+        Index("ix_generation_runs_created_at", "created_at"),
+        Index("ix_generation_runs_status", "status"),
+        Index("ix_generation_runs_model_prompt", "model", "prompt_version"),
+    )
+
+    id: Mapped[uuid.UUID] = mapped_column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
+    question_sha256: Mapped[str] = mapped_column(String(64))
+    question_text: Mapped[str | None] = mapped_column(String(500))  # debugging opt-in only
+    index_version_id: Mapped[uuid.UUID | None] = mapped_column(ForeignKey("index_versions.id"))
+    passage_artifact_version: Mapped[str | None] = mapped_column(String(64))
+    retrieval_mode: Mapped[str | None] = mapped_column(String(16))
+    languages: Mapped[list] = mapped_column(JSONB)
+    provider: Mapped[str | None] = mapped_column(String(64))
+    model: Mapped[str | None] = mapped_column(String(128))
+    prompt_version: Mapped[str] = mapped_column(String(32))
+    context_builder_version: Mapped[str] = mapped_column(String(32))
+    status: Mapped[str] = mapped_column(String(16))
+    abstained: Mapped[bool] = mapped_column(Boolean, default=False)
+    fallback_used: Mapped[bool] = mapped_column(Boolean, default=False)
+    abstention_reason: Mapped[str | None] = mapped_column(String(48))
+    fallback_reason: Mapped[str | None] = mapped_column(String(48))
+    candidate_count: Mapped[int] = mapped_column(Integer, default=0)
+    passage_count: Mapped[int] = mapped_column(Integer, default=0)
+    claim_count: Mapped[int] = mapped_column(Integer, default=0)
+    citation_count: Mapped[int] = mapped_column(Integer, default=0)
+    retrieval_ms: Mapped[float | None] = mapped_column(Numeric(10, 3))
+    provider_ms: Mapped[float | None] = mapped_column(Numeric(10, 3))
+    validation_ms: Mapped[float | None] = mapped_column(Numeric(10, 3))
+    total_ms: Mapped[float | None] = mapped_column(Numeric(10, 3))
+    input_tokens: Mapped[int | None] = mapped_column(Integer)
+    output_tokens: Mapped[int | None] = mapped_column(Integer)
+    total_tokens: Mapped[int | None] = mapped_column(Integer)
+    estimated_cost: Mapped[float | None] = mapped_column(Numeric(12, 6))  # from configured prices
+    cache_status: Mapped[str] = mapped_column(String(8), default="bypass")
+    error_code: Mapped[str | None] = mapped_column(String(64))  # sanitized category only
+    created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), server_default=func.now())
+    completed_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True))
+
+
+class GenerationCitation(Base):
+    """A citation the server verified: which passage supported which claim."""
+
+    __tablename__ = "generation_citations"
+    __table_args__ = (
+        UniqueConstraint(
+            "generation_run_id",
+            "claim_ordinal",
+            "label",
+            name="uq_generation_citations_claim_label",
+        ),
+        CheckConstraint("claim_ordinal >= 0", name="ck_generation_citations_claim_ordinal"),
+        CheckConstraint("retrieval_rank >= 1", name="ck_generation_citations_rank"),
+        Index("ix_generation_citations_run", "generation_run_id"),
+    )
+
+    id: Mapped[uuid.UUID] = mapped_column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
+    generation_run_id: Mapped[uuid.UUID] = mapped_column(
+        ForeignKey("generation_runs.id", ondelete="CASCADE")
+    )
+    passage_id: Mapped[uuid.UUID] = mapped_column(ForeignKey("document_passages.id"))
+    label: Mapped[str] = mapped_column(String(8))
+    claim_ordinal: Mapped[int] = mapped_column(Integer)
+    retrieval_rank: Mapped[int] = mapped_column(Integer)
+    retrieval_score: Mapped[float] = mapped_column(Numeric(12, 8))
+
+
+class GenerationFeedback(Base):
+    """One helpful / not-helpful rating per answer (re-rating updates it)."""
+
+    __tablename__ = "generation_feedback"
+    __table_args__ = (
+        UniqueConstraint("generation_run_id", name="uq_generation_feedback_run"),
+        CheckConstraint(
+            "rating IN ('helpful', 'not_helpful')", name="ck_generation_feedback_rating"
+        ),
+        CheckConstraint(
+            "reason_code IS NULL OR reason_code IN "
+            "('inaccurate', 'missing_citation', 'unclear', 'other')",
+            name="ck_generation_feedback_reason",
+        ),
+    )
+
+    id: Mapped[uuid.UUID] = mapped_column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
+    generation_run_id: Mapped[uuid.UUID] = mapped_column(
+        ForeignKey("generation_runs.id", ondelete="CASCADE")
+    )
+    rating: Mapped[str] = mapped_column(String(16))
+    reason_code: Mapped[str | None] = mapped_column(String(32))  # bounded codes, no free text
+    created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), server_default=func.now())
+    updated_at: Mapped[datetime] = mapped_column(
+        DateTime(timezone=True), server_default=func.now(), onupdate=func.now()
+    )
+
+
+class LlmUsageDay(Base):
+    """Provider tokens per UTC day. Rows are updated under a row lock so concurrent requests
+    cannot silently exceed the daily budget (the reservation logic arrives with the guardrails)."""
+
+    __tablename__ = "llm_usage_days"
+    __table_args__ = (
+        CheckConstraint(
+            "reserved_tokens >= 0 AND used_tokens >= 0", name="ck_llm_usage_days_nonneg"
+        ),
+    )
+
+    usage_date: Mapped[date] = mapped_column(Date, primary_key=True)
+    reserved_tokens: Mapped[int] = mapped_column(BigInteger, default=0)
+    used_tokens: Mapped[int] = mapped_column(BigInteger, default=0)
+    updated_at: Mapped[datetime] = mapped_column(
+        DateTime(timezone=True), server_default=func.now(), onupdate=func.now()
+    )

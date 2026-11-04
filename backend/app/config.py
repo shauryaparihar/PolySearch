@@ -6,7 +6,7 @@ from functools import lru_cache
 from pathlib import Path
 from typing import Literal
 
-from pydantic import Field, field_validator, model_validator
+from pydantic import Field, SecretStr, field_validator, model_validator
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
 SUPPORTED_LANGUAGES = ("en", "es", "fr")
@@ -82,8 +82,34 @@ class Settings(BaseSettings):
     job_shutdown_timeout_seconds: float = Field(default=30.0, ge=0, le=600)
     index_batch_size: int = Field(default=64, ge=1, le=512)
 
+    # ---- optional citation-backed answers (RAG). Disabled by default; search never needs these.
+    rag_enabled: bool = False
+    llm_base_url: str | None = None  # OpenAI-compatible endpoint root, e.g. https://host/v1
+    llm_api_key: SecretStr | None = None  # never printed: SecretStr hides it in repr and logs
+    llm_model: str | None = None
+    llm_timeout_seconds: float = Field(default=20.0, gt=0, le=120)
+    llm_max_output_tokens: int = Field(default=600, ge=50, le=4000)
+    # Prices (per million tokens) are used only for cost *estimates*; unset = no estimate.
+    llm_input_price_per_mtok: float | None = Field(default=None, ge=0)
+    llm_output_price_per_mtok: float | None = Field(default=None, ge=0)
+    answer_max_question_chars: int = Field(default=300, ge=20, le=500)
+    rag_candidate_documents: int = Field(default=10, ge=1, le=50)
+    rag_final_passages: int = Field(default=6, ge=1, le=12)
+    rag_max_passages_per_document: int = Field(default=2, ge=1, le=5)
+    rag_max_passage_tokens: int = Field(default=200, ge=20, le=500)
+    rag_max_context_tokens: int = Field(default=1500, ge=100, le=6000)
+    rag_max_repair_attempts: int = Field(default=1, ge=0, le=1)  # at most one repair call
+    answer_rate_limit_per_minute: int = Field(default=5, ge=1, le=1000)
+    generation_max_concurrency: int = Field(default=1, ge=1, le=4)
+    rag_daily_token_budget: int = Field(default=100_000, ge=0, le=100_000_000)  # 0 = no calls
+    rag_cache_ttl_seconds: int = Field(default=600, ge=1, le=86_400)
+    # Local debugging only: store the raw question text with each run. Never enable in tests.
+    rag_store_question_text: bool = False
+
     @field_validator(
         "active_index_path", "artifact_root", "benchmark_dir", "cursor_secret", "admin_api_key",
+        "llm_base_url", "llm_api_key", "llm_model", "llm_input_price_per_mtok",
+        "llm_output_price_per_mtok",
         mode="before",
     )
     @classmethod
@@ -100,6 +126,20 @@ class Settings(BaseSettings):
             raise ValueError("CORS origins must be exact http(s) origins, never '*'")
         return origins
 
+    @field_validator("llm_base_url")
+    @classmethod
+    def _llm_url_is_http(cls, value: str | None) -> str | None:
+        if value is not None and not value.startswith(("http://", "https://")):
+            raise ValueError("LLM_BASE_URL must start with http:// or https://")
+        return value.rstrip("/") if value else value
+
+    @property
+    def rag_configured(self) -> bool:
+        """True only when answers are switched on AND a provider is fully configured."""
+        return bool(
+            self.rag_enabled and self.llm_base_url and self.llm_api_key and self.llm_model
+        )
+
     @model_validator(mode="after")
     def _validate_deployment(self) -> Settings:
         """Fail at startup, with messages that name the setting but never print its value."""
@@ -108,6 +148,7 @@ class Settings(BaseSettings):
             "CURSOR_SECRET": self.cursor_secret,
             "ADMIN_API_KEY": self.admin_api_key,
             "DATABASE_URL": self.database_url,
+            "LLM_API_KEY": self.llm_api_key.get_secret_value() if self.llm_api_key else None,
         }
         for name, value in secrets.items():  # an untouched .env.example must not start up
             if value and PLACEHOLDER in value:
@@ -123,6 +164,8 @@ class Settings(BaseSettings):
                 problems.append("DATABASE_URL uses the local-development password")
             if any("localhost" in o or "127.0.0.1" in o for o in self.cors_allowed_origins):
                 problems.append("CORS_ALLOWED_ORIGINS must name the deployed frontend")
+            if self.llm_base_url and not self.llm_base_url.startswith("https://"):
+                problems.append("LLM_BASE_URL must use https:// in production")
             if not (self.active_index_path or self.artifact_root):
                 problems.append("ACTIVE_INDEX_PATH or ARTIFACT_ROOT must point at index artifacts")
         if problems:

@@ -1,8 +1,13 @@
 # Private tooling and planning (never committed)
+polysearch_rag_upgrade_plan.md
 .claude/
+docs/interview_notes.md
 plan.md
 cross_lingual_retrieval_plan.md
-docs/interview_notes.md
+
+# Raw provider responses and private evaluation output (sanitised summaries are committed elsewhere)
+provider_responses/
+benchmark/rag/private/
 
 # Original paper: kept on disk only (it lists co-author contact details); see docs/legacy/README.md
 docs/legacy/Cross_lingual_project_paper.pdf

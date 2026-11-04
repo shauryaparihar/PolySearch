@@ -53,6 +53,12 @@ services:
       # Empty = serve the version PostgreSQL marks active (needed only for the very first start).
       ACTIVE_INDEX_PATH: ${ACTIVE_INDEX_PATH:-}
       ANALYTICS_STORE_QUERY_TEXT: "false"
+      # Optional answer mode: off unless RAG_ENABLED=true AND a provider is configured. Search
+      # works with all of these unset or empty.
+      RAG_ENABLED: ${RAG_ENABLED:-false}
+      LLM_BASE_URL: ${LLM_BASE_URL:-}
+      LLM_API_KEY: ${LLM_API_KEY:-}
+      LLM_MODEL: ${LLM_MODEL:-}
     ports:
       - "127.0.0.1:${API_HOST_PORT:-8000}:8000"
     volumes:
