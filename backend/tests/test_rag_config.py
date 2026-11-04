@@ -61,9 +61,10 @@ def test_base_url_must_be_http_and_loses_a_trailing_slash():
 def test_a_placeholder_key_is_refused_like_other_secrets():
     with pytest.raises(ValidationError) as caught:
         make(llm_api_key="CHANGE_ME")
-    assert "LLM_API_KEY" in str(caught.value) and "CHANGE_ME" not in str(caught.value).split(
-        "LLM_API_KEY"
-    )[0]
+    assert (
+        "LLM_API_KEY" in str(caught.value)
+        and "CHANGE_ME" not in str(caught.value).split("LLM_API_KEY")[0]
+    )
 
 
 def test_production_requires_an_https_provider():

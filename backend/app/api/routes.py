@@ -33,6 +33,7 @@ from app.api.schemas import (
 from app.api.state import AppState
 from app.config import SUPPORTED_LANGUAGES
 from app.db.models import ContentSource, Document
+from app.rag.readiness import run_rag_readiness
 
 v1 = APIRouter(prefix="/api/v1")
 probes = APIRouter()
@@ -213,4 +214,12 @@ def healthz() -> dict[str, str]:
 @probes.get("/readyz")
 def readyz(request: Request):
     outcome = run_readiness(_state(request))
+    return JSONResponse(outcome, status_code=200 if outcome["ready"] else 503)
+
+
+@probes.get("/readyz/rag")
+def readyz_rag(request: Request):
+    """Is optional answer mode usable? Separate from ``/readyz``: search readiness never depends
+    on it, and it being down never makes the service unready."""
+    outcome = run_rag_readiness(_state(request))
     return JSONResponse(outcome, status_code=200 if outcome["ready"] else 503)

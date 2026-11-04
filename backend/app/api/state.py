@@ -46,6 +46,9 @@ class AppState:
     lock: threading.Lock = field(default_factory=threading.Lock)
     worker: Any = None  # app.jobs.worker.JobWorker, started in the lifespan
     source_factory: Callable[[], Any] | None = None  # builds the ContentSource for ingestion jobs
+    # ---- optional answer mode: passages of the served index, or why there are none
+    passages: Any = None  # app.rag.passage_store.PassageStore
+    passage_error: str | None = None
 
     def snapshot(self) -> tuple[SearchBundle | None, uuid.UUID | None]:
         """The served bundle and its database version id, read together.
@@ -57,9 +60,17 @@ class AppState:
             return self.bundle, self.index_version_id
 
     def activate(
-        self, bundle: SearchBundle, version_id: uuid.UUID, suggester: Suggester | None
+        self,
+        bundle: SearchBundle,
+        version_id: uuid.UUID,
+        suggester: Suggester | None,
+        passages: Any = None,
+        passage_error: str | None = "PASSAGES_PENDING",
     ) -> None:
-        """Atomically replace the served index. In-flight searches keep their old snapshot."""
+        """Atomically replace the served index (and its passages, which belong to exactly one
+        index version). In-flight searches keep their old snapshot."""
         with self.lock:
             self.bundle, self.index_version_id, self.suggester = bundle, version_id, suggester
+            self.passages = passages
+            self.passage_error = None if passages is not None else passage_error
             self.readiness.clear()

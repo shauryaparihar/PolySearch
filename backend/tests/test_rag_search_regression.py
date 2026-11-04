@@ -26,7 +26,12 @@ def test_search_stats_and_readiness_work_without_any_llm_setting(make_client, no
     ready = client.get("/readyz")
     assert ready.status_code == 200 and ready.json()["ready"] is True
     assert set(ready.json()["checks"]) == {
-        "database", "schema", "active_index", "artifacts", "encoder", "suggester",
+        "database",
+        "schema",
+        "active_index",
+        "artifacts",
+        "encoder",
+        "suggester",
         "document_mappings",
     }  # answer mode adds no readiness check, so it can never make search unready
 

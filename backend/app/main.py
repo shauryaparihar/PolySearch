@@ -29,6 +29,7 @@ from app.db.base import make_engine, make_session_factory
 from app.db.models import IndexVersion
 from app.jobs.manager import recover_stale_jobs
 from app.jobs.worker import JobWorker
+from app.rag import lifecycle
 from app.search.artifacts import ArtifactError
 from app.search.bundle import SearchBundle
 
@@ -119,6 +120,7 @@ def create_app(
                     session.commit()
             except Exception:  # database not reachable yet: /readyz reports it, search retries
                 log_event("index_registration_failed", level=40, error_code="DATABASE_UNAVAILABLE")
+            state.passages, state.passage_error = lifecycle.load_passages(settings, state.bundle)
             try:
                 suggest.get_suggester(state)  # build the autocomplete trie for this bundle
             except Exception:  # retried lazily on the first suggestion request

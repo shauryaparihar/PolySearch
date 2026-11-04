@@ -136,9 +136,7 @@ def test_abstention_and_fallback_are_distinct_outcomes():
     with pytest.raises(ValidationError):
         _response(fallback_used=True)
     with pytest.raises(ValidationError):  # no answer text beside a fallback
-        _response(
-            answer="text", fallback_used=True, fallback_reason=FallbackReason.PROVIDER_ERROR
-        )
+        _response(answer="text", fallback_used=True, fallback_reason=FallbackReason.PROVIDER_ERROR)
 
 
 def test_a_citation_url_must_be_http_or_https():

@@ -88,9 +88,7 @@ def test_passages_are_unique_per_version_document_and_ordinal(rag_db):
         session.commit()
 
 
-@pytest.mark.parametrize(
-    "bad", [{"language": "de"}, {"ordinal": -1}, {"content_sha256": "short"}]
-)
+@pytest.mark.parametrize("bad", [{"language": "de"}, {"ordinal": -1}, {"content_sha256": "short"}])
 def test_passage_rules_are_enforced_by_the_database(rag_db, bad):
     factory, version_id, document_id = rag_db
     _rejected(factory, _passage(version_id, document_id, **bad))

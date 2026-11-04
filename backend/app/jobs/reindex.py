@@ -26,6 +26,7 @@ from app.evaluation.runner import evaluate
 from app.evidence import BenchmarkValidationError, result_problems
 from app.ingestion.text import dense_text
 from app.jobs.manager import transition
+from app.rag import lifecycle
 from app.search.artifacts import ArtifactError, build_index
 from app.search.bundle import BundleRetriever, SearchBundle
 from app.search.encoder import SentenceTransformerEncoder
@@ -258,6 +259,20 @@ def run_index_job(state, job_id: uuid.UUID, params: dict, stop, cancelled_exc) -
         suggester = build_suggester(
             state, bundle
         )  # everything that can fail happens before the swap
+        passages, passage_error = None, lifecycle.RAG_DISABLED
+        if settings.rag_enabled:
+            # Optional answer-mode passages for the candidate version. A failure only leaves
+            # answer mode without passages; it never blocks activating a valid search index.
+            _update(factory, job_id, step="passages")
+            passages, passage_error = lifecycle.build_passages_for(
+                settings,
+                bundle,
+                corpus,
+                GuardedEncoder(base_encoder, state.guard, stop, cancelled_exc, lambda _n: None),
+            )
+            if stop.is_set():
+                raise cancelled_exc
+            _update(factory, job_id, step="activating")
         with factory() as session:
             row = register_index_version(
                 session, bundle
@@ -266,7 +281,11 @@ def run_index_job(state, job_id: uuid.UUID, params: dict, stop, cancelled_exc) -
             job.index_version_id = row.id
             session.commit()
             version_id = row.id
-        state.activate(bundle, version_id, suggester)  # the single atomic in-process swap
+        if passages is not None and not lifecycle.sync_to_database(factory, passages):
+            passages, passage_error = None, lifecycle.PASSAGES_SYNC_FAILED
+        state.activate(
+            bundle, version_id, suggester, passages, passage_error
+        )  # the single atomic in-process swap of the index and its passages
         created_dir = None  # now the live version: never delete it
         _finish(factory, job_id, "completed", step="activated")
         log_event("reindex_activated", job_id=str(job_id), index_version=bundle.version)
