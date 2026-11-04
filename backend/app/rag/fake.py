@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import json
+import re
 from collections.abc import Sequence
 
 from app.rag.llm import (
@@ -79,3 +80,51 @@ class FakeLLMClient:
         else:
             text = json.dumps(VALID_ANSWER)
         return LLMResponse(text=text, usage=self.usage, model=self.model)
+
+
+# ------------------------------------------------------------------------------------------
+# A deterministic *extractive* stand-in used by the offline evaluation. It is not a language
+# model: it copies the sentence of the supplied evidence that shares the most words with the
+# question and cites it. Results obtained with it must always be labelled "mock".
+_BLOCK = re.compile(r"\[(P\d+)\] title:[^\n]*\n<<<BEGIN \1>>>\n(.*?)\n<<<END \1>>>", re.DOTALL)
+_QUESTION = re.compile(r"<<<QUESTION>>>\n(.*?)\n<<<END QUESTION>>>", re.DOTALL)
+_WORD = re.compile(r"[^\W_]{4,}", re.UNICODE)
+_SENTENCE = re.compile(r"(?<=[.!?])\s+")
+
+
+class ExtractiveFakeLLM:
+    provider = "mock-extractive"
+    model = "mock-extractive-v1"
+
+    def __init__(self, usage: LLMUsage | None = DEFAULT_USAGE):
+        self.usage = usage
+        self.calls: list[LLMRequest] = []
+
+    def generate(self, request: LLMRequest) -> LLMResponse:
+        self.calls.append(request)
+        blocks = _BLOCK.findall(request.user)
+        question = _QUESTION.search(request.user)
+        if not blocks or question is None:
+            if "<<<QUESTION>>>" in request.user:  # the answer pipeline found no evidence
+                return LLMResponse(text=json.dumps(ABSTENTION), usage=self.usage, model=self.model)
+            # the no-retrieval comparison: the model only ever sees the bare question
+            return LLMResponse(
+                text="I cannot answer without sources.", usage=self.usage, model=self.model
+            )
+        wanted = {w.casefold() for w in _WORD.findall(question.group(1))}
+        best: tuple[int, int, str, str] | None = None
+        for order, (label, body) in enumerate(blocks):
+            for sentence in _SENTENCE.split(body):
+                overlap = len(wanted & {w.casefold() for w in _WORD.findall(sentence)})
+                if overlap and (best is None or overlap > best[0]):
+                    best = (overlap, order, label, sentence.strip())
+        if best is None:
+            return LLMResponse(text=json.dumps(ABSTENTION), usage=self.usage, model=self.model)
+        sentence = best[3][:480]
+        payload = {
+            "answer": sentence,
+            "claims": [{"text": sentence, "citation_ids": [best[2]]}],
+            "abstained": False,
+            "abstention_reason": None,
+        }
+        return LLMResponse(text=json.dumps(payload), usage=self.usage, model=self.model)
