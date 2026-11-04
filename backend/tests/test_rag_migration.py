@@ -24,7 +24,7 @@ from sqlalchemy.exc import IntegrityError
 
 RAG_TABLES = {
     "document_passages", "generation_runs", "generation_citations", "generation_feedback",
-    "llm_usage_days",
+    "llm_usage_days", "llm_reservations",
 }  # fmt: skip
 
 

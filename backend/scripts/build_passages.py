@@ -25,7 +25,12 @@ ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(ROOT / "backend"))
 
 from app.evaluation.corpus import load_corpus  # noqa: E402
-from app.rag.passage_store import PassageStore, build_passage_artifact  # noqa: E402
+from app.rag.passage_store import (  # noqa: E402
+    PassageArtifactError,
+    PassageStore,
+    build_passage_artifact,
+    passage_dir,
+)
 from app.rag.passages import ChunkConfig  # noqa: E402
 from app.search.encoder import SentenceTransformerEncoder  # noqa: E402
 
@@ -37,6 +42,12 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--from-database", action="store_true")
     parser.add_argument("--max-tokens", type=int, default=200, help="estimated tokens per passage")
     parser.add_argument("--sync-db", action="store_true")
+    parser.add_argument(
+        "--reuse-from",
+        type=Path,
+        help="an earlier passage artifact directory whose vectors may be reused for unchanged "
+        "text (default: the existing artifact of this index version, if any)",
+    )
     args = parser.parse_args(argv)
 
     manifest = json.loads((args.index_dir / "manifest.json").read_text(encoding="utf-8"))
@@ -59,9 +70,16 @@ def main(argv: list[str] | None = None) -> int:
     encoder = SentenceTransformerEncoder(enc["name"], enc["revision"])
     config = ChunkConfig.from_max_tokens(args.max_tokens)
     started = time.perf_counter()
+    earlier = args.reuse_from or passage_dir(args.index_dir.parent, manifest["version"])
+    try:
+        previous = PassageStore.load(earlier) if (earlier / "manifest.json").is_file() else None
+    except PassageArtifactError:
+        previous = None  # unreadable: embed everything instead
+    stats: dict = {}
     path = build_passage_artifact(
-        corpus, encoder, manifest["version"], corpus.sha256, args.index_dir.parent, config
-    )
+        corpus, encoder, manifest["version"], corpus.sha256, args.index_dir.parent, config,
+        reuse=previous, stats=stats,
+    )  # fmt: skip
     store = PassageStore.load(
         path,
         expect_index_version=manifest["version"],
@@ -72,6 +90,7 @@ def main(argv: list[str] | None = None) -> int:
         f"built {store.version} for {store.index_version} in {time.perf_counter() - started:.1f}s"
     )
     print(f"documents {store.manifest['documents']}, passages {store.count}")
+    print(f"embedded {stats['encoded']}, reused {stats['reused']} vectors")
     print(f"per language {store.manifest['per_language']}")
     print(
         f"passage characters: median {statistics.median(chars):.0f}, max {max(chars)} "

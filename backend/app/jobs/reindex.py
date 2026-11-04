@@ -269,6 +269,7 @@ def run_index_job(state, job_id: uuid.UUID, params: dict, stop, cancelled_exc) -
                 bundle,
                 corpus,
                 GuardedEncoder(base_encoder, state.guard, stop, cancelled_exc, lambda _n: None),
+                previous=state.passages,
             )
             if stop.is_set():
                 raise cancelled_exc

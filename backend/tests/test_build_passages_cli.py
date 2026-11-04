@@ -88,3 +88,13 @@ def test_sync_db_requires_the_version_to_be_registered_then_writes_rows(
         assert stored >= len(docs()) and "inserted" in capsys.readouterr().out
     finally:
         get_settings.cache_clear()
+
+
+def test_a_second_build_reuses_the_vectors_of_the_first(cli, tmp_path, capsys):
+    index, corpus_path = _index_and_corpus(tmp_path)
+    args = ["--index-dir", str(index), "--corpus", str(corpus_path)]
+    assert cli.main(args) == 0
+    assert "reused 0 vectors" in capsys.readouterr().out
+    assert cli.main(args) == 0
+    again = capsys.readouterr().out
+    assert "embedded 0," in again and "reused 0 vectors" not in again

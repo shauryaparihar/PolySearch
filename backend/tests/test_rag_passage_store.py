@@ -318,3 +318,76 @@ def test_removing_the_artifact_directory_is_all_it_takes_to_discard_it(tmp_path)
     path = build(tmp_path)
     shutil.rmtree(path)
     assert not path.exists()
+
+
+# ------------------------------------------------------------- vector reuse on re-index
+def build_reusing(
+    tmp_path, previous, *, encoder=None, c=None, version="idx-test0000002", config=CONFIG
+):
+    stats: dict = {}
+    path = build_passage_artifact(
+        c or corpus(), encoder or FakeEncoder(), version, "c" * 64, tmp_path, config,
+        reuse=previous, stats=stats,
+    )  # fmt: skip
+    return PassageStore.load(path, expect_index_version=version), stats
+
+
+def test_an_unchanged_corpus_reuses_every_vector_and_calls_no_encoder(tmp_path):
+    previous = PassageStore.load(build(tmp_path))
+    encoder = FakeEncoder()
+    fresh_encoder = FakeEncoder()
+    store, stats = build_reusing(tmp_path, previous, encoder=encoder)
+    assert encoder.calls == 0
+    assert stats == {"reused": previous.count, "encoded": 0}
+    fresh = PassageStore.load(build(tmp_path / "fresh", fresh_encoder, version="idx-test0000002"))
+    assert np.array_equal(store.vectors, fresh.vectors)  # identical to embedding everything again
+    assert [p.passage_id for p in store.passages] == [p.passage_id for p in fresh.passages]
+
+
+def test_only_changed_documents_are_embedded_again(tmp_path):
+    previous = PassageStore.load(build(tmp_path))
+    changed = corpus()
+    changed.docs[0] = CorpusDoc(
+        "en:Volcano", "en", "Volcano", "A volcano is a mountain that erupts lava. Many exist."
+    )
+    encoder = FakeEncoder()
+    store, stats = build_reusing(tmp_path, previous, encoder=encoder, c=changed)
+    own = sum(1 for p in store.passages if p.doc_key == "en:Volcano")
+    assert stats["encoded"] == own > 0 and stats["reused"] == store.count - own
+    fresh = PassageStore.load(
+        build(tmp_path / "fresh", FakeEncoder(), version="idx-test0000002", c=changed)
+    )
+    assert np.array_equal(store.vectors, fresh.vectors)  # reuse never changes the result
+
+
+def test_vectors_from_another_encoder_are_never_reused(tmp_path):
+    previous = PassageStore.load(build(tmp_path))
+    other = FakeEncoder(dimension=32)
+    store, stats = build_reusing(tmp_path, previous, encoder=other)
+    assert stats["reused"] == 0 and stats["encoded"] == store.count
+    assert store.vectors.shape[1] == 32
+
+    class Revised(FakeEncoder):
+        revision = "rev-2"
+
+    _, stats = build_reusing(tmp_path, previous, encoder=Revised(), version="idx-test0000003")
+    assert stats["reused"] == 0
+
+
+def test_a_different_chunking_only_reuses_passages_with_identical_text(tmp_path):
+    previous = PassageStore.load(build(tmp_path))
+    other_config = ChunkConfig(max_chars=70, overlap_max_chars=30)
+    store, stats = build_reusing(tmp_path, previous, config=other_config)
+    fresh = PassageStore.load(
+        build_passage_artifact(
+            corpus(), FakeEncoder(), "idx-test0000002", "c" * 64, tmp_path / "fresh", other_config
+        )
+    )
+    assert np.array_equal(store.vectors, fresh.vectors)
+    assert stats["reused"] + stats["encoded"] == store.count
+
+
+def test_reusing_nothing_is_the_default(tmp_path):
+    encoder = FakeEncoder()
+    build(tmp_path, encoder)
+    assert encoder.calls > 0

@@ -214,3 +214,23 @@ def test_an_unchanged_corpus_reindex_keeps_the_existing_passages(admin, api_bund
     job = get_job(client, "index", start_index_job(client))
     assert job["step"] == "no_changes"
     assert _state(client).passages is before
+
+
+def test_a_reindex_only_embeds_passages_that_are_new_or_changed(
+    admin, session_factory, api_bundle, log_records
+):
+    from app.rag.passages import DEFAULT_CONFIG
+
+    build_passage_artifact(
+        Corpus(docs(), "d" * 64), FakeEncoder(), api_bundle.version,
+        api_bundle.manifest["corpus"]["sha256"], api_bundle.path.parent, DEFAULT_CONFIG,
+    )  # fmt: skip
+    client = admin(**PROVIDER)
+    before = _state(client).passages.count
+    add_document(session_factory, "Zebra Rayada", "es")
+    job = get_job(client, "index", start_index_job(client))
+    assert job["status"] == "completed"
+    built = next(r for r in log_records if r.getMessage() == "passages_built")
+    assert built.fields["passages_reused"] == before  # every old passage kept its vector
+    assert 0 < built.fields["passages_encoded"] <= 3  # only the new document was embedded
+    assert _state(client).passages.count == before + built.fields["passages_encoded"]

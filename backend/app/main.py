@@ -91,10 +91,11 @@ def create_app(
     settings = settings or get_settings()
     configure_logging()
 
+    factory = session_factory or make_session_factory(make_engine(settings.database_url))
     secret = (settings.cursor_secret or secrets.token_hex(32)).encode()
     state = AppState(
         settings=settings,
-        session_factory=session_factory or make_session_factory(make_engine(settings.database_url)),
+        session_factory=factory,
         bundle=bundle,
         cache=QueryCache(settings.cache_max_entries, settings.cache_ttl_seconds),
         guard=InferenceGuard(
@@ -110,7 +111,9 @@ def create_app(
         llm=llm_client if llm_client is not None else build_llm_client(settings),
         answer_limiter=SlidingWindowLimiter(settings.answer_rate_limit_per_minute),
         generation_guard=GenerationGuard(
-            settings.generation_max_concurrency, settings.inference_wait_timeout_seconds
+            settings.generation_max_concurrency,
+            settings.inference_wait_timeout_seconds,
+            engine=factory.kw.get("bind"),
         ),
         answer_cache=QueryCache(settings.cache_max_entries, settings.rag_cache_ttl_seconds),
     )

@@ -70,6 +70,31 @@ def _line(passage: Passage) -> str:
 
 
 # ----------------------------------------------------------------------------- build
+def _embedding_key(title: str, text: str) -> str:
+    return hashlib.sha256(dense_text(title, text).encode("utf-8")).hexdigest()
+
+
+def _reusable_vectors(previous: PassageStore | None, encoder: Encoder) -> dict[str, np.ndarray]:
+    """Vectors of an earlier artifact keyed by the exact text that was embedded.
+
+    Only usable when the same encoder (name, revision, dimension) produced them; the key is a
+    hash of the embedded text itself, so a changed document, title or chunking never matches.
+    """
+    if previous is None:
+        return {}
+    meta = previous.manifest.get("encoder", {})
+    if (meta.get("name"), meta.get("revision"), meta.get("dimension")) != (
+        encoder.name,
+        encoder.revision,
+        encoder.dimension,
+    ):
+        return {}
+    return {
+        _embedding_key(p.title, p.text): previous.vectors[row]
+        for row, p in enumerate(previous.passages)
+    }
+
+
 def build_passage_artifact(
     corpus: Corpus,
     encoder: Encoder,
@@ -78,8 +103,13 @@ def build_passage_artifact(
     artifact_root: Path,
     config: ChunkConfig = DEFAULT_CONFIG,
     batch_size: int = BATCH_SIZE,
+    reuse: PassageStore | None = None,
+    stats: dict | None = None,
 ) -> Path:
-    """Chunk and embed every document, then publish the artifact. Returns its directory."""
+    """Chunk and embed every document, then publish the artifact. Returns its directory.
+
+    ``reuse`` (the previously served artifact) lets a re-index skip embedding passages whose
+    text is unchanged; ``stats``, if given, receives ``{"reused": n, "encoded": m}``."""
     passages: list[Passage] = []
     for doc in corpus.docs:
         passages += build_passages(
@@ -95,9 +125,18 @@ def build_passage_artifact(
     staging.mkdir()
     try:
         texts = [dense_text(titles[p.doc_key], p.text) for p in passages]
-        vectors = np.vstack(
-            [encoder.encode(texts[i : i + batch_size]) for i in range(0, len(texts), batch_size)]
-        )
+        known = _reusable_vectors(reuse, encoder)
+        keys = [_embedding_key(titles[p.doc_key], p.text) for p in passages]
+        missing = [i for i, key in enumerate(keys) if key not in known]
+        vectors = np.zeros((len(passages), encoder.dimension), dtype=np.float32)
+        for i, key in enumerate(keys):
+            if key in known:
+                vectors[i] = known[key]
+        for start in range(0, len(missing), batch_size):
+            chunk = missing[start : start + batch_size]
+            vectors[chunk] = encoder.encode([texts[i] for i in chunk])
+        if stats is not None:
+            stats.update(reused=len(passages) - len(missing), encoded=len(missing))
         vectors = normalise(vectors)
         if vectors.shape != (len(passages), encoder.dimension):
             raise PassageArtifactError("encoder returned vectors of an unexpected shape")

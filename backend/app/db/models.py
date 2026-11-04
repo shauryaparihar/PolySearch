@@ -458,3 +458,20 @@ class LlmUsageDay(Base):
     updated_at: Mapped[datetime] = mapped_column(
         DateTime(timezone=True), server_default=func.now(), onupdate=func.now()
     )
+
+
+class LlmReservation(Base):
+    """One in-flight reservation of provider tokens. It expires, so a process that dies between
+    reserving and settling cannot keep part of the daily budget locked until midnight."""
+
+    __tablename__ = "llm_reservations"
+    __table_args__ = (
+        CheckConstraint("tokens > 0", name="ck_llm_reservations_positive"),
+        Index("ix_llm_reservations_day_expiry", "usage_date", "expires_at"),
+    )
+
+    id: Mapped[uuid.UUID] = mapped_column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
+    usage_date: Mapped[date] = mapped_column(Date)
+    tokens: Mapped[int] = mapped_column(BigInteger)
+    expires_at: Mapped[datetime] = mapped_column(DateTime(timezone=True))
+    created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), server_default=func.now())

@@ -65,11 +65,14 @@ def load_passages(
 
 
 def build_passages_for(
-    settings: Settings, bundle: SearchBundle, corpus, encoder
+    settings: Settings, bundle: SearchBundle, corpus, encoder, previous: PassageStore | None = None
 ) -> tuple[PassageStore | None, str | None]:
-    """Build, validate and load the passages of a *candidate* index. Never raises."""
+    """Build, validate and load the passages of a *candidate* index. Never raises.
+
+    ``previous`` is the currently served artifact; its vectors are reused for unchanged text."""
     if not settings.rag_enabled:
         return None, RAG_DISABLED
+    stats: dict = {}
     try:
         path = build_passage_artifact(
             corpus,
@@ -78,6 +81,13 @@ def build_passages_for(
             bundle.manifest["corpus"]["sha256"],
             artifact_root(settings, bundle),
             chunk_config(settings),
+            reuse=previous,
+            stats=stats,
+        )
+        log_event(
+            "passages_built",
+            passages_encoded=stats.get("encoded", 0),
+            passages_reused=stats.get("reused", 0),
         )
         store = PassageStore.load(
             path, expect_index_version=bundle.version, expect_encoder=_encoder_identity(bundle)

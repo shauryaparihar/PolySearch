@@ -66,7 +66,7 @@ def session_factory(migrated_engine: Engine):
             text(
                 "TRUNCATE click_events, relevance_feedback, search_results, search_runs, "
                 "index_jobs, index_versions, documents, ingestion_jobs, content_sources, "
-                "llm_usage_days "
+                "llm_usage_days, llm_reservations "
                 "RESTART IDENTITY CASCADE"
             )
         )

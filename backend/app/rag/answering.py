@@ -98,7 +98,10 @@ def _generate(
             estimate_tokens(SYSTEM_PROMPT) + estimate_tokens(user) + settings.llm_max_output_tokens
         )
         reservation = budget.reserve(
-            state.session_factory, worst_case, settings.rag_daily_token_budget
+            state.session_factory,
+            worst_case,
+            settings.rag_daily_token_budget,
+            ttl_seconds=settings.rag_reservation_ttl_seconds,
         )
         if reservation is None:
             raise _Fallback(FallbackReason.BUDGET_EXHAUSTED)

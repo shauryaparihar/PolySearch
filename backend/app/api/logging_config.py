@@ -22,7 +22,7 @@ ALLOWED_FIELDS = {
     "context_builder_version", "provider", "model", "rag_status", "abstention_reason",
     "fallback_reason", "candidate_count", "passage_count", "claim_count", "citation_count",
     "retrieval_ms", "provider_ms", "validation_ms", "input_tokens", "output_tokens",
-    "total_tokens", "cache_status",
+    "total_tokens", "cache_status", "passages_encoded", "passages_reused",
 }  # fmt: skip
 
 

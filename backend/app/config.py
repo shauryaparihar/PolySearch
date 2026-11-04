@@ -111,6 +111,9 @@ class Settings(BaseSettings):
     rag_max_repair_attempts: int = Field(default=1, ge=0, le=1)  # at most one repair call
     answer_rate_limit_per_minute: int = Field(default=5, ge=1, le=1000)
     generation_max_concurrency: int = Field(default=1, ge=1, le=4)
+    # A reserved-but-never-settled call (a crash) frees its tokens after this long. It must exceed
+    # the longest possible call, 2 x LLM_TIMEOUT_SECONDS; a shorter value is rejected at startup.
+    rag_reservation_ttl_seconds: int = Field(default=300, ge=30, le=3600)
     rag_daily_token_budget: int = Field(default=100_000, ge=0, le=100_000_000)  # 0 = no calls
     rag_cache_ttl_seconds: int = Field(default=600, ge=1, le=86_400)
     # Local debugging only: store the raw question text with each run. Never enable in tests.
@@ -163,6 +166,8 @@ class Settings(BaseSettings):
         for name, value in secrets.items():  # an untouched .env.example must not start up
             if value and PLACEHOLDER in value:
                 problems.append(f"{name} still contains the {PLACEHOLDER} placeholder")
+        if self.rag_reservation_ttl_seconds <= 2 * self.llm_timeout_seconds:
+            problems.append("RAG_RESERVATION_TTL_SECONDS must exceed twice LLM_TIMEOUT_SECONDS")
         if self.environment == "production":
             for name, value in (("CURSOR_SECRET", self.cursor_secret),
                                 ("ADMIN_API_KEY", self.admin_api_key)):  # fmt: skip
