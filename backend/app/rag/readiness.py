@@ -14,7 +14,7 @@ def run_rag_readiness(state: AppState) -> dict:
     store = state.passages
     checks = {
         "enabled": settings.rag_enabled,
-        "provider_configured": settings.rag_configured,
+        "provider_configured": settings.rag_configured and state.llm is not None,
         "passages_loaded": store is not None,
         "passages_match_index": bool(store and bundle and store.index_version == bundle.version),
         "passages_in_database": False,

@@ -10,6 +10,7 @@ from sqlalchemy import func, select
 
 from app.api import analytics, jobs_api, service, signals, suggest
 from app.api.admin import require_admin
+from app.api.answer_schemas import AnswerRequest, AnswerResponse
 from app.api.errors import ApiError, request_id_of
 from app.api.logging_config import log_event
 from app.api.ratelimit import client_id
@@ -33,6 +34,7 @@ from app.api.schemas import (
 from app.api.state import AppState
 from app.config import SUPPORTED_LANGUAGES
 from app.db.models import ContentSource, Document
+from app.rag import answering
 from app.rag.readiness import run_rag_readiness
 
 v1 = APIRouter(prefix="/api/v1")
@@ -49,6 +51,7 @@ def _enforce_rate_limit(request: Request, group: str = "search") -> None:
         "search": state.search_limiter,
         "suggest": state.suggest_limiter,
         "write": state.write_limiter,
+        "answer": state.answer_limiter,
     }[group]
     peer = request.client.host if request.client else None
     who = client_id(peer, request.headers.get("x-forwarded-for"), state.settings.trusted_proxy_ips)
@@ -72,6 +75,14 @@ def _enforce_rate_limit(request: Request, group: str = "search") -> None:
 def search(body: SearchRequest, request: Request) -> SearchResponse:
     _enforce_rate_limit(request)
     return service.run_search(_state(request), body, request_id_of(request))
+
+
+@v1.post("/answers", response_model=AnswerResponse)
+def answer(body: AnswerRequest, request: Request) -> AnswerResponse:
+    """Optional citation-backed answer. Never the only way to search: when it cannot answer it
+    abstains or falls back to ordinary search results, with a stable reason code."""
+    _enforce_rate_limit(request, "answer")
+    return answering.answer_question(_state(request), body, request_id_of(request))
 
 
 @v1.get("/searches/{search_id}/results", response_model=ResultPage)

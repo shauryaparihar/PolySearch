@@ -39,7 +39,7 @@ class AppState:
     # Process-lifetime counters (rate-limited requests are not stored in the database).
     metrics: dict = field(
         default_factory=lambda: {
-            "rate_limited": {"search": 0, "suggest": 0, "write": 0, "admin": 0}
+            "rate_limited": {"search": 0, "suggest": 0, "write": 0, "admin": 0, "answer": 0}
         }
     )
     # ---- background jobs (Phase 6)
@@ -49,6 +49,8 @@ class AppState:
     # ---- optional answer mode: passages of the served index, or why there are none
     passages: Any = None  # app.rag.passage_store.PassageStore
     passage_error: str | None = None
+    llm: Any = None  # app.rag.llm.LLMClient, or None when answers are not configured
+    answer_limiter: Any = None  # SlidingWindowLimiter for POST /answers
 
     def snapshot(self) -> tuple[SearchBundle | None, uuid.UUID | None]:
         """The served bundle and its database version id, read together.
@@ -58,6 +60,12 @@ class AppState:
         """
         with self.lock:
             return self.bundle, self.index_version_id
+
+    def snapshot_with_passages(self) -> tuple[SearchBundle | None, uuid.UUID | None, Any]:
+        """Bundle, version id and passage store read together, so answers never pair the new
+        index with the old passages (or the reverse) while an activation is in progress."""
+        with self.lock:
+            return self.bundle, self.index_version_id, self.passages
 
     def activate(
         self,

@@ -30,6 +30,7 @@ from app.db.models import IndexVersion
 from app.jobs.manager import recover_stale_jobs
 from app.jobs.worker import JobWorker
 from app.rag import lifecycle
+from app.rag.openai_client import build_llm_client
 from app.search.artifacts import ArtifactError
 from app.search.bundle import SearchBundle
 
@@ -82,6 +83,7 @@ def create_app(
     session_factory: sessionmaker[Session] | None = None,
     synchronous_jobs: bool = False,
     source_factory=None,
+    llm_client=None,
 ) -> FastAPI:
     """Build the app. ``bundle``/``session_factory`` can be injected (tests); otherwise they
     are created from settings during startup."""
@@ -104,6 +106,8 @@ def create_app(
         admin_failure_limiter=SlidingWindowLimiter(settings.admin_failed_attempts_per_minute),
         cursor_secret=secret,
         source_factory=source_factory,
+        llm=llm_client if llm_client is not None else build_llm_client(settings),
+        answer_limiter=SlidingWindowLimiter(settings.answer_rate_limit_per_minute),
     )
     state.worker = JobWorker(state, synchronous=synchronous_jobs)
 

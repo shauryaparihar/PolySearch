@@ -124,7 +124,9 @@ def make_client(session_factory, api_bundle):
     seed_documents(session_factory)
     opened = []
 
-    def factory(bundle=api_bundle, synchronous_jobs=True, source_factory=None, **settings):
+    def factory(
+        bundle=api_bundle, synchronous_jobs=True, source_factory=None, llm_client=None, **settings
+    ):
         settings.setdefault("artifact_root", api_bundle.path.parent)
         app = create_app(
             test_settings(**settings),
@@ -132,6 +134,7 @@ def make_client(session_factory, api_bundle):
             session_factory=session_factory,
             synchronous_jobs=synchronous_jobs,
             source_factory=source_factory,
+            llm_client=llm_client,
         )
         client = TestClient(app)
         client.__enter__()  # runs lifespan: registers the active index version

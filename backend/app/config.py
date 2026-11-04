@@ -98,6 +98,12 @@ class Settings(BaseSettings):
     rag_max_passages_per_document: int = Field(default=2, ge=1, le=5)
     rag_max_passage_tokens: int = Field(default=200, ge=20, le=500)
     rag_max_context_tokens: int = Field(default=1500, ge=100, le=6000)
+    # Below this cosine similarity between the question and the best passage the system abstains
+    # without calling the model. It is a cost-saving pre-filter, not a safety gate: on a
+    # hand-written 160-question set the score alone separated answerable from unanswerable only
+    # moderately (AUC about 0.85), so the model's own abstention and the citation validator
+    # remain the real safeguards. Tune with backend/scripts/calibrate_evidence_threshold.py.
+    rag_min_evidence_score: float = Field(default=0.55, ge=-1.0, le=1.0)
     rag_max_repair_attempts: int = Field(default=1, ge=0, le=1)  # at most one repair call
     answer_rate_limit_per_minute: int = Field(default=5, ge=1, le=1000)
     generation_max_concurrency: int = Field(default=1, ge=1, le=4)

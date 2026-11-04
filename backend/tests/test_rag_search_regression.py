@@ -36,13 +36,16 @@ def test_search_stats_and_readiness_work_without_any_llm_setting(make_client, no
     }  # answer mode adds no readiness check, so it can never make search unready
 
 
-def test_the_existing_routes_are_unchanged_and_no_answer_route_exists_yet(
+def test_the_existing_routes_are_unchanged_and_answers_are_off_by_default(
     make_client, no_llm_environment
 ):
     client = make_client()
     paths = set(client.get("/openapi.json").json()["paths"])
     assert {"/api/v1/search", "/api/v1/suggestions", "/healthz", "/readyz"} <= paths
-    assert "/api/v1/answers" not in paths  # R0 adds the contract only, not the endpoint
+    assert "/api/v1/answers" in paths
+    reply = client.post("/api/v1/answers", json={"question": "What is a volcano?"}).json()
+    assert reply["fallback_reason"] == "RAG_DISABLED" and reply["answer"] is None
+    assert reply["search_results"]  # off means ordinary search results, never an error
 
 
 def test_turning_answers_on_without_a_provider_does_not_affect_search(make_client):
