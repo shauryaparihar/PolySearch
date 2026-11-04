@@ -133,6 +133,8 @@ def create_app(
             except Exception:  # database not reachable yet: /readyz reports it, search retries
                 log_event("index_registration_failed", level=40, error_code="DATABASE_UNAVAILABLE")
             state.passages, state.passage_error = lifecycle.load_passages(settings, state.bundle)
+            if state.passages is not None:
+                lifecycle.sync_if_missing(state.session_factory, state.passages)
             try:
                 suggest.get_suggester(state)  # build the autocomplete trie for this bundle
             except Exception:  # retried lazily on the first suggestion request

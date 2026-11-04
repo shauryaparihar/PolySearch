@@ -8,11 +8,11 @@ from __future__ import annotations
 
 from pathlib import Path
 
-from sqlalchemy import select
+from sqlalchemy import func, select
 
 from app.api.logging_config import log_event
 from app.config import Settings
-from app.db.models import IndexVersion
+from app.db.models import DocumentPassage, IndexVersion
 from app.rag.passage_store import (
     PassageArtifactError,
     PassageStore,
@@ -113,3 +113,49 @@ def sync_to_database(session_factory, store: PassageStore) -> bool:
     except Exception:  # noqa: BLE001
         log_event("passages_sync_failed", level=40, error_code=PASSAGES_SYNC_FAILED)
         return False
+
+
+def sync_if_missing(session_factory, store: PassageStore) -> str:
+    """At startup: copy the passages to PostgreSQL when none are stored for this index version.
+
+    Returns ``"present"``, ``"synced"`` or ``"failed"``. Never raises; a failure only leaves
+    answer mode falling back, which ``/readyz/rag`` reports."""
+    try:
+        with session_factory() as session:
+            version = session.scalar(
+                select(IndexVersion).where(IndexVersion.version == store.index_version)
+            )
+            if version is None:
+                return "failed"
+            stored = session.scalar(
+                select(func.count())
+                .select_from(DocumentPassage)
+                .where(DocumentPassage.index_version_id == version.id)
+            )
+            if stored:
+                return "present"
+    except Exception:  # noqa: BLE001
+        log_event("passages_sync_failed", level=40, error_code=PASSAGES_SYNC_FAILED)
+        return "failed"
+    return "synced" if sync_to_database(session_factory, store) else "failed"
+
+
+def prune_passage_artifacts(root: Path, keep: set[str], delete: bool = False) -> list[str]:
+    """Passage artifacts whose index is gone (or not in ``keep``). Dry run unless ``delete``.
+
+    A passage directory is kept when its index version directory still exists under
+    ``root`` or the version is in ``keep`` (always include the served version)."""
+    import shutil
+
+    base = Path(root) / "passages"
+    if not base.is_dir():
+        return []
+    removable = [
+        d.name
+        for d in sorted(base.iterdir())
+        if d.is_dir() and d.name not in keep and not (Path(root) / d.name).is_dir()
+    ]
+    if delete:
+        for name in removable:
+            shutil.rmtree(base / name)
+    return removable

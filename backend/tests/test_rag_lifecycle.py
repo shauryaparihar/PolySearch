@@ -12,7 +12,7 @@ from app.rag.passage_store import PassageStore, build_passage_artifact, passage_
 from app.rag.passages import ChunkConfig
 from fake_encoder import FakeEncoder
 from job_support import KEY, add_document, get_job, start_index_job
-from sqlalchemy import func, select
+from sqlalchemy import func, select, text
 
 PROVIDER = dict(
     rag_enabled=True, llm_base_url="https://provider.invalid/v1", llm_api_key="k", llm_model="m"
@@ -95,20 +95,28 @@ def test_an_artifact_built_for_another_index_is_not_used(make_client, api_bundle
 
 
 # ------------------------------------------------------------------- readiness detail
-def test_rag_readiness_is_separate_and_checks_the_database_rows(make_client, api_bundle):
+def test_startup_copies_missing_passages_to_the_database(make_client, api_bundle):
+    build_for(api_bundle)
+    client = make_client(**PROVIDER)  # no manual sync: startup does it
+    state = _state(client)
+    ready = client.get("/readyz/rag")
+    assert ready.status_code == 200 and ready.json()["checks"]["passages_in_database"] is True
+    assert _row_count(state.session_factory) == state.passages.count
+    assert lifecycle.sync_if_missing(state.session_factory, state.passages) == "present"
+
+
+def test_rag_readiness_reports_missing_database_rows_until_synced(make_client, api_bundle):
     build_for(api_bundle)
     client = make_client(**PROVIDER)
+    state = _state(client)
+    with state.session_factory() as session:
+        session.execute(text("DELETE FROM document_passages"))
+        session.commit()
     first = client.get("/readyz/rag")
     assert first.status_code == 503
-    assert first.json()["checks"] == {
-        "enabled": True, "provider_configured": True, "passages_loaded": True,
-        "passages_match_index": True, "passages_in_database": False,
-    }  # fmt: skip
-    state = _state(client)
-    assert lifecycle.sync_to_database(state.session_factory, state.passages) is True
-    ready = client.get("/readyz/rag")
-    assert ready.status_code == 200 and ready.json()["ready"] is True
-    assert _row_count(state.session_factory) == state.passages.count
+    assert first.json()["checks"]["passages_in_database"] is False
+    assert lifecycle.sync_if_missing(state.session_factory, state.passages) == "synced"
+    assert client.get("/readyz/rag").json()["ready"] is True
 
 
 def test_without_a_provider_answer_mode_is_not_ready_but_says_why(make_client, api_bundle):

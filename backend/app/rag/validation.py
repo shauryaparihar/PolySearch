@@ -73,7 +73,9 @@ def validate_answer(parsed: ProviderAnswer, context: EvidenceContext) -> Validat
                 labels=sorted(claim.citation_ids, key=_label_order),
             )
         )
-    answer = clean_for_prompt(parsed.answer or "")
+    # The displayed answer is built from the verified claims only. The model's free-text
+    # ``answer`` is ignored, so no sentence can reach the user without a checked citation.
+    answer = " ".join(c.text for c in claims).strip()
     if not answer or any(not c.text for c in claims):
         raise AnswerRejected(FallbackReason.INVALID_OUTPUT)
     return ValidatedAnswer(abstained=False, answer=answer, claims=claims)

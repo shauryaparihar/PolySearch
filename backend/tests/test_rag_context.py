@@ -145,4 +145,17 @@ def test_answer_text_is_returned_clean():
         reply([{"text": "A​ claim.", "citation_ids": ["P1"]}], answer="Hi\x1b there.")
     )
     result = validate_answer(parsed, evidence_context())
-    assert result.answer == "Hi there." and "\u200b" not in result.claims[0].text
+    # the displayed answer is the verified claims, never the model's free text
+    assert result.answer == "A claim." and "\u200b" not in result.claims[0].text
+
+
+def test_extra_sentences_in_the_free_text_answer_never_reach_the_user():
+    parsed = parse_provider_output(
+        reply(
+            [{"text": "Paris is in France.", "citation_ids": ["P1"]}],
+            answer="Paris is in France. It also has 90 million people and a moon base.",
+        )
+    )
+    result = validate_answer(parsed, evidence_context())
+    assert result.answer == "Paris is in France."
+    assert "moon base" not in result.answer
