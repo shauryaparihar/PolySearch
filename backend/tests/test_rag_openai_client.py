@@ -99,3 +99,32 @@ def test_a_client_is_built_only_when_fully_configured():
     assert build_llm_client(Settings(_env_file=None, llm_api_key="k")) is None  # disabled
     built = build_llm_client(Settings(**base, llm_api_key="k"))
     assert built is not None and built.model == "m" and built.provider == "openai-compatible"
+
+
+def test_json_mode_can_be_switched_off_for_servers_that_reject_it():
+    seen = []
+
+    def handler(request: httpx.Request) -> httpx.Response:
+        seen.append(json.loads(request.content))
+        return ok("{}")
+
+    on = OpenAICompatibleClient(
+        "https://a.invalid/v1", KEY, "m", transport=httpx.MockTransport(handler)
+    )
+    off = OpenAICompatibleClient(
+        "https://a.invalid/v1", KEY, "m", json_mode=False, transport=httpx.MockTransport(handler)
+    )
+    on.generate(REQUEST)
+    off.generate(REQUEST)
+    assert (
+        seen[0]["response_format"] == {"type": "json_object"} and "response_format" not in seen[1]
+    )
+
+
+def test_the_setting_reaches_the_built_client(monkeypatch):
+    base = dict(
+        _env_file=None, rag_enabled=True, llm_base_url="https://h.invalid/v1",
+        llm_model="m", llm_api_key="k",
+    )  # fmt: skip
+    assert build_llm_client(Settings(**base))._json_mode is True
+    assert build_llm_client(Settings(**base, llm_json_mode=False))._json_mode is False

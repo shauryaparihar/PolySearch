@@ -31,8 +31,10 @@ class OpenAICompatibleClient:
         api_key: str,
         model: str,
         *,
+        json_mode: bool = True,
         transport: httpx.BaseTransport | None = None,
     ):
+        self._json_mode = json_mode
         self.model = model
         self._url = f"{base_url.rstrip('/')}/chat/completions"
         self._headers = {"Authorization": f"Bearer {api_key}", "Content-Type": "application/json"}
@@ -47,8 +49,9 @@ class OpenAICompatibleClient:
             ],
             "max_tokens": request.max_output_tokens,
             "temperature": 0,
-            "response_format": {"type": "json_object"},
         }
+        if self._json_mode:
+            body["response_format"] = {"type": "json_object"}
         try:
             with httpx.Client(
                 transport=self._transport,
@@ -85,7 +88,10 @@ def build_llm_client(settings) -> OpenAICompatibleClient | None:
     if not settings.rag_configured:
         return None
     return OpenAICompatibleClient(
-        settings.llm_base_url, settings.llm_api_key.get_secret_value(), settings.llm_model
+        settings.llm_base_url,
+        settings.llm_api_key.get_secret_value(),
+        settings.llm_model,
+        json_mode=settings.llm_json_mode,
     )
 
 

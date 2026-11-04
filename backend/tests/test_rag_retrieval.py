@@ -114,7 +114,7 @@ def test_the_final_size_limit_is_respected(env):
 
 def test_only_candidate_documents_contribute_passages(env):
     wide = retrieve(env, "volcán", candidate_documents=6)
-    narrow = retrieve(env, "volcán", candidate_documents=1)
+    narrow = retrieve(env, "volcán", candidate_documents=1, lexical_rescue=0)
     assert narrow.candidate_count == 1 and {p.document_rank for p in narrow.passages} == {1}
     assert len({p.doc_key for p in narrow.passages}) == 1
     assert len({p.doc_key for p in wide.passages}) > 1
@@ -188,3 +188,46 @@ def test_config_is_built_from_settings():
         )  # fmt: skip
     )
     assert (config.candidate_documents, config.final_passages, config.max_per_document) == (7, 3, 1)
+
+
+# ------------------------------------------------------------- lexical rescue
+def keys_of(evidence):
+    return [p.doc_key for p in evidence.passages]
+
+
+def test_a_reserved_document_is_included_even_when_its_score_is_low(env):
+    bundle, store = env
+    vector = bundle.encoder.encode(["volcano eruption lava"])[0]
+    keys = [d.key for d in DOCS]
+    config = RetrievalConfig(final_passages=2, max_per_document=1)
+    plain = select_evidence(store, vector, keys, config)
+    assert "fr:Opéra" not in [p.doc_key for p in plain]
+    reserved = select_evidence(store, vector, keys, config, reserve_key="fr:Opéra")
+    assert len(reserved) == 2 and reserved[-1].doc_key == "fr:Opéra"
+    assert [p.rank for p in reserved] == [1, 2]
+    assert reserved[0].doc_key == plain[0].doc_key  # the best evidence is untouched
+
+
+def test_reserving_an_unknown_or_present_document_changes_nothing(env):
+    bundle, store = env
+    vector = bundle.encoder.encode(["volcano eruption lava"])[0]
+    keys = [d.key for d in DOCS]
+    config = RetrievalConfig(final_passages=3, max_per_document=1)
+    plain = select_evidence(store, vector, keys, config)
+    assert select_evidence(store, vector, keys, config, reserve_key="en:Nope") == plain
+    assert select_evidence(store, vector, keys, config, reserve_key=plain[0].doc_key) == plain
+
+
+def test_the_best_exact_word_match_is_rescued_when_dense_search_misses_it(env):
+    # one dense candidate only; the lexical match on the rare word "orchestre" is added
+    question = "orchestre"
+    without = retrieve(env, question, candidate_documents=1, lexical_rescue=0, final_passages=3)
+    with_rescue = retrieve(env, question, candidate_documents=1, lexical_rescue=3, final_passages=3)
+    assert "fr:Opéra" in keys_of(with_rescue)
+    assert set(keys_of(without)) <= set(keys_of(with_rescue))
+    assert with_rescue.candidate_count >= without.candidate_count
+
+
+def test_rescue_is_skipped_for_lexical_mode_and_when_switched_off(env):
+    base = retrieve(env, "orchestre", mode="lexical", lexical_rescue=3)
+    assert keys_of(base) == keys_of(retrieve(env, "orchestre", mode="lexical", lexical_rescue=0))

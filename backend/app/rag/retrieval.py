@@ -30,6 +30,10 @@ class RetrievalConfig:
     final_passages: int = 6
     max_per_document: int = 2
     duplicate_similarity: float = DUPLICATE_SIMILARITY
+    # Extra candidate documents taken from lexical search when the chosen mode is not lexical.
+    # Dense search can miss rare names; exact word matches are cheap to add, and the passage
+    # stage still ranks every candidate by cosine, so this only adds recall.
+    lexical_rescue: int = 3
 
     @classmethod
     def from_settings(cls, settings: Settings) -> RetrievalConfig:
@@ -68,8 +72,13 @@ def select_evidence(
     query_vector: np.ndarray,
     candidate_keys: Sequence[str],
     config: RetrievalConfig,
+    reserve_key: str | None = None,
 ) -> list[EvidencePassage]:
-    """Rank the candidates' passages and apply the duplicate, per-document and size limits."""
+    """Rank the candidates' passages and apply the duplicate, per-document and size limits.
+
+    ``reserve_key`` names one document (the best exact-word match) whose best passage must be
+    part of the evidence even if its cosine score is lower than the others; it takes the place of
+    the last-ranked passage when the evidence is full."""
     document_rank = {key: rank for rank, key in enumerate(candidate_keys, start=1)}
     rows = store.rows_for(candidate_keys)
     if not rows:
@@ -101,6 +110,14 @@ def select_evidence(
         per_document[passage.doc_key] = per_document.get(passage.doc_key, 0) + 1
         if len(chosen) == config.final_passages:
             break
+    if reserve_key is not None and not any(
+        store.passages[rows[i]].doc_key == reserve_key for i in chosen
+    ):
+        own = [i for i in order if store.passages[rows[i]].doc_key == reserve_key]
+        if own:
+            if len(chosen) >= config.final_passages:
+                chosen.pop()
+            chosen.append(own[0])
     return [
         EvidencePassage(
             rank=rank,
@@ -136,18 +153,29 @@ def retrieve_evidence(
         question, mode, languages, k=config.candidate_documents, pool=config.candidate_documents
     )
     candidate_keys = [h.key for h in result.hits]
+    reserve_key = None
+    lexical_ms = 0.0
+    if config.lexical_rescue > 0 and mode != "lexical":
+        rescue = bundle.search(
+            question, "lexical", languages, k=config.lexical_rescue, pool=config.candidate_documents
+        )
+        lexical_ms = rescue.timings_ms.get("total_ms", 0.0)
+        extra = [h.key for h in rescue.hits if h.key not in candidate_keys]
+        candidate_keys += extra
+        if rescue.hits and rescue.hits[0].key in extra:
+            reserve_key = rescue.hits[0].key  # the best exact-word match was missed by dense
     stage = time.perf_counter()
     query_vector = bundle.encoder.encode([question])[0]  # the passage vectors are dense
     encode_ms = (time.perf_counter() - stage) * 1000
     stage = time.perf_counter()
-    passages = select_evidence(store, query_vector, candidate_keys, config)
+    passages = select_evidence(store, query_vector, candidate_keys, config, reserve_key)
     passage_ms = (time.perf_counter() - stage) * 1000
     total_ms = (time.perf_counter() - started) * 1000
     return Evidence(
         passages=passages,
         candidate_count=len(candidate_keys),
         timings_ms={
-            "document_search_ms": round(result.timings_ms.get("total_ms", 0.0), 3),
+            "document_search_ms": round(result.timings_ms.get("total_ms", 0.0) + lexical_ms, 3),
             "question_encode_ms": round(encode_ms, 3),
             "passage_rank_ms": round(passage_ms, 3),
             "total_ms": round(total_ms, 3),

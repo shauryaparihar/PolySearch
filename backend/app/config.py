@@ -89,6 +89,10 @@ class Settings(BaseSettings):
     llm_model: str | None = None
     llm_timeout_seconds: float = Field(default=20.0, gt=0, le=120)
     llm_max_output_tokens: int = Field(default=600, ge=50, le=4000)
+    # Ask the provider for a JSON-only reply (response_format=json_object). Turn off for an
+    # OpenAI-compatible server that rejects it; the prompt still demands JSON and every reply is
+    # validated either way.
+    llm_json_mode: bool = True
     # Prices (per million tokens) are used only for cost *estimates*; unset = no estimate.
     llm_input_price_per_mtok: float | None = Field(default=None, ge=0)
     llm_output_price_per_mtok: float | None = Field(default=None, ge=0)
